@@ -1,0 +1,51 @@
+name: Publish to PyPI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pyproject.toml'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check version change
+        id: version_check
+        run: |
+          CURRENT=$(grep -m1 '^version' pyproject.toml | sed 's/.*"\(.*\)".*/\1/')
+          PREVIOUS=$(git show HEAD~1:pyproject.toml 2>/dev/null | grep -m1 '^version' | sed 's/.*"\(.*\)".*/\1/' || echo "")
+          echo "current=$CURRENT" >> "$GITHUB_OUTPUT"
+          echo "previous=$PREVIOUS" >> "$GITHUB_OUTPUT"
+          if [ "$CURRENT" != "$PREVIOUS" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Version changed: $PREVIOUS -> $CURRENT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Version unchanged: $CURRENT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.version_check.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+        with:
+          python-version: "3.x"
+
+      - name: Install build dependencies
+        if: steps.version_check.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+        run: pip install build
+
+      - name: Build package
+        if: steps.version_check.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+        run: python -m build
+
+      - name: Publish to PyPI
+        if: steps.version_check.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+        uses: pypa/gh-action-pypi-publish@release/v1
