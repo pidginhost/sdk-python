@@ -1,0 +1,38 @@
+# Publishes the Python SDK to PyPI via trusted publishing (OIDC) -- there is no
+# API token anywhere; PyPI trusts this repository, this workflow filename and
+# the `pypi` environment. Renaming any of the three breaks publishing.
+#
+# This file is injected from the sdk repo (python/github/workflows/publish.yml)
+# by scripts/post-generate.sh. The publish pipeline force-pushes a fresh history
+# to this repository on every release, so anything edited here directly is
+# overwritten on the next release -- change it in the sdk repo instead.
+name: Publish to PyPI
+
+on:
+  push:
+    # The GitLab publish job pushes `main` and then the vX.Y.Z tag. Trigger on
+    # the tag: the force-pushed history makes a paths filter on main unreliable.
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Build package
+        run: |
+          python -m pip install --upgrade build
+          python -m build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
