@@ -36,12 +36,12 @@ class TestFeatureUpgradeRequest(unittest.TestCase):
         model = FeatureUpgradeRequest()
         if include_optional:
             return FeatureUpgradeRequest(
-                feature_name = '',
+                feature_name = '0',
                 retry = True
             )
         else:
             return FeatureUpgradeRequest(
-                feature_name = '',
+                feature_name = '0',
         )
         """
 

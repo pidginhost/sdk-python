@@ -207,12 +207,6 @@ class TestEmailApi(unittest.TestCase):
         """
         pass
 
-    def test_email_services_destroy(self) -> None:
-        """Test case for email_services_destroy
-
-        """
-        pass
-
     def test_email_services_domains_create(self) -> None:
         """Test case for email_services_domains_create
 

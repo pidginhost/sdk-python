@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **hosting_hosting_change_password_create**
-> HostingChangePasswordResponse hosting_hosting_change_password_create(id, change_password)
+> HostingChangePasswordResponse hosting_hosting_change_password_create(id, change_password_request)
 
 Change the cPanel password for this hosting service.
 
@@ -21,7 +21,7 @@ Change the cPanel password for this hosting service.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.change_password import ChangePassword
+from pidginhost_sdk.models.change_password_request import ChangePasswordRequest
 from pidginhost_sdk.models.hosting_change_password_response import HostingChangePasswordResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -54,10 +54,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.HostingApi(api_client)
     id = 'id_example' # str | 
-    change_password = pidginhost_sdk.ChangePassword() # ChangePassword | 
+    change_password_request = pidginhost_sdk.ChangePasswordRequest() # ChangePasswordRequest | 
 
     try:
-        api_response = api_instance.hosting_hosting_change_password_create(id, change_password)
+        api_response = api_instance.hosting_hosting_change_password_create(id, change_password_request)
         print("The response of HostingApi->hosting_hosting_change_password_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,7 +72,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **change_password** | [**ChangePassword**](ChangePassword.md)|  | 
+ **change_password_request** | [**ChangePasswordRequest**](ChangePasswordRequest.md)|  | 
 
 ### Return type
 

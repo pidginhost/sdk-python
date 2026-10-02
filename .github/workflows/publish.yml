@@ -3,15 +3,15 @@
 # the `pypi` environment. Renaming any of the three breaks publishing.
 #
 # This file is injected from the sdk repo (python/github/workflows/publish.yml)
-# by scripts/post-generate.sh. The publish pipeline force-pushes a fresh history
-# to this repository on every release, so anything edited here directly is
-# overwritten on the next release -- change it in the sdk repo instead.
+# by scripts/post-generate.sh. Every release replaces this repository's files
+# with the generated ones, so anything edited here directly is overwritten on
+# the next release -- change it in the sdk repo instead.
 name: Publish to PyPI
 
 on:
   push:
-    # The GitLab publish job pushes `main` and then the vX.Y.Z tag. Trigger on
-    # the tag: the force-pushed history makes a paths filter on main unreliable.
+    # The GitLab publish job pushes `main` and the vX.Y.Z tag together. Trigger
+    # on the tag: only the tag marks a release.
     tags:
       - "v*"
   workflow_dispatch:

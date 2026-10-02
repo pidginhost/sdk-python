@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [readonly] 
 **alias** | **str** |  | [optional] 
 **fingerprint** | **str** |  | [readonly] 
-**key** | **str** |  | [readonly] 
+**key** | **str** |  | 
 
 ## Example
 

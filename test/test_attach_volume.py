@@ -36,11 +36,11 @@ class TestAttachVolume(unittest.TestCase):
         model = AttachVolume()
         if include_optional:
             return AttachVolume(
-                vm = 56
+                attached = True
             )
         else:
             return AttachVolume(
-                vm = 56,
+                attached = True,
         )
         """
 

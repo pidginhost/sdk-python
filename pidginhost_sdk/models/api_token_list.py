@@ -36,8 +36,8 @@ class APITokenList(BaseModel):
     created: StrictStr
     last_used: Optional[StrictStr]
     request_count: StrictInt
-    account: Optional[StrictStr]
-    membership_status: Optional[StrictStr]
+    account: Optional[StrictStr] = None
+    membership_status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "name", "scope", "key_prefix", "created", "last_used", "request_count", "account", "membership_status"]
 
     model_config = ConfigDict(
@@ -77,8 +77,6 @@ class APITokenList(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -88,8 +86,6 @@ class APITokenList(BaseModel):
             "created",
             "last_used",
             "request_count",
-            "account",
-            "membership_status",
         ])
 
         _dict = self.model_dump(

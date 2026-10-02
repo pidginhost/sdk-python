@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **client_info** | **object** |  | [readonly] 
 **invoice_info** | **object** |  | [readonly] 
 **payment_method** | **str** |  | [readonly] 
-**services** | **str** |  | [readonly] 
+**services** | [**List[InvoiceService]**](InvoiceService.md) |  | [readonly] 
 
 ## Example
 

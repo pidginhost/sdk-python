@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,7 +30,7 @@ class ResourcePoolNode(BaseModel):
     """ # noqa: E501
     id: StrictInt
     name: StrictStr
-    ip: StrictStr
+    ip: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "name", "ip"]
 
     model_config = ConfigDict(
@@ -76,6 +76,11 @@ class ResourcePoolNode(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if ip (nullable) is None
+        # and model_fields_set contains the field
+        if self.ip is None and "ip" in self.model_fields_set:
+            _dict['ip'] = None
+
         return _dict
 
     @classmethod

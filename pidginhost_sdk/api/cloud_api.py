@@ -26,34 +26,37 @@ from pidginhost_sdk.models.attach_ipv4_response import AttachIPv4Response
 from pidginhost_sdk.models.attach_ipv6_request import AttachIPv6Request
 from pidginhost_sdk.models.attach_ipv6_response import AttachIPv6Response
 from pidginhost_sdk.models.attach_volume import AttachVolume
+from pidginhost_sdk.models.attach_volume_request import AttachVolumeRequest
+from pidginhost_sdk.models.boot_iso import BootISO
 from pidginhost_sdk.models.bucket import Bucket
 from pidginhost_sdk.models.bucket_cancel_response import BucketCancelResponse
-from pidginhost_sdk.models.bucket_create import BucketCreate
+from pidginhost_sdk.models.bucket_create_request import BucketCreateRequest
 from pidginhost_sdk.models.bucket_credentials import BucketCredentials
-from pidginhost_sdk.models.bucket_resize import BucketResize
-from pidginhost_sdk.models.bucket_visibility import BucketVisibility
+from pidginhost_sdk.models.bucket_resize_request import BucketResizeRequest
+from pidginhost_sdk.models.bucket_visibility_request import BucketVisibilityRequest
 from pidginhost_sdk.models.console_token import ConsoleToken
-from pidginhost_sdk.models.destroy_protection import DestroyProtection
+from pidginhost_sdk.models.destroy_protection_request import DestroyProtectionRequest
 from pidginhost_sdk.models.destroy_protection_response import DestroyProtectionResponse
 from pidginhost_sdk.models.detach_ipv4_response import DetachIPv4Response
 from pidginhost_sdk.models.detach_ipv6 import DetachIPv6
 from pidginhost_sdk.models.detach_ipv6_response import DetachIPv6Response
 from pidginhost_sdk.models.detach_volume import DetachVolume
 from pidginhost_sdk.models.firewall_rule import FirewallRule
+from pidginhost_sdk.models.firewall_rule_request import FirewallRuleRequest
 from pidginhost_sdk.models.firewall_rules_set import FirewallRulesSet
+from pidginhost_sdk.models.firewall_rules_set_request import FirewallRulesSetRequest
 from pidginhost_sdk.models.floating_ip_authorize_request import FloatingIPAuthorizeRequest
 from pidginhost_sdk.models.floating_ipv4 import FloatingIPv4
 from pidginhost_sdk.models.floating_ipv4_authorize_response import FloatingIPv4AuthorizeResponse
-from pidginhost_sdk.models.floating_ipv4_create import FloatingIPv4Create
+from pidginhost_sdk.models.floating_ipv4_create_request import FloatingIPv4CreateRequest
 from pidginhost_sdk.models.floating_ipv4_unauthorize_response import FloatingIPv4UnauthorizeResponse
 from pidginhost_sdk.models.floating_ipv6 import FloatingIPv6
 from pidginhost_sdk.models.floating_ipv6_authorize_response import FloatingIPv6AuthorizeResponse
-from pidginhost_sdk.models.floating_ipv6_create import FloatingIPv6Create
+from pidginhost_sdk.models.floating_ipv6_create_request import FloatingIPv6CreateRequest
 from pidginhost_sdk.models.floating_ipv6_unauthorize_response import FloatingIPv6UnauthorizeResponse
 from pidginhost_sdk.models.hardware_generation import HardwareGeneration
 from pidginhost_sdk.models.iso_boot_request import IsoBootRequest
 from pidginhost_sdk.models.os_image import OSImage
-from pidginhost_sdk.models.paginated_boot_iso_list import PaginatedBootISOList
 from pidginhost_sdk.models.paginated_floating_ip_authorization_list import PaginatedFloatingIPAuthorizationList
 from pidginhost_sdk.models.paginated_floating_ipv4_list import PaginatedFloatingIPv4List
 from pidginhost_sdk.models.paginated_floating_ipv6_list import PaginatedFloatingIPv6List
@@ -63,39 +66,48 @@ from pidginhost_sdk.models.paginated_public_ipv4_list import PaginatedPublicIPv4
 from pidginhost_sdk.models.paginated_public_ipv6_list import PaginatedPublicIPv6List
 from pidginhost_sdk.models.paginated_server_list import PaginatedServerList
 from pidginhost_sdk.models.paginated_server_product_list import PaginatedServerProductList
-from pidginhost_sdk.models.paginated_snapshot_list import PaginatedSnapshotList
 from pidginhost_sdk.models.paginated_storage_product_list import PaginatedStorageProductList
-from pidginhost_sdk.models.patched_firewall_rule import PatchedFirewallRule
-from pidginhost_sdk.models.patched_firewall_rules_set import PatchedFirewallRulesSet
-from pidginhost_sdk.models.patched_private_network import PatchedPrivateNetwork
-from pidginhost_sdk.models.patched_server_detail import PatchedServerDetail
-from pidginhost_sdk.models.patched_volume import PatchedVolume
+from pidginhost_sdk.models.patched_firewall_rule_request import PatchedFirewallRuleRequest
+from pidginhost_sdk.models.patched_firewall_rules_set_request import PatchedFirewallRulesSetRequest
+from pidginhost_sdk.models.patched_private_network_update_request import PatchedPrivateNetworkUpdateRequest
+from pidginhost_sdk.models.patched_server_detail_request import PatchedServerDetailRequest
+from pidginhost_sdk.models.patched_volume_update_request import PatchedVolumeUpdateRequest
 from pidginhost_sdk.models.power_management import PowerManagement
 from pidginhost_sdk.models.power_management_request import PowerManagementRequest
 from pidginhost_sdk.models.private_network import PrivateNetwork
-from pidginhost_sdk.models.private_network_add_host import PrivateNetworkAddHost
-from pidginhost_sdk.models.private_network_remove_host import PrivateNetworkRemoveHost
+from pidginhost_sdk.models.private_network_add_host_request import PrivateNetworkAddHostRequest
+from pidginhost_sdk.models.private_network_remove_host_request import PrivateNetworkRemoveHostRequest
+from pidginhost_sdk.models.private_network_request import PrivateNetworkRequest
+from pidginhost_sdk.models.private_network_update_request import PrivateNetworkUpdateRequest
 from pidginhost_sdk.models.public_ipv4 import PublicIPv4
 from pidginhost_sdk.models.public_ipv6 import PublicIPv6
 from pidginhost_sdk.models.public_interface import PublicInterface
+from pidginhost_sdk.models.public_interface_request import PublicInterfaceRequest
 from pidginhost_sdk.models.remove_server_response import RemoveServerResponse
 from pidginhost_sdk.models.rescue_enter_queued import RescueEnterQueued
 from pidginhost_sdk.models.rescue_exit_queued import RescueExitQueued
 from pidginhost_sdk.models.retry_provision import RetryProvision
 from pidginhost_sdk.models.reverse_dns import ReverseDNS
-from pidginhost_sdk.models.server_add import ServerAdd
+from pidginhost_sdk.models.reverse_dns_request import ReverseDNSRequest
+from pidginhost_sdk.models.server_add_request import ServerAddRequest
 from pidginhost_sdk.models.server_add_response import ServerAddResponse
 from pidginhost_sdk.models.server_detach_ipv4_response import ServerDetachIPv4Response
 from pidginhost_sdk.models.server_detail import ServerDetail
+from pidginhost_sdk.models.server_detail_request import ServerDetailRequest
 from pidginhost_sdk.models.server_product import ServerProduct
-from pidginhost_sdk.models.server_product_upgrade import ServerProductUpgrade
+from pidginhost_sdk.models.server_product_upgrade_request import ServerProductUpgradeRequest
+from pidginhost_sdk.models.server_traffic_response import ServerTrafficResponse
 from pidginhost_sdk.models.server_upgrade_response import ServerUpgradeResponse
 from pidginhost_sdk.models.server_usage_response import ServerUsageResponse
-from pidginhost_sdk.models.snapshot_create import SnapshotCreate
+from pidginhost_sdk.models.snapshot import Snapshot
+from pidginhost_sdk.models.snapshot_create_queued import SnapshotCreateQueued
+from pidginhost_sdk.models.snapshot_create_request import SnapshotCreateRequest
 from pidginhost_sdk.models.snapshot_delete_queued import SnapshotDeleteQueued
 from pidginhost_sdk.models.snapshot_rollback_queued import SnapshotRollbackQueued
 from pidginhost_sdk.models.storage_product import StorageProduct
 from pidginhost_sdk.models.volume import Volume
+from pidginhost_sdk.models.volume_request import VolumeRequest
+from pidginhost_sdk.models.volume_update_request import VolumeUpdateRequest
 
 from pidginhost_sdk.api_client import ApiClient, RequestSerialized
 from pidginhost_sdk.api_response import ApiResponse
@@ -118,7 +130,7 @@ class CloudApi:
     @validate_call
     def cloud_buckets_create(
         self,
-        bucket_create: BucketCreate,
+        bucket_create_request: BucketCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,8 +148,8 @@ class CloudApi:
 
         Create a bucket
 
-        :param bucket_create: (required)
-        :type bucket_create: BucketCreate
+        :param bucket_create_request: (required)
+        :type bucket_create_request: BucketCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +173,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_buckets_create_serialize(
-            bucket_create=bucket_create,
+            bucket_create_request=bucket_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -185,7 +197,7 @@ class CloudApi:
     @validate_call
     def cloud_buckets_create_with_http_info(
         self,
-        bucket_create: BucketCreate,
+        bucket_create_request: BucketCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,8 +215,8 @@ class CloudApi:
 
         Create a bucket
 
-        :param bucket_create: (required)
-        :type bucket_create: BucketCreate
+        :param bucket_create_request: (required)
+        :type bucket_create_request: BucketCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -228,7 +240,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_buckets_create_serialize(
-            bucket_create=bucket_create,
+            bucket_create_request=bucket_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -252,7 +264,7 @@ class CloudApi:
     @validate_call
     def cloud_buckets_create_without_preload_content(
         self,
-        bucket_create: BucketCreate,
+        bucket_create_request: BucketCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -270,8 +282,8 @@ class CloudApi:
 
         Create a bucket
 
-        :param bucket_create: (required)
-        :type bucket_create: BucketCreate
+        :param bucket_create_request: (required)
+        :type bucket_create_request: BucketCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -295,7 +307,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_buckets_create_serialize(
-            bucket_create=bucket_create,
+            bucket_create_request=bucket_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -314,7 +326,7 @@ class CloudApi:
 
     def _cloud_buckets_create_serialize(
         self,
-        bucket_create,
+        bucket_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -340,8 +352,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bucket_create is not None:
-            _body_params = bucket_create
+        if bucket_create_request is not None:
+            _body_params = bucket_create_request
 
 
         # set the HTTP header `Accept`
@@ -1427,7 +1439,7 @@ class CloudApi:
     def cloud_buckets_resize_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this S3 bucket.")],
-        bucket_resize: BucketResize,
+        bucket_resize_request: BucketResizeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1447,8 +1459,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this S3 bucket. (required)
         :type id: int
-        :param bucket_resize: (required)
-        :type bucket_resize: BucketResize
+        :param bucket_resize_request: (required)
+        :type bucket_resize_request: BucketResizeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1473,7 +1485,7 @@ class CloudApi:
 
         _param = self._cloud_buckets_resize_create_serialize(
             id=id,
-            bucket_resize=bucket_resize,
+            bucket_resize_request=bucket_resize_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1498,7 +1510,7 @@ class CloudApi:
     def cloud_buckets_resize_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this S3 bucket.")],
-        bucket_resize: BucketResize,
+        bucket_resize_request: BucketResizeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1518,8 +1530,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this S3 bucket. (required)
         :type id: int
-        :param bucket_resize: (required)
-        :type bucket_resize: BucketResize
+        :param bucket_resize_request: (required)
+        :type bucket_resize_request: BucketResizeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1544,7 +1556,7 @@ class CloudApi:
 
         _param = self._cloud_buckets_resize_create_serialize(
             id=id,
-            bucket_resize=bucket_resize,
+            bucket_resize_request=bucket_resize_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1569,7 +1581,7 @@ class CloudApi:
     def cloud_buckets_resize_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this S3 bucket.")],
-        bucket_resize: BucketResize,
+        bucket_resize_request: BucketResizeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1589,8 +1601,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this S3 bucket. (required)
         :type id: int
-        :param bucket_resize: (required)
-        :type bucket_resize: BucketResize
+        :param bucket_resize_request: (required)
+        :type bucket_resize_request: BucketResizeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1615,7 +1627,7 @@ class CloudApi:
 
         _param = self._cloud_buckets_resize_create_serialize(
             id=id,
-            bucket_resize=bucket_resize,
+            bucket_resize_request=bucket_resize_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1635,7 +1647,7 @@ class CloudApi:
     def _cloud_buckets_resize_create_serialize(
         self,
         id,
-        bucket_resize,
+        bucket_resize_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1663,8 +1675,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bucket_resize is not None:
-            _body_params = bucket_resize
+        if bucket_resize_request is not None:
+            _body_params = bucket_resize_request
 
 
         # set the HTTP header `Accept`
@@ -1979,7 +1991,7 @@ class CloudApi:
     def cloud_buckets_visibility_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this S3 bucket.")],
-        bucket_visibility: BucketVisibility,
+        bucket_visibility_request: BucketVisibilityRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1999,8 +2011,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this S3 bucket. (required)
         :type id: int
-        :param bucket_visibility: (required)
-        :type bucket_visibility: BucketVisibility
+        :param bucket_visibility_request: (required)
+        :type bucket_visibility_request: BucketVisibilityRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2025,7 +2037,7 @@ class CloudApi:
 
         _param = self._cloud_buckets_visibility_create_serialize(
             id=id,
-            bucket_visibility=bucket_visibility,
+            bucket_visibility_request=bucket_visibility_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2050,7 +2062,7 @@ class CloudApi:
     def cloud_buckets_visibility_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this S3 bucket.")],
-        bucket_visibility: BucketVisibility,
+        bucket_visibility_request: BucketVisibilityRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2070,8 +2082,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this S3 bucket. (required)
         :type id: int
-        :param bucket_visibility: (required)
-        :type bucket_visibility: BucketVisibility
+        :param bucket_visibility_request: (required)
+        :type bucket_visibility_request: BucketVisibilityRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2096,7 +2108,7 @@ class CloudApi:
 
         _param = self._cloud_buckets_visibility_create_serialize(
             id=id,
-            bucket_visibility=bucket_visibility,
+            bucket_visibility_request=bucket_visibility_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2121,7 +2133,7 @@ class CloudApi:
     def cloud_buckets_visibility_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this S3 bucket.")],
-        bucket_visibility: BucketVisibility,
+        bucket_visibility_request: BucketVisibilityRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2141,8 +2153,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this S3 bucket. (required)
         :type id: int
-        :param bucket_visibility: (required)
-        :type bucket_visibility: BucketVisibility
+        :param bucket_visibility_request: (required)
+        :type bucket_visibility_request: BucketVisibilityRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2167,7 +2179,7 @@ class CloudApi:
 
         _param = self._cloud_buckets_visibility_create_serialize(
             id=id,
-            bucket_visibility=bucket_visibility,
+            bucket_visibility_request=bucket_visibility_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2187,7 +2199,7 @@ class CloudApi:
     def _cloud_buckets_visibility_create_serialize(
         self,
         id,
-        bucket_visibility,
+        bucket_visibility_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2215,8 +2227,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bucket_visibility is not None:
-            _body_params = bucket_visibility
+        if bucket_visibility_request is not None:
+            _body_params = bucket_visibility_request
 
 
         # set the HTTP header `Accept`
@@ -2268,7 +2280,7 @@ class CloudApi:
     @validate_call
     def cloud_firewall_rules_set_create(
         self,
-        firewall_rules_set: FirewallRulesSet,
+        firewall_rules_set_request: FirewallRulesSetRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2286,8 +2298,8 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param firewall_rules_set: (required)
-        :type firewall_rules_set: FirewallRulesSet
+        :param firewall_rules_set_request: (required)
+        :type firewall_rules_set_request: FirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2311,7 +2323,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_firewall_rules_set_create_serialize(
-            firewall_rules_set=firewall_rules_set,
+            firewall_rules_set_request=firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2335,7 +2347,7 @@ class CloudApi:
     @validate_call
     def cloud_firewall_rules_set_create_with_http_info(
         self,
-        firewall_rules_set: FirewallRulesSet,
+        firewall_rules_set_request: FirewallRulesSetRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2353,8 +2365,8 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param firewall_rules_set: (required)
-        :type firewall_rules_set: FirewallRulesSet
+        :param firewall_rules_set_request: (required)
+        :type firewall_rules_set_request: FirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2378,7 +2390,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_firewall_rules_set_create_serialize(
-            firewall_rules_set=firewall_rules_set,
+            firewall_rules_set_request=firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2402,7 +2414,7 @@ class CloudApi:
     @validate_call
     def cloud_firewall_rules_set_create_without_preload_content(
         self,
-        firewall_rules_set: FirewallRulesSet,
+        firewall_rules_set_request: FirewallRulesSetRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2420,8 +2432,8 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param firewall_rules_set: (required)
-        :type firewall_rules_set: FirewallRulesSet
+        :param firewall_rules_set_request: (required)
+        :type firewall_rules_set_request: FirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2445,7 +2457,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_firewall_rules_set_create_serialize(
-            firewall_rules_set=firewall_rules_set,
+            firewall_rules_set_request=firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2464,7 +2476,7 @@ class CloudApi:
 
     def _cloud_firewall_rules_set_create_serialize(
         self,
-        firewall_rules_set,
+        firewall_rules_set_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2490,8 +2502,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if firewall_rules_set is not None:
-            _body_params = firewall_rules_set
+        if firewall_rules_set_request is not None:
+            _body_params = firewall_rules_set_request
 
 
         # set the HTTP header `Accept`
@@ -3046,7 +3058,7 @@ class CloudApi:
     def cloud_firewall_rules_set_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this firewall rules set.")],
-        patched_firewall_rules_set: Optional[PatchedFirewallRulesSet] = None,
+        patched_firewall_rules_set_request: Optional[PatchedFirewallRulesSetRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3066,8 +3078,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this firewall rules set. (required)
         :type id: int
-        :param patched_firewall_rules_set:
-        :type patched_firewall_rules_set: PatchedFirewallRulesSet
+        :param patched_firewall_rules_set_request:
+        :type patched_firewall_rules_set_request: PatchedFirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3092,7 +3104,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_partial_update_serialize(
             id=id,
-            patched_firewall_rules_set=patched_firewall_rules_set,
+            patched_firewall_rules_set_request=patched_firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3117,7 +3129,7 @@ class CloudApi:
     def cloud_firewall_rules_set_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this firewall rules set.")],
-        patched_firewall_rules_set: Optional[PatchedFirewallRulesSet] = None,
+        patched_firewall_rules_set_request: Optional[PatchedFirewallRulesSetRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3137,8 +3149,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this firewall rules set. (required)
         :type id: int
-        :param patched_firewall_rules_set:
-        :type patched_firewall_rules_set: PatchedFirewallRulesSet
+        :param patched_firewall_rules_set_request:
+        :type patched_firewall_rules_set_request: PatchedFirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3163,7 +3175,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_partial_update_serialize(
             id=id,
-            patched_firewall_rules_set=patched_firewall_rules_set,
+            patched_firewall_rules_set_request=patched_firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3188,7 +3200,7 @@ class CloudApi:
     def cloud_firewall_rules_set_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this firewall rules set.")],
-        patched_firewall_rules_set: Optional[PatchedFirewallRulesSet] = None,
+        patched_firewall_rules_set_request: Optional[PatchedFirewallRulesSetRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3208,8 +3220,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this firewall rules set. (required)
         :type id: int
-        :param patched_firewall_rules_set:
-        :type patched_firewall_rules_set: PatchedFirewallRulesSet
+        :param patched_firewall_rules_set_request:
+        :type patched_firewall_rules_set_request: PatchedFirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3234,7 +3246,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_partial_update_serialize(
             id=id,
-            patched_firewall_rules_set=patched_firewall_rules_set,
+            patched_firewall_rules_set_request=patched_firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3254,7 +3266,7 @@ class CloudApi:
     def _cloud_firewall_rules_set_partial_update_serialize(
         self,
         id,
-        patched_firewall_rules_set,
+        patched_firewall_rules_set_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3282,8 +3294,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_firewall_rules_set is not None:
-            _body_params = patched_firewall_rules_set
+        if patched_firewall_rules_set_request is not None:
+            _body_params = patched_firewall_rules_set_request
 
 
         # set the HTTP header `Accept`
@@ -3598,7 +3610,7 @@ class CloudApi:
     def cloud_firewall_rules_set_rules_create(
         self,
         rules_set_id: Annotated[str, Field(strict=True)],
-        firewall_rule: FirewallRule,
+        firewall_rule_request: FirewallRuleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3618,8 +3630,8 @@ class CloudApi:
 
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param firewall_rule: (required)
-        :type firewall_rule: FirewallRule
+        :param firewall_rule_request: (required)
+        :type firewall_rule_request: FirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3644,7 +3656,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_rules_create_serialize(
             rules_set_id=rules_set_id,
-            firewall_rule=firewall_rule,
+            firewall_rule_request=firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3669,7 +3681,7 @@ class CloudApi:
     def cloud_firewall_rules_set_rules_create_with_http_info(
         self,
         rules_set_id: Annotated[str, Field(strict=True)],
-        firewall_rule: FirewallRule,
+        firewall_rule_request: FirewallRuleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3689,8 +3701,8 @@ class CloudApi:
 
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param firewall_rule: (required)
-        :type firewall_rule: FirewallRule
+        :param firewall_rule_request: (required)
+        :type firewall_rule_request: FirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3715,7 +3727,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_rules_create_serialize(
             rules_set_id=rules_set_id,
-            firewall_rule=firewall_rule,
+            firewall_rule_request=firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3740,7 +3752,7 @@ class CloudApi:
     def cloud_firewall_rules_set_rules_create_without_preload_content(
         self,
         rules_set_id: Annotated[str, Field(strict=True)],
-        firewall_rule: FirewallRule,
+        firewall_rule_request: FirewallRuleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3760,8 +3772,8 @@ class CloudApi:
 
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param firewall_rule: (required)
-        :type firewall_rule: FirewallRule
+        :param firewall_rule_request: (required)
+        :type firewall_rule_request: FirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3786,7 +3798,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_rules_create_serialize(
             rules_set_id=rules_set_id,
-            firewall_rule=firewall_rule,
+            firewall_rule_request=firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3806,7 +3818,7 @@ class CloudApi:
     def _cloud_firewall_rules_set_rules_create_serialize(
         self,
         rules_set_id,
-        firewall_rule,
+        firewall_rule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3834,8 +3846,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if firewall_rule is not None:
-            _body_params = firewall_rule
+        if firewall_rule_request is not None:
+            _body_params = firewall_rule_request
 
 
         # set the HTTP header `Accept`
@@ -4421,7 +4433,7 @@ class CloudApi:
         self,
         rule_id: StrictStr,
         rules_set_id: Annotated[str, Field(strict=True)],
-        patched_firewall_rule: Optional[PatchedFirewallRule] = None,
+        patched_firewall_rule_request: Optional[PatchedFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4443,8 +4455,8 @@ class CloudApi:
         :type rule_id: str
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param patched_firewall_rule:
-        :type patched_firewall_rule: PatchedFirewallRule
+        :param patched_firewall_rule_request:
+        :type patched_firewall_rule_request: PatchedFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4470,7 +4482,7 @@ class CloudApi:
         _param = self._cloud_firewall_rules_set_rules_partial_update_serialize(
             rule_id=rule_id,
             rules_set_id=rules_set_id,
-            patched_firewall_rule=patched_firewall_rule,
+            patched_firewall_rule_request=patched_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4496,7 +4508,7 @@ class CloudApi:
         self,
         rule_id: StrictStr,
         rules_set_id: Annotated[str, Field(strict=True)],
-        patched_firewall_rule: Optional[PatchedFirewallRule] = None,
+        patched_firewall_rule_request: Optional[PatchedFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4518,8 +4530,8 @@ class CloudApi:
         :type rule_id: str
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param patched_firewall_rule:
-        :type patched_firewall_rule: PatchedFirewallRule
+        :param patched_firewall_rule_request:
+        :type patched_firewall_rule_request: PatchedFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4545,7 +4557,7 @@ class CloudApi:
         _param = self._cloud_firewall_rules_set_rules_partial_update_serialize(
             rule_id=rule_id,
             rules_set_id=rules_set_id,
-            patched_firewall_rule=patched_firewall_rule,
+            patched_firewall_rule_request=patched_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4571,7 +4583,7 @@ class CloudApi:
         self,
         rule_id: StrictStr,
         rules_set_id: Annotated[str, Field(strict=True)],
-        patched_firewall_rule: Optional[PatchedFirewallRule] = None,
+        patched_firewall_rule_request: Optional[PatchedFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4593,8 +4605,8 @@ class CloudApi:
         :type rule_id: str
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param patched_firewall_rule:
-        :type patched_firewall_rule: PatchedFirewallRule
+        :param patched_firewall_rule_request:
+        :type patched_firewall_rule_request: PatchedFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4620,7 +4632,7 @@ class CloudApi:
         _param = self._cloud_firewall_rules_set_rules_partial_update_serialize(
             rule_id=rule_id,
             rules_set_id=rules_set_id,
-            patched_firewall_rule=patched_firewall_rule,
+            patched_firewall_rule_request=patched_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4641,7 +4653,7 @@ class CloudApi:
         self,
         rule_id,
         rules_set_id,
-        patched_firewall_rule,
+        patched_firewall_rule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4671,8 +4683,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_firewall_rule is not None:
-            _body_params = patched_firewall_rule
+        if patched_firewall_rule_request is not None:
+            _body_params = patched_firewall_rule_request
 
 
         # set the HTTP header `Accept`
@@ -5003,7 +5015,7 @@ class CloudApi:
         self,
         rule_id: StrictStr,
         rules_set_id: Annotated[str, Field(strict=True)],
-        firewall_rule: FirewallRule,
+        firewall_rule_request: FirewallRuleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5025,8 +5037,8 @@ class CloudApi:
         :type rule_id: str
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param firewall_rule: (required)
-        :type firewall_rule: FirewallRule
+        :param firewall_rule_request: (required)
+        :type firewall_rule_request: FirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5052,7 +5064,7 @@ class CloudApi:
         _param = self._cloud_firewall_rules_set_rules_update_serialize(
             rule_id=rule_id,
             rules_set_id=rules_set_id,
-            firewall_rule=firewall_rule,
+            firewall_rule_request=firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5078,7 +5090,7 @@ class CloudApi:
         self,
         rule_id: StrictStr,
         rules_set_id: Annotated[str, Field(strict=True)],
-        firewall_rule: FirewallRule,
+        firewall_rule_request: FirewallRuleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5100,8 +5112,8 @@ class CloudApi:
         :type rule_id: str
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param firewall_rule: (required)
-        :type firewall_rule: FirewallRule
+        :param firewall_rule_request: (required)
+        :type firewall_rule_request: FirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5127,7 +5139,7 @@ class CloudApi:
         _param = self._cloud_firewall_rules_set_rules_update_serialize(
             rule_id=rule_id,
             rules_set_id=rules_set_id,
-            firewall_rule=firewall_rule,
+            firewall_rule_request=firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5153,7 +5165,7 @@ class CloudApi:
         self,
         rule_id: StrictStr,
         rules_set_id: Annotated[str, Field(strict=True)],
-        firewall_rule: FirewallRule,
+        firewall_rule_request: FirewallRuleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5175,8 +5187,8 @@ class CloudApi:
         :type rule_id: str
         :param rules_set_id: (required)
         :type rules_set_id: str
-        :param firewall_rule: (required)
-        :type firewall_rule: FirewallRule
+        :param firewall_rule_request: (required)
+        :type firewall_rule_request: FirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5202,7 +5214,7 @@ class CloudApi:
         _param = self._cloud_firewall_rules_set_rules_update_serialize(
             rule_id=rule_id,
             rules_set_id=rules_set_id,
-            firewall_rule=firewall_rule,
+            firewall_rule_request=firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5223,7 +5235,7 @@ class CloudApi:
         self,
         rule_id,
         rules_set_id,
-        firewall_rule,
+        firewall_rule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5253,8 +5265,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if firewall_rule is not None:
-            _body_params = firewall_rule
+        if firewall_rule_request is not None:
+            _body_params = firewall_rule_request
 
 
         # set the HTTP header `Accept`
@@ -5307,7 +5319,7 @@ class CloudApi:
     def cloud_firewall_rules_set_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this firewall rules set.")],
-        firewall_rules_set: FirewallRulesSet,
+        firewall_rules_set_request: FirewallRulesSetRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5327,8 +5339,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this firewall rules set. (required)
         :type id: int
-        :param firewall_rules_set: (required)
-        :type firewall_rules_set: FirewallRulesSet
+        :param firewall_rules_set_request: (required)
+        :type firewall_rules_set_request: FirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5353,7 +5365,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_update_serialize(
             id=id,
-            firewall_rules_set=firewall_rules_set,
+            firewall_rules_set_request=firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5378,7 +5390,7 @@ class CloudApi:
     def cloud_firewall_rules_set_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this firewall rules set.")],
-        firewall_rules_set: FirewallRulesSet,
+        firewall_rules_set_request: FirewallRulesSetRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5398,8 +5410,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this firewall rules set. (required)
         :type id: int
-        :param firewall_rules_set: (required)
-        :type firewall_rules_set: FirewallRulesSet
+        :param firewall_rules_set_request: (required)
+        :type firewall_rules_set_request: FirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5424,7 +5436,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_update_serialize(
             id=id,
-            firewall_rules_set=firewall_rules_set,
+            firewall_rules_set_request=firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5449,7 +5461,7 @@ class CloudApi:
     def cloud_firewall_rules_set_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this firewall rules set.")],
-        firewall_rules_set: FirewallRulesSet,
+        firewall_rules_set_request: FirewallRulesSetRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5469,8 +5481,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this firewall rules set. (required)
         :type id: int
-        :param firewall_rules_set: (required)
-        :type firewall_rules_set: FirewallRulesSet
+        :param firewall_rules_set_request: (required)
+        :type firewall_rules_set_request: FirewallRulesSetRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5495,7 +5507,7 @@ class CloudApi:
 
         _param = self._cloud_firewall_rules_set_update_serialize(
             id=id,
-            firewall_rules_set=firewall_rules_set,
+            firewall_rules_set_request=firewall_rules_set_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5515,7 +5527,7 @@ class CloudApi:
     def _cloud_firewall_rules_set_update_serialize(
         self,
         id,
-        firewall_rules_set,
+        firewall_rules_set_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5543,8 +5555,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if firewall_rules_set is not None:
-            _body_params = firewall_rules_set
+        if firewall_rules_set_request is not None:
+            _body_params = firewall_rules_set_request
 
 
         # set the HTTP header `Accept`
@@ -6165,7 +6177,7 @@ class CloudApi:
     @validate_call
     def cloud_floating_ipv4_create(
         self,
-        floating_ipv4_create: Optional[FloatingIPv4Create] = None,
+        floating_ipv4_create_request: Optional[FloatingIPv4CreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6183,8 +6195,8 @@ class CloudApi:
 
         Manage floating IPv4 addresses. A floating IP can be authorized on multiple VMs simultaneously; the customer asserts ownership inside the guest via keepalived/VRRP.
 
-        :param floating_ipv4_create:
-        :type floating_ipv4_create: FloatingIPv4Create
+        :param floating_ipv4_create_request:
+        :type floating_ipv4_create_request: FloatingIPv4CreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6208,7 +6220,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_floating_ipv4_create_serialize(
-            floating_ipv4_create=floating_ipv4_create,
+            floating_ipv4_create_request=floating_ipv4_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6232,7 +6244,7 @@ class CloudApi:
     @validate_call
     def cloud_floating_ipv4_create_with_http_info(
         self,
-        floating_ipv4_create: Optional[FloatingIPv4Create] = None,
+        floating_ipv4_create_request: Optional[FloatingIPv4CreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6250,8 +6262,8 @@ class CloudApi:
 
         Manage floating IPv4 addresses. A floating IP can be authorized on multiple VMs simultaneously; the customer asserts ownership inside the guest via keepalived/VRRP.
 
-        :param floating_ipv4_create:
-        :type floating_ipv4_create: FloatingIPv4Create
+        :param floating_ipv4_create_request:
+        :type floating_ipv4_create_request: FloatingIPv4CreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6275,7 +6287,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_floating_ipv4_create_serialize(
-            floating_ipv4_create=floating_ipv4_create,
+            floating_ipv4_create_request=floating_ipv4_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6299,7 +6311,7 @@ class CloudApi:
     @validate_call
     def cloud_floating_ipv4_create_without_preload_content(
         self,
-        floating_ipv4_create: Optional[FloatingIPv4Create] = None,
+        floating_ipv4_create_request: Optional[FloatingIPv4CreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6317,8 +6329,8 @@ class CloudApi:
 
         Manage floating IPv4 addresses. A floating IP can be authorized on multiple VMs simultaneously; the customer asserts ownership inside the guest via keepalived/VRRP.
 
-        :param floating_ipv4_create:
-        :type floating_ipv4_create: FloatingIPv4Create
+        :param floating_ipv4_create_request:
+        :type floating_ipv4_create_request: FloatingIPv4CreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6342,7 +6354,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_floating_ipv4_create_serialize(
-            floating_ipv4_create=floating_ipv4_create,
+            floating_ipv4_create_request=floating_ipv4_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6361,7 +6373,7 @@ class CloudApi:
 
     def _cloud_floating_ipv4_create_serialize(
         self,
-        floating_ipv4_create,
+        floating_ipv4_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -6387,8 +6399,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if floating_ipv4_create is not None:
-            _body_params = floating_ipv4_create
+        if floating_ipv4_create_request is not None:
+            _body_params = floating_ipv4_create_request
 
 
         # set the HTTP header `Accept`
@@ -6960,7 +6972,7 @@ class CloudApi:
     def cloud_floating_ipv4_rdns_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this floating IPv4.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6980,8 +6992,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this floating IPv4. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7006,7 +7018,7 @@ class CloudApi:
 
         _param = self._cloud_floating_ipv4_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7031,7 +7043,7 @@ class CloudApi:
     def cloud_floating_ipv4_rdns_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this floating IPv4.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7051,8 +7063,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this floating IPv4. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7077,7 +7089,7 @@ class CloudApi:
 
         _param = self._cloud_floating_ipv4_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7102,7 +7114,7 @@ class CloudApi:
     def cloud_floating_ipv4_rdns_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this floating IPv4.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7122,8 +7134,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this floating IPv4. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7148,7 +7160,7 @@ class CloudApi:
 
         _param = self._cloud_floating_ipv4_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7168,7 +7180,7 @@ class CloudApi:
     def _cloud_floating_ipv4_rdns_create_serialize(
         self,
         id,
-        reverse_dns,
+        reverse_dns_request,
         _request_auth,
         _content_type,
         _headers,
@@ -7196,8 +7208,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reverse_dns is not None:
-            _body_params = reverse_dns
+        if reverse_dns_request is not None:
+            _body_params = reverse_dns_request
 
 
         # set the HTTP header `Accept`
@@ -8632,7 +8644,7 @@ class CloudApi:
     @validate_call
     def cloud_floating_ipv6_create(
         self,
-        floating_ipv6_create: Optional[FloatingIPv6Create] = None,
+        floating_ipv6_create_request: Optional[FloatingIPv6CreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8650,8 +8662,8 @@ class CloudApi:
 
         Manage floating IPv6 addresses.
 
-        :param floating_ipv6_create:
-        :type floating_ipv6_create: FloatingIPv6Create
+        :param floating_ipv6_create_request:
+        :type floating_ipv6_create_request: FloatingIPv6CreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8675,7 +8687,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_floating_ipv6_create_serialize(
-            floating_ipv6_create=floating_ipv6_create,
+            floating_ipv6_create_request=floating_ipv6_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8699,7 +8711,7 @@ class CloudApi:
     @validate_call
     def cloud_floating_ipv6_create_with_http_info(
         self,
-        floating_ipv6_create: Optional[FloatingIPv6Create] = None,
+        floating_ipv6_create_request: Optional[FloatingIPv6CreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8717,8 +8729,8 @@ class CloudApi:
 
         Manage floating IPv6 addresses.
 
-        :param floating_ipv6_create:
-        :type floating_ipv6_create: FloatingIPv6Create
+        :param floating_ipv6_create_request:
+        :type floating_ipv6_create_request: FloatingIPv6CreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8742,7 +8754,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_floating_ipv6_create_serialize(
-            floating_ipv6_create=floating_ipv6_create,
+            floating_ipv6_create_request=floating_ipv6_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8766,7 +8778,7 @@ class CloudApi:
     @validate_call
     def cloud_floating_ipv6_create_without_preload_content(
         self,
-        floating_ipv6_create: Optional[FloatingIPv6Create] = None,
+        floating_ipv6_create_request: Optional[FloatingIPv6CreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8784,8 +8796,8 @@ class CloudApi:
 
         Manage floating IPv6 addresses.
 
-        :param floating_ipv6_create:
-        :type floating_ipv6_create: FloatingIPv6Create
+        :param floating_ipv6_create_request:
+        :type floating_ipv6_create_request: FloatingIPv6CreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8809,7 +8821,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_floating_ipv6_create_serialize(
-            floating_ipv6_create=floating_ipv6_create,
+            floating_ipv6_create_request=floating_ipv6_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8828,7 +8840,7 @@ class CloudApi:
 
     def _cloud_floating_ipv6_create_serialize(
         self,
-        floating_ipv6_create,
+        floating_ipv6_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -8854,8 +8866,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if floating_ipv6_create is not None:
-            _body_params = floating_ipv6_create
+        if floating_ipv6_create_request is not None:
+            _body_params = floating_ipv6_create_request
 
 
         # set the HTTP header `Accept`
@@ -9427,7 +9439,7 @@ class CloudApi:
     def cloud_floating_ipv6_rdns_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this floating IPv6.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9447,8 +9459,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this floating IPv6. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9473,7 +9485,7 @@ class CloudApi:
 
         _param = self._cloud_floating_ipv6_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9498,7 +9510,7 @@ class CloudApi:
     def cloud_floating_ipv6_rdns_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this floating IPv6.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9518,8 +9530,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this floating IPv6. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9544,7 +9556,7 @@ class CloudApi:
 
         _param = self._cloud_floating_ipv6_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9569,7 +9581,7 @@ class CloudApi:
     def cloud_floating_ipv6_rdns_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this floating IPv6.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9589,8 +9601,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this floating IPv6. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9615,7 +9627,7 @@ class CloudApi:
 
         _param = self._cloud_floating_ipv6_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9635,7 +9647,7 @@ class CloudApi:
     def _cloud_floating_ipv6_rdns_create_serialize(
         self,
         id,
-        reverse_dns,
+        reverse_dns_request,
         _request_auth,
         _content_type,
         _headers,
@@ -9663,8 +9675,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reverse_dns is not None:
-            _body_params = reverse_dns
+        if reverse_dns_request is not None:
+            _body_params = reverse_dns_request
 
 
         # set the HTTP header `Accept`
@@ -11565,7 +11577,6 @@ class CloudApi:
     @validate_call
     def cloud_ipv4_create(
         self,
-        public_ipv4: Optional[PublicIPv4] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11583,8 +11594,6 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param public_ipv4:
-        :type public_ipv4: PublicIPv4
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11608,7 +11617,6 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_ipv4_create_serialize(
-            public_ipv4=public_ipv4,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11632,7 +11640,6 @@ class CloudApi:
     @validate_call
     def cloud_ipv4_create_with_http_info(
         self,
-        public_ipv4: Optional[PublicIPv4] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11650,8 +11657,6 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param public_ipv4:
-        :type public_ipv4: PublicIPv4
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11675,7 +11680,6 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_ipv4_create_serialize(
-            public_ipv4=public_ipv4,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11699,7 +11703,6 @@ class CloudApi:
     @validate_call
     def cloud_ipv4_create_without_preload_content(
         self,
-        public_ipv4: Optional[PublicIPv4] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11717,8 +11720,6 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param public_ipv4:
-        :type public_ipv4: PublicIPv4
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11742,7 +11743,6 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_ipv4_create_serialize(
-            public_ipv4=public_ipv4,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11761,7 +11761,6 @@ class CloudApi:
 
     def _cloud_ipv4_create_serialize(
         self,
-        public_ipv4,
         _request_auth,
         _content_type,
         _headers,
@@ -11787,8 +11786,6 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if public_ipv4 is not None:
-            _body_params = public_ipv4
 
 
         # set the HTTP header `Accept`
@@ -11799,19 +11796,6 @@ class CloudApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -12096,7 +12080,6 @@ class CloudApi:
     def cloud_ipv4_detach_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv4.")],
-        public_ipv4: Optional[PublicIPv4] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12116,8 +12099,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv4. (required)
         :type id: int
-        :param public_ipv4:
-        :type public_ipv4: PublicIPv4
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12142,7 +12123,6 @@ class CloudApi:
 
         _param = self._cloud_ipv4_detach_create_serialize(
             id=id,
-            public_ipv4=public_ipv4,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12167,7 +12147,6 @@ class CloudApi:
     def cloud_ipv4_detach_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv4.")],
-        public_ipv4: Optional[PublicIPv4] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12187,8 +12166,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv4. (required)
         :type id: int
-        :param public_ipv4:
-        :type public_ipv4: PublicIPv4
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12213,7 +12190,6 @@ class CloudApi:
 
         _param = self._cloud_ipv4_detach_create_serialize(
             id=id,
-            public_ipv4=public_ipv4,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12238,7 +12214,6 @@ class CloudApi:
     def cloud_ipv4_detach_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv4.")],
-        public_ipv4: Optional[PublicIPv4] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12258,8 +12233,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv4. (required)
         :type id: int
-        :param public_ipv4:
-        :type public_ipv4: PublicIPv4
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12284,7 +12257,6 @@ class CloudApi:
 
         _param = self._cloud_ipv4_detach_create_serialize(
             id=id,
-            public_ipv4=public_ipv4,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12304,7 +12276,6 @@ class CloudApi:
     def _cloud_ipv4_detach_create_serialize(
         self,
         id,
-        public_ipv4,
         _request_auth,
         _content_type,
         _headers,
@@ -12332,8 +12303,6 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if public_ipv4 is not None:
-            _body_params = public_ipv4
 
 
         # set the HTTP header `Accept`
@@ -12344,19 +12313,6 @@ class CloudApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -12650,7 +12606,7 @@ class CloudApi:
     def cloud_ipv4_rdns_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv4.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12670,8 +12626,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv4. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12696,7 +12652,7 @@ class CloudApi:
 
         _param = self._cloud_ipv4_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12721,7 +12677,7 @@ class CloudApi:
     def cloud_ipv4_rdns_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv4.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12741,8 +12697,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv4. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12767,7 +12723,7 @@ class CloudApi:
 
         _param = self._cloud_ipv4_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12792,7 +12748,7 @@ class CloudApi:
     def cloud_ipv4_rdns_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv4.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12812,8 +12768,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv4. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12838,7 +12794,7 @@ class CloudApi:
 
         _param = self._cloud_ipv4_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12858,7 +12814,7 @@ class CloudApi:
     def _cloud_ipv4_rdns_create_serialize(
         self,
         id,
-        reverse_dns,
+        reverse_dns_request,
         _request_auth,
         _content_type,
         _headers,
@@ -12886,8 +12842,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reverse_dns is not None:
-            _body_params = reverse_dns
+        if reverse_dns_request is not None:
+            _body_params = reverse_dns_request
 
 
         # set the HTTP header `Accept`
@@ -13463,7 +13419,6 @@ class CloudApi:
     @validate_call
     def cloud_ipv6_create(
         self,
-        public_ipv6: Optional[PublicIPv6] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13481,8 +13436,6 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param public_ipv6:
-        :type public_ipv6: PublicIPv6
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13506,7 +13459,6 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_ipv6_create_serialize(
-            public_ipv6=public_ipv6,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13530,7 +13482,6 @@ class CloudApi:
     @validate_call
     def cloud_ipv6_create_with_http_info(
         self,
-        public_ipv6: Optional[PublicIPv6] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13548,8 +13499,6 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param public_ipv6:
-        :type public_ipv6: PublicIPv6
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13573,7 +13522,6 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_ipv6_create_serialize(
-            public_ipv6=public_ipv6,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13597,7 +13545,6 @@ class CloudApi:
     @validate_call
     def cloud_ipv6_create_without_preload_content(
         self,
-        public_ipv6: Optional[PublicIPv6] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13615,8 +13562,6 @@ class CloudApi:
 
         Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
 
-        :param public_ipv6:
-        :type public_ipv6: PublicIPv6
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13640,7 +13585,6 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_ipv6_create_serialize(
-            public_ipv6=public_ipv6,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13659,7 +13603,6 @@ class CloudApi:
 
     def _cloud_ipv6_create_serialize(
         self,
-        public_ipv6,
         _request_auth,
         _content_type,
         _headers,
@@ -13685,8 +13628,6 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if public_ipv6 is not None:
-            _body_params = public_ipv6
 
 
         # set the HTTP header `Accept`
@@ -13697,19 +13638,6 @@ class CloudApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -13994,7 +13922,6 @@ class CloudApi:
     def cloud_ipv6_detach_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv6.")],
-        public_ipv6: Optional[PublicIPv6] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14014,8 +13941,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv6. (required)
         :type id: int
-        :param public_ipv6:
-        :type public_ipv6: PublicIPv6
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14040,7 +13965,6 @@ class CloudApi:
 
         _param = self._cloud_ipv6_detach_create_serialize(
             id=id,
-            public_ipv6=public_ipv6,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14065,7 +13989,6 @@ class CloudApi:
     def cloud_ipv6_detach_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv6.")],
-        public_ipv6: Optional[PublicIPv6] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14085,8 +14008,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv6. (required)
         :type id: int
-        :param public_ipv6:
-        :type public_ipv6: PublicIPv6
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14111,7 +14032,6 @@ class CloudApi:
 
         _param = self._cloud_ipv6_detach_create_serialize(
             id=id,
-            public_ipv6=public_ipv6,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14136,7 +14056,6 @@ class CloudApi:
     def cloud_ipv6_detach_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv6.")],
-        public_ipv6: Optional[PublicIPv6] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14156,8 +14075,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv6. (required)
         :type id: int
-        :param public_ipv6:
-        :type public_ipv6: PublicIPv6
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14182,7 +14099,6 @@ class CloudApi:
 
         _param = self._cloud_ipv6_detach_create_serialize(
             id=id,
-            public_ipv6=public_ipv6,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14202,7 +14118,6 @@ class CloudApi:
     def _cloud_ipv6_detach_create_serialize(
         self,
         id,
-        public_ipv6,
         _request_auth,
         _content_type,
         _headers,
@@ -14230,8 +14145,6 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if public_ipv6 is not None:
-            _body_params = public_ipv6
 
 
         # set the HTTP header `Accept`
@@ -14242,19 +14155,6 @@ class CloudApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -14548,7 +14448,7 @@ class CloudApi:
     def cloud_ipv6_rdns_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv6.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14568,8 +14468,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv6. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14594,7 +14494,7 @@ class CloudApi:
 
         _param = self._cloud_ipv6_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14619,7 +14519,7 @@ class CloudApi:
     def cloud_ipv6_rdns_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv6.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14639,8 +14539,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv6. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14665,7 +14565,7 @@ class CloudApi:
 
         _param = self._cloud_ipv6_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14690,7 +14590,7 @@ class CloudApi:
     def cloud_ipv6_rdns_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this Public IPv6.")],
-        reverse_dns: ReverseDNS,
+        reverse_dns_request: ReverseDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14710,8 +14610,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this Public IPv6. (required)
         :type id: int
-        :param reverse_dns: (required)
-        :type reverse_dns: ReverseDNS
+        :param reverse_dns_request: (required)
+        :type reverse_dns_request: ReverseDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14736,7 +14636,7 @@ class CloudApi:
 
         _param = self._cloud_ipv6_rdns_create_serialize(
             id=id,
-            reverse_dns=reverse_dns,
+            reverse_dns_request=reverse_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14756,7 +14656,7 @@ class CloudApi:
     def _cloud_ipv6_rdns_create_serialize(
         self,
         id,
-        reverse_dns,
+        reverse_dns_request,
         _request_auth,
         _content_type,
         _headers,
@@ -14784,8 +14684,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reverse_dns is not None:
-            _body_params = reverse_dns
+        if reverse_dns_request is not None:
+            _body_params = reverse_dns_request
 
 
         # set the HTTP header `Accept`
@@ -15362,7 +15262,7 @@ class CloudApi:
     def cloud_private_networks_add_server_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network_add_host: PrivateNetworkAddHost,
+        private_network_add_host_request: PrivateNetworkAddHostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15382,8 +15282,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network_add_host: (required)
-        :type private_network_add_host: PrivateNetworkAddHost
+        :param private_network_add_host_request: (required)
+        :type private_network_add_host_request: PrivateNetworkAddHostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15408,7 +15308,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_add_server_create_serialize(
             id=id,
-            private_network_add_host=private_network_add_host,
+            private_network_add_host_request=private_network_add_host_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15433,7 +15333,7 @@ class CloudApi:
     def cloud_private_networks_add_server_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network_add_host: PrivateNetworkAddHost,
+        private_network_add_host_request: PrivateNetworkAddHostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15453,8 +15353,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network_add_host: (required)
-        :type private_network_add_host: PrivateNetworkAddHost
+        :param private_network_add_host_request: (required)
+        :type private_network_add_host_request: PrivateNetworkAddHostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15479,7 +15379,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_add_server_create_serialize(
             id=id,
-            private_network_add_host=private_network_add_host,
+            private_network_add_host_request=private_network_add_host_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15504,7 +15404,7 @@ class CloudApi:
     def cloud_private_networks_add_server_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network_add_host: PrivateNetworkAddHost,
+        private_network_add_host_request: PrivateNetworkAddHostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15524,8 +15424,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network_add_host: (required)
-        :type private_network_add_host: PrivateNetworkAddHost
+        :param private_network_add_host_request: (required)
+        :type private_network_add_host_request: PrivateNetworkAddHostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15550,7 +15450,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_add_server_create_serialize(
             id=id,
-            private_network_add_host=private_network_add_host,
+            private_network_add_host_request=private_network_add_host_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15570,7 +15470,7 @@ class CloudApi:
     def _cloud_private_networks_add_server_create_serialize(
         self,
         id,
-        private_network_add_host,
+        private_network_add_host_request,
         _request_auth,
         _content_type,
         _headers,
@@ -15598,8 +15498,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if private_network_add_host is not None:
-            _body_params = private_network_add_host
+        if private_network_add_host_request is not None:
+            _body_params = private_network_add_host_request
 
 
         # set the HTTP header `Accept`
@@ -15651,7 +15551,7 @@ class CloudApi:
     @validate_call
     def cloud_private_networks_create(
         self,
-        private_network: PrivateNetwork,
+        private_network_request: PrivateNetworkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15669,8 +15569,8 @@ class CloudApi:
 
         Manage private networks
 
-        :param private_network: (required)
-        :type private_network: PrivateNetwork
+        :param private_network_request: (required)
+        :type private_network_request: PrivateNetworkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15694,7 +15594,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_private_networks_create_serialize(
-            private_network=private_network,
+            private_network_request=private_network_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15718,7 +15618,7 @@ class CloudApi:
     @validate_call
     def cloud_private_networks_create_with_http_info(
         self,
-        private_network: PrivateNetwork,
+        private_network_request: PrivateNetworkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15736,8 +15636,8 @@ class CloudApi:
 
         Manage private networks
 
-        :param private_network: (required)
-        :type private_network: PrivateNetwork
+        :param private_network_request: (required)
+        :type private_network_request: PrivateNetworkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15761,7 +15661,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_private_networks_create_serialize(
-            private_network=private_network,
+            private_network_request=private_network_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15785,7 +15685,7 @@ class CloudApi:
     @validate_call
     def cloud_private_networks_create_without_preload_content(
         self,
-        private_network: PrivateNetwork,
+        private_network_request: PrivateNetworkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15803,8 +15703,8 @@ class CloudApi:
 
         Manage private networks
 
-        :param private_network: (required)
-        :type private_network: PrivateNetwork
+        :param private_network_request: (required)
+        :type private_network_request: PrivateNetworkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15828,7 +15728,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_private_networks_create_serialize(
-            private_network=private_network,
+            private_network_request=private_network_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15847,7 +15747,7 @@ class CloudApi:
 
     def _cloud_private_networks_create_serialize(
         self,
-        private_network,
+        private_network_request,
         _request_auth,
         _content_type,
         _headers,
@@ -15873,8 +15773,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if private_network is not None:
-            _body_params = private_network
+        if private_network_request is not None:
+            _body_params = private_network_request
 
 
         # set the HTTP header `Accept`
@@ -16446,7 +16346,7 @@ class CloudApi:
     def cloud_private_networks_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        patched_private_network: Optional[PatchedPrivateNetwork] = None,
+        patched_private_network_update_request: Optional[PatchedPrivateNetworkUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16466,8 +16366,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param patched_private_network:
-        :type patched_private_network: PatchedPrivateNetwork
+        :param patched_private_network_update_request:
+        :type patched_private_network_update_request: PatchedPrivateNetworkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16492,7 +16392,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_partial_update_serialize(
             id=id,
-            patched_private_network=patched_private_network,
+            patched_private_network_update_request=patched_private_network_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16517,7 +16417,7 @@ class CloudApi:
     def cloud_private_networks_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        patched_private_network: Optional[PatchedPrivateNetwork] = None,
+        patched_private_network_update_request: Optional[PatchedPrivateNetworkUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16537,8 +16437,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param patched_private_network:
-        :type patched_private_network: PatchedPrivateNetwork
+        :param patched_private_network_update_request:
+        :type patched_private_network_update_request: PatchedPrivateNetworkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16563,7 +16463,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_partial_update_serialize(
             id=id,
-            patched_private_network=patched_private_network,
+            patched_private_network_update_request=patched_private_network_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16588,7 +16488,7 @@ class CloudApi:
     def cloud_private_networks_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        patched_private_network: Optional[PatchedPrivateNetwork] = None,
+        patched_private_network_update_request: Optional[PatchedPrivateNetworkUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16608,8 +16508,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param patched_private_network:
-        :type patched_private_network: PatchedPrivateNetwork
+        :param patched_private_network_update_request:
+        :type patched_private_network_update_request: PatchedPrivateNetworkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16634,7 +16534,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_partial_update_serialize(
             id=id,
-            patched_private_network=patched_private_network,
+            patched_private_network_update_request=patched_private_network_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16654,7 +16554,7 @@ class CloudApi:
     def _cloud_private_networks_partial_update_serialize(
         self,
         id,
-        patched_private_network,
+        patched_private_network_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -16682,8 +16582,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_private_network is not None:
-            _body_params = patched_private_network
+        if patched_private_network_update_request is not None:
+            _body_params = patched_private_network_update_request
 
 
         # set the HTTP header `Accept`
@@ -16736,7 +16636,7 @@ class CloudApi:
     def cloud_private_networks_remove_server_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network_remove_host: PrivateNetworkRemoveHost,
+        private_network_remove_host_request: PrivateNetworkRemoveHostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16756,8 +16656,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network_remove_host: (required)
-        :type private_network_remove_host: PrivateNetworkRemoveHost
+        :param private_network_remove_host_request: (required)
+        :type private_network_remove_host_request: PrivateNetworkRemoveHostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16782,7 +16682,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_remove_server_create_serialize(
             id=id,
-            private_network_remove_host=private_network_remove_host,
+            private_network_remove_host_request=private_network_remove_host_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16807,7 +16707,7 @@ class CloudApi:
     def cloud_private_networks_remove_server_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network_remove_host: PrivateNetworkRemoveHost,
+        private_network_remove_host_request: PrivateNetworkRemoveHostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16827,8 +16727,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network_remove_host: (required)
-        :type private_network_remove_host: PrivateNetworkRemoveHost
+        :param private_network_remove_host_request: (required)
+        :type private_network_remove_host_request: PrivateNetworkRemoveHostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16853,7 +16753,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_remove_server_create_serialize(
             id=id,
-            private_network_remove_host=private_network_remove_host,
+            private_network_remove_host_request=private_network_remove_host_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16878,7 +16778,7 @@ class CloudApi:
     def cloud_private_networks_remove_server_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network_remove_host: PrivateNetworkRemoveHost,
+        private_network_remove_host_request: PrivateNetworkRemoveHostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16898,8 +16798,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network_remove_host: (required)
-        :type private_network_remove_host: PrivateNetworkRemoveHost
+        :param private_network_remove_host_request: (required)
+        :type private_network_remove_host_request: PrivateNetworkRemoveHostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16924,7 +16824,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_remove_server_create_serialize(
             id=id,
-            private_network_remove_host=private_network_remove_host,
+            private_network_remove_host_request=private_network_remove_host_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16944,7 +16844,7 @@ class CloudApi:
     def _cloud_private_networks_remove_server_create_serialize(
         self,
         id,
-        private_network_remove_host,
+        private_network_remove_host_request,
         _request_auth,
         _content_type,
         _headers,
@@ -16972,8 +16872,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if private_network_remove_host is not None:
-            _body_params = private_network_remove_host
+        if private_network_remove_host_request is not None:
+            _body_params = private_network_remove_host_request
 
 
         # set the HTTP header `Accept`
@@ -17288,7 +17188,7 @@ class CloudApi:
     def cloud_private_networks_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network: PrivateNetwork,
+        private_network_update_request: Optional[PrivateNetworkUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17308,8 +17208,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network: (required)
-        :type private_network: PrivateNetwork
+        :param private_network_update_request:
+        :type private_network_update_request: PrivateNetworkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17334,7 +17234,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_update_serialize(
             id=id,
-            private_network=private_network,
+            private_network_update_request=private_network_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17359,7 +17259,7 @@ class CloudApi:
     def cloud_private_networks_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network: PrivateNetwork,
+        private_network_update_request: Optional[PrivateNetworkUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17379,8 +17279,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network: (required)
-        :type private_network: PrivateNetwork
+        :param private_network_update_request:
+        :type private_network_update_request: PrivateNetworkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17405,7 +17305,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_update_serialize(
             id=id,
-            private_network=private_network,
+            private_network_update_request=private_network_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17430,7 +17330,7 @@ class CloudApi:
     def cloud_private_networks_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this private network.")],
-        private_network: PrivateNetwork,
+        private_network_update_request: Optional[PrivateNetworkUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17450,8 +17350,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this private network. (required)
         :type id: int
-        :param private_network: (required)
-        :type private_network: PrivateNetwork
+        :param private_network_update_request:
+        :type private_network_update_request: PrivateNetworkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17476,7 +17376,7 @@ class CloudApi:
 
         _param = self._cloud_private_networks_update_serialize(
             id=id,
-            private_network=private_network,
+            private_network_update_request=private_network_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17496,7 +17396,7 @@ class CloudApi:
     def _cloud_private_networks_update_serialize(
         self,
         id,
-        private_network,
+        private_network_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -17524,8 +17424,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if private_network is not None:
-            _body_params = private_network
+        if private_network_update_request is not None:
+            _body_params = private_network_update_request
 
 
         # set the HTTP header `Accept`
@@ -19210,7 +19110,6 @@ class CloudApi:
     def cloud_servers_boot_isos_list(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -19223,15 +19122,13 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginatedBootISOList:
+    ) -> List[BootISO]:
         """cloud_servers_boot_isos_list
 
         List the ISO catalog entries visible to this user and their package compatibility.
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -19256,7 +19153,6 @@ class CloudApi:
 
         _param = self._cloud_servers_boot_isos_list_serialize(
             id=id,
-            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -19264,7 +19160,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedBootISOList",
+            '200': "List[BootISO]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -19281,7 +19177,6 @@ class CloudApi:
     def cloud_servers_boot_isos_list_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -19294,15 +19189,13 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginatedBootISOList]:
+    ) -> ApiResponse[List[BootISO]]:
         """cloud_servers_boot_isos_list
 
         List the ISO catalog entries visible to this user and their package compatibility.
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -19327,7 +19220,6 @@ class CloudApi:
 
         _param = self._cloud_servers_boot_isos_list_serialize(
             id=id,
-            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -19335,7 +19227,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedBootISOList",
+            '200': "List[BootISO]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -19352,7 +19244,6 @@ class CloudApi:
     def cloud_servers_boot_isos_list_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -19372,8 +19263,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -19398,7 +19287,6 @@ class CloudApi:
 
         _param = self._cloud_servers_boot_isos_list_serialize(
             id=id,
-            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -19406,7 +19294,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedBootISOList",
+            '200': "List[BootISO]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -19418,7 +19306,6 @@ class CloudApi:
     def _cloud_servers_boot_isos_list_serialize(
         self,
         id,
-        page,
         _request_auth,
         _content_type,
         _headers,
@@ -19443,10 +19330,6 @@ class CloudApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -19750,7 +19633,7 @@ class CloudApi:
     @validate_call
     def cloud_servers_create(
         self,
-        server_add: ServerAdd,
+        server_add_request: ServerAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -19768,8 +19651,8 @@ class CloudApi:
 
         Create new server
 
-        :param server_add: (required)
-        :type server_add: ServerAdd
+        :param server_add_request: (required)
+        :type server_add_request: ServerAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -19793,7 +19676,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_servers_create_serialize(
-            server_add=server_add,
+            server_add_request=server_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -19817,7 +19700,7 @@ class CloudApi:
     @validate_call
     def cloud_servers_create_with_http_info(
         self,
-        server_add: ServerAdd,
+        server_add_request: ServerAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -19835,8 +19718,8 @@ class CloudApi:
 
         Create new server
 
-        :param server_add: (required)
-        :type server_add: ServerAdd
+        :param server_add_request: (required)
+        :type server_add_request: ServerAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -19860,7 +19743,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_servers_create_serialize(
-            server_add=server_add,
+            server_add_request=server_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -19884,7 +19767,7 @@ class CloudApi:
     @validate_call
     def cloud_servers_create_without_preload_content(
         self,
-        server_add: ServerAdd,
+        server_add_request: ServerAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -19902,8 +19785,8 @@ class CloudApi:
 
         Create new server
 
-        :param server_add: (required)
-        :type server_add: ServerAdd
+        :param server_add_request: (required)
+        :type server_add_request: ServerAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -19927,7 +19810,7 @@ class CloudApi:
         """ # noqa: E501
 
         _param = self._cloud_servers_create_serialize(
-            server_add=server_add,
+            server_add_request=server_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -19946,7 +19829,7 @@ class CloudApi:
 
     def _cloud_servers_create_serialize(
         self,
-        server_add,
+        server_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -19972,8 +19855,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if server_add is not None:
-            _body_params = server_add
+        if server_add_request is not None:
+            _body_params = server_add_request
 
 
         # set the HTTP header `Accept`
@@ -20281,7 +20164,7 @@ class CloudApi:
     def cloud_servers_destroy_protection_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        destroy_protection: DestroyProtection,
+        destroy_protection_request: DestroyProtectionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -20301,8 +20184,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param destroy_protection: (required)
-        :type destroy_protection: DestroyProtection
+        :param destroy_protection_request: (required)
+        :type destroy_protection_request: DestroyProtectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -20327,7 +20210,7 @@ class CloudApi:
 
         _param = self._cloud_servers_destroy_protection_create_serialize(
             id=id,
-            destroy_protection=destroy_protection,
+            destroy_protection_request=destroy_protection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -20352,7 +20235,7 @@ class CloudApi:
     def cloud_servers_destroy_protection_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        destroy_protection: DestroyProtection,
+        destroy_protection_request: DestroyProtectionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -20372,8 +20255,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param destroy_protection: (required)
-        :type destroy_protection: DestroyProtection
+        :param destroy_protection_request: (required)
+        :type destroy_protection_request: DestroyProtectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -20398,7 +20281,7 @@ class CloudApi:
 
         _param = self._cloud_servers_destroy_protection_create_serialize(
             id=id,
-            destroy_protection=destroy_protection,
+            destroy_protection_request=destroy_protection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -20423,7 +20306,7 @@ class CloudApi:
     def cloud_servers_destroy_protection_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        destroy_protection: DestroyProtection,
+        destroy_protection_request: DestroyProtectionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -20443,8 +20326,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param destroy_protection: (required)
-        :type destroy_protection: DestroyProtection
+        :param destroy_protection_request: (required)
+        :type destroy_protection_request: DestroyProtectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -20469,7 +20352,7 @@ class CloudApi:
 
         _param = self._cloud_servers_destroy_protection_create_serialize(
             id=id,
-            destroy_protection=destroy_protection,
+            destroy_protection_request=destroy_protection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -20489,7 +20372,7 @@ class CloudApi:
     def _cloud_servers_destroy_protection_create_serialize(
         self,
         id,
-        destroy_protection,
+        destroy_protection_request,
         _request_auth,
         _content_type,
         _headers,
@@ -20517,8 +20400,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if destroy_protection is not None:
-            _body_params = destroy_protection
+        if destroy_protection_request is not None:
+            _body_params = destroy_protection_request
 
 
         # set the HTTP header `Accept`
@@ -21376,7 +21259,7 @@ class CloudApi:
     def cloud_servers_modify_package_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        server_product_upgrade: ServerProductUpgrade,
+        server_product_upgrade_request: ServerProductUpgradeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -21396,8 +21279,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param server_product_upgrade: (required)
-        :type server_product_upgrade: ServerProductUpgrade
+        :param server_product_upgrade_request: (required)
+        :type server_product_upgrade_request: ServerProductUpgradeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -21422,7 +21305,7 @@ class CloudApi:
 
         _param = self._cloud_servers_modify_package_create_serialize(
             id=id,
-            server_product_upgrade=server_product_upgrade,
+            server_product_upgrade_request=server_product_upgrade_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -21447,7 +21330,7 @@ class CloudApi:
     def cloud_servers_modify_package_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        server_product_upgrade: ServerProductUpgrade,
+        server_product_upgrade_request: ServerProductUpgradeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -21467,8 +21350,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param server_product_upgrade: (required)
-        :type server_product_upgrade: ServerProductUpgrade
+        :param server_product_upgrade_request: (required)
+        :type server_product_upgrade_request: ServerProductUpgradeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -21493,7 +21376,7 @@ class CloudApi:
 
         _param = self._cloud_servers_modify_package_create_serialize(
             id=id,
-            server_product_upgrade=server_product_upgrade,
+            server_product_upgrade_request=server_product_upgrade_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -21518,7 +21401,7 @@ class CloudApi:
     def cloud_servers_modify_package_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        server_product_upgrade: ServerProductUpgrade,
+        server_product_upgrade_request: ServerProductUpgradeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -21538,8 +21421,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param server_product_upgrade: (required)
-        :type server_product_upgrade: ServerProductUpgrade
+        :param server_product_upgrade_request: (required)
+        :type server_product_upgrade_request: ServerProductUpgradeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -21564,7 +21447,7 @@ class CloudApi:
 
         _param = self._cloud_servers_modify_package_create_serialize(
             id=id,
-            server_product_upgrade=server_product_upgrade,
+            server_product_upgrade_request=server_product_upgrade_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -21584,7 +21467,7 @@ class CloudApi:
     def _cloud_servers_modify_package_create_serialize(
         self,
         id,
-        server_product_upgrade,
+        server_product_upgrade_request,
         _request_auth,
         _content_type,
         _headers,
@@ -21612,8 +21495,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if server_product_upgrade is not None:
-            _body_params = server_product_upgrade
+        if server_product_upgrade_request is not None:
+            _body_params = server_product_upgrade_request
 
 
         # set the HTTP header `Accept`
@@ -21666,7 +21549,7 @@ class CloudApi:
     def cloud_servers_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        patched_server_detail: Optional[PatchedServerDetail] = None,
+        patched_server_detail_request: Optional[PatchedServerDetailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -21686,8 +21569,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param patched_server_detail:
-        :type patched_server_detail: PatchedServerDetail
+        :param patched_server_detail_request:
+        :type patched_server_detail_request: PatchedServerDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -21712,7 +21595,7 @@ class CloudApi:
 
         _param = self._cloud_servers_partial_update_serialize(
             id=id,
-            patched_server_detail=patched_server_detail,
+            patched_server_detail_request=patched_server_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -21737,7 +21620,7 @@ class CloudApi:
     def cloud_servers_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        patched_server_detail: Optional[PatchedServerDetail] = None,
+        patched_server_detail_request: Optional[PatchedServerDetailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -21757,8 +21640,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param patched_server_detail:
-        :type patched_server_detail: PatchedServerDetail
+        :param patched_server_detail_request:
+        :type patched_server_detail_request: PatchedServerDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -21783,7 +21666,7 @@ class CloudApi:
 
         _param = self._cloud_servers_partial_update_serialize(
             id=id,
-            patched_server_detail=patched_server_detail,
+            patched_server_detail_request=patched_server_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -21808,7 +21691,7 @@ class CloudApi:
     def cloud_servers_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        patched_server_detail: Optional[PatchedServerDetail] = None,
+        patched_server_detail_request: Optional[PatchedServerDetailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -21828,8 +21711,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param patched_server_detail:
-        :type patched_server_detail: PatchedServerDetail
+        :param patched_server_detail_request:
+        :type patched_server_detail_request: PatchedServerDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -21854,7 +21737,7 @@ class CloudApi:
 
         _param = self._cloud_servers_partial_update_serialize(
             id=id,
-            patched_server_detail=patched_server_detail,
+            patched_server_detail_request=patched_server_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -21874,7 +21757,7 @@ class CloudApi:
     def _cloud_servers_partial_update_serialize(
         self,
         id,
-        patched_server_detail,
+        patched_server_detail_request,
         _request_auth,
         _content_type,
         _headers,
@@ -21902,8 +21785,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_server_detail is not None:
-            _body_params = patched_server_detail
+        if patched_server_detail_request is not None:
+            _body_params = patched_server_detail_request
 
 
         # set the HTTP header `Accept`
@@ -22508,7 +22391,7 @@ class CloudApi:
     def cloud_servers_public_interface_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        public_interface: Optional[PublicInterface] = None,
+        public_interface_request: Optional[PublicInterfaceRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -22528,8 +22411,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param public_interface:
-        :type public_interface: PublicInterface
+        :param public_interface_request:
+        :type public_interface_request: PublicInterfaceRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -22554,7 +22437,7 @@ class CloudApi:
 
         _param = self._cloud_servers_public_interface_create_serialize(
             id=id,
-            public_interface=public_interface,
+            public_interface_request=public_interface_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -22579,7 +22462,7 @@ class CloudApi:
     def cloud_servers_public_interface_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        public_interface: Optional[PublicInterface] = None,
+        public_interface_request: Optional[PublicInterfaceRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -22599,8 +22482,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param public_interface:
-        :type public_interface: PublicInterface
+        :param public_interface_request:
+        :type public_interface_request: PublicInterfaceRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -22625,7 +22508,7 @@ class CloudApi:
 
         _param = self._cloud_servers_public_interface_create_serialize(
             id=id,
-            public_interface=public_interface,
+            public_interface_request=public_interface_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -22650,7 +22533,7 @@ class CloudApi:
     def cloud_servers_public_interface_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        public_interface: Optional[PublicInterface] = None,
+        public_interface_request: Optional[PublicInterfaceRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -22670,8 +22553,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param public_interface:
-        :type public_interface: PublicInterface
+        :param public_interface_request:
+        :type public_interface_request: PublicInterfaceRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -22696,7 +22579,7 @@ class CloudApi:
 
         _param = self._cloud_servers_public_interface_create_serialize(
             id=id,
-            public_interface=public_interface,
+            public_interface_request=public_interface_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -22716,7 +22599,7 @@ class CloudApi:
     def _cloud_servers_public_interface_create_serialize(
         self,
         id,
-        public_interface,
+        public_interface_request,
         _request_auth,
         _content_type,
         _headers,
@@ -22744,8 +22627,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if public_interface is not None:
-            _body_params = public_interface
+        if public_interface_request is not None:
+            _body_params = public_interface_request
 
 
         # set the HTTP header `Accept`
@@ -24391,8 +24274,7 @@ class CloudApi:
     def cloud_servers_snapshots_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        snapshot_create: SnapshotCreate,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        snapshot_create_request: SnapshotCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24405,17 +24287,15 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginatedSnapshotList:
+    ) -> SnapshotCreateQueued:
         """cloud_servers_snapshots_create
 
-        List snapshots for this server or queue a new snapshot.
+        Cloud servers
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param snapshot_create: (required)
-        :type snapshot_create: SnapshotCreate
-        :param page: A page number within the paginated result set.
-        :type page: int
+        :param snapshot_create_request: (required)
+        :type snapshot_create_request: SnapshotCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -24440,8 +24320,7 @@ class CloudApi:
 
         _param = self._cloud_servers_snapshots_create_serialize(
             id=id,
-            snapshot_create=snapshot_create,
-            page=page,
+            snapshot_create_request=snapshot_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -24449,7 +24328,6 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedSnapshotList",
             '202': "SnapshotCreateQueued",
         }
         response_data = self.api_client.call_api(
@@ -24467,8 +24345,7 @@ class CloudApi:
     def cloud_servers_snapshots_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        snapshot_create: SnapshotCreate,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        snapshot_create_request: SnapshotCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24481,17 +24358,15 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginatedSnapshotList]:
+    ) -> ApiResponse[SnapshotCreateQueued]:
         """cloud_servers_snapshots_create
 
-        List snapshots for this server or queue a new snapshot.
+        Cloud servers
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param snapshot_create: (required)
-        :type snapshot_create: SnapshotCreate
-        :param page: A page number within the paginated result set.
-        :type page: int
+        :param snapshot_create_request: (required)
+        :type snapshot_create_request: SnapshotCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -24516,8 +24391,7 @@ class CloudApi:
 
         _param = self._cloud_servers_snapshots_create_serialize(
             id=id,
-            snapshot_create=snapshot_create,
-            page=page,
+            snapshot_create_request=snapshot_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -24525,7 +24399,6 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedSnapshotList",
             '202': "SnapshotCreateQueued",
         }
         response_data = self.api_client.call_api(
@@ -24543,8 +24416,7 @@ class CloudApi:
     def cloud_servers_snapshots_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        snapshot_create: SnapshotCreate,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        snapshot_create_request: SnapshotCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24560,14 +24432,12 @@ class CloudApi:
     ) -> RESTResponseType:
         """cloud_servers_snapshots_create
 
-        List snapshots for this server or queue a new snapshot.
+        Cloud servers
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param snapshot_create: (required)
-        :type snapshot_create: SnapshotCreate
-        :param page: A page number within the paginated result set.
-        :type page: int
+        :param snapshot_create_request: (required)
+        :type snapshot_create_request: SnapshotCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -24592,8 +24462,7 @@ class CloudApi:
 
         _param = self._cloud_servers_snapshots_create_serialize(
             id=id,
-            snapshot_create=snapshot_create,
-            page=page,
+            snapshot_create_request=snapshot_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -24601,7 +24470,6 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedSnapshotList",
             '202': "SnapshotCreateQueued",
         }
         response_data = self.api_client.call_api(
@@ -24614,8 +24482,7 @@ class CloudApi:
     def _cloud_servers_snapshots_create_serialize(
         self,
         id,
-        snapshot_create,
-        page,
+        snapshot_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -24640,15 +24507,11 @@ class CloudApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if snapshot_create is not None:
-            _body_params = snapshot_create
+        if snapshot_create_request is not None:
+            _body_params = snapshot_create_request
 
 
         # set the HTTP header `Accept`
@@ -24978,7 +24841,6 @@ class CloudApi:
     def cloud_servers_snapshots_list(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24991,15 +24853,13 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginatedSnapshotList:
+    ) -> List[Snapshot]:
         """cloud_servers_snapshots_list
 
         List snapshots for this server or queue a new snapshot.
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25024,7 +24884,6 @@ class CloudApi:
 
         _param = self._cloud_servers_snapshots_list_serialize(
             id=id,
-            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25032,8 +24891,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedSnapshotList",
-            '202': "SnapshotCreateQueued",
+            '200': "List[Snapshot]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -25050,7 +24908,6 @@ class CloudApi:
     def cloud_servers_snapshots_list_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25063,15 +24920,13 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginatedSnapshotList]:
+    ) -> ApiResponse[List[Snapshot]]:
         """cloud_servers_snapshots_list
 
         List snapshots for this server or queue a new snapshot.
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25096,7 +24951,6 @@ class CloudApi:
 
         _param = self._cloud_servers_snapshots_list_serialize(
             id=id,
-            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25104,8 +24958,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedSnapshotList",
-            '202': "SnapshotCreateQueued",
+            '200': "List[Snapshot]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -25122,7 +24975,6 @@ class CloudApi:
     def cloud_servers_snapshots_list_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25142,8 +24994,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25168,7 +25018,6 @@ class CloudApi:
 
         _param = self._cloud_servers_snapshots_list_serialize(
             id=id,
-            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25176,8 +25025,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedSnapshotList",
-            '202': "SnapshotCreateQueued",
+            '200': "List[Snapshot]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -25189,7 +25037,6 @@ class CloudApi:
     def _cloud_servers_snapshots_list_serialize(
         self,
         id,
-        page,
         _request_auth,
         _content_type,
         _headers,
@@ -25214,10 +25061,6 @@ class CloudApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -25534,10 +25377,9 @@ class CloudApi:
 
 
     @validate_call
-    def cloud_servers_update(
+    def cloud_servers_traffic_retrieve(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        server_detail: Optional[ServerDetail] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25550,15 +25392,13 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServerDetail:
-        """cloud_servers_update
+    ) -> ServerTrafficResponse:
+        """cloud_servers_traffic_retrieve
 
-        Cloud servers
+        Get this month's traffic usage for a server.
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param server_detail:
-        :type server_detail: ServerDetail
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25581,9 +25421,8 @@ class CloudApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cloud_servers_update_serialize(
+        _param = self._cloud_servers_traffic_retrieve_serialize(
             id=id,
-            server_detail=server_detail,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25591,7 +25430,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServerDetail",
+            '200': "ServerTrafficResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -25605,10 +25444,9 @@ class CloudApi:
 
 
     @validate_call
-    def cloud_servers_update_with_http_info(
+    def cloud_servers_traffic_retrieve_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        server_detail: Optional[ServerDetail] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25621,15 +25459,13 @@ class CloudApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServerDetail]:
-        """cloud_servers_update
+    ) -> ApiResponse[ServerTrafficResponse]:
+        """cloud_servers_traffic_retrieve
 
-        Cloud servers
+        Get this month's traffic usage for a server.
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param server_detail:
-        :type server_detail: ServerDetail
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25652,9 +25488,8 @@ class CloudApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cloud_servers_update_serialize(
+        _param = self._cloud_servers_traffic_retrieve_serialize(
             id=id,
-            server_detail=server_detail,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25662,7 +25497,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServerDetail",
+            '200': "ServerTrafficResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -25676,10 +25511,9 @@ class CloudApi:
 
 
     @validate_call
-    def cloud_servers_update_without_preload_content(
+    def cloud_servers_traffic_retrieve_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
-        server_detail: Optional[ServerDetail] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25693,14 +25527,12 @@ class CloudApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """cloud_servers_update
+        """cloud_servers_traffic_retrieve
 
-        Cloud servers
+        Get this month's traffic usage for a server.
 
         :param id: A unique integer value identifying this virtual machine. (required)
         :type id: int
-        :param server_detail:
-        :type server_detail: ServerDetail
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25723,9 +25555,8 @@ class CloudApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cloud_servers_update_serialize(
+        _param = self._cloud_servers_traffic_retrieve_serialize(
             id=id,
-            server_detail=server_detail,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25733,7 +25564,7 @@ class CloudApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServerDetail",
+            '200': "ServerTrafficResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -25742,10 +25573,9 @@ class CloudApi:
         return response_data.response
 
 
-    def _cloud_servers_update_serialize(
+    def _cloud_servers_traffic_retrieve_serialize(
         self,
         id,
-        server_detail,
         _request_auth,
         _content_type,
         _headers,
@@ -25773,8 +25603,283 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if server_detail is not None:
-            _body_params = server_detail
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/cloud/servers/{id}/traffic/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def cloud_servers_update(
+        self,
+        id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
+        server_detail_request: Optional[ServerDetailRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ServerDetail:
+        """cloud_servers_update
+
+        Cloud servers
+
+        :param id: A unique integer value identifying this virtual machine. (required)
+        :type id: int
+        :param server_detail_request:
+        :type server_detail_request: ServerDetailRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._cloud_servers_update_serialize(
+            id=id,
+            server_detail_request=server_detail_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServerDetail",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def cloud_servers_update_with_http_info(
+        self,
+        id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
+        server_detail_request: Optional[ServerDetailRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ServerDetail]:
+        """cloud_servers_update
+
+        Cloud servers
+
+        :param id: A unique integer value identifying this virtual machine. (required)
+        :type id: int
+        :param server_detail_request:
+        :type server_detail_request: ServerDetailRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._cloud_servers_update_serialize(
+            id=id,
+            server_detail_request=server_detail_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServerDetail",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def cloud_servers_update_without_preload_content(
+        self,
+        id: Annotated[StrictInt, Field(description="A unique integer value identifying this virtual machine.")],
+        server_detail_request: Optional[ServerDetailRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """cloud_servers_update
+
+        Cloud servers
+
+        :param id: A unique integer value identifying this virtual machine. (required)
+        :type id: int
+        :param server_detail_request:
+        :type server_detail_request: ServerDetailRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._cloud_servers_update_serialize(
+            id=id,
+            server_detail_request=server_detail_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServerDetail",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _cloud_servers_update_serialize(
+        self,
+        id,
+        server_detail_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if server_detail_request is not None:
+            _body_params = server_detail_request
 
 
         # set the HTTP header `Accept`
@@ -26089,7 +26194,7 @@ class CloudApi:
     def cloud_servers_volumes_create(
         self,
         server_id: Annotated[str, Field(strict=True)],
-        volume: Volume,
+        volume_request: VolumeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -26109,8 +26214,8 @@ class CloudApi:
 
         :param server_id: (required)
         :type server_id: str
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_request: (required)
+        :type volume_request: VolumeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -26135,7 +26240,7 @@ class CloudApi:
 
         _param = self._cloud_servers_volumes_create_serialize(
             server_id=server_id,
-            volume=volume,
+            volume_request=volume_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -26160,7 +26265,7 @@ class CloudApi:
     def cloud_servers_volumes_create_with_http_info(
         self,
         server_id: Annotated[str, Field(strict=True)],
-        volume: Volume,
+        volume_request: VolumeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -26180,8 +26285,8 @@ class CloudApi:
 
         :param server_id: (required)
         :type server_id: str
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_request: (required)
+        :type volume_request: VolumeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -26206,7 +26311,7 @@ class CloudApi:
 
         _param = self._cloud_servers_volumes_create_serialize(
             server_id=server_id,
-            volume=volume,
+            volume_request=volume_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -26231,7 +26336,7 @@ class CloudApi:
     def cloud_servers_volumes_create_without_preload_content(
         self,
         server_id: Annotated[str, Field(strict=True)],
-        volume: Volume,
+        volume_request: VolumeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -26251,8 +26356,8 @@ class CloudApi:
 
         :param server_id: (required)
         :type server_id: str
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_request: (required)
+        :type volume_request: VolumeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -26277,7 +26382,7 @@ class CloudApi:
 
         _param = self._cloud_servers_volumes_create_serialize(
             server_id=server_id,
-            volume=volume,
+            volume_request=volume_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -26297,7 +26402,7 @@ class CloudApi:
     def _cloud_servers_volumes_create_serialize(
         self,
         server_id,
-        volume,
+        volume_request,
         _request_auth,
         _content_type,
         _headers,
@@ -26325,8 +26430,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if volume is not None:
-            _body_params = volume
+        if volume_request is not None:
+            _body_params = volume_request
 
 
         # set the HTTP header `Accept`
@@ -26912,7 +27017,7 @@ class CloudApi:
         self,
         server_id: Annotated[str, Field(strict=True)],
         volume_id: StrictStr,
-        patched_volume: Optional[PatchedVolume] = None,
+        patched_volume_update_request: Optional[PatchedVolumeUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -26934,8 +27039,8 @@ class CloudApi:
         :type server_id: str
         :param volume_id: (required)
         :type volume_id: str
-        :param patched_volume:
-        :type patched_volume: PatchedVolume
+        :param patched_volume_update_request:
+        :type patched_volume_update_request: PatchedVolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -26961,7 +27066,7 @@ class CloudApi:
         _param = self._cloud_servers_volumes_partial_update_serialize(
             server_id=server_id,
             volume_id=volume_id,
-            patched_volume=patched_volume,
+            patched_volume_update_request=patched_volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -26987,7 +27092,7 @@ class CloudApi:
         self,
         server_id: Annotated[str, Field(strict=True)],
         volume_id: StrictStr,
-        patched_volume: Optional[PatchedVolume] = None,
+        patched_volume_update_request: Optional[PatchedVolumeUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27009,8 +27114,8 @@ class CloudApi:
         :type server_id: str
         :param volume_id: (required)
         :type volume_id: str
-        :param patched_volume:
-        :type patched_volume: PatchedVolume
+        :param patched_volume_update_request:
+        :type patched_volume_update_request: PatchedVolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27036,7 +27141,7 @@ class CloudApi:
         _param = self._cloud_servers_volumes_partial_update_serialize(
             server_id=server_id,
             volume_id=volume_id,
-            patched_volume=patched_volume,
+            patched_volume_update_request=patched_volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -27062,7 +27167,7 @@ class CloudApi:
         self,
         server_id: Annotated[str, Field(strict=True)],
         volume_id: StrictStr,
-        patched_volume: Optional[PatchedVolume] = None,
+        patched_volume_update_request: Optional[PatchedVolumeUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27084,8 +27189,8 @@ class CloudApi:
         :type server_id: str
         :param volume_id: (required)
         :type volume_id: str
-        :param patched_volume:
-        :type patched_volume: PatchedVolume
+        :param patched_volume_update_request:
+        :type patched_volume_update_request: PatchedVolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27111,7 +27216,7 @@ class CloudApi:
         _param = self._cloud_servers_volumes_partial_update_serialize(
             server_id=server_id,
             volume_id=volume_id,
-            patched_volume=patched_volume,
+            patched_volume_update_request=patched_volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -27132,7 +27237,7 @@ class CloudApi:
         self,
         server_id,
         volume_id,
-        patched_volume,
+        patched_volume_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -27162,8 +27267,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_volume is not None:
-            _body_params = patched_volume
+        if patched_volume_update_request is not None:
+            _body_params = patched_volume_update_request
 
 
         # set the HTTP header `Accept`
@@ -27494,7 +27599,7 @@ class CloudApi:
         self,
         server_id: Annotated[str, Field(strict=True)],
         volume_id: StrictStr,
-        volume: Volume,
+        volume_update_request: VolumeUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27516,8 +27621,8 @@ class CloudApi:
         :type server_id: str
         :param volume_id: (required)
         :type volume_id: str
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_update_request: (required)
+        :type volume_update_request: VolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27543,7 +27648,7 @@ class CloudApi:
         _param = self._cloud_servers_volumes_update_serialize(
             server_id=server_id,
             volume_id=volume_id,
-            volume=volume,
+            volume_update_request=volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -27569,7 +27674,7 @@ class CloudApi:
         self,
         server_id: Annotated[str, Field(strict=True)],
         volume_id: StrictStr,
-        volume: Volume,
+        volume_update_request: VolumeUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27591,8 +27696,8 @@ class CloudApi:
         :type server_id: str
         :param volume_id: (required)
         :type volume_id: str
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_update_request: (required)
+        :type volume_update_request: VolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27618,7 +27723,7 @@ class CloudApi:
         _param = self._cloud_servers_volumes_update_serialize(
             server_id=server_id,
             volume_id=volume_id,
-            volume=volume,
+            volume_update_request=volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -27644,7 +27749,7 @@ class CloudApi:
         self,
         server_id: Annotated[str, Field(strict=True)],
         volume_id: StrictStr,
-        volume: Volume,
+        volume_update_request: VolumeUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27666,8 +27771,8 @@ class CloudApi:
         :type server_id: str
         :param volume_id: (required)
         :type volume_id: str
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_update_request: (required)
+        :type volume_update_request: VolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27693,7 +27798,7 @@ class CloudApi:
         _param = self._cloud_servers_volumes_update_serialize(
             server_id=server_id,
             volume_id=volume_id,
-            volume=volume,
+            volume_update_request=volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -27714,7 +27819,7 @@ class CloudApi:
         self,
         server_id,
         volume_id,
-        volume,
+        volume_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -27744,8 +27849,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if volume is not None:
-            _body_params = volume
+        if volume_update_request is not None:
+            _body_params = volume_update_request
 
 
         # set the HTTP header `Accept`
@@ -28324,7 +28429,7 @@ class CloudApi:
     def cloud_volumes_attach_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        attach_volume: AttachVolume,
+        attach_volume_request: AttachVolumeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28344,8 +28449,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param attach_volume: (required)
-        :type attach_volume: AttachVolume
+        :param attach_volume_request: (required)
+        :type attach_volume_request: AttachVolumeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28370,7 +28475,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_attach_create_serialize(
             id=id,
-            attach_volume=attach_volume,
+            attach_volume_request=attach_volume_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -28395,7 +28500,7 @@ class CloudApi:
     def cloud_volumes_attach_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        attach_volume: AttachVolume,
+        attach_volume_request: AttachVolumeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28415,8 +28520,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param attach_volume: (required)
-        :type attach_volume: AttachVolume
+        :param attach_volume_request: (required)
+        :type attach_volume_request: AttachVolumeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28441,7 +28546,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_attach_create_serialize(
             id=id,
-            attach_volume=attach_volume,
+            attach_volume_request=attach_volume_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -28466,7 +28571,7 @@ class CloudApi:
     def cloud_volumes_attach_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        attach_volume: AttachVolume,
+        attach_volume_request: AttachVolumeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28486,8 +28591,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param attach_volume: (required)
-        :type attach_volume: AttachVolume
+        :param attach_volume_request: (required)
+        :type attach_volume_request: AttachVolumeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28512,7 +28617,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_attach_create_serialize(
             id=id,
-            attach_volume=attach_volume,
+            attach_volume_request=attach_volume_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -28532,7 +28637,7 @@ class CloudApi:
     def _cloud_volumes_attach_create_serialize(
         self,
         id,
-        attach_volume,
+        attach_volume_request,
         _request_auth,
         _content_type,
         _headers,
@@ -28560,8 +28665,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if attach_volume is not None:
-            _body_params = attach_volume
+        if attach_volume_request is not None:
+            _body_params = attach_volume_request
 
 
         # set the HTTP header `Accept`
@@ -28869,7 +28974,6 @@ class CloudApi:
     def cloud_volumes_detach_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        volume: Volume,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28889,8 +28993,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param volume: (required)
-        :type volume: Volume
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28915,7 +29017,6 @@ class CloudApi:
 
         _param = self._cloud_volumes_detach_create_serialize(
             id=id,
-            volume=volume,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -28940,7 +29041,6 @@ class CloudApi:
     def cloud_volumes_detach_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        volume: Volume,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28960,8 +29060,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param volume: (required)
-        :type volume: Volume
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28986,7 +29084,6 @@ class CloudApi:
 
         _param = self._cloud_volumes_detach_create_serialize(
             id=id,
-            volume=volume,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -29011,7 +29108,6 @@ class CloudApi:
     def cloud_volumes_detach_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        volume: Volume,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29031,8 +29127,6 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param volume: (required)
-        :type volume: Volume
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29057,7 +29151,6 @@ class CloudApi:
 
         _param = self._cloud_volumes_detach_create_serialize(
             id=id,
-            volume=volume,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -29077,7 +29170,6 @@ class CloudApi:
     def _cloud_volumes_detach_create_serialize(
         self,
         id,
-        volume,
         _request_auth,
         _content_type,
         _headers,
@@ -29105,8 +29197,6 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if volume is not None:
-            _body_params = volume
 
 
         # set the HTTP header `Accept`
@@ -29117,19 +29207,6 @@ class CloudApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -29406,7 +29483,7 @@ class CloudApi:
     def cloud_volumes_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        patched_volume: Optional[PatchedVolume] = None,
+        patched_volume_update_request: Optional[PatchedVolumeUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29426,8 +29503,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param patched_volume:
-        :type patched_volume: PatchedVolume
+        :param patched_volume_update_request:
+        :type patched_volume_update_request: PatchedVolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29452,7 +29529,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_partial_update_serialize(
             id=id,
-            patched_volume=patched_volume,
+            patched_volume_update_request=patched_volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -29477,7 +29554,7 @@ class CloudApi:
     def cloud_volumes_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        patched_volume: Optional[PatchedVolume] = None,
+        patched_volume_update_request: Optional[PatchedVolumeUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29497,8 +29574,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param patched_volume:
-        :type patched_volume: PatchedVolume
+        :param patched_volume_update_request:
+        :type patched_volume_update_request: PatchedVolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29523,7 +29600,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_partial_update_serialize(
             id=id,
-            patched_volume=patched_volume,
+            patched_volume_update_request=patched_volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -29548,7 +29625,7 @@ class CloudApi:
     def cloud_volumes_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        patched_volume: Optional[PatchedVolume] = None,
+        patched_volume_update_request: Optional[PatchedVolumeUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29568,8 +29645,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param patched_volume:
-        :type patched_volume: PatchedVolume
+        :param patched_volume_update_request:
+        :type patched_volume_update_request: PatchedVolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29594,7 +29671,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_partial_update_serialize(
             id=id,
-            patched_volume=patched_volume,
+            patched_volume_update_request=patched_volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -29614,7 +29691,7 @@ class CloudApi:
     def _cloud_volumes_partial_update_serialize(
         self,
         id,
-        patched_volume,
+        patched_volume_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -29642,8 +29719,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_volume is not None:
-            _body_params = patched_volume
+        if patched_volume_update_request is not None:
+            _body_params = patched_volume_update_request
 
 
         # set the HTTP header `Accept`
@@ -29958,7 +30035,7 @@ class CloudApi:
     def cloud_volumes_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        volume: Volume,
+        volume_update_request: VolumeUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29978,8 +30055,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_update_request: (required)
+        :type volume_update_request: VolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30004,7 +30081,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_update_serialize(
             id=id,
-            volume=volume,
+            volume_update_request=volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -30029,7 +30106,7 @@ class CloudApi:
     def cloud_volumes_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        volume: Volume,
+        volume_update_request: VolumeUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30049,8 +30126,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_update_request: (required)
+        :type volume_update_request: VolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30075,7 +30152,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_update_serialize(
             id=id,
-            volume=volume,
+            volume_update_request=volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -30100,7 +30177,7 @@ class CloudApi:
     def cloud_volumes_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this storage.")],
-        volume: Volume,
+        volume_update_request: VolumeUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30120,8 +30197,8 @@ class CloudApi:
 
         :param id: A unique integer value identifying this storage. (required)
         :type id: int
-        :param volume: (required)
-        :type volume: Volume
+        :param volume_update_request: (required)
+        :type volume_update_request: VolumeUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30146,7 +30223,7 @@ class CloudApi:
 
         _param = self._cloud_volumes_update_serialize(
             id=id,
-            volume=volume,
+            volume_update_request=volume_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -30166,7 +30243,7 @@ class CloudApi:
     def _cloud_volumes_update_serialize(
         self,
         id,
-        volume,
+        volume_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -30194,8 +30271,8 @@ class CloudApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if volume is not None:
-            _body_params = volume
+        if volume_update_request is not None:
+            _body_params = volume_update_request
 
 
         # set the HTTP header `Accept`

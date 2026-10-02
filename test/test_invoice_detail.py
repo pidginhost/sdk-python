@@ -52,7 +52,12 @@ class TestInvoiceDetail(unittest.TestCase):
                 client_info = None,
                 invoice_info = None,
                 payment_method = '',
-                services = ''
+                services = [
+                    pidginhost_sdk.models.invoice_service.InvoiceService(
+                        id = 56, 
+                        hostname = '', 
+                        status = '', )
+                    ]
             )
         else:
             return InvoiceDetail(
@@ -72,7 +77,12 @@ class TestInvoiceDetail(unittest.TestCase):
                 client_info = None,
                 invoice_info = None,
                 payment_method = '',
-                services = '',
+                services = [
+                    pidginhost_sdk.models.invoice_service.InvoiceService(
+                        id = 56, 
+                        hostname = '', 
+                        status = '', )
+                    ],
         )
         """
 

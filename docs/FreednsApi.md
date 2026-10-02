@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **freedns_dns_activate_create**
-> ActivateFreeDNSResponse freedns_dns_activate_create(activate_free_dns)
+> ActivateFreeDNSResponse freedns_dns_activate_create(activate_free_dns_request)
 
 Activate FreeDNS for a domain. For internal domains the nameservers are changed to PidginHost NS. A default zone is created on the cPanel node.
 
@@ -24,7 +24,7 @@ Activate FreeDNS for a domain. For internal domains the nameservers are changed 
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.activate_free_dns import ActivateFreeDNS
+from pidginhost_sdk.models.activate_free_dns_request import ActivateFreeDNSRequest
 from pidginhost_sdk.models.activate_free_dns_response import ActivateFreeDNSResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -56,10 +56,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.FreednsApi(api_client)
-    activate_free_dns = pidginhost_sdk.ActivateFreeDNS() # ActivateFreeDNS | 
+    activate_free_dns_request = pidginhost_sdk.ActivateFreeDNSRequest() # ActivateFreeDNSRequest | 
 
     try:
-        api_response = api_instance.freedns_dns_activate_create(activate_free_dns)
+        api_response = api_instance.freedns_dns_activate_create(activate_free_dns_request)
         print("The response of FreednsApi->freedns_dns_activate_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -73,7 +73,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **activate_free_dns** | [**ActivateFreeDNS**](ActivateFreeDNS.md)|  | 
+ **activate_free_dns_request** | [**ActivateFreeDNSRequest**](ActivateFreeDNSRequest.md)|  | 
 
 ### Return type
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **freedns_dns_add_record_create**
-> DNSRecordMutateResponse freedns_dns_add_record_create(domain, source, dns_record_create)
+> DNSRecordMutateResponse freedns_dns_add_record_create(domain, source, dns_record_create_request)
 
 Add or edit a DNS record. To edit an existing record, include the 'line' field with its line number. Required type-specific fields depend on 'type': A/AAAA → address; CNAME → cname; MX → preference, exchange; SRV → priority, weight, port, target; TXT → txtdata, unencoded; TYPE257 (CAA) → flag, tag, value.
 
@@ -108,7 +108,7 @@ Add or edit a DNS record. To edit an existing record, include the 'line' field w
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.dns_record_create import DNSRecordCreate
+from pidginhost_sdk.models.dns_record_create_request import DNSRecordCreateRequest
 from pidginhost_sdk.models.dns_record_mutate_response import DNSRecordMutateResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -142,10 +142,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.FreednsApi(api_client)
     domain = 'domain_example' # str | Domain name or PK.
     source = 'source_example' # str | 'internal' or 'external'.
-    dns_record_create = pidginhost_sdk.DNSRecordCreate() # DNSRecordCreate | 
+    dns_record_create_request = pidginhost_sdk.DNSRecordCreateRequest() # DNSRecordCreateRequest | 
 
     try:
-        api_response = api_instance.freedns_dns_add_record_create(domain, source, dns_record_create)
+        api_response = api_instance.freedns_dns_add_record_create(domain, source, dns_record_create_request)
         print("The response of FreednsApi->freedns_dns_add_record_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **domain** | **str**| Domain name or PK. | 
  **source** | **str**| &#39;internal&#39; or &#39;external&#39;. | 
- **dns_record_create** | [**DNSRecordCreate**](DNSRecordCreate.md)|  | 
+ **dns_record_create_request** | [**DNSRecordCreateRequest**](DNSRecordCreateRequest.md)|  | 
 
 ### Return type
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **freedns_dns_deactivate_create**
-> DeactivateFreeDNSResponse freedns_dns_deactivate_create(deactivate_free_dns)
+> DeactivateFreeDNSResponse freedns_dns_deactivate_create(deactivate_free_dns_request)
 
 Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node and, for internal domains, the original nameservers are restored.
 
@@ -196,7 +196,7 @@ Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node an
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.deactivate_free_dns import DeactivateFreeDNS
+from pidginhost_sdk.models.deactivate_free_dns_request import DeactivateFreeDNSRequest
 from pidginhost_sdk.models.deactivate_free_dns_response import DeactivateFreeDNSResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -228,10 +228,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.FreednsApi(api_client)
-    deactivate_free_dns = pidginhost_sdk.DeactivateFreeDNS() # DeactivateFreeDNS | 
+    deactivate_free_dns_request = pidginhost_sdk.DeactivateFreeDNSRequest() # DeactivateFreeDNSRequest | 
 
     try:
-        api_response = api_instance.freedns_dns_deactivate_create(deactivate_free_dns)
+        api_response = api_instance.freedns_dns_deactivate_create(deactivate_free_dns_request)
         print("The response of FreednsApi->freedns_dns_deactivate_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -245,7 +245,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deactivate_free_dns** | [**DeactivateFreeDNS**](DeactivateFreeDNS.md)|  | 
+ **deactivate_free_dns_request** | [**DeactivateFreeDNSRequest**](DeactivateFreeDNSRequest.md)|  | 
 
 ### Return type
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **freedns_dns_delete_record_create**
-> DeleteRecordResponse freedns_dns_delete_record_create(domain, source, delete_record)
+> DeleteRecordResponse freedns_dns_delete_record_create(domain, source, delete_record_request)
 
 Delete a DNS record by its line number.
 
@@ -280,7 +280,7 @@ Delete a DNS record by its line number.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.delete_record import DeleteRecord
+from pidginhost_sdk.models.delete_record_request import DeleteRecordRequest
 from pidginhost_sdk.models.delete_record_response import DeleteRecordResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -314,10 +314,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.FreednsApi(api_client)
     domain = 'domain_example' # str | Domain name or PK.
     source = 'source_example' # str | 'internal' or 'external'.
-    delete_record = pidginhost_sdk.DeleteRecord() # DeleteRecord | 
+    delete_record_request = pidginhost_sdk.DeleteRecordRequest() # DeleteRecordRequest | 
 
     try:
-        api_response = api_instance.freedns_dns_delete_record_create(domain, source, delete_record)
+        api_response = api_instance.freedns_dns_delete_record_create(domain, source, delete_record_request)
         print("The response of FreednsApi->freedns_dns_delete_record_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **domain** | **str**| Domain name or PK. | 
  **source** | **str**| &#39;internal&#39; or &#39;external&#39;. | 
- **delete_record** | [**DeleteRecord**](DeleteRecord.md)|  | 
+ **delete_record_request** | [**DeleteRecordRequest**](DeleteRecordRequest.md)|  | 
 
 ### Return type
 

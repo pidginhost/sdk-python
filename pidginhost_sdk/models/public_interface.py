@@ -100,8 +100,8 @@ class PublicInterface(BaseModel):
 
         _obj = cls.model_validate({
             "interface": obj.get("interface"),
-            "ipv4": obj.get("ipv4"),
-            "ipv6": obj.get("ipv6"),
+            "ipv4": obj.get("ipv4") if obj.get("ipv4") is not None else '',
+            "ipv6": obj.get("ipv6") if obj.get("ipv6") is not None else '',
             "fw_rules_set": obj.get("fw_rules_set"),
             "fw_policy_in": obj.get("fw_policy_in"),
             "fw_policy_out": obj.get("fw_policy_out")

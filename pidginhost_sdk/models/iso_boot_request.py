@@ -29,7 +29,7 @@ class IsoBootRequest(BaseModel):
     """
     IsoBootRequest
     """ # noqa: E501
-    iso: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="Catalog ISO slug. Omit it to use the default rescue image.")
+    iso: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="Catalog ISO slug. Omit it to use the default rescue image.")
     __properties: ClassVar[List[str]] = ["iso"]
 
     @field_validator('iso', mode="before")

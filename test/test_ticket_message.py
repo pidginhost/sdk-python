@@ -40,7 +40,7 @@ class TestTicketMessage(unittest.TestCase):
                 var_date = '',
                 message = '',
                 author_name = '',
-                has_attachment = '',
+                has_attachment = True,
                 attachment_filename = ''
             )
         else:
@@ -49,7 +49,7 @@ class TestTicketMessage(unittest.TestCase):
                 var_date = '',
                 message = '',
                 author_name = '',
-                has_attachment = '',
+                has_attachment = True,
                 attachment_filename = '',
         )
         """

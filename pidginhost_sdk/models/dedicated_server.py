@@ -20,8 +20,10 @@ import json
 
 from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.dedicated_server_ip import DedicatedServerIP
+from pidginhost_sdk.models.dedicated_server_status import DedicatedServerStatus
 from pidginhost_sdk.models.service_status_enum import ServiceStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -38,9 +40,9 @@ class DedicatedServer(BaseModel):
     next_invoice: date
     created: StrictStr
     billing_cycle: StrictStr
-    server_status: StrictStr
-    ips: StrictStr
-    os_name: StrictStr
+    server_status: Optional[DedicatedServerStatus]
+    ips: List[DedicatedServerIP]
+    os_name: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "hostname", "status", "price", "next_invoice", "created", "billing_cycle", "server_status", "ips", "os_name"]
 
     @field_validator('price', mode="before")
@@ -109,6 +111,26 @@ class DedicatedServer(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of server_status
+        if self.server_status:
+            _dict['server_status'] = self.server_status.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in ips (list)
+        _items = []
+        if self.ips:
+            for _item_ips in self.ips:
+                if _item_ips:
+                    _items.append(_item_ips.to_dict())
+            _dict['ips'] = _items
+        # set to None if server_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.server_status is None and "server_status" in self.model_fields_set:
+            _dict['server_status'] = None
+
+        # set to None if os_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.os_name is None and "os_name" in self.model_fields_set:
+            _dict['os_name'] = None
+
         return _dict
 
     @classmethod
@@ -128,8 +150,8 @@ class DedicatedServer(BaseModel):
             "next_invoice": obj.get("next_invoice"),
             "created": obj.get("created"),
             "billing_cycle": obj.get("billing_cycle"),
-            "server_status": obj.get("server_status"),
-            "ips": obj.get("ips"),
+            "server_status": DedicatedServerStatus.from_dict(obj["server_status"]) if obj.get("server_status") is not None else None,
+            "ips": [DedicatedServerIP.from_dict(_item) for _item in obj["ips"]] if obj.get("ips") is not None else None,
             "os_name": obj.get("os_name")
         })
         return _obj

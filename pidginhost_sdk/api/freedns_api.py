@@ -19,14 +19,14 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List
 from typing_extensions import Annotated
-from pidginhost_sdk.models.activate_free_dns import ActivateFreeDNS
+from pidginhost_sdk.models.activate_free_dns_request import ActivateFreeDNSRequest
 from pidginhost_sdk.models.activate_free_dns_response import ActivateFreeDNSResponse
 from pidginhost_sdk.models.dns_record import DNSRecord
-from pidginhost_sdk.models.dns_record_create import DNSRecordCreate
+from pidginhost_sdk.models.dns_record_create_request import DNSRecordCreateRequest
 from pidginhost_sdk.models.dns_record_mutate_response import DNSRecordMutateResponse
-from pidginhost_sdk.models.deactivate_free_dns import DeactivateFreeDNS
+from pidginhost_sdk.models.deactivate_free_dns_request import DeactivateFreeDNSRequest
 from pidginhost_sdk.models.deactivate_free_dns_response import DeactivateFreeDNSResponse
-from pidginhost_sdk.models.delete_record import DeleteRecord
+from pidginhost_sdk.models.delete_record_request import DeleteRecordRequest
 from pidginhost_sdk.models.delete_record_response import DeleteRecordResponse
 from pidginhost_sdk.models.free_dns_domain import FreeDNSDomain
 
@@ -51,7 +51,7 @@ class FreednsApi:
     @validate_call
     def freedns_dns_activate_create(
         self,
-        activate_free_dns: ActivateFreeDNS,
+        activate_free_dns_request: ActivateFreeDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,8 +69,8 @@ class FreednsApi:
 
         Activate FreeDNS for a domain. For internal domains the nameservers are changed to PidginHost NS. A default zone is created on the cPanel node.
 
-        :param activate_free_dns: (required)
-        :type activate_free_dns: ActivateFreeDNS
+        :param activate_free_dns_request: (required)
+        :type activate_free_dns_request: ActivateFreeDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,7 +94,7 @@ class FreednsApi:
         """ # noqa: E501
 
         _param = self._freedns_dns_activate_create_serialize(
-            activate_free_dns=activate_free_dns,
+            activate_free_dns_request=activate_free_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -118,7 +118,7 @@ class FreednsApi:
     @validate_call
     def freedns_dns_activate_create_with_http_info(
         self,
-        activate_free_dns: ActivateFreeDNS,
+        activate_free_dns_request: ActivateFreeDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,8 +136,8 @@ class FreednsApi:
 
         Activate FreeDNS for a domain. For internal domains the nameservers are changed to PidginHost NS. A default zone is created on the cPanel node.
 
-        :param activate_free_dns: (required)
-        :type activate_free_dns: ActivateFreeDNS
+        :param activate_free_dns_request: (required)
+        :type activate_free_dns_request: ActivateFreeDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +161,7 @@ class FreednsApi:
         """ # noqa: E501
 
         _param = self._freedns_dns_activate_create_serialize(
-            activate_free_dns=activate_free_dns,
+            activate_free_dns_request=activate_free_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -185,7 +185,7 @@ class FreednsApi:
     @validate_call
     def freedns_dns_activate_create_without_preload_content(
         self,
-        activate_free_dns: ActivateFreeDNS,
+        activate_free_dns_request: ActivateFreeDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,8 +203,8 @@ class FreednsApi:
 
         Activate FreeDNS for a domain. For internal domains the nameservers are changed to PidginHost NS. A default zone is created on the cPanel node.
 
-        :param activate_free_dns: (required)
-        :type activate_free_dns: ActivateFreeDNS
+        :param activate_free_dns_request: (required)
+        :type activate_free_dns_request: ActivateFreeDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -228,7 +228,7 @@ class FreednsApi:
         """ # noqa: E501
 
         _param = self._freedns_dns_activate_create_serialize(
-            activate_free_dns=activate_free_dns,
+            activate_free_dns_request=activate_free_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,7 +247,7 @@ class FreednsApi:
 
     def _freedns_dns_activate_create_serialize(
         self,
-        activate_free_dns,
+        activate_free_dns_request,
         _request_auth,
         _content_type,
         _headers,
@@ -273,8 +273,8 @@ class FreednsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if activate_free_dns is not None:
-            _body_params = activate_free_dns
+        if activate_free_dns_request is not None:
+            _body_params = activate_free_dns_request
 
 
         # set the HTTP header `Accept`
@@ -328,7 +328,7 @@ class FreednsApi:
         self,
         domain: Annotated[StrictStr, Field(description="Domain name or PK.")],
         source: Annotated[StrictStr, Field(description="'internal' or 'external'.")],
-        dns_record_create: DNSRecordCreate,
+        dns_record_create_request: DNSRecordCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -350,8 +350,8 @@ class FreednsApi:
         :type domain: str
         :param source: 'internal' or 'external'. (required)
         :type source: str
-        :param dns_record_create: (required)
-        :type dns_record_create: DNSRecordCreate
+        :param dns_record_create_request: (required)
+        :type dns_record_create_request: DNSRecordCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -377,7 +377,7 @@ class FreednsApi:
         _param = self._freedns_dns_add_record_create_serialize(
             domain=domain,
             source=source,
-            dns_record_create=dns_record_create,
+            dns_record_create_request=dns_record_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -403,7 +403,7 @@ class FreednsApi:
         self,
         domain: Annotated[StrictStr, Field(description="Domain name or PK.")],
         source: Annotated[StrictStr, Field(description="'internal' or 'external'.")],
-        dns_record_create: DNSRecordCreate,
+        dns_record_create_request: DNSRecordCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -425,8 +425,8 @@ class FreednsApi:
         :type domain: str
         :param source: 'internal' or 'external'. (required)
         :type source: str
-        :param dns_record_create: (required)
-        :type dns_record_create: DNSRecordCreate
+        :param dns_record_create_request: (required)
+        :type dns_record_create_request: DNSRecordCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -452,7 +452,7 @@ class FreednsApi:
         _param = self._freedns_dns_add_record_create_serialize(
             domain=domain,
             source=source,
-            dns_record_create=dns_record_create,
+            dns_record_create_request=dns_record_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -478,7 +478,7 @@ class FreednsApi:
         self,
         domain: Annotated[StrictStr, Field(description="Domain name or PK.")],
         source: Annotated[StrictStr, Field(description="'internal' or 'external'.")],
-        dns_record_create: DNSRecordCreate,
+        dns_record_create_request: DNSRecordCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -500,8 +500,8 @@ class FreednsApi:
         :type domain: str
         :param source: 'internal' or 'external'. (required)
         :type source: str
-        :param dns_record_create: (required)
-        :type dns_record_create: DNSRecordCreate
+        :param dns_record_create_request: (required)
+        :type dns_record_create_request: DNSRecordCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -527,7 +527,7 @@ class FreednsApi:
         _param = self._freedns_dns_add_record_create_serialize(
             domain=domain,
             source=source,
-            dns_record_create=dns_record_create,
+            dns_record_create_request=dns_record_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -548,7 +548,7 @@ class FreednsApi:
         self,
         domain,
         source,
-        dns_record_create,
+        dns_record_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -582,8 +582,8 @@ class FreednsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if dns_record_create is not None:
-            _body_params = dns_record_create
+        if dns_record_create_request is not None:
+            _body_params = dns_record_create_request
 
 
         # set the HTTP header `Accept`
@@ -635,7 +635,7 @@ class FreednsApi:
     @validate_call
     def freedns_dns_deactivate_create(
         self,
-        deactivate_free_dns: DeactivateFreeDNS,
+        deactivate_free_dns_request: DeactivateFreeDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -653,8 +653,8 @@ class FreednsApi:
 
         Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node and, for internal domains, the original nameservers are restored.
 
-        :param deactivate_free_dns: (required)
-        :type deactivate_free_dns: DeactivateFreeDNS
+        :param deactivate_free_dns_request: (required)
+        :type deactivate_free_dns_request: DeactivateFreeDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -678,7 +678,7 @@ class FreednsApi:
         """ # noqa: E501
 
         _param = self._freedns_dns_deactivate_create_serialize(
-            deactivate_free_dns=deactivate_free_dns,
+            deactivate_free_dns_request=deactivate_free_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -702,7 +702,7 @@ class FreednsApi:
     @validate_call
     def freedns_dns_deactivate_create_with_http_info(
         self,
-        deactivate_free_dns: DeactivateFreeDNS,
+        deactivate_free_dns_request: DeactivateFreeDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -720,8 +720,8 @@ class FreednsApi:
 
         Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node and, for internal domains, the original nameservers are restored.
 
-        :param deactivate_free_dns: (required)
-        :type deactivate_free_dns: DeactivateFreeDNS
+        :param deactivate_free_dns_request: (required)
+        :type deactivate_free_dns_request: DeactivateFreeDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -745,7 +745,7 @@ class FreednsApi:
         """ # noqa: E501
 
         _param = self._freedns_dns_deactivate_create_serialize(
-            deactivate_free_dns=deactivate_free_dns,
+            deactivate_free_dns_request=deactivate_free_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -769,7 +769,7 @@ class FreednsApi:
     @validate_call
     def freedns_dns_deactivate_create_without_preload_content(
         self,
-        deactivate_free_dns: DeactivateFreeDNS,
+        deactivate_free_dns_request: DeactivateFreeDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -787,8 +787,8 @@ class FreednsApi:
 
         Deactivate FreeDNS for a domain. The DNS zone is removed from the cPanel node and, for internal domains, the original nameservers are restored.
 
-        :param deactivate_free_dns: (required)
-        :type deactivate_free_dns: DeactivateFreeDNS
+        :param deactivate_free_dns_request: (required)
+        :type deactivate_free_dns_request: DeactivateFreeDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -812,7 +812,7 @@ class FreednsApi:
         """ # noqa: E501
 
         _param = self._freedns_dns_deactivate_create_serialize(
-            deactivate_free_dns=deactivate_free_dns,
+            deactivate_free_dns_request=deactivate_free_dns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -831,7 +831,7 @@ class FreednsApi:
 
     def _freedns_dns_deactivate_create_serialize(
         self,
-        deactivate_free_dns,
+        deactivate_free_dns_request,
         _request_auth,
         _content_type,
         _headers,
@@ -857,8 +857,8 @@ class FreednsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if deactivate_free_dns is not None:
-            _body_params = deactivate_free_dns
+        if deactivate_free_dns_request is not None:
+            _body_params = deactivate_free_dns_request
 
 
         # set the HTTP header `Accept`
@@ -912,7 +912,7 @@ class FreednsApi:
         self,
         domain: Annotated[StrictStr, Field(description="Domain name or PK.")],
         source: Annotated[StrictStr, Field(description="'internal' or 'external'.")],
-        delete_record: DeleteRecord,
+        delete_record_request: DeleteRecordRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -934,8 +934,8 @@ class FreednsApi:
         :type domain: str
         :param source: 'internal' or 'external'. (required)
         :type source: str
-        :param delete_record: (required)
-        :type delete_record: DeleteRecord
+        :param delete_record_request: (required)
+        :type delete_record_request: DeleteRecordRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -961,7 +961,7 @@ class FreednsApi:
         _param = self._freedns_dns_delete_record_create_serialize(
             domain=domain,
             source=source,
-            delete_record=delete_record,
+            delete_record_request=delete_record_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -987,7 +987,7 @@ class FreednsApi:
         self,
         domain: Annotated[StrictStr, Field(description="Domain name or PK.")],
         source: Annotated[StrictStr, Field(description="'internal' or 'external'.")],
-        delete_record: DeleteRecord,
+        delete_record_request: DeleteRecordRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1009,8 +1009,8 @@ class FreednsApi:
         :type domain: str
         :param source: 'internal' or 'external'. (required)
         :type source: str
-        :param delete_record: (required)
-        :type delete_record: DeleteRecord
+        :param delete_record_request: (required)
+        :type delete_record_request: DeleteRecordRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1036,7 +1036,7 @@ class FreednsApi:
         _param = self._freedns_dns_delete_record_create_serialize(
             domain=domain,
             source=source,
-            delete_record=delete_record,
+            delete_record_request=delete_record_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1062,7 +1062,7 @@ class FreednsApi:
         self,
         domain: Annotated[StrictStr, Field(description="Domain name or PK.")],
         source: Annotated[StrictStr, Field(description="'internal' or 'external'.")],
-        delete_record: DeleteRecord,
+        delete_record_request: DeleteRecordRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1084,8 +1084,8 @@ class FreednsApi:
         :type domain: str
         :param source: 'internal' or 'external'. (required)
         :type source: str
-        :param delete_record: (required)
-        :type delete_record: DeleteRecord
+        :param delete_record_request: (required)
+        :type delete_record_request: DeleteRecordRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1111,7 +1111,7 @@ class FreednsApi:
         _param = self._freedns_dns_delete_record_create_serialize(
             domain=domain,
             source=source,
-            delete_record=delete_record,
+            delete_record_request=delete_record_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1132,7 +1132,7 @@ class FreednsApi:
         self,
         domain,
         source,
-        delete_record,
+        delete_record_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1166,8 +1166,8 @@ class FreednsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if delete_record is not None:
-            _body_params = delete_record
+        if delete_record_request is not None:
+            _body_params = delete_record_request
 
 
         # set the HTTP header `Accept`

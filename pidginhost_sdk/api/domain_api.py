@@ -20,24 +20,31 @@ from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.check_availability import CheckAvailability
-from pidginhost_sdk.models.contacts_update import ContactsUpdate
+from pidginhost_sdk.models.check_availability_request import CheckAvailabilityRequest
+from pidginhost_sdk.models.contacts_update_request import ContactsUpdateRequest
 from pidginhost_sdk.models.contacts_update_response import ContactsUpdateResponse
 from pidginhost_sdk.models.dns_glue import DNSGlue
+from pidginhost_sdk.models.dns_glue_request import DNSGlueRequest
 from pidginhost_sdk.models.domain import Domain
 from pidginhost_sdk.models.domain_cancel_response import DomainCancelResponse
 from pidginhost_sdk.models.domain_create import DomainCreate
+from pidginhost_sdk.models.domain_create_request import DomainCreateRequest
 from pidginhost_sdk.models.domain_registrant import DomainRegistrant
-from pidginhost_sdk.models.nameservers_update import NameserversUpdate
+from pidginhost_sdk.models.domain_registrant_request import DomainRegistrantRequest
+from pidginhost_sdk.models.domain_request import DomainRequest
+from pidginhost_sdk.models.nameservers_update_request import NameserversUpdateRequest
 from pidginhost_sdk.models.nameservers_update_response import NameserversUpdateResponse
 from pidginhost_sdk.models.paginated_dns_glue_list import PaginatedDNSGlueList
 from pidginhost_sdk.models.paginated_domain_list import PaginatedDomainList
 from pidginhost_sdk.models.paginated_domain_registrant_list import PaginatedDomainRegistrantList
 from pidginhost_sdk.models.paginated_tld_list import PaginatedTLDList
-from pidginhost_sdk.models.patched_domain import PatchedDomain
-from pidginhost_sdk.models.patched_domain_registrant import PatchedDomainRegistrant
+from pidginhost_sdk.models.patched_domain_registrant_request import PatchedDomainRegistrantRequest
+from pidginhost_sdk.models.patched_domain_request import PatchedDomainRequest
 from pidginhost_sdk.models.renew_domain import RenewDomain
+from pidginhost_sdk.models.renew_domain_request import RenewDomainRequest
 from pidginhost_sdk.models.tld import TLD
 from pidginhost_sdk.models.transfer_ro_domain import TransferRoDomain
+from pidginhost_sdk.models.transfer_ro_domain_request import TransferRoDomainRequest
 
 from pidginhost_sdk.api_client import ApiClient, RequestSerialized
 from pidginhost_sdk.api_response import ApiResponse
@@ -322,7 +329,7 @@ class DomainApi:
     @validate_call
     def domain_domain_check_availability_create(
         self,
-        check_availability: CheckAvailability,
+        check_availability_request: CheckAvailabilityRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -340,8 +347,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param check_availability: (required)
-        :type check_availability: CheckAvailability
+        :param check_availability_request: (required)
+        :type check_availability_request: CheckAvailabilityRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -365,7 +372,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_check_availability_create_serialize(
-            check_availability=check_availability,
+            check_availability_request=check_availability_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -389,7 +396,7 @@ class DomainApi:
     @validate_call
     def domain_domain_check_availability_create_with_http_info(
         self,
-        check_availability: CheckAvailability,
+        check_availability_request: CheckAvailabilityRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -407,8 +414,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param check_availability: (required)
-        :type check_availability: CheckAvailability
+        :param check_availability_request: (required)
+        :type check_availability_request: CheckAvailabilityRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -432,7 +439,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_check_availability_create_serialize(
-            check_availability=check_availability,
+            check_availability_request=check_availability_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,7 +463,7 @@ class DomainApi:
     @validate_call
     def domain_domain_check_availability_create_without_preload_content(
         self,
-        check_availability: CheckAvailability,
+        check_availability_request: CheckAvailabilityRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -474,8 +481,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param check_availability: (required)
-        :type check_availability: CheckAvailability
+        :param check_availability_request: (required)
+        :type check_availability_request: CheckAvailabilityRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -499,7 +506,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_check_availability_create_serialize(
-            check_availability=check_availability,
+            check_availability_request=check_availability_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -518,7 +525,7 @@ class DomainApi:
 
     def _domain_domain_check_availability_create_serialize(
         self,
-        check_availability,
+        check_availability_request,
         _request_auth,
         _content_type,
         _headers,
@@ -544,8 +551,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if check_availability is not None:
-            _body_params = check_availability
+        if check_availability_request is not None:
+            _body_params = check_availability_request
 
 
         # set the HTTP header `Accept`
@@ -598,7 +605,7 @@ class DomainApi:
     def domain_domain_contacts_create(
         self,
         domain: Annotated[str, Field(strict=True)],
-        contacts_update: ContactsUpdate,
+        contacts_update_request: ContactsUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -618,8 +625,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param contacts_update: (required)
-        :type contacts_update: ContactsUpdate
+        :param contacts_update_request: (required)
+        :type contacts_update_request: ContactsUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -644,7 +651,7 @@ class DomainApi:
 
         _param = self._domain_domain_contacts_create_serialize(
             domain=domain,
-            contacts_update=contacts_update,
+            contacts_update_request=contacts_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -669,7 +676,7 @@ class DomainApi:
     def domain_domain_contacts_create_with_http_info(
         self,
         domain: Annotated[str, Field(strict=True)],
-        contacts_update: ContactsUpdate,
+        contacts_update_request: ContactsUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -689,8 +696,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param contacts_update: (required)
-        :type contacts_update: ContactsUpdate
+        :param contacts_update_request: (required)
+        :type contacts_update_request: ContactsUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -715,7 +722,7 @@ class DomainApi:
 
         _param = self._domain_domain_contacts_create_serialize(
             domain=domain,
-            contacts_update=contacts_update,
+            contacts_update_request=contacts_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -740,7 +747,7 @@ class DomainApi:
     def domain_domain_contacts_create_without_preload_content(
         self,
         domain: Annotated[str, Field(strict=True)],
-        contacts_update: ContactsUpdate,
+        contacts_update_request: ContactsUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -760,8 +767,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param contacts_update: (required)
-        :type contacts_update: ContactsUpdate
+        :param contacts_update_request: (required)
+        :type contacts_update_request: ContactsUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -786,7 +793,7 @@ class DomainApi:
 
         _param = self._domain_domain_contacts_create_serialize(
             domain=domain,
-            contacts_update=contacts_update,
+            contacts_update_request=contacts_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -806,7 +813,7 @@ class DomainApi:
     def _domain_domain_contacts_create_serialize(
         self,
         domain,
-        contacts_update,
+        contacts_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -834,8 +841,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if contacts_update is not None:
-            _body_params = contacts_update
+        if contacts_update_request is not None:
+            _body_params = contacts_update_request
 
 
         # set the HTTP header `Accept`
@@ -887,7 +894,7 @@ class DomainApi:
     @validate_call
     def domain_domain_create(
         self,
-        domain_create: DomainCreate,
+        domain_create_request: DomainCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -905,8 +912,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param domain_create: (required)
-        :type domain_create: DomainCreate
+        :param domain_create_request: (required)
+        :type domain_create_request: DomainCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -930,7 +937,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_create_serialize(
-            domain_create=domain_create,
+            domain_create_request=domain_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -954,7 +961,7 @@ class DomainApi:
     @validate_call
     def domain_domain_create_with_http_info(
         self,
-        domain_create: DomainCreate,
+        domain_create_request: DomainCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -972,8 +979,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param domain_create: (required)
-        :type domain_create: DomainCreate
+        :param domain_create_request: (required)
+        :type domain_create_request: DomainCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -997,7 +1004,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_create_serialize(
-            domain_create=domain_create,
+            domain_create_request=domain_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1021,7 +1028,7 @@ class DomainApi:
     @validate_call
     def domain_domain_create_without_preload_content(
         self,
-        domain_create: DomainCreate,
+        domain_create_request: DomainCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1039,8 +1046,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param domain_create: (required)
-        :type domain_create: DomainCreate
+        :param domain_create_request: (required)
+        :type domain_create_request: DomainCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1064,7 +1071,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_create_serialize(
-            domain_create=domain_create,
+            domain_create_request=domain_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1083,7 +1090,7 @@ class DomainApi:
 
     def _domain_domain_create_serialize(
         self,
-        domain_create,
+        domain_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1109,8 +1116,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if domain_create is not None:
-            _body_params = domain_create
+        if domain_create_request is not None:
+            _body_params = domain_create_request
 
 
         # set the HTTP header `Accept`
@@ -1163,7 +1170,7 @@ class DomainApi:
     def domain_domain_dns_create(
         self,
         domain: Annotated[str, Field(strict=True)],
-        dns_glue: DNSGlue,
+        dns_glue_request: DNSGlueRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1183,8 +1190,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param dns_glue: (required)
-        :type dns_glue: DNSGlue
+        :param dns_glue_request: (required)
+        :type dns_glue_request: DNSGlueRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1209,7 +1216,7 @@ class DomainApi:
 
         _param = self._domain_domain_dns_create_serialize(
             domain=domain,
-            dns_glue=dns_glue,
+            dns_glue_request=dns_glue_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1234,7 +1241,7 @@ class DomainApi:
     def domain_domain_dns_create_with_http_info(
         self,
         domain: Annotated[str, Field(strict=True)],
-        dns_glue: DNSGlue,
+        dns_glue_request: DNSGlueRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1254,8 +1261,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param dns_glue: (required)
-        :type dns_glue: DNSGlue
+        :param dns_glue_request: (required)
+        :type dns_glue_request: DNSGlueRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1280,7 +1287,7 @@ class DomainApi:
 
         _param = self._domain_domain_dns_create_serialize(
             domain=domain,
-            dns_glue=dns_glue,
+            dns_glue_request=dns_glue_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1305,7 +1312,7 @@ class DomainApi:
     def domain_domain_dns_create_without_preload_content(
         self,
         domain: Annotated[str, Field(strict=True)],
-        dns_glue: DNSGlue,
+        dns_glue_request: DNSGlueRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1325,8 +1332,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param dns_glue: (required)
-        :type dns_glue: DNSGlue
+        :param dns_glue_request: (required)
+        :type dns_glue_request: DNSGlueRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1351,7 +1358,7 @@ class DomainApi:
 
         _param = self._domain_domain_dns_create_serialize(
             domain=domain,
-            dns_glue=dns_glue,
+            dns_glue_request=dns_glue_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1371,7 +1378,7 @@ class DomainApi:
     def _domain_domain_dns_create_serialize(
         self,
         domain,
-        dns_glue,
+        dns_glue_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1399,8 +1406,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if dns_glue is not None:
-            _body_params = dns_glue
+        if dns_glue_request is not None:
+            _body_params = dns_glue_request
 
 
         # set the HTTP header `Accept`
@@ -2266,7 +2273,7 @@ class DomainApi:
     def domain_domain_nameservers_create(
         self,
         domain: Annotated[str, Field(strict=True)],
-        nameservers_update: NameserversUpdate,
+        nameservers_update_request: NameserversUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2286,8 +2293,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param nameservers_update: (required)
-        :type nameservers_update: NameserversUpdate
+        :param nameservers_update_request: (required)
+        :type nameservers_update_request: NameserversUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2312,7 +2319,7 @@ class DomainApi:
 
         _param = self._domain_domain_nameservers_create_serialize(
             domain=domain,
-            nameservers_update=nameservers_update,
+            nameservers_update_request=nameservers_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2337,7 +2344,7 @@ class DomainApi:
     def domain_domain_nameservers_create_with_http_info(
         self,
         domain: Annotated[str, Field(strict=True)],
-        nameservers_update: NameserversUpdate,
+        nameservers_update_request: NameserversUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2357,8 +2364,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param nameservers_update: (required)
-        :type nameservers_update: NameserversUpdate
+        :param nameservers_update_request: (required)
+        :type nameservers_update_request: NameserversUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2383,7 +2390,7 @@ class DomainApi:
 
         _param = self._domain_domain_nameservers_create_serialize(
             domain=domain,
-            nameservers_update=nameservers_update,
+            nameservers_update_request=nameservers_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2408,7 +2415,7 @@ class DomainApi:
     def domain_domain_nameservers_create_without_preload_content(
         self,
         domain: Annotated[str, Field(strict=True)],
-        nameservers_update: NameserversUpdate,
+        nameservers_update_request: NameserversUpdateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2428,8 +2435,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param nameservers_update: (required)
-        :type nameservers_update: NameserversUpdate
+        :param nameservers_update_request: (required)
+        :type nameservers_update_request: NameserversUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2454,7 +2461,7 @@ class DomainApi:
 
         _param = self._domain_domain_nameservers_create_serialize(
             domain=domain,
-            nameservers_update=nameservers_update,
+            nameservers_update_request=nameservers_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2474,7 +2481,7 @@ class DomainApi:
     def _domain_domain_nameservers_create_serialize(
         self,
         domain,
-        nameservers_update,
+        nameservers_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2502,8 +2509,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nameservers_update is not None:
-            _body_params = nameservers_update
+        if nameservers_update_request is not None:
+            _body_params = nameservers_update_request
 
 
         # set the HTTP header `Accept`
@@ -2556,7 +2563,7 @@ class DomainApi:
     def domain_domain_partial_update(
         self,
         domain: Annotated[str, Field(strict=True)],
-        patched_domain: Optional[PatchedDomain] = None,
+        patched_domain_request: Optional[PatchedDomainRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2576,8 +2583,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param patched_domain:
-        :type patched_domain: PatchedDomain
+        :param patched_domain_request:
+        :type patched_domain_request: PatchedDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2602,7 +2609,7 @@ class DomainApi:
 
         _param = self._domain_domain_partial_update_serialize(
             domain=domain,
-            patched_domain=patched_domain,
+            patched_domain_request=patched_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2627,7 +2634,7 @@ class DomainApi:
     def domain_domain_partial_update_with_http_info(
         self,
         domain: Annotated[str, Field(strict=True)],
-        patched_domain: Optional[PatchedDomain] = None,
+        patched_domain_request: Optional[PatchedDomainRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2647,8 +2654,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param patched_domain:
-        :type patched_domain: PatchedDomain
+        :param patched_domain_request:
+        :type patched_domain_request: PatchedDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2673,7 +2680,7 @@ class DomainApi:
 
         _param = self._domain_domain_partial_update_serialize(
             domain=domain,
-            patched_domain=patched_domain,
+            patched_domain_request=patched_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2698,7 +2705,7 @@ class DomainApi:
     def domain_domain_partial_update_without_preload_content(
         self,
         domain: Annotated[str, Field(strict=True)],
-        patched_domain: Optional[PatchedDomain] = None,
+        patched_domain_request: Optional[PatchedDomainRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2718,8 +2725,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param patched_domain:
-        :type patched_domain: PatchedDomain
+        :param patched_domain_request:
+        :type patched_domain_request: PatchedDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2744,7 +2751,7 @@ class DomainApi:
 
         _param = self._domain_domain_partial_update_serialize(
             domain=domain,
-            patched_domain=patched_domain,
+            patched_domain_request=patched_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2764,7 +2771,7 @@ class DomainApi:
     def _domain_domain_partial_update_serialize(
         self,
         domain,
-        patched_domain,
+        patched_domain_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2792,8 +2799,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_domain is not None:
-            _body_params = patched_domain
+        if patched_domain_request is not None:
+            _body_params = patched_domain_request
 
 
         # set the HTTP header `Accept`
@@ -2846,7 +2853,7 @@ class DomainApi:
     def domain_domain_renew_create(
         self,
         domain: Annotated[str, Field(strict=True)],
-        renew_domain: RenewDomain,
+        renew_domain_request: RenewDomainRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2866,8 +2873,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param renew_domain: (required)
-        :type renew_domain: RenewDomain
+        :param renew_domain_request: (required)
+        :type renew_domain_request: RenewDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2892,7 +2899,7 @@ class DomainApi:
 
         _param = self._domain_domain_renew_create_serialize(
             domain=domain,
-            renew_domain=renew_domain,
+            renew_domain_request=renew_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2917,7 +2924,7 @@ class DomainApi:
     def domain_domain_renew_create_with_http_info(
         self,
         domain: Annotated[str, Field(strict=True)],
-        renew_domain: RenewDomain,
+        renew_domain_request: RenewDomainRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2937,8 +2944,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param renew_domain: (required)
-        :type renew_domain: RenewDomain
+        :param renew_domain_request: (required)
+        :type renew_domain_request: RenewDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2963,7 +2970,7 @@ class DomainApi:
 
         _param = self._domain_domain_renew_create_serialize(
             domain=domain,
-            renew_domain=renew_domain,
+            renew_domain_request=renew_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2988,7 +2995,7 @@ class DomainApi:
     def domain_domain_renew_create_without_preload_content(
         self,
         domain: Annotated[str, Field(strict=True)],
-        renew_domain: RenewDomain,
+        renew_domain_request: RenewDomainRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3008,8 +3015,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param renew_domain: (required)
-        :type renew_domain: RenewDomain
+        :param renew_domain_request: (required)
+        :type renew_domain_request: RenewDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3034,7 +3041,7 @@ class DomainApi:
 
         _param = self._domain_domain_renew_create_serialize(
             domain=domain,
-            renew_domain=renew_domain,
+            renew_domain_request=renew_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3054,7 +3061,7 @@ class DomainApi:
     def _domain_domain_renew_create_serialize(
         self,
         domain,
-        renew_domain,
+        renew_domain_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3082,8 +3089,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if renew_domain is not None:
-            _body_params = renew_domain
+        if renew_domain_request is not None:
+            _body_params = renew_domain_request
 
 
         # set the HTTP header `Accept`
@@ -3397,7 +3404,7 @@ class DomainApi:
     @validate_call
     def domain_domain_transfer_ro_domain_create(
         self,
-        transfer_ro_domain: TransferRoDomain,
+        transfer_ro_domain_request: TransferRoDomainRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3415,8 +3422,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param transfer_ro_domain: (required)
-        :type transfer_ro_domain: TransferRoDomain
+        :param transfer_ro_domain_request: (required)
+        :type transfer_ro_domain_request: TransferRoDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3440,7 +3447,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_transfer_ro_domain_create_serialize(
-            transfer_ro_domain=transfer_ro_domain,
+            transfer_ro_domain_request=transfer_ro_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3464,7 +3471,7 @@ class DomainApi:
     @validate_call
     def domain_domain_transfer_ro_domain_create_with_http_info(
         self,
-        transfer_ro_domain: TransferRoDomain,
+        transfer_ro_domain_request: TransferRoDomainRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3482,8 +3489,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param transfer_ro_domain: (required)
-        :type transfer_ro_domain: TransferRoDomain
+        :param transfer_ro_domain_request: (required)
+        :type transfer_ro_domain_request: TransferRoDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3507,7 +3514,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_transfer_ro_domain_create_serialize(
-            transfer_ro_domain=transfer_ro_domain,
+            transfer_ro_domain_request=transfer_ro_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3531,7 +3538,7 @@ class DomainApi:
     @validate_call
     def domain_domain_transfer_ro_domain_create_without_preload_content(
         self,
-        transfer_ro_domain: TransferRoDomain,
+        transfer_ro_domain_request: TransferRoDomainRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3549,8 +3556,8 @@ class DomainApi:
 
         Manage your domains
 
-        :param transfer_ro_domain: (required)
-        :type transfer_ro_domain: TransferRoDomain
+        :param transfer_ro_domain_request: (required)
+        :type transfer_ro_domain_request: TransferRoDomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3574,7 +3581,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_domain_transfer_ro_domain_create_serialize(
-            transfer_ro_domain=transfer_ro_domain,
+            transfer_ro_domain_request=transfer_ro_domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3593,7 +3600,7 @@ class DomainApi:
 
     def _domain_domain_transfer_ro_domain_create_serialize(
         self,
-        transfer_ro_domain,
+        transfer_ro_domain_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3619,8 +3626,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if transfer_ro_domain is not None:
-            _body_params = transfer_ro_domain
+        if transfer_ro_domain_request is not None:
+            _body_params = transfer_ro_domain_request
 
 
         # set the HTTP header `Accept`
@@ -3673,7 +3680,7 @@ class DomainApi:
     def domain_domain_update(
         self,
         domain: Annotated[str, Field(strict=True)],
-        domain2: Optional[Domain] = None,
+        domain_request: Optional[DomainRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3693,8 +3700,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param domain2:
-        :type domain2: Domain
+        :param domain_request:
+        :type domain_request: DomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3719,7 +3726,7 @@ class DomainApi:
 
         _param = self._domain_domain_update_serialize(
             domain=domain,
-            domain2=domain2,
+            domain_request=domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3744,7 +3751,7 @@ class DomainApi:
     def domain_domain_update_with_http_info(
         self,
         domain: Annotated[str, Field(strict=True)],
-        domain2: Optional[Domain] = None,
+        domain_request: Optional[DomainRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3764,8 +3771,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param domain2:
-        :type domain2: Domain
+        :param domain_request:
+        :type domain_request: DomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3790,7 +3797,7 @@ class DomainApi:
 
         _param = self._domain_domain_update_serialize(
             domain=domain,
-            domain2=domain2,
+            domain_request=domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3815,7 +3822,7 @@ class DomainApi:
     def domain_domain_update_without_preload_content(
         self,
         domain: Annotated[str, Field(strict=True)],
-        domain2: Optional[Domain] = None,
+        domain_request: Optional[DomainRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3835,8 +3842,8 @@ class DomainApi:
 
         :param domain: (required)
         :type domain: str
-        :param domain2:
-        :type domain2: Domain
+        :param domain_request:
+        :type domain_request: DomainRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3861,7 +3868,7 @@ class DomainApi:
 
         _param = self._domain_domain_update_serialize(
             domain=domain,
-            domain2=domain2,
+            domain_request=domain_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3881,7 +3888,7 @@ class DomainApi:
     def _domain_domain_update_serialize(
         self,
         domain,
-        domain2,
+        domain_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3909,8 +3916,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if domain2 is not None:
-            _body_params = domain2
+        if domain_request is not None:
+            _body_params = domain_request
 
 
         # set the HTTP header `Accept`
@@ -3962,7 +3969,7 @@ class DomainApi:
     @validate_call
     def domain_registrants_create(
         self,
-        domain_registrant: DomainRegistrant,
+        domain_registrant_request: DomainRegistrantRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3980,8 +3987,8 @@ class DomainApi:
 
         Manage your domain registrant views
 
-        :param domain_registrant: (required)
-        :type domain_registrant: DomainRegistrant
+        :param domain_registrant_request: (required)
+        :type domain_registrant_request: DomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4005,7 +4012,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_registrants_create_serialize(
-            domain_registrant=domain_registrant,
+            domain_registrant_request=domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4029,7 +4036,7 @@ class DomainApi:
     @validate_call
     def domain_registrants_create_with_http_info(
         self,
-        domain_registrant: DomainRegistrant,
+        domain_registrant_request: DomainRegistrantRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4047,8 +4054,8 @@ class DomainApi:
 
         Manage your domain registrant views
 
-        :param domain_registrant: (required)
-        :type domain_registrant: DomainRegistrant
+        :param domain_registrant_request: (required)
+        :type domain_registrant_request: DomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4072,7 +4079,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_registrants_create_serialize(
-            domain_registrant=domain_registrant,
+            domain_registrant_request=domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4096,7 +4103,7 @@ class DomainApi:
     @validate_call
     def domain_registrants_create_without_preload_content(
         self,
-        domain_registrant: DomainRegistrant,
+        domain_registrant_request: DomainRegistrantRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4114,8 +4121,8 @@ class DomainApi:
 
         Manage your domain registrant views
 
-        :param domain_registrant: (required)
-        :type domain_registrant: DomainRegistrant
+        :param domain_registrant_request: (required)
+        :type domain_registrant_request: DomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4139,7 +4146,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_registrants_create_serialize(
-            domain_registrant=domain_registrant,
+            domain_registrant_request=domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4158,7 +4165,7 @@ class DomainApi:
 
     def _domain_registrants_create_serialize(
         self,
-        domain_registrant,
+        domain_registrant_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4184,8 +4191,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if domain_registrant is not None:
-            _body_params = domain_registrant
+        if domain_registrant_request is not None:
+            _body_params = domain_registrant_request
 
 
         # set the HTTP header `Accept`
@@ -4757,7 +4764,7 @@ class DomainApi:
     def domain_registrants_partial_update(
         self,
         id: StrictStr,
-        patched_domain_registrant: Optional[PatchedDomainRegistrant] = None,
+        patched_domain_registrant_request: Optional[PatchedDomainRegistrantRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4777,8 +4784,8 @@ class DomainApi:
 
         :param id: (required)
         :type id: str
-        :param patched_domain_registrant:
-        :type patched_domain_registrant: PatchedDomainRegistrant
+        :param patched_domain_registrant_request:
+        :type patched_domain_registrant_request: PatchedDomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4803,7 +4810,7 @@ class DomainApi:
 
         _param = self._domain_registrants_partial_update_serialize(
             id=id,
-            patched_domain_registrant=patched_domain_registrant,
+            patched_domain_registrant_request=patched_domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4828,7 +4835,7 @@ class DomainApi:
     def domain_registrants_partial_update_with_http_info(
         self,
         id: StrictStr,
-        patched_domain_registrant: Optional[PatchedDomainRegistrant] = None,
+        patched_domain_registrant_request: Optional[PatchedDomainRegistrantRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4848,8 +4855,8 @@ class DomainApi:
 
         :param id: (required)
         :type id: str
-        :param patched_domain_registrant:
-        :type patched_domain_registrant: PatchedDomainRegistrant
+        :param patched_domain_registrant_request:
+        :type patched_domain_registrant_request: PatchedDomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4874,7 +4881,7 @@ class DomainApi:
 
         _param = self._domain_registrants_partial_update_serialize(
             id=id,
-            patched_domain_registrant=patched_domain_registrant,
+            patched_domain_registrant_request=patched_domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4899,7 +4906,7 @@ class DomainApi:
     def domain_registrants_partial_update_without_preload_content(
         self,
         id: StrictStr,
-        patched_domain_registrant: Optional[PatchedDomainRegistrant] = None,
+        patched_domain_registrant_request: Optional[PatchedDomainRegistrantRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4919,8 +4926,8 @@ class DomainApi:
 
         :param id: (required)
         :type id: str
-        :param patched_domain_registrant:
-        :type patched_domain_registrant: PatchedDomainRegistrant
+        :param patched_domain_registrant_request:
+        :type patched_domain_registrant_request: PatchedDomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4945,7 +4952,7 @@ class DomainApi:
 
         _param = self._domain_registrants_partial_update_serialize(
             id=id,
-            patched_domain_registrant=patched_domain_registrant,
+            patched_domain_registrant_request=patched_domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4965,7 +4972,7 @@ class DomainApi:
     def _domain_registrants_partial_update_serialize(
         self,
         id,
-        patched_domain_registrant,
+        patched_domain_registrant_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4993,8 +5000,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_domain_registrant is not None:
-            _body_params = patched_domain_registrant
+        if patched_domain_registrant_request is not None:
+            _body_params = patched_domain_registrant_request
 
 
         # set the HTTP header `Accept`
@@ -5309,7 +5316,7 @@ class DomainApi:
     def domain_registrants_update(
         self,
         id: StrictStr,
-        domain_registrant: DomainRegistrant,
+        domain_registrant_request: DomainRegistrantRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5329,8 +5336,8 @@ class DomainApi:
 
         :param id: (required)
         :type id: str
-        :param domain_registrant: (required)
-        :type domain_registrant: DomainRegistrant
+        :param domain_registrant_request: (required)
+        :type domain_registrant_request: DomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5355,7 +5362,7 @@ class DomainApi:
 
         _param = self._domain_registrants_update_serialize(
             id=id,
-            domain_registrant=domain_registrant,
+            domain_registrant_request=domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5380,7 +5387,7 @@ class DomainApi:
     def domain_registrants_update_with_http_info(
         self,
         id: StrictStr,
-        domain_registrant: DomainRegistrant,
+        domain_registrant_request: DomainRegistrantRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5400,8 +5407,8 @@ class DomainApi:
 
         :param id: (required)
         :type id: str
-        :param domain_registrant: (required)
-        :type domain_registrant: DomainRegistrant
+        :param domain_registrant_request: (required)
+        :type domain_registrant_request: DomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5426,7 +5433,7 @@ class DomainApi:
 
         _param = self._domain_registrants_update_serialize(
             id=id,
-            domain_registrant=domain_registrant,
+            domain_registrant_request=domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5451,7 +5458,7 @@ class DomainApi:
     def domain_registrants_update_without_preload_content(
         self,
         id: StrictStr,
-        domain_registrant: DomainRegistrant,
+        domain_registrant_request: DomainRegistrantRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5471,8 +5478,8 @@ class DomainApi:
 
         :param id: (required)
         :type id: str
-        :param domain_registrant: (required)
-        :type domain_registrant: DomainRegistrant
+        :param domain_registrant_request: (required)
+        :type domain_registrant_request: DomainRegistrantRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5497,7 +5504,7 @@ class DomainApi:
 
         _param = self._domain_registrants_update_serialize(
             id=id,
-            domain_registrant=domain_registrant,
+            domain_registrant_request=domain_registrant_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5517,7 +5524,7 @@ class DomainApi:
     def _domain_registrants_update_serialize(
         self,
         id,
-        domain_registrant,
+        domain_registrant_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5545,8 +5552,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if domain_registrant is not None:
-            _body_params = domain_registrant
+        if domain_registrant_request is not None:
+            _body_params = domain_registrant_request
 
 
         # set the HTTP header `Accept`

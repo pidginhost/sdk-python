@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **support_tickets_create**
-> TicketDetail support_tickets_create(ticket_create)
+> TicketDetail support_tickets_create(ticket_create_request)
 
 Create a new support ticket.
 
@@ -188,7 +188,7 @@ Create a new support ticket.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.ticket_create import TicketCreate
+from pidginhost_sdk.models.ticket_create_request import TicketCreateRequest
 from pidginhost_sdk.models.ticket_detail import TicketDetail
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -220,10 +220,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.SupportApi(api_client)
-    ticket_create = pidginhost_sdk.TicketCreate() # TicketCreate | 
+    ticket_create_request = pidginhost_sdk.TicketCreateRequest() # TicketCreateRequest | 
 
     try:
-        api_response = api_instance.support_tickets_create(ticket_create)
+        api_response = api_instance.support_tickets_create(ticket_create_request)
         print("The response of SupportApi->support_tickets_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -237,7 +237,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ticket_create** | [**TicketCreate**](TicketCreate.md)|  | 
+ **ticket_create_request** | [**TicketCreateRequest**](TicketCreateRequest.md)|  | 
 
 ### Return type
 
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **support_tickets_reply_create**
-> TicketReplyResponse support_tickets_reply_create(id, ticket_reply)
+> TicketReplyResponse support_tickets_reply_create(id, ticket_reply_request)
 
 Reply to a ticket.
 
@@ -522,7 +522,7 @@ Reply to a ticket.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.ticket_reply import TicketReply
+from pidginhost_sdk.models.ticket_reply_request import TicketReplyRequest
 from pidginhost_sdk.models.ticket_reply_response import TicketReplyResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -555,10 +555,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.SupportApi(api_client)
     id = 'id_example' # str | 
-    ticket_reply = pidginhost_sdk.TicketReply() # TicketReply | 
+    ticket_reply_request = pidginhost_sdk.TicketReplyRequest() # TicketReplyRequest | 
 
     try:
-        api_response = api_instance.support_tickets_reply_create(id, ticket_reply)
+        api_response = api_instance.support_tickets_reply_create(id, ticket_reply_request)
         print("The response of SupportApi->support_tickets_reply_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -573,7 +573,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **ticket_reply** | [**TicketReply**](TicketReply.md)|  | 
+ **ticket_reply_request** | [**TicketReplyRequest**](TicketReplyRequest.md)|  | 
 
 ### Return type
 

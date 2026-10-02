@@ -54,9 +54,7 @@ class TestPaginatedServerList(unittest.TestCase):
                         destroy_protection = True, 
                         ha_enabled = True, 
                         custom_os = True, 
-                        networks = {
-                            'key' : null
-                            }, 
+                        networks = null, 
                         rescue_mode = True, 
                         boot_iso = '', 
                         rescue_supported = True, )
@@ -80,9 +78,7 @@ class TestPaginatedServerList(unittest.TestCase):
                         destroy_protection = True, 
                         ha_enabled = True, 
                         custom_os = True, 
-                        networks = {
-                            'key' : null
-                            }, 
+                        networks = null, 
                         rescue_mode = True, 
                         boot_iso = '', 
                         rescue_supported = True, )

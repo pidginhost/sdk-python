@@ -19,9 +19,14 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from pidginhost_sdk.models.cluster_add import ClusterAdd
+from pidginhost_sdk.models.cluster_add_request import ClusterAddRequest
 from pidginhost_sdk.models.cluster_add_response import ClusterAddResponse
 from pidginhost_sdk.models.cluster_detail import ClusterDetail
+from pidginhost_sdk.models.cluster_detail_request import ClusterDetailRequest
+from pidginhost_sdk.models.cluster_encryption import ClusterEncryption
+from pidginhost_sdk.models.cluster_encryption_operation import ClusterEncryptionOperation
+from pidginhost_sdk.models.cluster_encryption_reconcile_request import ClusterEncryptionReconcileRequest
+from pidginhost_sdk.models.cluster_encryption_request import ClusterEncryptionRequest
 from pidginhost_sdk.models.connect_vm_request import ConnectVMRequest
 from pidginhost_sdk.models.connect_vm_response import ConnectVMResponse
 from pidginhost_sdk.models.connected_vms_response import ConnectedVMsResponse
@@ -31,35 +36,49 @@ from pidginhost_sdk.models.eligible_vms_response import EligibleVMsResponse
 from pidginhost_sdk.models.feature_upgrade_request import FeatureUpgradeRequest
 from pidginhost_sdk.models.feature_upgrade_response import FeatureUpgradeResponse
 from pidginhost_sdk.models.http_route import HTTPRoute
+from pidginhost_sdk.models.http_route_request import HTTPRouteRequest
 from pidginhost_sdk.models.k8s_port_forward import K8sPortForward
+from pidginhost_sdk.models.k8s_port_forward_request import K8sPortForwardRequest
 from pidginhost_sdk.models.kube_upgrade_response import KubeUpgradeResponse
 from pidginhost_sdk.models.lb_firewall_rule import LBFirewallRule
+from pidginhost_sdk.models.lb_firewall_rule_request import LBFirewallRuleRequest
+from pidginhost_sdk.models.lb_upgrade_plan_response import LBUpgradePlanResponse
+from pidginhost_sdk.models.lb_upgrade_request import LBUpgradeRequest
 from pidginhost_sdk.models.node_metrics_response import NodeMetricsResponse
+from pidginhost_sdk.models.node_operation import NodeOperation
+from pidginhost_sdk.models.node_operation_reboot_request import NodeOperationRebootRequest
+from pidginhost_sdk.models.node_operation_retry_request import NodeOperationRetryRequest
 from pidginhost_sdk.models.node_rrd_response import NodeRRDResponse
 from pidginhost_sdk.models.paginated_cluster_detail_list import PaginatedClusterDetailList
 from pidginhost_sdk.models.paginated_cluster_type_list import PaginatedClusterTypeList
 from pidginhost_sdk.models.paginated_http_route_list import PaginatedHTTPRouteList
 from pidginhost_sdk.models.paginated_k8s_port_forward_list import PaginatedK8sPortForwardList
 from pidginhost_sdk.models.paginated_lb_firewall_rule_list import PaginatedLBFirewallRuleList
+from pidginhost_sdk.models.paginated_node_operation_list import PaginatedNodeOperationList
+from pidginhost_sdk.models.paginated_pool_removal_journal_list import PaginatedPoolRemovalJournalList
 from pidginhost_sdk.models.paginated_resource_pool_list import PaginatedResourcePoolList
 from pidginhost_sdk.models.paginated_resource_pool_node_list import PaginatedResourcePoolNodeList
 from pidginhost_sdk.models.paginated_tcp_route_list import PaginatedTCPRouteList
 from pidginhost_sdk.models.paginated_udp_route_list import PaginatedUDPRouteList
-from pidginhost_sdk.models.patched_cluster_detail import PatchedClusterDetail
-from pidginhost_sdk.models.patched_http_route import PatchedHTTPRoute
-from pidginhost_sdk.models.patched_k8s_port_forward import PatchedK8sPortForward
-from pidginhost_sdk.models.patched_lb_firewall_rule import PatchedLBFirewallRule
-from pidginhost_sdk.models.patched_resource_pool import PatchedResourcePool
-from pidginhost_sdk.models.patched_tcp_route import PatchedTCPRoute
-from pidginhost_sdk.models.patched_udp_route import PatchedUDPRoute
+from pidginhost_sdk.models.patched_cluster_detail_request import PatchedClusterDetailRequest
+from pidginhost_sdk.models.patched_http_route_request import PatchedHTTPRouteRequest
+from pidginhost_sdk.models.patched_k8s_port_forward_request import PatchedK8sPortForwardRequest
+from pidginhost_sdk.models.patched_lb_firewall_rule_request import PatchedLBFirewallRuleRequest
+from pidginhost_sdk.models.patched_resource_pool_request import PatchedResourcePoolRequest
+from pidginhost_sdk.models.patched_tcp_route_request import PatchedTCPRouteRequest
+from pidginhost_sdk.models.patched_udp_route_request import PatchedUDPRouteRequest
+from pidginhost_sdk.models.pool_removal_journal import PoolRemovalJournal
 from pidginhost_sdk.models.resource_pool import ResourcePool
-from pidginhost_sdk.models.resource_pool_add import ResourcePoolAdd
+from pidginhost_sdk.models.resource_pool_add_request import ResourcePoolAddRequest
 from pidginhost_sdk.models.resource_pool_add_response import ResourcePoolAddResponse
 from pidginhost_sdk.models.resource_pool_node import ResourcePoolNode
+from pidginhost_sdk.models.resource_pool_request import ResourcePoolRequest
 from pidginhost_sdk.models.tcp_route import TCPRoute
+from pidginhost_sdk.models.tcp_route_request import TCPRouteRequest
 from pidginhost_sdk.models.talos_upgrade_response import TalosUpgradeResponse
 from pidginhost_sdk.models.toggle_cloud_vm_access_response import ToggleCloudVMAccessResponse
 from pidginhost_sdk.models.udp_route import UDPRoute
+from pidginhost_sdk.models.udp_route_request import UDPRouteRequest
 
 from pidginhost_sdk.api_client import ApiClient, RequestSerialized
 from pidginhost_sdk.api_response import ApiResponse
@@ -898,7 +917,7 @@ class KubernetesApi:
     @validate_call
     def kubernetes_clusters_create(
         self,
-        cluster_add: ClusterAdd,
+        cluster_add_request: ClusterAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -916,8 +935,8 @@ class KubernetesApi:
 
         Create new k8s cluster
 
-        :param cluster_add: (required)
-        :type cluster_add: ClusterAdd
+        :param cluster_add_request: (required)
+        :type cluster_add_request: ClusterAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -941,7 +960,7 @@ class KubernetesApi:
         """ # noqa: E501
 
         _param = self._kubernetes_clusters_create_serialize(
-            cluster_add=cluster_add,
+            cluster_add_request=cluster_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -965,7 +984,7 @@ class KubernetesApi:
     @validate_call
     def kubernetes_clusters_create_with_http_info(
         self,
-        cluster_add: ClusterAdd,
+        cluster_add_request: ClusterAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -983,8 +1002,8 @@ class KubernetesApi:
 
         Create new k8s cluster
 
-        :param cluster_add: (required)
-        :type cluster_add: ClusterAdd
+        :param cluster_add_request: (required)
+        :type cluster_add_request: ClusterAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1008,7 +1027,7 @@ class KubernetesApi:
         """ # noqa: E501
 
         _param = self._kubernetes_clusters_create_serialize(
-            cluster_add=cluster_add,
+            cluster_add_request=cluster_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1032,7 +1051,7 @@ class KubernetesApi:
     @validate_call
     def kubernetes_clusters_create_without_preload_content(
         self,
-        cluster_add: ClusterAdd,
+        cluster_add_request: ClusterAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1050,8 +1069,8 @@ class KubernetesApi:
 
         Create new k8s cluster
 
-        :param cluster_add: (required)
-        :type cluster_add: ClusterAdd
+        :param cluster_add_request: (required)
+        :type cluster_add_request: ClusterAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1075,7 +1094,7 @@ class KubernetesApi:
         """ # noqa: E501
 
         _param = self._kubernetes_clusters_create_serialize(
-            cluster_add=cluster_add,
+            cluster_add_request=cluster_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1094,7 +1113,7 @@ class KubernetesApi:
 
     def _kubernetes_clusters_create_serialize(
         self,
-        cluster_add,
+        cluster_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1120,8 +1139,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if cluster_add is not None:
-            _body_params = cluster_add
+        if cluster_add_request is not None:
+            _body_params = cluster_add_request
 
 
         # set the HTTP header `Accept`
@@ -1978,10 +1997,1165 @@ class KubernetesApi:
 
 
     @validate_call
+    def kubernetes_clusters_encryption_create(
+        self,
+        id: StrictStr,
+        cluster_encryption_request: ClusterEncryptionRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ClusterEncryptionOperation:
+        """kubernetes_clusters_encryption_create
+
+        Enable or disable WireGuard encryption for cluster traffic.
+
+        :param id: (required)
+        :type id: str
+        :param cluster_encryption_request: (required)
+        :type cluster_encryption_request: ClusterEncryptionRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_create_serialize(
+            id=id,
+            cluster_encryption_request=cluster_encryption_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ClusterEncryptionOperation",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_create_with_http_info(
+        self,
+        id: StrictStr,
+        cluster_encryption_request: ClusterEncryptionRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ClusterEncryptionOperation]:
+        """kubernetes_clusters_encryption_create
+
+        Enable or disable WireGuard encryption for cluster traffic.
+
+        :param id: (required)
+        :type id: str
+        :param cluster_encryption_request: (required)
+        :type cluster_encryption_request: ClusterEncryptionRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_create_serialize(
+            id=id,
+            cluster_encryption_request=cluster_encryption_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ClusterEncryptionOperation",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_create_without_preload_content(
+        self,
+        id: StrictStr,
+        cluster_encryption_request: ClusterEncryptionRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_encryption_create
+
+        Enable or disable WireGuard encryption for cluster traffic.
+
+        :param id: (required)
+        :type id: str
+        :param cluster_encryption_request: (required)
+        :type cluster_encryption_request: ClusterEncryptionRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_create_serialize(
+            id=id,
+            cluster_encryption_request=cluster_encryption_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ClusterEncryptionOperation",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_encryption_create_serialize(
+        self,
+        id,
+        cluster_encryption_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if cluster_encryption_request is not None:
+            _body_params = cluster_encryption_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{id}/encryption/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_recheck_create(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ClusterEncryption:
+        """kubernetes_clusters_encryption_recheck_create
+
+        Re-count the workloads that still predate the encryption change.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_recheck_create_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ClusterEncryption",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+            '429': "ClusterEncryptionError",
+            '503': "ClusterEncryptionRefusal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_recheck_create_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ClusterEncryption]:
+        """kubernetes_clusters_encryption_recheck_create
+
+        Re-count the workloads that still predate the encryption change.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_recheck_create_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ClusterEncryption",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+            '429': "ClusterEncryptionError",
+            '503': "ClusterEncryptionRefusal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_recheck_create_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_encryption_recheck_create
+
+        Re-count the workloads that still predate the encryption change.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_recheck_create_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ClusterEncryption",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+            '429': "ClusterEncryptionError",
+            '503': "ClusterEncryptionRefusal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_encryption_recheck_create_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{id}/encryption/recheck/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_reconcile_create(
+        self,
+        id: StrictStr,
+        cluster_encryption_reconcile_request: ClusterEncryptionReconcileRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ClusterEncryptionOperation:
+        """kubernetes_clusters_encryption_reconcile_create
+
+        Staff only: resolve a cluster whose encryption state is unknown.
+
+        :param id: (required)
+        :type id: str
+        :param cluster_encryption_reconcile_request: (required)
+        :type cluster_encryption_reconcile_request: ClusterEncryptionReconcileRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_reconcile_create_serialize(
+            id=id,
+            cluster_encryption_reconcile_request=cluster_encryption_reconcile_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ClusterEncryptionOperation",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_reconcile_create_with_http_info(
+        self,
+        id: StrictStr,
+        cluster_encryption_reconcile_request: ClusterEncryptionReconcileRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ClusterEncryptionOperation]:
+        """kubernetes_clusters_encryption_reconcile_create
+
+        Staff only: resolve a cluster whose encryption state is unknown.
+
+        :param id: (required)
+        :type id: str
+        :param cluster_encryption_reconcile_request: (required)
+        :type cluster_encryption_reconcile_request: ClusterEncryptionReconcileRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_reconcile_create_serialize(
+            id=id,
+            cluster_encryption_reconcile_request=cluster_encryption_reconcile_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ClusterEncryptionOperation",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_reconcile_create_without_preload_content(
+        self,
+        id: StrictStr,
+        cluster_encryption_reconcile_request: ClusterEncryptionReconcileRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_encryption_reconcile_create
+
+        Staff only: resolve a cluster whose encryption state is unknown.
+
+        :param id: (required)
+        :type id: str
+        :param cluster_encryption_reconcile_request: (required)
+        :type cluster_encryption_reconcile_request: ClusterEncryptionReconcileRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_reconcile_create_serialize(
+            id=id,
+            cluster_encryption_reconcile_request=cluster_encryption_reconcile_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ClusterEncryptionOperation",
+            '400': "ClusterEncryptionError",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_encryption_reconcile_create_serialize(
+        self,
+        id,
+        cluster_encryption_reconcile_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if cluster_encryption_reconcile_request is not None:
+            _body_params = cluster_encryption_reconcile_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{id}/encryption/reconcile/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_retrieve(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ClusterEncryption:
+        """kubernetes_clusters_encryption_retrieve
+
+        Read the cluster's encryption state, restart gate and per-node verification evidence.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_retrieve_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ClusterEncryption",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_retrieve_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ClusterEncryption]:
+        """kubernetes_clusters_encryption_retrieve
+
+        Read the cluster's encryption state, restart gate and per-node verification evidence.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_retrieve_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ClusterEncryption",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_encryption_retrieve_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_encryption_retrieve
+
+        Read the cluster's encryption state, restart gate and per-node verification evidence.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_encryption_retrieve_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ClusterEncryption",
+            '403': "ClusterEncryptionError",
+            '404': "ClusterEncryptionError",
+            '409': "ClusterEncryptionError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_encryption_retrieve_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/kubernetes/clusters/{id}/encryption/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def kubernetes_clusters_httproutes_create(
         self,
         cluster_id: StrictInt,
-        http_route: HTTPRoute,
+        http_route_request: HTTPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2001,8 +3175,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param http_route: (required)
-        :type http_route: HTTPRoute
+        :param http_route_request: (required)
+        :type http_route_request: HTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2027,7 +3201,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_httproutes_create_serialize(
             cluster_id=cluster_id,
-            http_route=http_route,
+            http_route_request=http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2052,7 +3226,7 @@ class KubernetesApi:
     def kubernetes_clusters_httproutes_create_with_http_info(
         self,
         cluster_id: StrictInt,
-        http_route: HTTPRoute,
+        http_route_request: HTTPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2072,8 +3246,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param http_route: (required)
-        :type http_route: HTTPRoute
+        :param http_route_request: (required)
+        :type http_route_request: HTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2098,7 +3272,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_httproutes_create_serialize(
             cluster_id=cluster_id,
-            http_route=http_route,
+            http_route_request=http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2123,7 +3297,7 @@ class KubernetesApi:
     def kubernetes_clusters_httproutes_create_without_preload_content(
         self,
         cluster_id: StrictInt,
-        http_route: HTTPRoute,
+        http_route_request: HTTPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2143,8 +3317,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param http_route: (required)
-        :type http_route: HTTPRoute
+        :param http_route_request: (required)
+        :type http_route_request: HTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2169,7 +3343,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_httproutes_create_serialize(
             cluster_id=cluster_id,
-            http_route=http_route,
+            http_route_request=http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2189,7 +3363,7 @@ class KubernetesApi:
     def _kubernetes_clusters_httproutes_create_serialize(
         self,
         cluster_id,
-        http_route,
+        http_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2217,8 +3391,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if http_route is not None:
-            _body_params = http_route
+        if http_route_request is not None:
+            _body_params = http_route_request
 
 
         # set the HTTP header `Accept`
@@ -2821,7 +3995,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_http_route: Optional[PatchedHTTPRoute] = None,
+        patched_http_route_request: Optional[PatchedHTTPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2843,8 +4017,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_http_route:
-        :type patched_http_route: PatchedHTTPRoute
+        :param patched_http_route_request:
+        :type patched_http_route_request: PatchedHTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2870,7 +4044,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_httproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_http_route=patched_http_route,
+            patched_http_route_request=patched_http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2896,7 +4070,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_http_route: Optional[PatchedHTTPRoute] = None,
+        patched_http_route_request: Optional[PatchedHTTPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2918,8 +4092,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_http_route:
-        :type patched_http_route: PatchedHTTPRoute
+        :param patched_http_route_request:
+        :type patched_http_route_request: PatchedHTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2945,7 +4119,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_httproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_http_route=patched_http_route,
+            patched_http_route_request=patched_http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2971,7 +4145,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_http_route: Optional[PatchedHTTPRoute] = None,
+        patched_http_route_request: Optional[PatchedHTTPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2993,8 +4167,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_http_route:
-        :type patched_http_route: PatchedHTTPRoute
+        :param patched_http_route_request:
+        :type patched_http_route_request: PatchedHTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3020,7 +4194,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_httproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_http_route=patched_http_route,
+            patched_http_route_request=patched_http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3041,7 +4215,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        patched_http_route,
+        patched_http_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3071,8 +4245,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_http_route is not None:
-            _body_params = patched_http_route
+        if patched_http_route_request is not None:
+            _body_params = patched_http_route_request
 
 
         # set the HTTP header `Accept`
@@ -3403,7 +4577,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        http_route: HTTPRoute,
+        http_route_request: HTTPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3425,8 +4599,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param http_route: (required)
-        :type http_route: HTTPRoute
+        :param http_route_request: (required)
+        :type http_route_request: HTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3452,7 +4626,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_httproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            http_route=http_route,
+            http_route_request=http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3478,7 +4652,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        http_route: HTTPRoute,
+        http_route_request: HTTPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3500,8 +4674,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param http_route: (required)
-        :type http_route: HTTPRoute
+        :param http_route_request: (required)
+        :type http_route_request: HTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3527,7 +4701,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_httproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            http_route=http_route,
+            http_route_request=http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3553,7 +4727,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        http_route: HTTPRoute,
+        http_route_request: HTTPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3575,8 +4749,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param http_route: (required)
-        :type http_route: HTTPRoute
+        :param http_route_request: (required)
+        :type http_route_request: HTTPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3602,7 +4776,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_httproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            http_route=http_route,
+            http_route_request=http_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3623,7 +4797,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        http_route,
+        http_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3653,8 +4827,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if http_route is not None:
-            _body_params = http_route
+        if http_route_request is not None:
+            _body_params = http_route_request
 
 
         # set the HTTP header `Accept`
@@ -4493,7 +5667,7 @@ class KubernetesApi:
     def kubernetes_clusters_lb_firewall_create(
         self,
         cluster_id: StrictInt,
-        lb_firewall_rule: Optional[LBFirewallRule] = None,
+        lb_firewall_rule_request: Optional[LBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4513,8 +5687,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param lb_firewall_rule:
-        :type lb_firewall_rule: LBFirewallRule
+        :param lb_firewall_rule_request:
+        :type lb_firewall_rule_request: LBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4539,7 +5713,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_lb_firewall_create_serialize(
             cluster_id=cluster_id,
-            lb_firewall_rule=lb_firewall_rule,
+            lb_firewall_rule_request=lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4564,7 +5738,7 @@ class KubernetesApi:
     def kubernetes_clusters_lb_firewall_create_with_http_info(
         self,
         cluster_id: StrictInt,
-        lb_firewall_rule: Optional[LBFirewallRule] = None,
+        lb_firewall_rule_request: Optional[LBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4584,8 +5758,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param lb_firewall_rule:
-        :type lb_firewall_rule: LBFirewallRule
+        :param lb_firewall_rule_request:
+        :type lb_firewall_rule_request: LBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4610,7 +5784,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_lb_firewall_create_serialize(
             cluster_id=cluster_id,
-            lb_firewall_rule=lb_firewall_rule,
+            lb_firewall_rule_request=lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4635,7 +5809,7 @@ class KubernetesApi:
     def kubernetes_clusters_lb_firewall_create_without_preload_content(
         self,
         cluster_id: StrictInt,
-        lb_firewall_rule: Optional[LBFirewallRule] = None,
+        lb_firewall_rule_request: Optional[LBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4655,8 +5829,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param lb_firewall_rule:
-        :type lb_firewall_rule: LBFirewallRule
+        :param lb_firewall_rule_request:
+        :type lb_firewall_rule_request: LBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4681,7 +5855,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_lb_firewall_create_serialize(
             cluster_id=cluster_id,
-            lb_firewall_rule=lb_firewall_rule,
+            lb_firewall_rule_request=lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4701,7 +5875,7 @@ class KubernetesApi:
     def _kubernetes_clusters_lb_firewall_create_serialize(
         self,
         cluster_id,
-        lb_firewall_rule,
+        lb_firewall_rule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4729,8 +5903,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if lb_firewall_rule is not None:
-            _body_params = lb_firewall_rule
+        if lb_firewall_rule_request is not None:
+            _body_params = lb_firewall_rule_request
 
 
         # set the HTTP header `Accept`
@@ -5333,7 +6507,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_lb_firewall_rule: Optional[PatchedLBFirewallRule] = None,
+        patched_lb_firewall_rule_request: Optional[PatchedLBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5355,8 +6529,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_lb_firewall_rule:
-        :type patched_lb_firewall_rule: PatchedLBFirewallRule
+        :param patched_lb_firewall_rule_request:
+        :type patched_lb_firewall_rule_request: PatchedLBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5382,7 +6556,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_lb_firewall_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_lb_firewall_rule=patched_lb_firewall_rule,
+            patched_lb_firewall_rule_request=patched_lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5408,7 +6582,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_lb_firewall_rule: Optional[PatchedLBFirewallRule] = None,
+        patched_lb_firewall_rule_request: Optional[PatchedLBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5430,8 +6604,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_lb_firewall_rule:
-        :type patched_lb_firewall_rule: PatchedLBFirewallRule
+        :param patched_lb_firewall_rule_request:
+        :type patched_lb_firewall_rule_request: PatchedLBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5457,7 +6631,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_lb_firewall_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_lb_firewall_rule=patched_lb_firewall_rule,
+            patched_lb_firewall_rule_request=patched_lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5483,7 +6657,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_lb_firewall_rule: Optional[PatchedLBFirewallRule] = None,
+        patched_lb_firewall_rule_request: Optional[PatchedLBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5505,8 +6679,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_lb_firewall_rule:
-        :type patched_lb_firewall_rule: PatchedLBFirewallRule
+        :param patched_lb_firewall_rule_request:
+        :type patched_lb_firewall_rule_request: PatchedLBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5532,7 +6706,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_lb_firewall_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_lb_firewall_rule=patched_lb_firewall_rule,
+            patched_lb_firewall_rule_request=patched_lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5553,7 +6727,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        patched_lb_firewall_rule,
+        patched_lb_firewall_rule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5583,8 +6757,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_lb_firewall_rule is not None:
-            _body_params = patched_lb_firewall_rule
+        if patched_lb_firewall_rule_request is not None:
+            _body_params = patched_lb_firewall_rule_request
 
 
         # set the HTTP header `Accept`
@@ -5915,7 +7089,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        lb_firewall_rule: Optional[LBFirewallRule] = None,
+        lb_firewall_rule_request: Optional[LBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5937,8 +7111,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param lb_firewall_rule:
-        :type lb_firewall_rule: LBFirewallRule
+        :param lb_firewall_rule_request:
+        :type lb_firewall_rule_request: LBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5964,7 +7138,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_lb_firewall_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            lb_firewall_rule=lb_firewall_rule,
+            lb_firewall_rule_request=lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5990,7 +7164,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        lb_firewall_rule: Optional[LBFirewallRule] = None,
+        lb_firewall_rule_request: Optional[LBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6012,8 +7186,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param lb_firewall_rule:
-        :type lb_firewall_rule: LBFirewallRule
+        :param lb_firewall_rule_request:
+        :type lb_firewall_rule_request: LBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6039,7 +7213,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_lb_firewall_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            lb_firewall_rule=lb_firewall_rule,
+            lb_firewall_rule_request=lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6065,7 +7239,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        lb_firewall_rule: Optional[LBFirewallRule] = None,
+        lb_firewall_rule_request: Optional[LBFirewallRuleRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6087,8 +7261,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param lb_firewall_rule:
-        :type lb_firewall_rule: LBFirewallRule
+        :param lb_firewall_rule_request:
+        :type lb_firewall_rule_request: LBFirewallRuleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6114,7 +7288,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_lb_firewall_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            lb_firewall_rule=lb_firewall_rule,
+            lb_firewall_rule_request=lb_firewall_rule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6135,7 +7309,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        lb_firewall_rule,
+        lb_firewall_rule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -6165,8 +7339,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if lb_firewall_rule is not None:
-            _body_params = lb_firewall_rule
+        if lb_firewall_rule_request is not None:
+            _body_params = lb_firewall_rule_request
 
 
         # set the HTTP header `Accept`
@@ -6480,10 +7654,1425 @@ class KubernetesApi:
 
 
     @validate_call
+    def kubernetes_clusters_node_operations_cancel_create(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NodeOperation:
+        """kubernetes_clusters_node_operations_cancel_create
+
+        Uncordon the node and abort a blocked operation.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_cancel_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_cancel_create_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NodeOperation]:
+        """kubernetes_clusters_node_operations_cancel_create
+
+        Uncordon the node and abort a blocked operation.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_cancel_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_cancel_create_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_node_operations_cancel_create
+
+        Uncordon the node and abort a blocked operation.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_cancel_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_node_operations_cancel_create_serialize(
+        self,
+        cluster_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/cancel/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_list(
+        self,
+        cluster_id: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PaginatedNodeOperationList:
+        """kubernetes_clusters_node_operations_list
+
+        Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_list_serialize(
+            cluster_id=cluster_id,
+            page=page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginatedNodeOperationList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_list_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PaginatedNodeOperationList]:
+        """kubernetes_clusters_node_operations_list
+
+        Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_list_serialize(
+            cluster_id=cluster_id,
+            page=page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginatedNodeOperationList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_list_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_node_operations_list
+
+        Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_list_serialize(
+            cluster_id=cluster_id,
+            page=page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginatedNodeOperationList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_node_operations_list_serialize(
+        self,
+        cluster_id,
+        page,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/node-operations/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_resume_create(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NodeOperation:
+        """kubernetes_clusters_node_operations_resume_create
+
+        Staff-only resume of an operation waiting for support.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_resume_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_resume_create_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NodeOperation]:
+        """kubernetes_clusters_node_operations_resume_create
+
+        Staff-only resume of an operation waiting for support.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_resume_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_resume_create_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_node_operations_resume_create
+
+        Staff-only resume of an operation waiting for support.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_resume_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_node_operations_resume_create_serialize(
+        self,
+        cluster_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/resume/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_retrieve(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NodeOperation:
+        """kubernetes_clusters_node_operations_retrieve
+
+        Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_retrieve_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_retrieve_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NodeOperation]:
+        """kubernetes_clusters_node_operations_retrieve
+
+        Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_retrieve_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_retrieve_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_node_operations_retrieve
+
+        Operation history, status, and the three recovery actions.  Cluster-level rather than node-level on purpose: a successful delete removes the VM row, so an operation addressable only through its node would stop being readable exactly when the customer wants to see how it ended.  None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new starts off must never strand an operation that is already running -- a cluster with a blocked operation and no way to answer it is a cluster nobody can mutate at all.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_retrieve_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_node_operations_retrieve_serialize(
+        self,
+        cluster_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_retry_create(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        node_operation_retry_request: Optional[NodeOperationRetryRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NodeOperation:
+        """kubernetes_clusters_node_operations_retry_create
+
+        Retry a blocked operation with the overrides that answer its blocker.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param node_operation_retry_request:
+        :type node_operation_retry_request: NodeOperationRetryRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_retry_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            node_operation_retry_request=node_operation_retry_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_retry_create_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        node_operation_retry_request: Optional[NodeOperationRetryRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NodeOperation]:
+        """kubernetes_clusters_node_operations_retry_create
+
+        Retry a blocked operation with the overrides that answer its blocker.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param node_operation_retry_request:
+        :type node_operation_retry_request: NodeOperationRetryRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_retry_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            node_operation_retry_request=node_operation_retry_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_node_operations_retry_create_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        node_operation_retry_request: Optional[NodeOperationRetryRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_node_operations_retry_create
+
+        Retry a blocked operation with the overrides that answer its blocker.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param node_operation_retry_request:
+        :type node_operation_retry_request: NodeOperationRetryRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_node_operations_retry_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            node_operation_retry_request=node_operation_retry_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_node_operations_retry_create_serialize(
+        self,
+        cluster_id,
+        id,
+        node_operation_retry_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if node_operation_retry_request is not None:
+            _body_params = node_operation_retry_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/node-operations/{id}/retry/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def kubernetes_clusters_partial_update(
         self,
         id: StrictStr,
-        patched_cluster_detail: Optional[PatchedClusterDetail] = None,
+        patched_cluster_detail_request: Optional[PatchedClusterDetailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6503,8 +9092,8 @@ class KubernetesApi:
 
         :param id: (required)
         :type id: str
-        :param patched_cluster_detail:
-        :type patched_cluster_detail: PatchedClusterDetail
+        :param patched_cluster_detail_request:
+        :type patched_cluster_detail_request: PatchedClusterDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6529,7 +9118,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_partial_update_serialize(
             id=id,
-            patched_cluster_detail=patched_cluster_detail,
+            patched_cluster_detail_request=patched_cluster_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6554,7 +9143,7 @@ class KubernetesApi:
     def kubernetes_clusters_partial_update_with_http_info(
         self,
         id: StrictStr,
-        patched_cluster_detail: Optional[PatchedClusterDetail] = None,
+        patched_cluster_detail_request: Optional[PatchedClusterDetailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6574,8 +9163,8 @@ class KubernetesApi:
 
         :param id: (required)
         :type id: str
-        :param patched_cluster_detail:
-        :type patched_cluster_detail: PatchedClusterDetail
+        :param patched_cluster_detail_request:
+        :type patched_cluster_detail_request: PatchedClusterDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6600,7 +9189,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_partial_update_serialize(
             id=id,
-            patched_cluster_detail=patched_cluster_detail,
+            patched_cluster_detail_request=patched_cluster_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6625,7 +9214,7 @@ class KubernetesApi:
     def kubernetes_clusters_partial_update_without_preload_content(
         self,
         id: StrictStr,
-        patched_cluster_detail: Optional[PatchedClusterDetail] = None,
+        patched_cluster_detail_request: Optional[PatchedClusterDetailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6645,8 +9234,8 @@ class KubernetesApi:
 
         :param id: (required)
         :type id: str
-        :param patched_cluster_detail:
-        :type patched_cluster_detail: PatchedClusterDetail
+        :param patched_cluster_detail_request:
+        :type patched_cluster_detail_request: PatchedClusterDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6671,7 +9260,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_partial_update_serialize(
             id=id,
-            patched_cluster_detail=patched_cluster_detail,
+            patched_cluster_detail_request=patched_cluster_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6691,7 +9280,7 @@ class KubernetesApi:
     def _kubernetes_clusters_partial_update_serialize(
         self,
         id,
-        patched_cluster_detail,
+        patched_cluster_detail_request,
         _request_auth,
         _content_type,
         _headers,
@@ -6719,8 +9308,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_cluster_detail is not None:
-            _body_params = patched_cluster_detail
+        if patched_cluster_detail_request is not None:
+            _body_params = patched_cluster_detail_request
 
 
         # set the HTTP header `Accept`
@@ -6770,10 +9359,843 @@ class KubernetesApi:
 
 
     @validate_call
+    def kubernetes_clusters_pool_removal_journals_list(
+        self,
+        cluster_id: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PaginatedPoolRemovalJournalList:
+        """kubernetes_clusters_pool_removal_journals_list
+
+        A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_list_serialize(
+            cluster_id=cluster_id,
+            page=page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginatedPoolRemovalJournalList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_list_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PaginatedPoolRemovalJournalList]:
+        """kubernetes_clusters_pool_removal_journals_list
+
+        A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_list_serialize(
+            cluster_id=cluster_id,
+            page=page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginatedPoolRemovalJournalList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_list_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_pool_removal_journals_list
+
+        A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_list_serialize(
+            cluster_id=cluster_id,
+            page=page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginatedPoolRemovalJournalList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_pool_removal_journals_list_serialize(
+        self,
+        cluster_id,
+        page,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/pool-removal-journals/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_resume_create(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PoolRemovalJournal:
+        """kubernetes_clusters_pool_removal_journals_resume_create
+
+        Staff-only resume of a pool removal waiting for support.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_resume_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "PoolRemovalJournal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_resume_create_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PoolRemovalJournal]:
+        """kubernetes_clusters_pool_removal_journals_resume_create
+
+        Staff-only resume of a pool removal waiting for support.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_resume_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "PoolRemovalJournal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_resume_create_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_pool_removal_journals_resume_create
+
+        Staff-only resume of a pool removal waiting for support.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_resume_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "PoolRemovalJournal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_pool_removal_journals_resume_create_serialize(
+        self,
+        cluster_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/resume/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_retrieve(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PoolRemovalJournal:
+        """kubernetes_clusters_pool_removal_journals_retrieve
+
+        A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_retrieve_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PoolRemovalJournal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_retrieve_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PoolRemovalJournal]:
+        """kubernetes_clusters_pool_removal_journals_retrieve
+
+        A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_retrieve_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PoolRemovalJournal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_pool_removal_journals_retrieve_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_pool_removal_journals_retrieve
+
+        A downsize or pool deletion, its milestones, and its staff resume.  The list route is not in the spec's table and is here anyway: with retrieve as the only route, a customer whose downsize parked has no way to learn the journal id, and the panel's poll would be the sole path to a published REST resource.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_pool_removal_journals_retrieve_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PoolRemovalJournal",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_pool_removal_journals_retrieve_serialize(
+        self,
+        cluster_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def kubernetes_clusters_port_forwards_create(
         self,
         cluster_id: StrictInt,
-        k8s_port_forward: K8sPortForward,
+        k8s_port_forward_request: K8sPortForwardRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6793,8 +10215,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param k8s_port_forward: (required)
-        :type k8s_port_forward: K8sPortForward
+        :param k8s_port_forward_request: (required)
+        :type k8s_port_forward_request: K8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6819,7 +10241,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_port_forwards_create_serialize(
             cluster_id=cluster_id,
-            k8s_port_forward=k8s_port_forward,
+            k8s_port_forward_request=k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6844,7 +10266,7 @@ class KubernetesApi:
     def kubernetes_clusters_port_forwards_create_with_http_info(
         self,
         cluster_id: StrictInt,
-        k8s_port_forward: K8sPortForward,
+        k8s_port_forward_request: K8sPortForwardRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6864,8 +10286,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param k8s_port_forward: (required)
-        :type k8s_port_forward: K8sPortForward
+        :param k8s_port_forward_request: (required)
+        :type k8s_port_forward_request: K8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6890,7 +10312,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_port_forwards_create_serialize(
             cluster_id=cluster_id,
-            k8s_port_forward=k8s_port_forward,
+            k8s_port_forward_request=k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6915,7 +10337,7 @@ class KubernetesApi:
     def kubernetes_clusters_port_forwards_create_without_preload_content(
         self,
         cluster_id: StrictInt,
-        k8s_port_forward: K8sPortForward,
+        k8s_port_forward_request: K8sPortForwardRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6935,8 +10357,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param k8s_port_forward: (required)
-        :type k8s_port_forward: K8sPortForward
+        :param k8s_port_forward_request: (required)
+        :type k8s_port_forward_request: K8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6961,7 +10383,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_port_forwards_create_serialize(
             cluster_id=cluster_id,
-            k8s_port_forward=k8s_port_forward,
+            k8s_port_forward_request=k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6981,7 +10403,7 @@ class KubernetesApi:
     def _kubernetes_clusters_port_forwards_create_serialize(
         self,
         cluster_id,
-        k8s_port_forward,
+        k8s_port_forward_request,
         _request_auth,
         _content_type,
         _headers,
@@ -7009,8 +10431,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if k8s_port_forward is not None:
-            _body_params = k8s_port_forward
+        if k8s_port_forward_request is not None:
+            _body_params = k8s_port_forward_request
 
 
         # set the HTTP header `Accept`
@@ -7613,7 +11035,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_k8s_port_forward: Optional[PatchedK8sPortForward] = None,
+        patched_k8s_port_forward_request: Optional[PatchedK8sPortForwardRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7635,8 +11057,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_k8s_port_forward:
-        :type patched_k8s_port_forward: PatchedK8sPortForward
+        :param patched_k8s_port_forward_request:
+        :type patched_k8s_port_forward_request: PatchedK8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7662,7 +11084,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_port_forwards_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_k8s_port_forward=patched_k8s_port_forward,
+            patched_k8s_port_forward_request=patched_k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7688,7 +11110,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_k8s_port_forward: Optional[PatchedK8sPortForward] = None,
+        patched_k8s_port_forward_request: Optional[PatchedK8sPortForwardRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7710,8 +11132,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_k8s_port_forward:
-        :type patched_k8s_port_forward: PatchedK8sPortForward
+        :param patched_k8s_port_forward_request:
+        :type patched_k8s_port_forward_request: PatchedK8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7737,7 +11159,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_port_forwards_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_k8s_port_forward=patched_k8s_port_forward,
+            patched_k8s_port_forward_request=patched_k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7763,7 +11185,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_k8s_port_forward: Optional[PatchedK8sPortForward] = None,
+        patched_k8s_port_forward_request: Optional[PatchedK8sPortForwardRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7785,8 +11207,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_k8s_port_forward:
-        :type patched_k8s_port_forward: PatchedK8sPortForward
+        :param patched_k8s_port_forward_request:
+        :type patched_k8s_port_forward_request: PatchedK8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7812,7 +11234,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_port_forwards_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_k8s_port_forward=patched_k8s_port_forward,
+            patched_k8s_port_forward_request=patched_k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7833,7 +11255,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        patched_k8s_port_forward,
+        patched_k8s_port_forward_request,
         _request_auth,
         _content_type,
         _headers,
@@ -7863,8 +11285,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_k8s_port_forward is not None:
-            _body_params = patched_k8s_port_forward
+        if patched_k8s_port_forward_request is not None:
+            _body_params = patched_k8s_port_forward_request
 
 
         # set the HTTP header `Accept`
@@ -8195,7 +11617,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        k8s_port_forward: K8sPortForward,
+        k8s_port_forward_request: K8sPortForwardRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8217,8 +11639,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param k8s_port_forward: (required)
-        :type k8s_port_forward: K8sPortForward
+        :param k8s_port_forward_request: (required)
+        :type k8s_port_forward_request: K8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8244,7 +11666,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_port_forwards_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            k8s_port_forward=k8s_port_forward,
+            k8s_port_forward_request=k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8270,7 +11692,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        k8s_port_forward: K8sPortForward,
+        k8s_port_forward_request: K8sPortForwardRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8292,8 +11714,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param k8s_port_forward: (required)
-        :type k8s_port_forward: K8sPortForward
+        :param k8s_port_forward_request: (required)
+        :type k8s_port_forward_request: K8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8319,7 +11741,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_port_forwards_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            k8s_port_forward=k8s_port_forward,
+            k8s_port_forward_request=k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8345,7 +11767,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        k8s_port_forward: K8sPortForward,
+        k8s_port_forward_request: K8sPortForwardRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8367,8 +11789,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param k8s_port_forward: (required)
-        :type k8s_port_forward: K8sPortForward
+        :param k8s_port_forward_request: (required)
+        :type k8s_port_forward_request: K8sPortForwardRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8394,7 +11816,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_port_forwards_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            k8s_port_forward=k8s_port_forward,
+            k8s_port_forward_request=k8s_port_forward_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8415,7 +11837,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        k8s_port_forward,
+        k8s_port_forward_request,
         _request_auth,
         _content_type,
         _headers,
@@ -8445,8 +11867,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if k8s_port_forward is not None:
-            _body_params = k8s_port_forward
+        if k8s_port_forward_request is not None:
+            _body_params = k8s_port_forward_request
 
 
         # set the HTTP header `Accept`
@@ -8499,7 +11921,7 @@ class KubernetesApi:
     def kubernetes_clusters_resource_pools_create(
         self,
         cluster_id: StrictInt,
-        resource_pool_add: ResourcePoolAdd,
+        resource_pool_add_request: ResourcePoolAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8519,8 +11941,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param resource_pool_add: (required)
-        :type resource_pool_add: ResourcePoolAdd
+        :param resource_pool_add_request: (required)
+        :type resource_pool_add_request: ResourcePoolAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8545,7 +11967,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_resource_pools_create_serialize(
             cluster_id=cluster_id,
-            resource_pool_add=resource_pool_add,
+            resource_pool_add_request=resource_pool_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8570,7 +11992,7 @@ class KubernetesApi:
     def kubernetes_clusters_resource_pools_create_with_http_info(
         self,
         cluster_id: StrictInt,
-        resource_pool_add: ResourcePoolAdd,
+        resource_pool_add_request: ResourcePoolAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8590,8 +12012,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param resource_pool_add: (required)
-        :type resource_pool_add: ResourcePoolAdd
+        :param resource_pool_add_request: (required)
+        :type resource_pool_add_request: ResourcePoolAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8616,7 +12038,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_resource_pools_create_serialize(
             cluster_id=cluster_id,
-            resource_pool_add=resource_pool_add,
+            resource_pool_add_request=resource_pool_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8641,7 +12063,7 @@ class KubernetesApi:
     def kubernetes_clusters_resource_pools_create_without_preload_content(
         self,
         cluster_id: StrictInt,
-        resource_pool_add: ResourcePoolAdd,
+        resource_pool_add_request: ResourcePoolAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8661,8 +12083,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param resource_pool_add: (required)
-        :type resource_pool_add: ResourcePoolAdd
+        :param resource_pool_add_request: (required)
+        :type resource_pool_add_request: ResourcePoolAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8687,7 +12109,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_resource_pools_create_serialize(
             cluster_id=cluster_id,
-            resource_pool_add=resource_pool_add,
+            resource_pool_add_request=resource_pool_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8707,7 +12129,7 @@ class KubernetesApi:
     def _kubernetes_clusters_resource_pools_create_serialize(
         self,
         cluster_id,
-        resource_pool_add,
+        resource_pool_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -8735,8 +12157,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if resource_pool_add is not None:
-            _body_params = resource_pool_add
+        if resource_pool_add_request is not None:
+            _body_params = resource_pool_add_request
 
 
         # set the HTTP header `Accept`
@@ -9352,10 +12774,10 @@ class KubernetesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> NodeOperation:
         """kubernetes_clusters_resource_pools_nodes_destroy
 
-        Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
+        Start a safe delete of one worker node.
 
         :param cluster_id: (required)
         :type cluster_id: int
@@ -9396,7 +12818,7 @@ class KubernetesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '202': "NodeOperation",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9427,10 +12849,10 @@ class KubernetesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[NodeOperation]:
         """kubernetes_clusters_resource_pools_nodes_destroy
 
-        Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
+        Start a safe delete of one worker node.
 
         :param cluster_id: (required)
         :type cluster_id: int
@@ -9471,7 +12893,7 @@ class KubernetesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '202': "NodeOperation",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9505,7 +12927,7 @@ class KubernetesApi:
     ) -> RESTResponseType:
         """kubernetes_clusters_resource_pools_nodes_destroy
 
-        Adds :class:`~account.iam_enforcement.IAMActionPermission` as an intersection with the route's existing permission classes (spec §6).  Detail routes (``self.detail``) defer the role/scope check to ``has_object_permission`` so the account-scoped ``get_object`` answers 404 for foreign IDs before any role denial; every other route enforces in ``has_permission``. A detail action that never calls ``get_object`` would skip enforcement — the route probes pin the denial for each route.
+        Start a safe delete of one worker node.
 
         :param cluster_id: (required)
         :type cluster_id: int
@@ -9546,7 +12968,7 @@ class KubernetesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '202': "NodeOperation",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9593,6 +13015,13 @@ class KubernetesApi:
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -10190,6 +13619,326 @@ class KubernetesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/metrics/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_resource_pools_nodes_reboot_create(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        pool_id: StrictInt,
+        node_operation_reboot_request: Optional[NodeOperationRebootRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NodeOperation:
+        """kubernetes_clusters_resource_pools_nodes_reboot_create
+
+        Restart one worker node, draining it first.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param pool_id: (required)
+        :type pool_id: int
+        :param node_operation_reboot_request:
+        :type node_operation_reboot_request: NodeOperationRebootRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_resource_pools_nodes_reboot_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            pool_id=pool_id,
+            node_operation_reboot_request=node_operation_reboot_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_resource_pools_nodes_reboot_create_with_http_info(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        pool_id: StrictInt,
+        node_operation_reboot_request: Optional[NodeOperationRebootRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NodeOperation]:
+        """kubernetes_clusters_resource_pools_nodes_reboot_create
+
+        Restart one worker node, draining it first.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param pool_id: (required)
+        :type pool_id: int
+        :param node_operation_reboot_request:
+        :type node_operation_reboot_request: NodeOperationRebootRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_resource_pools_nodes_reboot_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            pool_id=pool_id,
+            node_operation_reboot_request=node_operation_reboot_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_resource_pools_nodes_reboot_create_without_preload_content(
+        self,
+        cluster_id: StrictInt,
+        id: StrictStr,
+        pool_id: StrictInt,
+        node_operation_reboot_request: Optional[NodeOperationRebootRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_resource_pools_nodes_reboot_create
+
+        Restart one worker node, draining it first.
+
+        :param cluster_id: (required)
+        :type cluster_id: int
+        :param id: (required)
+        :type id: str
+        :param pool_id: (required)
+        :type pool_id: int
+        :param node_operation_reboot_request:
+        :type node_operation_reboot_request: NodeOperationRebootRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_resource_pools_nodes_reboot_create_serialize(
+            cluster_id=cluster_id,
+            id=id,
+            pool_id=pool_id,
+            node_operation_reboot_request=node_operation_reboot_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "NodeOperation",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_resource_pools_nodes_reboot_create_serialize(
+        self,
+        cluster_id,
+        id,
+        pool_id,
+        node_operation_reboot_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if cluster_id is not None:
+            _path_params['cluster_id'] = cluster_id
+        if id is not None:
+            _path_params['id'] = id
+        if pool_id is not None:
+            _path_params['pool_id'] = pool_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if node_operation_reboot_request is not None:
+            _body_params = node_operation_reboot_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/reboot/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -10811,7 +14560,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_resource_pool: Optional[PatchedResourcePool] = None,
+        patched_resource_pool_request: Optional[PatchedResourcePoolRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10833,8 +14582,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_resource_pool:
-        :type patched_resource_pool: PatchedResourcePool
+        :param patched_resource_pool_request:
+        :type patched_resource_pool_request: PatchedResourcePoolRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10860,7 +14609,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_resource_pools_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_resource_pool=patched_resource_pool,
+            patched_resource_pool_request=patched_resource_pool_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10886,7 +14635,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_resource_pool: Optional[PatchedResourcePool] = None,
+        patched_resource_pool_request: Optional[PatchedResourcePoolRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10908,8 +14657,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_resource_pool:
-        :type patched_resource_pool: PatchedResourcePool
+        :param patched_resource_pool_request:
+        :type patched_resource_pool_request: PatchedResourcePoolRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10935,7 +14684,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_resource_pools_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_resource_pool=patched_resource_pool,
+            patched_resource_pool_request=patched_resource_pool_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10961,7 +14710,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_resource_pool: Optional[PatchedResourcePool] = None,
+        patched_resource_pool_request: Optional[PatchedResourcePoolRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10983,8 +14732,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_resource_pool:
-        :type patched_resource_pool: PatchedResourcePool
+        :param patched_resource_pool_request:
+        :type patched_resource_pool_request: PatchedResourcePoolRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11010,7 +14759,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_resource_pools_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_resource_pool=patched_resource_pool,
+            patched_resource_pool_request=patched_resource_pool_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11031,7 +14780,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        patched_resource_pool,
+        patched_resource_pool_request,
         _request_auth,
         _content_type,
         _headers,
@@ -11061,8 +14810,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_resource_pool is not None:
-            _body_params = patched_resource_pool
+        if patched_resource_pool_request is not None:
+            _body_params = patched_resource_pool_request
 
 
         # set the HTTP header `Accept`
@@ -11393,7 +15142,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        resource_pool: Optional[ResourcePool] = None,
+        resource_pool_request: Optional[ResourcePoolRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11415,8 +15164,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param resource_pool:
-        :type resource_pool: ResourcePool
+        :param resource_pool_request:
+        :type resource_pool_request: ResourcePoolRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11442,7 +15191,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_resource_pools_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            resource_pool=resource_pool,
+            resource_pool_request=resource_pool_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11468,7 +15217,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        resource_pool: Optional[ResourcePool] = None,
+        resource_pool_request: Optional[ResourcePoolRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11490,8 +15239,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param resource_pool:
-        :type resource_pool: ResourcePool
+        :param resource_pool_request:
+        :type resource_pool_request: ResourcePoolRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11517,7 +15266,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_resource_pools_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            resource_pool=resource_pool,
+            resource_pool_request=resource_pool_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11543,7 +15292,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        resource_pool: Optional[ResourcePool] = None,
+        resource_pool_request: Optional[ResourcePoolRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11565,8 +15314,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param resource_pool:
-        :type resource_pool: ResourcePool
+        :param resource_pool_request:
+        :type resource_pool_request: ResourcePoolRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11592,7 +15341,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_resource_pools_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            resource_pool=resource_pool,
+            resource_pool_request=resource_pool_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11613,7 +15362,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        resource_pool,
+        resource_pool_request,
         _request_auth,
         _content_type,
         _headers,
@@ -11643,8 +15392,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if resource_pool is not None:
-            _body_params = resource_pool
+        if resource_pool_request is not None:
+            _body_params = resource_pool_request
 
 
         # set the HTTP header `Accept`
@@ -12221,7 +15970,7 @@ class KubernetesApi:
     def kubernetes_clusters_tcproutes_create(
         self,
         cluster_id: StrictInt,
-        tcp_route: TCPRoute,
+        tcp_route_request: TCPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12241,8 +15990,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param tcp_route: (required)
-        :type tcp_route: TCPRoute
+        :param tcp_route_request: (required)
+        :type tcp_route_request: TCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12267,7 +16016,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_tcproutes_create_serialize(
             cluster_id=cluster_id,
-            tcp_route=tcp_route,
+            tcp_route_request=tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12292,7 +16041,7 @@ class KubernetesApi:
     def kubernetes_clusters_tcproutes_create_with_http_info(
         self,
         cluster_id: StrictInt,
-        tcp_route: TCPRoute,
+        tcp_route_request: TCPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12312,8 +16061,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param tcp_route: (required)
-        :type tcp_route: TCPRoute
+        :param tcp_route_request: (required)
+        :type tcp_route_request: TCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12338,7 +16087,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_tcproutes_create_serialize(
             cluster_id=cluster_id,
-            tcp_route=tcp_route,
+            tcp_route_request=tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12363,7 +16112,7 @@ class KubernetesApi:
     def kubernetes_clusters_tcproutes_create_without_preload_content(
         self,
         cluster_id: StrictInt,
-        tcp_route: TCPRoute,
+        tcp_route_request: TCPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12383,8 +16132,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param tcp_route: (required)
-        :type tcp_route: TCPRoute
+        :param tcp_route_request: (required)
+        :type tcp_route_request: TCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12409,7 +16158,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_tcproutes_create_serialize(
             cluster_id=cluster_id,
-            tcp_route=tcp_route,
+            tcp_route_request=tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12429,7 +16178,7 @@ class KubernetesApi:
     def _kubernetes_clusters_tcproutes_create_serialize(
         self,
         cluster_id,
-        tcp_route,
+        tcp_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -12457,8 +16206,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if tcp_route is not None:
-            _body_params = tcp_route
+        if tcp_route_request is not None:
+            _body_params = tcp_route_request
 
 
         # set the HTTP header `Accept`
@@ -13061,7 +16810,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_tcp_route: Optional[PatchedTCPRoute] = None,
+        patched_tcp_route_request: Optional[PatchedTCPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13083,8 +16832,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_tcp_route:
-        :type patched_tcp_route: PatchedTCPRoute
+        :param patched_tcp_route_request:
+        :type patched_tcp_route_request: PatchedTCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13110,7 +16859,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_tcproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_tcp_route=patched_tcp_route,
+            patched_tcp_route_request=patched_tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13136,7 +16885,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_tcp_route: Optional[PatchedTCPRoute] = None,
+        patched_tcp_route_request: Optional[PatchedTCPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13158,8 +16907,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_tcp_route:
-        :type patched_tcp_route: PatchedTCPRoute
+        :param patched_tcp_route_request:
+        :type patched_tcp_route_request: PatchedTCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13185,7 +16934,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_tcproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_tcp_route=patched_tcp_route,
+            patched_tcp_route_request=patched_tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13211,7 +16960,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_tcp_route: Optional[PatchedTCPRoute] = None,
+        patched_tcp_route_request: Optional[PatchedTCPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13233,8 +16982,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_tcp_route:
-        :type patched_tcp_route: PatchedTCPRoute
+        :param patched_tcp_route_request:
+        :type patched_tcp_route_request: PatchedTCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13260,7 +17009,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_tcproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_tcp_route=patched_tcp_route,
+            patched_tcp_route_request=patched_tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13281,7 +17030,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        patched_tcp_route,
+        patched_tcp_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -13311,8 +17060,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_tcp_route is not None:
-            _body_params = patched_tcp_route
+        if patched_tcp_route_request is not None:
+            _body_params = patched_tcp_route_request
 
 
         # set the HTTP header `Accept`
@@ -13643,7 +17392,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        tcp_route: TCPRoute,
+        tcp_route_request: TCPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13665,8 +17414,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param tcp_route: (required)
-        :type tcp_route: TCPRoute
+        :param tcp_route_request: (required)
+        :type tcp_route_request: TCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13692,7 +17441,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_tcproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            tcp_route=tcp_route,
+            tcp_route_request=tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13718,7 +17467,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        tcp_route: TCPRoute,
+        tcp_route_request: TCPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13740,8 +17489,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param tcp_route: (required)
-        :type tcp_route: TCPRoute
+        :param tcp_route_request: (required)
+        :type tcp_route_request: TCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13767,7 +17516,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_tcproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            tcp_route=tcp_route,
+            tcp_route_request=tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13793,7 +17542,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        tcp_route: TCPRoute,
+        tcp_route_request: TCPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13815,8 +17564,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param tcp_route: (required)
-        :type tcp_route: TCPRoute
+        :param tcp_route_request: (required)
+        :type tcp_route_request: TCPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13842,7 +17591,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_tcproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            tcp_route=tcp_route,
+            tcp_route_request=tcp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13863,7 +17612,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        tcp_route,
+        tcp_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -13893,8 +17642,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if tcp_route is not None:
-            _body_params = tcp_route
+        if tcp_route_request is not None:
+            _body_params = tcp_route_request
 
 
         # set the HTTP header `Accept`
@@ -14209,7 +17958,7 @@ class KubernetesApi:
     def kubernetes_clusters_udproutes_create(
         self,
         cluster_id: StrictInt,
-        udp_route: UDPRoute,
+        udp_route_request: UDPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14229,8 +17978,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param udp_route: (required)
-        :type udp_route: UDPRoute
+        :param udp_route_request: (required)
+        :type udp_route_request: UDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14255,7 +18004,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_udproutes_create_serialize(
             cluster_id=cluster_id,
-            udp_route=udp_route,
+            udp_route_request=udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14280,7 +18029,7 @@ class KubernetesApi:
     def kubernetes_clusters_udproutes_create_with_http_info(
         self,
         cluster_id: StrictInt,
-        udp_route: UDPRoute,
+        udp_route_request: UDPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14300,8 +18049,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param udp_route: (required)
-        :type udp_route: UDPRoute
+        :param udp_route_request: (required)
+        :type udp_route_request: UDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14326,7 +18075,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_udproutes_create_serialize(
             cluster_id=cluster_id,
-            udp_route=udp_route,
+            udp_route_request=udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14351,7 +18100,7 @@ class KubernetesApi:
     def kubernetes_clusters_udproutes_create_without_preload_content(
         self,
         cluster_id: StrictInt,
-        udp_route: UDPRoute,
+        udp_route_request: UDPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14371,8 +18120,8 @@ class KubernetesApi:
 
         :param cluster_id: (required)
         :type cluster_id: int
-        :param udp_route: (required)
-        :type udp_route: UDPRoute
+        :param udp_route_request: (required)
+        :type udp_route_request: UDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14397,7 +18146,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_udproutes_create_serialize(
             cluster_id=cluster_id,
-            udp_route=udp_route,
+            udp_route_request=udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14417,7 +18166,7 @@ class KubernetesApi:
     def _kubernetes_clusters_udproutes_create_serialize(
         self,
         cluster_id,
-        udp_route,
+        udp_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -14445,8 +18194,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if udp_route is not None:
-            _body_params = udp_route
+        if udp_route_request is not None:
+            _body_params = udp_route_request
 
 
         # set the HTTP header `Accept`
@@ -15049,7 +18798,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_udp_route: Optional[PatchedUDPRoute] = None,
+        patched_udp_route_request: Optional[PatchedUDPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15071,8 +18820,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_udp_route:
-        :type patched_udp_route: PatchedUDPRoute
+        :param patched_udp_route_request:
+        :type patched_udp_route_request: PatchedUDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15098,7 +18847,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_udproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_udp_route=patched_udp_route,
+            patched_udp_route_request=patched_udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15124,7 +18873,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_udp_route: Optional[PatchedUDPRoute] = None,
+        patched_udp_route_request: Optional[PatchedUDPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15146,8 +18895,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_udp_route:
-        :type patched_udp_route: PatchedUDPRoute
+        :param patched_udp_route_request:
+        :type patched_udp_route_request: PatchedUDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15173,7 +18922,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_udproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_udp_route=patched_udp_route,
+            patched_udp_route_request=patched_udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15199,7 +18948,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        patched_udp_route: Optional[PatchedUDPRoute] = None,
+        patched_udp_route_request: Optional[PatchedUDPRouteRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15221,8 +18970,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param patched_udp_route:
-        :type patched_udp_route: PatchedUDPRoute
+        :param patched_udp_route_request:
+        :type patched_udp_route_request: PatchedUDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15248,7 +18997,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_udproutes_partial_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            patched_udp_route=patched_udp_route,
+            patched_udp_route_request=patched_udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15269,7 +19018,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        patched_udp_route,
+        patched_udp_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -15299,8 +19048,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_udp_route is not None:
-            _body_params = patched_udp_route
+        if patched_udp_route_request is not None:
+            _body_params = patched_udp_route_request
 
 
         # set the HTTP header `Accept`
@@ -15631,7 +19380,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        udp_route: UDPRoute,
+        udp_route_request: UDPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15653,8 +19402,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param udp_route: (required)
-        :type udp_route: UDPRoute
+        :param udp_route_request: (required)
+        :type udp_route_request: UDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15680,7 +19429,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_udproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            udp_route=udp_route,
+            udp_route_request=udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15706,7 +19455,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        udp_route: UDPRoute,
+        udp_route_request: UDPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15728,8 +19477,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param udp_route: (required)
-        :type udp_route: UDPRoute
+        :param udp_route_request: (required)
+        :type udp_route_request: UDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15755,7 +19504,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_udproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            udp_route=udp_route,
+            udp_route_request=udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15781,7 +19530,7 @@ class KubernetesApi:
         self,
         cluster_id: StrictInt,
         id: StrictStr,
-        udp_route: UDPRoute,
+        udp_route_request: UDPRouteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15803,8 +19552,8 @@ class KubernetesApi:
         :type cluster_id: int
         :param id: (required)
         :type id: str
-        :param udp_route: (required)
-        :type udp_route: UDPRoute
+        :param udp_route_request: (required)
+        :type udp_route_request: UDPRouteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15830,7 +19579,7 @@ class KubernetesApi:
         _param = self._kubernetes_clusters_udproutes_update_serialize(
             cluster_id=cluster_id,
             id=id,
-            udp_route=udp_route,
+            udp_route_request=udp_route_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15851,7 +19600,7 @@ class KubernetesApi:
         self,
         cluster_id,
         id,
-        udp_route,
+        udp_route_request,
         _request_auth,
         _content_type,
         _headers,
@@ -15881,8 +19630,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if udp_route is not None:
-            _body_params = udp_route
+        if udp_route_request is not None:
+            _body_params = udp_route_request
 
 
         # set the HTTP header `Accept`
@@ -15935,7 +19684,7 @@ class KubernetesApi:
     def kubernetes_clusters_update(
         self,
         id: StrictStr,
-        cluster_detail: ClusterDetail,
+        cluster_detail_request: ClusterDetailRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15955,8 +19704,8 @@ class KubernetesApi:
 
         :param id: (required)
         :type id: str
-        :param cluster_detail: (required)
-        :type cluster_detail: ClusterDetail
+        :param cluster_detail_request: (required)
+        :type cluster_detail_request: ClusterDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15981,7 +19730,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_update_serialize(
             id=id,
-            cluster_detail=cluster_detail,
+            cluster_detail_request=cluster_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16006,7 +19755,7 @@ class KubernetesApi:
     def kubernetes_clusters_update_with_http_info(
         self,
         id: StrictStr,
-        cluster_detail: ClusterDetail,
+        cluster_detail_request: ClusterDetailRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16026,8 +19775,8 @@ class KubernetesApi:
 
         :param id: (required)
         :type id: str
-        :param cluster_detail: (required)
-        :type cluster_detail: ClusterDetail
+        :param cluster_detail_request: (required)
+        :type cluster_detail_request: ClusterDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16052,7 +19801,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_update_serialize(
             id=id,
-            cluster_detail=cluster_detail,
+            cluster_detail_request=cluster_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16077,7 +19826,7 @@ class KubernetesApi:
     def kubernetes_clusters_update_without_preload_content(
         self,
         id: StrictStr,
-        cluster_detail: ClusterDetail,
+        cluster_detail_request: ClusterDetailRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16097,8 +19846,8 @@ class KubernetesApi:
 
         :param id: (required)
         :type id: str
-        :param cluster_detail: (required)
-        :type cluster_detail: ClusterDetail
+        :param cluster_detail_request: (required)
+        :type cluster_detail_request: ClusterDetailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16123,7 +19872,7 @@ class KubernetesApi:
 
         _param = self._kubernetes_clusters_update_serialize(
             id=id,
-            cluster_detail=cluster_detail,
+            cluster_detail_request=cluster_detail_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16143,7 +19892,7 @@ class KubernetesApi:
     def _kubernetes_clusters_update_serialize(
         self,
         id,
-        cluster_detail,
+        cluster_detail_request,
         _request_auth,
         _content_type,
         _headers,
@@ -16171,8 +19920,8 @@ class KubernetesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if cluster_detail is not None:
-            _body_params = cluster_detail
+        if cluster_detail_request is not None:
+            _body_params = cluster_detail_request
 
 
         # set the HTTP header `Accept`
@@ -16496,6 +20245,299 @@ class KubernetesApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/kubernetes/clusters/{id}/upgrade-feature/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def kubernetes_clusters_upgrade_lb_create(
+        self,
+        id: StrictStr,
+        lb_upgrade_request: Optional[LBUpgradeRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> LBUpgradePlanResponse:
+        """kubernetes_clusters_upgrade_lb_create
+
+        Inspect or perform the load-balancer upgrade the server computes for this cluster. The caller never selects a level.
+
+        :param id: (required)
+        :type id: str
+        :param lb_upgrade_request:
+        :type lb_upgrade_request: LBUpgradeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_upgrade_lb_create_serialize(
+            id=id,
+            lb_upgrade_request=lb_upgrade_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "LBUpgradePlanResponse",
+            '202': "LBUpgradeDispatchResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def kubernetes_clusters_upgrade_lb_create_with_http_info(
+        self,
+        id: StrictStr,
+        lb_upgrade_request: Optional[LBUpgradeRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[LBUpgradePlanResponse]:
+        """kubernetes_clusters_upgrade_lb_create
+
+        Inspect or perform the load-balancer upgrade the server computes for this cluster. The caller never selects a level.
+
+        :param id: (required)
+        :type id: str
+        :param lb_upgrade_request:
+        :type lb_upgrade_request: LBUpgradeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_upgrade_lb_create_serialize(
+            id=id,
+            lb_upgrade_request=lb_upgrade_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "LBUpgradePlanResponse",
+            '202': "LBUpgradeDispatchResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def kubernetes_clusters_upgrade_lb_create_without_preload_content(
+        self,
+        id: StrictStr,
+        lb_upgrade_request: Optional[LBUpgradeRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """kubernetes_clusters_upgrade_lb_create
+
+        Inspect or perform the load-balancer upgrade the server computes for this cluster. The caller never selects a level.
+
+        :param id: (required)
+        :type id: str
+        :param lb_upgrade_request:
+        :type lb_upgrade_request: LBUpgradeRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._kubernetes_clusters_upgrade_lb_create_serialize(
+            id=id,
+            lb_upgrade_request=lb_upgrade_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "LBUpgradePlanResponse",
+            '202': "LBUpgradeDispatchResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _kubernetes_clusters_upgrade_lb_create_serialize(
+        self,
+        id,
+        lb_upgrade_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if lb_upgrade_request is not None:
+            _body_params = lb_upgrade_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/kubernetes/clusters/{id}/upgrade-lb/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

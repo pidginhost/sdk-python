@@ -47,7 +47,8 @@ class TestPaginatedPublicIPv6List(unittest.TestCase):
                         gateway = '', 
                         prefix = 56, 
                         attached = True, 
-                        server = '', )
+                        server = '', 
+                        server_id = 56, )
                     ]
             )
         else:
@@ -61,7 +62,8 @@ class TestPaginatedPublicIPv6List(unittest.TestCase):
                         gateway = '', 
                         prefix = 56, 
                         attached = True, 
-                        server = '', )
+                        server = '', 
+                        server_id = 56, )
                     ],
         )
         """

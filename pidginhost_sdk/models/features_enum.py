@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class FeaturesEnum(str, Enum):
     """
-    * `cert-manager` - Certificate manager * `ceph-csi` - Ceph CSI * `metrics-server` - Metrics Server * `cloudnative-pg` - CloudNative PG * `mariadb-operator` - MariaDB Operator * `mongodb-operator` - MongoDB Operator
+    * `cert-manager` - Certificate manager * `ceph-csi` - Ceph CSI * `metrics-server` - Metrics Server * `cloudnative-pg` - CloudNative PG * `mariadb-operator` - MariaDB Operator * `mongodb-operator` - MongoDB Operator * `lb-envoy-metrics` - Load balancer metrics
     """
 
     """
@@ -33,6 +33,7 @@ class FeaturesEnum(str, Enum):
     CLOUDNATIVE_MINUS_PG = 'cloudnative-pg'
     MARIADB_MINUS_OPERATOR = 'mariadb-operator'
     MONGODB_MINUS_OPERATOR = 'mongodb-operator'
+    LB_MINUS_ENVOY_MINUS_METRICS = 'lb-envoy-metrics'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

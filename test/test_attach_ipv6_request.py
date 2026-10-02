@@ -36,12 +36,12 @@ class TestAttachIPv6Request(unittest.TestCase):
         model = AttachIPv6Request()
         if include_optional:
             return AttachIPv6Request(
-                ipv6 = '',
+                ipv6 = '0',
                 reboot = True
             )
         else:
             return AttachIPv6Request(
-                ipv6 = '',
+                ipv6 = '0',
         )
         """
 

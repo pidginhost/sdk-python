@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -34,8 +34,9 @@ class PublicIPv6(BaseModel):
     gateway: StrictStr
     prefix: StrictInt
     attached: StrictBool
-    server: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "slug", "address", "gateway", "prefix", "attached", "server"]
+    server: StrictStr = Field(description="Hostname of the server this address is attached to. Empty when it is not attached.")
+    server_id: Optional[StrictInt] = Field(description="ID of the attached server, as used by /api/cloud/servers/{id}/. Null when the address is not attached to a cloud server.")
+    __properties: ClassVar[List[str]] = ["id", "slug", "address", "gateway", "prefix", "attached", "server", "server_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -74,6 +75,7 @@ class PublicIPv6(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -83,6 +85,7 @@ class PublicIPv6(BaseModel):
             "prefix",
             "attached",
             "server",
+            "server_id",
         ])
 
         _dict = self.model_dump(
@@ -90,6 +93,11 @@ class PublicIPv6(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if server_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.server_id is None and "server_id" in self.model_fields_set:
+            _dict['server_id'] = None
+
         return _dict
 
     @classmethod
@@ -108,7 +116,8 @@ class PublicIPv6(BaseModel):
             "gateway": obj.get("gateway"),
             "prefix": obj.get("prefix"),
             "attached": obj.get("attached"),
-            "server": obj.get("server")
+            "server": obj.get("server"),
+            "server_id": obj.get("server_id")
         })
         return _obj
 

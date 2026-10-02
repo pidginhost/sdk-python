@@ -35,23 +35,23 @@ class ClusterDetail(BaseModel):
     status: ResourceStatusEnum
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = None
     generation: StrictStr
-    cluster_type: StrictStr
-    kube_version: StrictStr
+    cluster_type: Optional[StrictStr]
+    kube_version: Optional[StrictStr]
     price_per_month: Annotated[str, Field(strict=True)]
     price_per_hour: Union[StrictFloat, StrictInt]
     features: Optional[List[FeaturesEnum]] = None
     features_ready: StrictBool
-    kubeconfig_valid_until: StrictStr
-    ipv4_address: StrictStr
-    ipv6_address: StrictStr
+    kubeconfig_valid_until: Optional[StrictStr]
+    ipv4_address: Optional[StrictStr]
+    ipv6_address: Optional[StrictStr]
     dual_stack: StrictBool
     protected: Optional[StrictBool] = None
-    talos_version: StrictStr
+    talos_version: Optional[StrictStr]
     talos_upgrade_available: StrictBool
-    talos_next_version: StrictStr
-    storage_quota_gb: StrictInt
-    last_pool_used_bytes: StrictInt
-    last_storage_sync_at: StrictStr
+    talos_next_version: Optional[StrictStr]
+    storage_quota_gb: Optional[StrictInt]
+    last_pool_used_bytes: Optional[StrictInt]
+    last_storage_sync_at: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "status", "name", "generation", "cluster_type", "kube_version", "price_per_month", "price_per_hour", "features", "features_ready", "kubeconfig_valid_until", "ipv4_address", "ipv6_address", "dual_stack", "protected", "talos_version", "talos_upgrade_available", "talos_next_version", "storage_quota_gb", "last_pool_used_bytes", "last_storage_sync_at"]
 
     @field_validator('price_per_month', mode="before")
@@ -134,6 +134,56 @@ class ClusterDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if cluster_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.cluster_type is None and "cluster_type" in self.model_fields_set:
+            _dict['cluster_type'] = None
+
+        # set to None if kube_version (nullable) is None
+        # and model_fields_set contains the field
+        if self.kube_version is None and "kube_version" in self.model_fields_set:
+            _dict['kube_version'] = None
+
+        # set to None if kubeconfig_valid_until (nullable) is None
+        # and model_fields_set contains the field
+        if self.kubeconfig_valid_until is None and "kubeconfig_valid_until" in self.model_fields_set:
+            _dict['kubeconfig_valid_until'] = None
+
+        # set to None if ipv4_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.ipv4_address is None and "ipv4_address" in self.model_fields_set:
+            _dict['ipv4_address'] = None
+
+        # set to None if ipv6_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.ipv6_address is None and "ipv6_address" in self.model_fields_set:
+            _dict['ipv6_address'] = None
+
+        # set to None if talos_version (nullable) is None
+        # and model_fields_set contains the field
+        if self.talos_version is None and "talos_version" in self.model_fields_set:
+            _dict['talos_version'] = None
+
+        # set to None if talos_next_version (nullable) is None
+        # and model_fields_set contains the field
+        if self.talos_next_version is None and "talos_next_version" in self.model_fields_set:
+            _dict['talos_next_version'] = None
+
+        # set to None if storage_quota_gb (nullable) is None
+        # and model_fields_set contains the field
+        if self.storage_quota_gb is None and "storage_quota_gb" in self.model_fields_set:
+            _dict['storage_quota_gb'] = None
+
+        # set to None if last_pool_used_bytes (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_pool_used_bytes is None and "last_pool_used_bytes" in self.model_fields_set:
+            _dict['last_pool_used_bytes'] = None
+
+        # set to None if last_storage_sync_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_storage_sync_at is None and "last_storage_sync_at" in self.model_fields_set:
+            _dict['last_storage_sync_at'] = None
+
         return _dict
 
     @classmethod

@@ -20,15 +20,15 @@ from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from pidginhost_sdk.models.cancel_service_response import CancelServiceResponse
-from pidginhost_sdk.models.change_billing_cycle import ChangeBillingCycle
+from pidginhost_sdk.models.change_billing_cycle_request import ChangeBillingCycleRequest
 from pidginhost_sdk.models.change_billing_cycle_response import ChangeBillingCycleResponse
-from pidginhost_sdk.models.change_company import ChangeCompany
+from pidginhost_sdk.models.change_company_request import ChangeCompanyRequest
 from pidginhost_sdk.models.change_company_response import ChangeCompanyResponse
 from pidginhost_sdk.models.deposit import Deposit
-from pidginhost_sdk.models.deposit_create import DepositCreate
+from pidginhost_sdk.models.deposit_create_request import DepositCreateRequest
 from pidginhost_sdk.models.funds_balance_response import FundsBalanceResponse
 from pidginhost_sdk.models.invoice_detail import InvoiceDetail
-from pidginhost_sdk.models.low_balance_settings import LowBalanceSettings
+from pidginhost_sdk.models.low_balance_settings_request import LowBalanceSettingsRequest
 from pidginhost_sdk.models.notification_settings_response import NotificationSettingsResponse
 from pidginhost_sdk.models.paginated_deposit_list import PaginatedDepositList
 from pidginhost_sdk.models.paginated_funds_log_list import PaginatedFundsLogList
@@ -61,7 +61,7 @@ class BillingApi:
     @validate_call
     def billing_deposits_create(
         self,
-        deposit_create: DepositCreate,
+        deposit_create_request: DepositCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -79,8 +79,8 @@ class BillingApi:
 
         Create a new funds deposit.
 
-        :param deposit_create: (required)
-        :type deposit_create: DepositCreate
+        :param deposit_create_request: (required)
+        :type deposit_create_request: DepositCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -104,7 +104,7 @@ class BillingApi:
         """ # noqa: E501
 
         _param = self._billing_deposits_create_serialize(
-            deposit_create=deposit_create,
+            deposit_create_request=deposit_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -128,7 +128,7 @@ class BillingApi:
     @validate_call
     def billing_deposits_create_with_http_info(
         self,
-        deposit_create: DepositCreate,
+        deposit_create_request: DepositCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,8 +146,8 @@ class BillingApi:
 
         Create a new funds deposit.
 
-        :param deposit_create: (required)
-        :type deposit_create: DepositCreate
+        :param deposit_create_request: (required)
+        :type deposit_create_request: DepositCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -171,7 +171,7 @@ class BillingApi:
         """ # noqa: E501
 
         _param = self._billing_deposits_create_serialize(
-            deposit_create=deposit_create,
+            deposit_create_request=deposit_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -195,7 +195,7 @@ class BillingApi:
     @validate_call
     def billing_deposits_create_without_preload_content(
         self,
-        deposit_create: DepositCreate,
+        deposit_create_request: DepositCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -213,8 +213,8 @@ class BillingApi:
 
         Create a new funds deposit.
 
-        :param deposit_create: (required)
-        :type deposit_create: DepositCreate
+        :param deposit_create_request: (required)
+        :type deposit_create_request: DepositCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -238,7 +238,7 @@ class BillingApi:
         """ # noqa: E501
 
         _param = self._billing_deposits_create_serialize(
-            deposit_create=deposit_create,
+            deposit_create_request=deposit_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -257,7 +257,7 @@ class BillingApi:
 
     def _billing_deposits_create_serialize(
         self,
-        deposit_create,
+        deposit_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -283,8 +283,8 @@ class BillingApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if deposit_create is not None:
-            _body_params = deposit_create
+        if deposit_create_request is not None:
+            _body_params = deposit_create_request
 
 
         # set the HTTP header `Accept`
@@ -1373,7 +1373,7 @@ class BillingApi:
     @validate_call
     def billing_funds_notification_settings_create(
         self,
-        low_balance_settings: LowBalanceSettings,
+        low_balance_settings_request: LowBalanceSettingsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1391,8 +1391,8 @@ class BillingApi:
 
         Update low-balance notification settings.
 
-        :param low_balance_settings: (required)
-        :type low_balance_settings: LowBalanceSettings
+        :param low_balance_settings_request: (required)
+        :type low_balance_settings_request: LowBalanceSettingsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1416,7 +1416,7 @@ class BillingApi:
         """ # noqa: E501
 
         _param = self._billing_funds_notification_settings_create_serialize(
-            low_balance_settings=low_balance_settings,
+            low_balance_settings_request=low_balance_settings_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1440,7 +1440,7 @@ class BillingApi:
     @validate_call
     def billing_funds_notification_settings_create_with_http_info(
         self,
-        low_balance_settings: LowBalanceSettings,
+        low_balance_settings_request: LowBalanceSettingsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1458,8 +1458,8 @@ class BillingApi:
 
         Update low-balance notification settings.
 
-        :param low_balance_settings: (required)
-        :type low_balance_settings: LowBalanceSettings
+        :param low_balance_settings_request: (required)
+        :type low_balance_settings_request: LowBalanceSettingsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1483,7 +1483,7 @@ class BillingApi:
         """ # noqa: E501
 
         _param = self._billing_funds_notification_settings_create_serialize(
-            low_balance_settings=low_balance_settings,
+            low_balance_settings_request=low_balance_settings_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1507,7 +1507,7 @@ class BillingApi:
     @validate_call
     def billing_funds_notification_settings_create_without_preload_content(
         self,
-        low_balance_settings: LowBalanceSettings,
+        low_balance_settings_request: LowBalanceSettingsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1525,8 +1525,8 @@ class BillingApi:
 
         Update low-balance notification settings.
 
-        :param low_balance_settings: (required)
-        :type low_balance_settings: LowBalanceSettings
+        :param low_balance_settings_request: (required)
+        :type low_balance_settings_request: LowBalanceSettingsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1550,7 +1550,7 @@ class BillingApi:
         """ # noqa: E501
 
         _param = self._billing_funds_notification_settings_create_serialize(
-            low_balance_settings=low_balance_settings,
+            low_balance_settings_request=low_balance_settings_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1569,7 +1569,7 @@ class BillingApi:
 
     def _billing_funds_notification_settings_create_serialize(
         self,
-        low_balance_settings,
+        low_balance_settings_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1595,8 +1595,8 @@ class BillingApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if low_balance_settings is not None:
-            _body_params = low_balance_settings
+        if low_balance_settings_request is not None:
+            _body_params = low_balance_settings_request
 
 
         # set the HTTP header `Accept`
@@ -2961,7 +2961,7 @@ class BillingApi:
     def billing_services_change_billing_cycle_create(
         self,
         id: StrictStr,
-        change_billing_cycle: ChangeBillingCycle,
+        change_billing_cycle_request: ChangeBillingCycleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2981,8 +2981,8 @@ class BillingApi:
 
         :param id: (required)
         :type id: str
-        :param change_billing_cycle: (required)
-        :type change_billing_cycle: ChangeBillingCycle
+        :param change_billing_cycle_request: (required)
+        :type change_billing_cycle_request: ChangeBillingCycleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3007,7 +3007,7 @@ class BillingApi:
 
         _param = self._billing_services_change_billing_cycle_create_serialize(
             id=id,
-            change_billing_cycle=change_billing_cycle,
+            change_billing_cycle_request=change_billing_cycle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3032,7 +3032,7 @@ class BillingApi:
     def billing_services_change_billing_cycle_create_with_http_info(
         self,
         id: StrictStr,
-        change_billing_cycle: ChangeBillingCycle,
+        change_billing_cycle_request: ChangeBillingCycleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3052,8 +3052,8 @@ class BillingApi:
 
         :param id: (required)
         :type id: str
-        :param change_billing_cycle: (required)
-        :type change_billing_cycle: ChangeBillingCycle
+        :param change_billing_cycle_request: (required)
+        :type change_billing_cycle_request: ChangeBillingCycleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3078,7 +3078,7 @@ class BillingApi:
 
         _param = self._billing_services_change_billing_cycle_create_serialize(
             id=id,
-            change_billing_cycle=change_billing_cycle,
+            change_billing_cycle_request=change_billing_cycle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3103,7 +3103,7 @@ class BillingApi:
     def billing_services_change_billing_cycle_create_without_preload_content(
         self,
         id: StrictStr,
-        change_billing_cycle: ChangeBillingCycle,
+        change_billing_cycle_request: ChangeBillingCycleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3123,8 +3123,8 @@ class BillingApi:
 
         :param id: (required)
         :type id: str
-        :param change_billing_cycle: (required)
-        :type change_billing_cycle: ChangeBillingCycle
+        :param change_billing_cycle_request: (required)
+        :type change_billing_cycle_request: ChangeBillingCycleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3149,7 +3149,7 @@ class BillingApi:
 
         _param = self._billing_services_change_billing_cycle_create_serialize(
             id=id,
-            change_billing_cycle=change_billing_cycle,
+            change_billing_cycle_request=change_billing_cycle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3169,7 +3169,7 @@ class BillingApi:
     def _billing_services_change_billing_cycle_create_serialize(
         self,
         id,
-        change_billing_cycle,
+        change_billing_cycle_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3197,8 +3197,8 @@ class BillingApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if change_billing_cycle is not None:
-            _body_params = change_billing_cycle
+        if change_billing_cycle_request is not None:
+            _body_params = change_billing_cycle_request
 
 
         # set the HTTP header `Accept`
@@ -3251,7 +3251,7 @@ class BillingApi:
     def billing_services_change_company_create(
         self,
         id: StrictStr,
-        change_company: Optional[ChangeCompany] = None,
+        change_company_request: Optional[ChangeCompanyRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3271,8 +3271,8 @@ class BillingApi:
 
         :param id: (required)
         :type id: str
-        :param change_company:
-        :type change_company: ChangeCompany
+        :param change_company_request:
+        :type change_company_request: ChangeCompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3297,7 +3297,7 @@ class BillingApi:
 
         _param = self._billing_services_change_company_create_serialize(
             id=id,
-            change_company=change_company,
+            change_company_request=change_company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3322,7 +3322,7 @@ class BillingApi:
     def billing_services_change_company_create_with_http_info(
         self,
         id: StrictStr,
-        change_company: Optional[ChangeCompany] = None,
+        change_company_request: Optional[ChangeCompanyRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3342,8 +3342,8 @@ class BillingApi:
 
         :param id: (required)
         :type id: str
-        :param change_company:
-        :type change_company: ChangeCompany
+        :param change_company_request:
+        :type change_company_request: ChangeCompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3368,7 +3368,7 @@ class BillingApi:
 
         _param = self._billing_services_change_company_create_serialize(
             id=id,
-            change_company=change_company,
+            change_company_request=change_company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3393,7 +3393,7 @@ class BillingApi:
     def billing_services_change_company_create_without_preload_content(
         self,
         id: StrictStr,
-        change_company: Optional[ChangeCompany] = None,
+        change_company_request: Optional[ChangeCompanyRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3413,8 +3413,8 @@ class BillingApi:
 
         :param id: (required)
         :type id: str
-        :param change_company:
-        :type change_company: ChangeCompany
+        :param change_company_request:
+        :type change_company_request: ChangeCompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3439,7 +3439,7 @@ class BillingApi:
 
         _param = self._billing_services_change_company_create_serialize(
             id=id,
-            change_company=change_company,
+            change_company_request=change_company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3459,7 +3459,7 @@ class BillingApi:
     def _billing_services_change_company_create_serialize(
         self,
         id,
-        change_company,
+        change_company_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3487,8 +3487,8 @@ class BillingApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if change_company is not None:
-            _body_params = change_company
+        if change_company_request is not None:
+            _body_params = change_company_request
 
 
         # set the HTTP header `Accept`

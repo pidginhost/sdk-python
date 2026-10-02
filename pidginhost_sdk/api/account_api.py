@@ -20,16 +20,21 @@ from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.api_token_create import APITokenCreate
+from pidginhost_sdk.models.api_token_create_request import APITokenCreateRequest
 from pidginhost_sdk.models.company import Company
+from pidginhost_sdk.models.company_request import CompanyRequest
 from pidginhost_sdk.models.paginated_api_token_list_list import PaginatedAPITokenListList
 from pidginhost_sdk.models.paginated_company_list import PaginatedCompanyList
 from pidginhost_sdk.models.paginated_email_history_list import PaginatedEmailHistoryList
 from pidginhost_sdk.models.paginated_ssh_key_list import PaginatedSSHKeyList
-from pidginhost_sdk.models.patched_company import PatchedCompany
-from pidginhost_sdk.models.patched_profile import PatchedProfile
-from pidginhost_sdk.models.patched_ssh_key import PatchedSSHKey
+from pidginhost_sdk.models.patched_company_request import PatchedCompanyRequest
+from pidginhost_sdk.models.patched_profile_request import PatchedProfileRequest
+from pidginhost_sdk.models.patched_ssh_key_update_request import PatchedSSHKeyUpdateRequest
 from pidginhost_sdk.models.profile import Profile
+from pidginhost_sdk.models.profile_request import ProfileRequest
 from pidginhost_sdk.models.ssh_key import SSHKey
+from pidginhost_sdk.models.ssh_key_request import SSHKeyRequest
+from pidginhost_sdk.models.ssh_key_update_request import SSHKeyUpdateRequest
 
 from pidginhost_sdk.api_client import ApiClient, RequestSerialized
 from pidginhost_sdk.api_response import ApiResponse
@@ -52,7 +57,7 @@ class AccountApi:
     @validate_call
     def account_api_tokens_create(
         self,
-        api_token_create: APITokenCreate,
+        api_token_create_request: APITokenCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -70,8 +75,8 @@ class AccountApi:
 
         Manage your API tokens
 
-        :param api_token_create: (required)
-        :type api_token_create: APITokenCreate
+        :param api_token_create_request: (required)
+        :type api_token_create_request: APITokenCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,7 +100,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_api_tokens_create_serialize(
-            api_token_create=api_token_create,
+            api_token_create_request=api_token_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -119,7 +124,7 @@ class AccountApi:
     @validate_call
     def account_api_tokens_create_with_http_info(
         self,
-        api_token_create: APITokenCreate,
+        api_token_create_request: APITokenCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,8 +142,8 @@ class AccountApi:
 
         Manage your API tokens
 
-        :param api_token_create: (required)
-        :type api_token_create: APITokenCreate
+        :param api_token_create_request: (required)
+        :type api_token_create_request: APITokenCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,7 +167,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_api_tokens_create_serialize(
-            api_token_create=api_token_create,
+            api_token_create_request=api_token_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -186,7 +191,7 @@ class AccountApi:
     @validate_call
     def account_api_tokens_create_without_preload_content(
         self,
-        api_token_create: APITokenCreate,
+        api_token_create_request: APITokenCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -204,8 +209,8 @@ class AccountApi:
 
         Manage your API tokens
 
-        :param api_token_create: (required)
-        :type api_token_create: APITokenCreate
+        :param api_token_create_request: (required)
+        :type api_token_create_request: APITokenCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -229,7 +234,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_api_tokens_create_serialize(
-            api_token_create=api_token_create,
+            api_token_create_request=api_token_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -248,7 +253,7 @@ class AccountApi:
 
     def _account_api_tokens_create_serialize(
         self,
-        api_token_create,
+        api_token_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -274,8 +279,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if api_token_create is not None:
-            _body_params = api_token_create
+        if api_token_create_request is not None:
+            _body_params = api_token_create_request
 
 
         # set the HTTP header `Accept`
@@ -846,7 +851,7 @@ class AccountApi:
     @validate_call
     def account_companies_create(
         self,
-        company: Company,
+        company_request: CompanyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -864,8 +869,8 @@ class AccountApi:
 
         Manage your companies
 
-        :param company: (required)
-        :type company: Company
+        :param company_request: (required)
+        :type company_request: CompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -889,7 +894,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_companies_create_serialize(
-            company=company,
+            company_request=company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -913,7 +918,7 @@ class AccountApi:
     @validate_call
     def account_companies_create_with_http_info(
         self,
-        company: Company,
+        company_request: CompanyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -931,8 +936,8 @@ class AccountApi:
 
         Manage your companies
 
-        :param company: (required)
-        :type company: Company
+        :param company_request: (required)
+        :type company_request: CompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -956,7 +961,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_companies_create_serialize(
-            company=company,
+            company_request=company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -980,7 +985,7 @@ class AccountApi:
     @validate_call
     def account_companies_create_without_preload_content(
         self,
-        company: Company,
+        company_request: CompanyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -998,8 +1003,8 @@ class AccountApi:
 
         Manage your companies
 
-        :param company: (required)
-        :type company: Company
+        :param company_request: (required)
+        :type company_request: CompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1023,7 +1028,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_companies_create_serialize(
-            company=company,
+            company_request=company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1042,7 +1047,7 @@ class AccountApi:
 
     def _account_companies_create_serialize(
         self,
-        company,
+        company_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1068,8 +1073,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if company is not None:
-            _body_params = company
+        if company_request is not None:
+            _body_params = company_request
 
 
         # set the HTTP header `Accept`
@@ -1641,7 +1646,7 @@ class AccountApi:
     def account_companies_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this company.")],
-        patched_company: Optional[PatchedCompany] = None,
+        patched_company_request: Optional[PatchedCompanyRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1661,8 +1666,8 @@ class AccountApi:
 
         :param id: A unique integer value identifying this company. (required)
         :type id: int
-        :param patched_company:
-        :type patched_company: PatchedCompany
+        :param patched_company_request:
+        :type patched_company_request: PatchedCompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1687,7 +1692,7 @@ class AccountApi:
 
         _param = self._account_companies_partial_update_serialize(
             id=id,
-            patched_company=patched_company,
+            patched_company_request=patched_company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1712,7 +1717,7 @@ class AccountApi:
     def account_companies_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this company.")],
-        patched_company: Optional[PatchedCompany] = None,
+        patched_company_request: Optional[PatchedCompanyRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1732,8 +1737,8 @@ class AccountApi:
 
         :param id: A unique integer value identifying this company. (required)
         :type id: int
-        :param patched_company:
-        :type patched_company: PatchedCompany
+        :param patched_company_request:
+        :type patched_company_request: PatchedCompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1758,7 +1763,7 @@ class AccountApi:
 
         _param = self._account_companies_partial_update_serialize(
             id=id,
-            patched_company=patched_company,
+            patched_company_request=patched_company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1783,7 +1788,7 @@ class AccountApi:
     def account_companies_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this company.")],
-        patched_company: Optional[PatchedCompany] = None,
+        patched_company_request: Optional[PatchedCompanyRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1803,8 +1808,8 @@ class AccountApi:
 
         :param id: A unique integer value identifying this company. (required)
         :type id: int
-        :param patched_company:
-        :type patched_company: PatchedCompany
+        :param patched_company_request:
+        :type patched_company_request: PatchedCompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1829,7 +1834,7 @@ class AccountApi:
 
         _param = self._account_companies_partial_update_serialize(
             id=id,
-            patched_company=patched_company,
+            patched_company_request=patched_company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1849,7 +1854,7 @@ class AccountApi:
     def _account_companies_partial_update_serialize(
         self,
         id,
-        patched_company,
+        patched_company_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1877,8 +1882,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_company is not None:
-            _body_params = patched_company
+        if patched_company_request is not None:
+            _body_params = patched_company_request
 
 
         # set the HTTP header `Accept`
@@ -2193,7 +2198,7 @@ class AccountApi:
     def account_companies_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this company.")],
-        company: Company,
+        company_request: CompanyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2213,8 +2218,8 @@ class AccountApi:
 
         :param id: A unique integer value identifying this company. (required)
         :type id: int
-        :param company: (required)
-        :type company: Company
+        :param company_request: (required)
+        :type company_request: CompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2239,7 +2244,7 @@ class AccountApi:
 
         _param = self._account_companies_update_serialize(
             id=id,
-            company=company,
+            company_request=company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2264,7 +2269,7 @@ class AccountApi:
     def account_companies_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this company.")],
-        company: Company,
+        company_request: CompanyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2284,8 +2289,8 @@ class AccountApi:
 
         :param id: A unique integer value identifying this company. (required)
         :type id: int
-        :param company: (required)
-        :type company: Company
+        :param company_request: (required)
+        :type company_request: CompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2310,7 +2315,7 @@ class AccountApi:
 
         _param = self._account_companies_update_serialize(
             id=id,
-            company=company,
+            company_request=company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2335,7 +2340,7 @@ class AccountApi:
     def account_companies_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this company.")],
-        company: Company,
+        company_request: CompanyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2355,8 +2360,8 @@ class AccountApi:
 
         :param id: A unique integer value identifying this company. (required)
         :type id: int
-        :param company: (required)
-        :type company: Company
+        :param company_request: (required)
+        :type company_request: CompanyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2381,7 +2386,7 @@ class AccountApi:
 
         _param = self._account_companies_update_serialize(
             id=id,
-            company=company,
+            company_request=company_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2401,7 +2406,7 @@ class AccountApi:
     def _account_companies_update_serialize(
         self,
         id,
-        company,
+        company_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2429,8 +2434,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if company is not None:
-            _body_params = company
+        if company_request is not None:
+            _body_params = company_request
 
 
         # set the HTTP header `Accept`
@@ -2746,7 +2751,7 @@ class AccountApi:
     @validate_call
     def account_profile_partial_update(
         self,
-        patched_profile: Optional[PatchedProfile] = None,
+        patched_profile_request: Optional[PatchedProfileRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2764,8 +2769,8 @@ class AccountApi:
 
         Manage your profile data
 
-        :param patched_profile:
-        :type patched_profile: PatchedProfile
+        :param patched_profile_request:
+        :type patched_profile_request: PatchedProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2789,7 +2794,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_profile_partial_update_serialize(
-            patched_profile=patched_profile,
+            patched_profile_request=patched_profile_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2813,7 +2818,7 @@ class AccountApi:
     @validate_call
     def account_profile_partial_update_with_http_info(
         self,
-        patched_profile: Optional[PatchedProfile] = None,
+        patched_profile_request: Optional[PatchedProfileRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2831,8 +2836,8 @@ class AccountApi:
 
         Manage your profile data
 
-        :param patched_profile:
-        :type patched_profile: PatchedProfile
+        :param patched_profile_request:
+        :type patched_profile_request: PatchedProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2856,7 +2861,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_profile_partial_update_serialize(
-            patched_profile=patched_profile,
+            patched_profile_request=patched_profile_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2880,7 +2885,7 @@ class AccountApi:
     @validate_call
     def account_profile_partial_update_without_preload_content(
         self,
-        patched_profile: Optional[PatchedProfile] = None,
+        patched_profile_request: Optional[PatchedProfileRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2898,8 +2903,8 @@ class AccountApi:
 
         Manage your profile data
 
-        :param patched_profile:
-        :type patched_profile: PatchedProfile
+        :param patched_profile_request:
+        :type patched_profile_request: PatchedProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2923,7 +2928,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_profile_partial_update_serialize(
-            patched_profile=patched_profile,
+            patched_profile_request=patched_profile_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2942,7 +2947,7 @@ class AccountApi:
 
     def _account_profile_partial_update_serialize(
         self,
-        patched_profile,
+        patched_profile_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2968,8 +2973,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_profile is not None:
-            _body_params = patched_profile
+        if patched_profile_request is not None:
+            _body_params = patched_profile_request
 
 
         # set the HTTP header `Accept`
@@ -3268,7 +3273,7 @@ class AccountApi:
     @validate_call
     def account_profile_update(
         self,
-        profile: Profile,
+        profile_request: ProfileRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3286,8 +3291,8 @@ class AccountApi:
 
         Manage your profile data
 
-        :param profile: (required)
-        :type profile: Profile
+        :param profile_request: (required)
+        :type profile_request: ProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3311,7 +3316,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_profile_update_serialize(
-            profile=profile,
+            profile_request=profile_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3335,7 +3340,7 @@ class AccountApi:
     @validate_call
     def account_profile_update_with_http_info(
         self,
-        profile: Profile,
+        profile_request: ProfileRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3353,8 +3358,8 @@ class AccountApi:
 
         Manage your profile data
 
-        :param profile: (required)
-        :type profile: Profile
+        :param profile_request: (required)
+        :type profile_request: ProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3378,7 +3383,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_profile_update_serialize(
-            profile=profile,
+            profile_request=profile_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3402,7 +3407,7 @@ class AccountApi:
     @validate_call
     def account_profile_update_without_preload_content(
         self,
-        profile: Profile,
+        profile_request: ProfileRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3420,8 +3425,8 @@ class AccountApi:
 
         Manage your profile data
 
-        :param profile: (required)
-        :type profile: Profile
+        :param profile_request: (required)
+        :type profile_request: ProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3445,7 +3450,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_profile_update_serialize(
-            profile=profile,
+            profile_request=profile_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3464,7 +3469,7 @@ class AccountApi:
 
     def _account_profile_update_serialize(
         self,
-        profile,
+        profile_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3490,8 +3495,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if profile is not None:
-            _body_params = profile
+        if profile_request is not None:
+            _body_params = profile_request
 
 
         # set the HTTP header `Accept`
@@ -3543,7 +3548,7 @@ class AccountApi:
     @validate_call
     def account_ssh_keys_create(
         self,
-        ssh_key: Optional[SSHKey] = None,
+        ssh_key_request: SSHKeyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3561,8 +3566,8 @@ class AccountApi:
 
         Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
 
-        :param ssh_key:
-        :type ssh_key: SSHKey
+        :param ssh_key_request: (required)
+        :type ssh_key_request: SSHKeyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3586,7 +3591,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_ssh_keys_create_serialize(
-            ssh_key=ssh_key,
+            ssh_key_request=ssh_key_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3610,7 +3615,7 @@ class AccountApi:
     @validate_call
     def account_ssh_keys_create_with_http_info(
         self,
-        ssh_key: Optional[SSHKey] = None,
+        ssh_key_request: SSHKeyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3628,8 +3633,8 @@ class AccountApi:
 
         Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
 
-        :param ssh_key:
-        :type ssh_key: SSHKey
+        :param ssh_key_request: (required)
+        :type ssh_key_request: SSHKeyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3653,7 +3658,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_ssh_keys_create_serialize(
-            ssh_key=ssh_key,
+            ssh_key_request=ssh_key_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3677,7 +3682,7 @@ class AccountApi:
     @validate_call
     def account_ssh_keys_create_without_preload_content(
         self,
-        ssh_key: Optional[SSHKey] = None,
+        ssh_key_request: SSHKeyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3695,8 +3700,8 @@ class AccountApi:
 
         Account context + IAM role enforcement for the account residue: billing identity (profile/companies/email history) is owner-only account state, SSH keys are account infra, tokens stay actor-owned.
 
-        :param ssh_key:
-        :type ssh_key: SSHKey
+        :param ssh_key_request: (required)
+        :type ssh_key_request: SSHKeyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3720,7 +3725,7 @@ class AccountApi:
         """ # noqa: E501
 
         _param = self._account_ssh_keys_create_serialize(
-            ssh_key=ssh_key,
+            ssh_key_request=ssh_key_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3739,7 +3744,7 @@ class AccountApi:
 
     def _account_ssh_keys_create_serialize(
         self,
-        ssh_key,
+        ssh_key_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3765,8 +3770,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ssh_key is not None:
-            _body_params = ssh_key
+        if ssh_key_request is not None:
+            _body_params = ssh_key_request
 
 
         # set the HTTP header `Accept`
@@ -4338,7 +4343,7 @@ class AccountApi:
     def account_ssh_keys_partial_update(
         self,
         id: StrictStr,
-        patched_ssh_key: Optional[PatchedSSHKey] = None,
+        patched_ssh_key_update_request: Optional[PatchedSSHKeyUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4358,8 +4363,8 @@ class AccountApi:
 
         :param id: (required)
         :type id: str
-        :param patched_ssh_key:
-        :type patched_ssh_key: PatchedSSHKey
+        :param patched_ssh_key_update_request:
+        :type patched_ssh_key_update_request: PatchedSSHKeyUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4384,7 +4389,7 @@ class AccountApi:
 
         _param = self._account_ssh_keys_partial_update_serialize(
             id=id,
-            patched_ssh_key=patched_ssh_key,
+            patched_ssh_key_update_request=patched_ssh_key_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4409,7 +4414,7 @@ class AccountApi:
     def account_ssh_keys_partial_update_with_http_info(
         self,
         id: StrictStr,
-        patched_ssh_key: Optional[PatchedSSHKey] = None,
+        patched_ssh_key_update_request: Optional[PatchedSSHKeyUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4429,8 +4434,8 @@ class AccountApi:
 
         :param id: (required)
         :type id: str
-        :param patched_ssh_key:
-        :type patched_ssh_key: PatchedSSHKey
+        :param patched_ssh_key_update_request:
+        :type patched_ssh_key_update_request: PatchedSSHKeyUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4455,7 +4460,7 @@ class AccountApi:
 
         _param = self._account_ssh_keys_partial_update_serialize(
             id=id,
-            patched_ssh_key=patched_ssh_key,
+            patched_ssh_key_update_request=patched_ssh_key_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4480,7 +4485,7 @@ class AccountApi:
     def account_ssh_keys_partial_update_without_preload_content(
         self,
         id: StrictStr,
-        patched_ssh_key: Optional[PatchedSSHKey] = None,
+        patched_ssh_key_update_request: Optional[PatchedSSHKeyUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4500,8 +4505,8 @@ class AccountApi:
 
         :param id: (required)
         :type id: str
-        :param patched_ssh_key:
-        :type patched_ssh_key: PatchedSSHKey
+        :param patched_ssh_key_update_request:
+        :type patched_ssh_key_update_request: PatchedSSHKeyUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4526,7 +4531,7 @@ class AccountApi:
 
         _param = self._account_ssh_keys_partial_update_serialize(
             id=id,
-            patched_ssh_key=patched_ssh_key,
+            patched_ssh_key_update_request=patched_ssh_key_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4546,7 +4551,7 @@ class AccountApi:
     def _account_ssh_keys_partial_update_serialize(
         self,
         id,
-        patched_ssh_key,
+        patched_ssh_key_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4574,8 +4579,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_ssh_key is not None:
-            _body_params = patched_ssh_key
+        if patched_ssh_key_update_request is not None:
+            _body_params = patched_ssh_key_update_request
 
 
         # set the HTTP header `Accept`
@@ -4890,7 +4895,7 @@ class AccountApi:
     def account_ssh_keys_update(
         self,
         id: StrictStr,
-        ssh_key: Optional[SSHKey] = None,
+        ssh_key_update_request: Optional[SSHKeyUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4910,8 +4915,8 @@ class AccountApi:
 
         :param id: (required)
         :type id: str
-        :param ssh_key:
-        :type ssh_key: SSHKey
+        :param ssh_key_update_request:
+        :type ssh_key_update_request: SSHKeyUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4936,7 +4941,7 @@ class AccountApi:
 
         _param = self._account_ssh_keys_update_serialize(
             id=id,
-            ssh_key=ssh_key,
+            ssh_key_update_request=ssh_key_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4961,7 +4966,7 @@ class AccountApi:
     def account_ssh_keys_update_with_http_info(
         self,
         id: StrictStr,
-        ssh_key: Optional[SSHKey] = None,
+        ssh_key_update_request: Optional[SSHKeyUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4981,8 +4986,8 @@ class AccountApi:
 
         :param id: (required)
         :type id: str
-        :param ssh_key:
-        :type ssh_key: SSHKey
+        :param ssh_key_update_request:
+        :type ssh_key_update_request: SSHKeyUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5007,7 +5012,7 @@ class AccountApi:
 
         _param = self._account_ssh_keys_update_serialize(
             id=id,
-            ssh_key=ssh_key,
+            ssh_key_update_request=ssh_key_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5032,7 +5037,7 @@ class AccountApi:
     def account_ssh_keys_update_without_preload_content(
         self,
         id: StrictStr,
-        ssh_key: Optional[SSHKey] = None,
+        ssh_key_update_request: Optional[SSHKeyUpdateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5052,8 +5057,8 @@ class AccountApi:
 
         :param id: (required)
         :type id: str
-        :param ssh_key:
-        :type ssh_key: SSHKey
+        :param ssh_key_update_request:
+        :type ssh_key_update_request: SSHKeyUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5078,7 +5083,7 @@ class AccountApi:
 
         _param = self._account_ssh_keys_update_serialize(
             id=id,
-            ssh_key=ssh_key,
+            ssh_key_update_request=ssh_key_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5098,7 +5103,7 @@ class AccountApi:
     def _account_ssh_keys_update_serialize(
         self,
         id,
-        ssh_key,
+        ssh_key_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5126,8 +5131,8 @@ class AccountApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ssh_key is not None:
-            _body_params = ssh_key
+        if ssh_key_update_request is not None:
+            _body_params = ssh_key_update_request
 
 
         # set the HTTP header `Accept`

@@ -52,8 +52,8 @@ class TestPaginatedEmailServiceList(unittest.TestCase):
                         bounce_rate_pct = '-807', 
                         complaint_rate_pct = '-807', 
                         dedicated_ip_addon = True, 
-                        quota_monthly = '', 
-                        price_monthly_eur = '', )
+                        quota_monthly = 56, 
+                        price_monthly_eur = 1.337, )
                     ]
             )
         else:
@@ -72,8 +72,8 @@ class TestPaginatedEmailServiceList(unittest.TestCase):
                         bounce_rate_pct = '-807', 
                         complaint_rate_pct = '-807', 
                         dedicated_ip_addon = True, 
-                        quota_monthly = '', 
-                        price_monthly_eur = '', )
+                        quota_monthly = 56, 
+                        price_monthly_eur = 1.337, )
                     ],
         )
         """

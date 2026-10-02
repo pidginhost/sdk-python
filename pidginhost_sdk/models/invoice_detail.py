@@ -22,6 +22,7 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.invoice_service import InvoiceService
 from pidginhost_sdk.models.invoice_status_enum import InvoiceStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -47,7 +48,7 @@ class InvoiceDetail(BaseModel):
     client_info: Optional[Any]
     invoice_info: Optional[Any]
     payment_method: StrictStr
-    services: StrictStr
+    services: List[InvoiceService]
     __properties: ClassVar[List[str]] = ["id", "number_proforma", "number_fiscal", "status", "subtotal", "vat_value", "vat_percentage", "total", "invoice_date", "due_date", "payment_date", "product_info", "usage_detail", "client_info", "invoice_info", "payment_method", "services"]
 
     @field_validator('subtotal', mode="before")
@@ -144,6 +145,13 @@ class InvoiceDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in services (list)
+        _items = []
+        if self.services:
+            for _item_services in self.services:
+                if _item_services:
+                    _items.append(_item_services.to_dict())
+            _dict['services'] = _items
         # set to None if due_date (nullable) is None
         # and model_fields_set contains the field
         if self.due_date is None and "due_date" in self.model_fields_set:
@@ -202,7 +210,7 @@ class InvoiceDetail(BaseModel):
             "client_info": obj.get("client_info"),
             "invoice_info": obj.get("invoice_info"),
             "payment_method": obj.get("payment_method"),
-            "services": obj.get("services")
+            "services": [InvoiceService.from_dict(_item) for _item in obj["services"]] if obj.get("services") is not None else None
         })
         return _obj
 

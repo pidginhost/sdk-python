@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **scope** | [**ScopeEnum**](ScopeEnum.md) |  | [optional] 
 **key** | **str** |  | [readonly] 
 **created** | **str** |  | [readonly] 
-**account** | **str** |  | [readonly] 
-**membership_status** | **str** |  | [readonly] 
+**account** | **str** |  | [optional] 
+**membership_status** | **str** |  | [optional] 
 
 ## Example
 

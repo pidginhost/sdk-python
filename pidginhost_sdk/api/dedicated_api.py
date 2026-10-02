@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from pidginhost_sdk.models.dedicated_rdns import DedicatedRDNS
+from pidginhost_sdk.models.dedicated_rdns_request import DedicatedRDNSRequest
 from pidginhost_sdk.models.dedicated_server import DedicatedServer
 from pidginhost_sdk.models.paginated_dedicated_server_list import PaginatedDedicatedServerList
-from pidginhost_sdk.models.power_action import PowerAction
+from pidginhost_sdk.models.power_action_request import PowerActionRequest
 from pidginhost_sdk.models.power_action_response import PowerActionResponse
 from pidginhost_sdk.models.rdns_update_response import RDNSUpdateResponse
-from pidginhost_sdk.models.reinstall import Reinstall
+from pidginhost_sdk.models.reinstall_request import ReinstallRequest
 from pidginhost_sdk.models.reinstall_response import ReinstallResponse
 
 from pidginhost_sdk.api_client import ApiClient, RequestSerialized
@@ -314,7 +314,7 @@ class DedicatedApi:
     def dedicated_servers_power_create(
         self,
         id: StrictStr,
-        power_action: PowerAction,
+        power_action_request: PowerActionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -334,8 +334,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param power_action: (required)
-        :type power_action: PowerAction
+        :param power_action_request: (required)
+        :type power_action_request: PowerActionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -360,7 +360,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_power_create_serialize(
             id=id,
-            power_action=power_action,
+            power_action_request=power_action_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -385,7 +385,7 @@ class DedicatedApi:
     def dedicated_servers_power_create_with_http_info(
         self,
         id: StrictStr,
-        power_action: PowerAction,
+        power_action_request: PowerActionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -405,8 +405,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param power_action: (required)
-        :type power_action: PowerAction
+        :param power_action_request: (required)
+        :type power_action_request: PowerActionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -431,7 +431,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_power_create_serialize(
             id=id,
-            power_action=power_action,
+            power_action_request=power_action_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,7 +456,7 @@ class DedicatedApi:
     def dedicated_servers_power_create_without_preload_content(
         self,
         id: StrictStr,
-        power_action: PowerAction,
+        power_action_request: PowerActionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -476,8 +476,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param power_action: (required)
-        :type power_action: PowerAction
+        :param power_action_request: (required)
+        :type power_action_request: PowerActionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -502,7 +502,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_power_create_serialize(
             id=id,
-            power_action=power_action,
+            power_action_request=power_action_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -522,7 +522,7 @@ class DedicatedApi:
     def _dedicated_servers_power_create_serialize(
         self,
         id,
-        power_action,
+        power_action_request,
         _request_auth,
         _content_type,
         _headers,
@@ -550,8 +550,8 @@ class DedicatedApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if power_action is not None:
-            _body_params = power_action
+        if power_action_request is not None:
+            _body_params = power_action_request
 
 
         # set the HTTP header `Accept`
@@ -604,7 +604,7 @@ class DedicatedApi:
     def dedicated_servers_rdns_create(
         self,
         id: StrictStr,
-        dedicated_rdns: DedicatedRDNS,
+        dedicated_rdns_request: DedicatedRDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -624,8 +624,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param dedicated_rdns: (required)
-        :type dedicated_rdns: DedicatedRDNS
+        :param dedicated_rdns_request: (required)
+        :type dedicated_rdns_request: DedicatedRDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -650,7 +650,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_rdns_create_serialize(
             id=id,
-            dedicated_rdns=dedicated_rdns,
+            dedicated_rdns_request=dedicated_rdns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -675,7 +675,7 @@ class DedicatedApi:
     def dedicated_servers_rdns_create_with_http_info(
         self,
         id: StrictStr,
-        dedicated_rdns: DedicatedRDNS,
+        dedicated_rdns_request: DedicatedRDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -695,8 +695,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param dedicated_rdns: (required)
-        :type dedicated_rdns: DedicatedRDNS
+        :param dedicated_rdns_request: (required)
+        :type dedicated_rdns_request: DedicatedRDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -721,7 +721,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_rdns_create_serialize(
             id=id,
-            dedicated_rdns=dedicated_rdns,
+            dedicated_rdns_request=dedicated_rdns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -746,7 +746,7 @@ class DedicatedApi:
     def dedicated_servers_rdns_create_without_preload_content(
         self,
         id: StrictStr,
-        dedicated_rdns: DedicatedRDNS,
+        dedicated_rdns_request: DedicatedRDNSRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -766,8 +766,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param dedicated_rdns: (required)
-        :type dedicated_rdns: DedicatedRDNS
+        :param dedicated_rdns_request: (required)
+        :type dedicated_rdns_request: DedicatedRDNSRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -792,7 +792,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_rdns_create_serialize(
             id=id,
-            dedicated_rdns=dedicated_rdns,
+            dedicated_rdns_request=dedicated_rdns_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -812,7 +812,7 @@ class DedicatedApi:
     def _dedicated_servers_rdns_create_serialize(
         self,
         id,
-        dedicated_rdns,
+        dedicated_rdns_request,
         _request_auth,
         _content_type,
         _headers,
@@ -840,8 +840,8 @@ class DedicatedApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if dedicated_rdns is not None:
-            _body_params = dedicated_rdns
+        if dedicated_rdns_request is not None:
+            _body_params = dedicated_rdns_request
 
 
         # set the HTTP header `Accept`
@@ -894,7 +894,7 @@ class DedicatedApi:
     def dedicated_servers_reinstall_create(
         self,
         id: StrictStr,
-        reinstall: Reinstall,
+        reinstall_request: ReinstallRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -914,8 +914,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param reinstall: (required)
-        :type reinstall: Reinstall
+        :param reinstall_request: (required)
+        :type reinstall_request: ReinstallRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -940,7 +940,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_reinstall_create_serialize(
             id=id,
-            reinstall=reinstall,
+            reinstall_request=reinstall_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -965,7 +965,7 @@ class DedicatedApi:
     def dedicated_servers_reinstall_create_with_http_info(
         self,
         id: StrictStr,
-        reinstall: Reinstall,
+        reinstall_request: ReinstallRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -985,8 +985,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param reinstall: (required)
-        :type reinstall: Reinstall
+        :param reinstall_request: (required)
+        :type reinstall_request: ReinstallRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1011,7 +1011,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_reinstall_create_serialize(
             id=id,
-            reinstall=reinstall,
+            reinstall_request=reinstall_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1036,7 +1036,7 @@ class DedicatedApi:
     def dedicated_servers_reinstall_create_without_preload_content(
         self,
         id: StrictStr,
-        reinstall: Reinstall,
+        reinstall_request: ReinstallRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1056,8 +1056,8 @@ class DedicatedApi:
 
         :param id: (required)
         :type id: str
-        :param reinstall: (required)
-        :type reinstall: Reinstall
+        :param reinstall_request: (required)
+        :type reinstall_request: ReinstallRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1082,7 +1082,7 @@ class DedicatedApi:
 
         _param = self._dedicated_servers_reinstall_create_serialize(
             id=id,
-            reinstall=reinstall,
+            reinstall_request=reinstall_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1102,7 +1102,7 @@ class DedicatedApi:
     def _dedicated_servers_reinstall_create_serialize(
         self,
         id,
-        reinstall,
+        reinstall_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1130,8 +1130,8 @@ class DedicatedApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reinstall is not None:
-            _body_params = reinstall
+        if reinstall_request is not None:
+            _body_params = reinstall_request
 
 
         # set the HTTP header `Accept`

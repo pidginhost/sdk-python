@@ -11,6 +11,10 @@ Method | HTTP request | Description
 [**kubernetes_clusters_destroy**](KubernetesApi.md#kubernetes_clusters_destroy) | **DELETE** /api/kubernetes/clusters/{id}/ | 
 [**kubernetes_clusters_disconnect_vm_create**](KubernetesApi.md#kubernetes_clusters_disconnect_vm_create) | **POST** /api/kubernetes/clusters/{id}/disconnect-vm/ | 
 [**kubernetes_clusters_eligible_vms_retrieve**](KubernetesApi.md#kubernetes_clusters_eligible_vms_retrieve) | **GET** /api/kubernetes/clusters/{id}/eligible-vms/ | 
+[**kubernetes_clusters_encryption_create**](KubernetesApi.md#kubernetes_clusters_encryption_create) | **POST** /api/kubernetes/clusters/{id}/encryption/ | 
+[**kubernetes_clusters_encryption_recheck_create**](KubernetesApi.md#kubernetes_clusters_encryption_recheck_create) | **POST** /api/kubernetes/clusters/{id}/encryption/recheck/ | 
+[**kubernetes_clusters_encryption_reconcile_create**](KubernetesApi.md#kubernetes_clusters_encryption_reconcile_create) | **POST** /api/kubernetes/clusters/{id}/encryption/reconcile/ | 
+[**kubernetes_clusters_encryption_retrieve**](KubernetesApi.md#kubernetes_clusters_encryption_retrieve) | **GET** /api/kubernetes/clusters/{id}/encryption/ | 
 [**kubernetes_clusters_httproutes_create**](KubernetesApi.md#kubernetes_clusters_httproutes_create) | **POST** /api/kubernetes/clusters/{cluster_id}/httproutes/ | 
 [**kubernetes_clusters_httproutes_destroy**](KubernetesApi.md#kubernetes_clusters_httproutes_destroy) | **DELETE** /api/kubernetes/clusters/{cluster_id}/httproutes/{id}/ | 
 [**kubernetes_clusters_httproutes_list**](KubernetesApi.md#kubernetes_clusters_httproutes_list) | **GET** /api/kubernetes/clusters/{cluster_id}/httproutes/ | 
@@ -27,7 +31,15 @@ Method | HTTP request | Description
 [**kubernetes_clusters_lb_firewall_retrieve**](KubernetesApi.md#kubernetes_clusters_lb_firewall_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/ | 
 [**kubernetes_clusters_lb_firewall_update**](KubernetesApi.md#kubernetes_clusters_lb_firewall_update) | **PUT** /api/kubernetes/clusters/{cluster_id}/lb-firewall/{id}/ | 
 [**kubernetes_clusters_list**](KubernetesApi.md#kubernetes_clusters_list) | **GET** /api/kubernetes/clusters/ | 
+[**kubernetes_clusters_node_operations_cancel_create**](KubernetesApi.md#kubernetes_clusters_node_operations_cancel_create) | **POST** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/cancel/ | 
+[**kubernetes_clusters_node_operations_list**](KubernetesApi.md#kubernetes_clusters_node_operations_list) | **GET** /api/kubernetes/clusters/{cluster_id}/node-operations/ | 
+[**kubernetes_clusters_node_operations_resume_create**](KubernetesApi.md#kubernetes_clusters_node_operations_resume_create) | **POST** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/resume/ | 
+[**kubernetes_clusters_node_operations_retrieve**](KubernetesApi.md#kubernetes_clusters_node_operations_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/ | 
+[**kubernetes_clusters_node_operations_retry_create**](KubernetesApi.md#kubernetes_clusters_node_operations_retry_create) | **POST** /api/kubernetes/clusters/{cluster_id}/node-operations/{id}/retry/ | 
 [**kubernetes_clusters_partial_update**](KubernetesApi.md#kubernetes_clusters_partial_update) | **PATCH** /api/kubernetes/clusters/{id}/ | 
+[**kubernetes_clusters_pool_removal_journals_list**](KubernetesApi.md#kubernetes_clusters_pool_removal_journals_list) | **GET** /api/kubernetes/clusters/{cluster_id}/pool-removal-journals/ | 
+[**kubernetes_clusters_pool_removal_journals_resume_create**](KubernetesApi.md#kubernetes_clusters_pool_removal_journals_resume_create) | **POST** /api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/resume/ | 
+[**kubernetes_clusters_pool_removal_journals_retrieve**](KubernetesApi.md#kubernetes_clusters_pool_removal_journals_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/pool-removal-journals/{id}/ | 
 [**kubernetes_clusters_port_forwards_create**](KubernetesApi.md#kubernetes_clusters_port_forwards_create) | **POST** /api/kubernetes/clusters/{cluster_id}/port-forwards/ | 
 [**kubernetes_clusters_port_forwards_destroy**](KubernetesApi.md#kubernetes_clusters_port_forwards_destroy) | **DELETE** /api/kubernetes/clusters/{cluster_id}/port-forwards/{id}/ | 
 [**kubernetes_clusters_port_forwards_list**](KubernetesApi.md#kubernetes_clusters_port_forwards_list) | **GET** /api/kubernetes/clusters/{cluster_id}/port-forwards/ | 
@@ -40,6 +52,7 @@ Method | HTTP request | Description
 [**kubernetes_clusters_resource_pools_nodes_destroy**](KubernetesApi.md#kubernetes_clusters_resource_pools_nodes_destroy) | **DELETE** /api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/ | 
 [**kubernetes_clusters_resource_pools_nodes_list**](KubernetesApi.md#kubernetes_clusters_resource_pools_nodes_list) | **GET** /api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/ | 
 [**kubernetes_clusters_resource_pools_nodes_metrics_retrieve**](KubernetesApi.md#kubernetes_clusters_resource_pools_nodes_metrics_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/metrics/ | 
+[**kubernetes_clusters_resource_pools_nodes_reboot_create**](KubernetesApi.md#kubernetes_clusters_resource_pools_nodes_reboot_create) | **POST** /api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/reboot/ | 
 [**kubernetes_clusters_resource_pools_nodes_retrieve**](KubernetesApi.md#kubernetes_clusters_resource_pools_nodes_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/ | 
 [**kubernetes_clusters_resource_pools_nodes_rrd_retrieve**](KubernetesApi.md#kubernetes_clusters_resource_pools_nodes_rrd_retrieve) | **GET** /api/kubernetes/clusters/{cluster_id}/resource-pools/{pool_id}/nodes/{id}/rrd/ | 
 [**kubernetes_clusters_resource_pools_partial_update**](KubernetesApi.md#kubernetes_clusters_resource_pools_partial_update) | **PATCH** /api/kubernetes/clusters/{cluster_id}/resource-pools/{id}/ | 
@@ -62,6 +75,7 @@ Method | HTTP request | Description
 [**kubernetes_clusters_udproutes_update**](KubernetesApi.md#kubernetes_clusters_udproutes_update) | **PUT** /api/kubernetes/clusters/{cluster_id}/udproutes/{id}/ | 
 [**kubernetes_clusters_update**](KubernetesApi.md#kubernetes_clusters_update) | **PUT** /api/kubernetes/clusters/{id}/ | 
 [**kubernetes_clusters_upgrade_feature_create**](KubernetesApi.md#kubernetes_clusters_upgrade_feature_create) | **POST** /api/kubernetes/clusters/{id}/upgrade-feature/ | 
+[**kubernetes_clusters_upgrade_lb_create**](KubernetesApi.md#kubernetes_clusters_upgrade_lb_create) | **POST** /api/kubernetes/clusters/{id}/upgrade-lb/ | 
 
 
 # **kubernetes_cluster_types_list**
@@ -324,7 +338,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_create**
-> ClusterAddResponse kubernetes_clusters_create(cluster_add)
+> ClusterAddResponse kubernetes_clusters_create(cluster_add_request)
 
 Create new k8s cluster
 
@@ -335,7 +349,7 @@ Create new k8s cluster
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.cluster_add import ClusterAdd
+from pidginhost_sdk.models.cluster_add_request import ClusterAddRequest
 from pidginhost_sdk.models.cluster_add_response import ClusterAddResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -367,10 +381,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
-    cluster_add = pidginhost_sdk.ClusterAdd() # ClusterAdd | 
+    cluster_add_request = pidginhost_sdk.ClusterAddRequest() # ClusterAddRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_create(cluster_add)
+        api_response = api_instance.kubernetes_clusters_create(cluster_add_request)
         print("The response of KubernetesApi->kubernetes_clusters_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -384,7 +398,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cluster_add** | [**ClusterAdd**](ClusterAdd.md)|  | 
+ **cluster_add_request** | [**ClusterAddRequest**](ClusterAddRequest.md)|  | 
 
 ### Return type
 
@@ -663,8 +677,363 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **kubernetes_clusters_encryption_create**
+> ClusterEncryptionOperation kubernetes_clusters_encryption_create(id, cluster_encryption_request)
+
+Enable or disable WireGuard encryption for cluster traffic.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.cluster_encryption_operation import ClusterEncryptionOperation
+from pidginhost_sdk.models.cluster_encryption_request import ClusterEncryptionRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    id = 'id_example' # str | 
+    cluster_encryption_request = pidginhost_sdk.ClusterEncryptionRequest() # ClusterEncryptionRequest | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_encryption_create(id, cluster_encryption_request)
+        print("The response of KubernetesApi->kubernetes_clusters_encryption_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_encryption_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **cluster_encryption_request** | [**ClusterEncryptionRequest**](ClusterEncryptionRequest.md)|  | 
+
+### Return type
+
+[**ClusterEncryptionOperation**](ClusterEncryptionOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**400** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_encryption_recheck_create**
+> ClusterEncryption kubernetes_clusters_encryption_recheck_create(id)
+
+Re-count the workloads that still predate the encryption change.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.cluster_encryption import ClusterEncryption
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_encryption_recheck_create(id)
+        print("The response of KubernetesApi->kubernetes_clusters_encryption_recheck_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_encryption_recheck_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**ClusterEncryption**](ClusterEncryption.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**400** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**409** |  |  -  |
+**429** |  |  -  |
+**503** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_encryption_reconcile_create**
+> ClusterEncryptionOperation kubernetes_clusters_encryption_reconcile_create(id, cluster_encryption_reconcile_request)
+
+Staff only: resolve a cluster whose encryption state is unknown.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.cluster_encryption_operation import ClusterEncryptionOperation
+from pidginhost_sdk.models.cluster_encryption_reconcile_request import ClusterEncryptionReconcileRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    id = 'id_example' # str | 
+    cluster_encryption_reconcile_request = pidginhost_sdk.ClusterEncryptionReconcileRequest() # ClusterEncryptionReconcileRequest | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_encryption_reconcile_create(id, cluster_encryption_reconcile_request)
+        print("The response of KubernetesApi->kubernetes_clusters_encryption_reconcile_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_encryption_reconcile_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **cluster_encryption_reconcile_request** | [**ClusterEncryptionReconcileRequest**](ClusterEncryptionReconcileRequest.md)|  | 
+
+### Return type
+
+[**ClusterEncryptionOperation**](ClusterEncryptionOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**400** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_encryption_retrieve**
+> ClusterEncryption kubernetes_clusters_encryption_retrieve(id)
+
+Read the cluster's encryption state, restart gate and per-node verification evidence.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.cluster_encryption import ClusterEncryption
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_encryption_retrieve(id)
+        print("The response of KubernetesApi->kubernetes_clusters_encryption_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_encryption_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**ClusterEncryption**](ClusterEncryption.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **kubernetes_clusters_httproutes_create**
-> HTTPRoute kubernetes_clusters_httproutes_create(cluster_id, http_route)
+> HTTPRoute kubernetes_clusters_httproutes_create(cluster_id, http_route_request)
 
 Create new HTTPRoute
 
@@ -676,6 +1045,7 @@ Create new HTTPRoute
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.http_route import HTTPRoute
+from pidginhost_sdk.models.http_route_request import HTTPRouteRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -707,10 +1077,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
-    http_route = pidginhost_sdk.HTTPRoute() # HTTPRoute | 
+    http_route_request = pidginhost_sdk.HTTPRouteRequest() # HTTPRouteRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_httproutes_create(cluster_id, http_route)
+        api_response = api_instance.kubernetes_clusters_httproutes_create(cluster_id, http_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_httproutes_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -725,7 +1095,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
- **http_route** | [**HTTPRoute**](HTTPRoute.md)|  | 
+ **http_route_request** | [**HTTPRouteRequest**](HTTPRouteRequest.md)|  | 
 
 ### Return type
 
@@ -920,7 +1290,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_httproutes_partial_update**
-> HTTPRoute kubernetes_clusters_httproutes_partial_update(cluster_id, id, patched_http_route=patched_http_route)
+> HTTPRoute kubernetes_clusters_httproutes_partial_update(cluster_id, id, patched_http_route_request=patched_http_route_request)
 
 Partially update HTTPRoute
 
@@ -932,7 +1302,7 @@ Partially update HTTPRoute
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.http_route import HTTPRoute
-from pidginhost_sdk.models.patched_http_route import PatchedHTTPRoute
+from pidginhost_sdk.models.patched_http_route_request import PatchedHTTPRouteRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -965,10 +1335,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    patched_http_route = pidginhost_sdk.PatchedHTTPRoute() # PatchedHTTPRoute |  (optional)
+    patched_http_route_request = pidginhost_sdk.PatchedHTTPRouteRequest() # PatchedHTTPRouteRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_httproutes_partial_update(cluster_id, id, patched_http_route=patched_http_route)
+        api_response = api_instance.kubernetes_clusters_httproutes_partial_update(cluster_id, id, patched_http_route_request=patched_http_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_httproutes_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -984,7 +1354,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **patched_http_route** | [**PatchedHTTPRoute**](PatchedHTTPRoute.md)|  | [optional] 
+ **patched_http_route_request** | [**PatchedHTTPRouteRequest**](PatchedHTTPRouteRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1095,7 +1465,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_httproutes_update**
-> HTTPRoute kubernetes_clusters_httproutes_update(cluster_id, id, http_route)
+> HTTPRoute kubernetes_clusters_httproutes_update(cluster_id, id, http_route_request)
 
 Update HTTPRoute
 
@@ -1107,6 +1477,7 @@ Update HTTPRoute
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.http_route import HTTPRoute
+from pidginhost_sdk.models.http_route_request import HTTPRouteRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1139,10 +1510,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    http_route = pidginhost_sdk.HTTPRoute() # HTTPRoute | 
+    http_route_request = pidginhost_sdk.HTTPRouteRequest() # HTTPRouteRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_httproutes_update(cluster_id, id, http_route)
+        api_response = api_instance.kubernetes_clusters_httproutes_update(cluster_id, id, http_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_httproutes_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1158,7 +1529,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **http_route** | [**HTTPRoute**](HTTPRoute.md)|  | 
+ **http_route_request** | [**HTTPRouteRequest**](HTTPRouteRequest.md)|  | 
 
 ### Return type
 
@@ -1429,7 +1800,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_lb_firewall_create**
-> LBFirewallRule kubernetes_clusters_lb_firewall_create(cluster_id, lb_firewall_rule=lb_firewall_rule)
+> LBFirewallRule kubernetes_clusters_lb_firewall_create(cluster_id, lb_firewall_rule_request=lb_firewall_rule_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1448,6 +1819,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.lb_firewall_rule import LBFirewallRule
+from pidginhost_sdk.models.lb_firewall_rule_request import LBFirewallRuleRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1479,10 +1851,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
-    lb_firewall_rule = pidginhost_sdk.LBFirewallRule() # LBFirewallRule |  (optional)
+    lb_firewall_rule_request = pidginhost_sdk.LBFirewallRuleRequest() # LBFirewallRuleRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_lb_firewall_create(cluster_id, lb_firewall_rule=lb_firewall_rule)
+        api_response = api_instance.kubernetes_clusters_lb_firewall_create(cluster_id, lb_firewall_rule_request=lb_firewall_rule_request)
         print("The response of KubernetesApi->kubernetes_clusters_lb_firewall_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -1497,7 +1869,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
- **lb_firewall_rule** | [**LBFirewallRule**](LBFirewallRule.md)|  | [optional] 
+ **lb_firewall_rule_request** | [**LBFirewallRuleRequest**](LBFirewallRuleRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1702,7 +2074,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_lb_firewall_partial_update**
-> LBFirewallRule kubernetes_clusters_lb_firewall_partial_update(cluster_id, id, patched_lb_firewall_rule=patched_lb_firewall_rule)
+> LBFirewallRule kubernetes_clusters_lb_firewall_partial_update(cluster_id, id, patched_lb_firewall_rule_request=patched_lb_firewall_rule_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1721,7 +2093,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.lb_firewall_rule import LBFirewallRule
-from pidginhost_sdk.models.patched_lb_firewall_rule import PatchedLBFirewallRule
+from pidginhost_sdk.models.patched_lb_firewall_rule_request import PatchedLBFirewallRuleRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1754,10 +2126,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    patched_lb_firewall_rule = pidginhost_sdk.PatchedLBFirewallRule() # PatchedLBFirewallRule |  (optional)
+    patched_lb_firewall_rule_request = pidginhost_sdk.PatchedLBFirewallRuleRequest() # PatchedLBFirewallRuleRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_lb_firewall_partial_update(cluster_id, id, patched_lb_firewall_rule=patched_lb_firewall_rule)
+        api_response = api_instance.kubernetes_clusters_lb_firewall_partial_update(cluster_id, id, patched_lb_firewall_rule_request=patched_lb_firewall_rule_request)
         print("The response of KubernetesApi->kubernetes_clusters_lb_firewall_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1773,7 +2145,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **patched_lb_firewall_rule** | [**PatchedLBFirewallRule**](PatchedLBFirewallRule.md)|  | [optional] 
+ **patched_lb_firewall_rule_request** | [**PatchedLBFirewallRuleRequest**](PatchedLBFirewallRuleRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1889,7 +2261,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_lb_firewall_update**
-> LBFirewallRule kubernetes_clusters_lb_firewall_update(cluster_id, id, lb_firewall_rule=lb_firewall_rule)
+> LBFirewallRule kubernetes_clusters_lb_firewall_update(cluster_id, id, lb_firewall_rule_request=lb_firewall_rule_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1908,6 +2280,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.lb_firewall_rule import LBFirewallRule
+from pidginhost_sdk.models.lb_firewall_rule_request import LBFirewallRuleRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1940,10 +2313,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    lb_firewall_rule = pidginhost_sdk.LBFirewallRule() # LBFirewallRule |  (optional)
+    lb_firewall_rule_request = pidginhost_sdk.LBFirewallRuleRequest() # LBFirewallRuleRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_lb_firewall_update(cluster_id, id, lb_firewall_rule=lb_firewall_rule)
+        api_response = api_instance.kubernetes_clusters_lb_firewall_update(cluster_id, id, lb_firewall_rule_request=lb_firewall_rule_request)
         print("The response of KubernetesApi->kubernetes_clusters_lb_firewall_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1959,7 +2332,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **lb_firewall_rule** | [**LBFirewallRule**](LBFirewallRule.md)|  | [optional] 
+ **lb_firewall_rule_request** | [**LBFirewallRuleRequest**](LBFirewallRuleRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -2072,17 +2445,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **kubernetes_clusters_partial_update**
-> ClusterDetail kubernetes_clusters_partial_update(id, patched_cluster_detail=patched_cluster_detail)
+# **kubernetes_clusters_node_operations_cancel_create**
+> NodeOperation kubernetes_clusters_node_operations_cancel_create(cluster_id, id)
 
-Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
-intersection with the route's existing permission classes (spec §6).
-
-Detail routes (``self.detail``) defer the role/scope check to
-``has_object_permission`` so the account-scoped ``get_object`` answers 404
-for foreign IDs before any role denial; every other route enforces in
-``has_permission``. A detail action that never calls ``get_object`` would
-skip enforcement — the route probes pin the denial for each route.
+Uncordon the node and abort a blocked operation.
 
 ### Example
 
@@ -2091,100 +2457,7 @@ skip enforcement — the route probes pin the denial for each route.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.cluster_detail import ClusterDetail
-from pidginhost_sdk.models.patched_cluster_detail import PatchedClusterDetail
-from pidginhost_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://www.pidginhost.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pidginhost_sdk.Configuration(
-    host = "https://www.pidginhost.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: tokenAuth
-configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
-
-# Configure API key authorization: cookieAuth
-configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with pidginhost_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pidginhost_sdk.KubernetesApi(api_client)
-    id = 'id_example' # str | 
-    patched_cluster_detail = pidginhost_sdk.PatchedClusterDetail() # PatchedClusterDetail |  (optional)
-
-    try:
-        api_response = api_instance.kubernetes_clusters_partial_update(id, patched_cluster_detail=patched_cluster_detail)
-        print("The response of KubernetesApi->kubernetes_clusters_partial_update:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling KubernetesApi->kubernetes_clusters_partial_update: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
- **patched_cluster_detail** | [**PatchedClusterDetail**](PatchedClusterDetail.md)|  | [optional] 
-
-### Return type
-
-[**ClusterDetail**](ClusterDetail.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **kubernetes_clusters_port_forwards_create**
-> K8sPortForward kubernetes_clusters_port_forwards_create(cluster_id, k8s_port_forward)
-
-Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
-intersection with the route's existing permission classes (spec §6).
-
-Detail routes (``self.detail``) defer the role/scope check to
-``has_object_permission`` so the account-scoped ``get_object`` answers 404
-for foreign IDs before any role denial; every other route enforces in
-``has_permission``. A detail action that never calls ``get_object`` would
-skip enforcement — the route probes pin the denial for each route.
-
-### Example
-
-* Api Key Authentication (tokenAuth):
-* Api Key Authentication (cookieAuth):
-
-```python
-import pidginhost_sdk
-from pidginhost_sdk.models.k8s_port_forward import K8sPortForward
+from pidginhost_sdk.models.node_operation import NodeOperation
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -2216,10 +2489,822 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
-    k8s_port_forward = pidginhost_sdk.K8sPortForward() # K8sPortForward | 
+    id = 'id_example' # str | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_port_forwards_create(cluster_id, k8s_port_forward)
+        api_response = api_instance.kubernetes_clusters_node_operations_cancel_create(cluster_id, id)
+        print("The response of KubernetesApi->kubernetes_clusters_node_operations_cancel_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_node_operations_cancel_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+[**NodeOperation**](NodeOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_node_operations_list**
+> PaginatedNodeOperationList kubernetes_clusters_node_operations_list(cluster_id, page=page)
+
+Operation history, status, and the three recovery actions.
+
+Cluster-level rather than node-level on purpose: a successful delete
+removes the VM row, so an operation addressable only through its node would
+stop being readable exactly when the customer wants to see how it ended.
+
+None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new
+starts off must never strand an operation that is already running -- a
+cluster with a blocked operation and no way to answer it is a cluster
+nobody can mutate at all.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_node_operation_list import PaginatedNodeOperationList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.kubernetes_clusters_node_operations_list(cluster_id, page=page)
+        print("The response of KubernetesApi->kubernetes_clusters_node_operations_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_node_operations_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedNodeOperationList**](PaginatedNodeOperationList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_node_operations_resume_create**
+> NodeOperation kubernetes_clusters_node_operations_resume_create(cluster_id, id)
+
+Staff-only resume of an operation waiting for support.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.node_operation import NodeOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_node_operations_resume_create(cluster_id, id)
+        print("The response of KubernetesApi->kubernetes_clusters_node_operations_resume_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_node_operations_resume_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+[**NodeOperation**](NodeOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_node_operations_retrieve**
+> NodeOperation kubernetes_clusters_node_operations_retrieve(cluster_id, id)
+
+Operation history, status, and the three recovery actions.
+
+Cluster-level rather than node-level on purpose: a successful delete
+removes the VM row, so an operation addressable only through its node would
+stop being readable exactly when the customer wants to see how it ended.
+
+None of these routes is gated on `K8S_NODE_OPERATIONS_ENABLED`. Turning new
+starts off must never strand an operation that is already running -- a
+cluster with a blocked operation and no way to answer it is a cluster
+nobody can mutate at all.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.node_operation import NodeOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_node_operations_retrieve(cluster_id, id)
+        print("The response of KubernetesApi->kubernetes_clusters_node_operations_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_node_operations_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+[**NodeOperation**](NodeOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_node_operations_retry_create**
+> NodeOperation kubernetes_clusters_node_operations_retry_create(cluster_id, id, node_operation_retry_request=node_operation_retry_request)
+
+Retry a blocked operation with the overrides that answer its blocker.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.node_operation import NodeOperation
+from pidginhost_sdk.models.node_operation_retry_request import NodeOperationRetryRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    id = 'id_example' # str | 
+    node_operation_retry_request = pidginhost_sdk.NodeOperationRetryRequest() # NodeOperationRetryRequest |  (optional)
+
+    try:
+        api_response = api_instance.kubernetes_clusters_node_operations_retry_create(cluster_id, id, node_operation_retry_request=node_operation_retry_request)
+        print("The response of KubernetesApi->kubernetes_clusters_node_operations_retry_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_node_operations_retry_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **id** | **str**|  | 
+ **node_operation_retry_request** | [**NodeOperationRetryRequest**](NodeOperationRetryRequest.md)|  | [optional] 
+
+### Return type
+
+[**NodeOperation**](NodeOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_partial_update**
+> ClusterDetail kubernetes_clusters_partial_update(id, patched_cluster_detail_request=patched_cluster_detail_request)
+
+Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
+intersection with the route's existing permission classes (spec §6).
+
+Detail routes (``self.detail``) defer the role/scope check to
+``has_object_permission`` so the account-scoped ``get_object`` answers 404
+for foreign IDs before any role denial; every other route enforces in
+``has_permission``. A detail action that never calls ``get_object`` would
+skip enforcement — the route probes pin the denial for each route.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.cluster_detail import ClusterDetail
+from pidginhost_sdk.models.patched_cluster_detail_request import PatchedClusterDetailRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    id = 'id_example' # str | 
+    patched_cluster_detail_request = pidginhost_sdk.PatchedClusterDetailRequest() # PatchedClusterDetailRequest |  (optional)
+
+    try:
+        api_response = api_instance.kubernetes_clusters_partial_update(id, patched_cluster_detail_request=patched_cluster_detail_request)
+        print("The response of KubernetesApi->kubernetes_clusters_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **patched_cluster_detail_request** | [**PatchedClusterDetailRequest**](PatchedClusterDetailRequest.md)|  | [optional] 
+
+### Return type
+
+[**ClusterDetail**](ClusterDetail.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_pool_removal_journals_list**
+> PaginatedPoolRemovalJournalList kubernetes_clusters_pool_removal_journals_list(cluster_id, page=page)
+
+A downsize or pool deletion, its milestones, and its staff resume.
+
+The list route is not in the spec's table and is here anyway: with retrieve
+as the only route, a customer whose downsize parked has no way to learn the
+journal id, and the panel's poll would be the sole path to a published REST
+resource.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_pool_removal_journal_list import PaginatedPoolRemovalJournalList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.kubernetes_clusters_pool_removal_journals_list(cluster_id, page=page)
+        print("The response of KubernetesApi->kubernetes_clusters_pool_removal_journals_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_pool_removal_journals_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedPoolRemovalJournalList**](PaginatedPoolRemovalJournalList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_pool_removal_journals_resume_create**
+> PoolRemovalJournal kubernetes_clusters_pool_removal_journals_resume_create(cluster_id, id)
+
+Staff-only resume of a pool removal waiting for support.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.pool_removal_journal import PoolRemovalJournal
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_pool_removal_journals_resume_create(cluster_id, id)
+        print("The response of KubernetesApi->kubernetes_clusters_pool_removal_journals_resume_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_pool_removal_journals_resume_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+[**PoolRemovalJournal**](PoolRemovalJournal.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_pool_removal_journals_retrieve**
+> PoolRemovalJournal kubernetes_clusters_pool_removal_journals_retrieve(cluster_id, id)
+
+A downsize or pool deletion, its milestones, and its staff resume.
+
+The list route is not in the spec's table and is here anyway: with retrieve
+as the only route, a customer whose downsize parked has no way to learn the
+journal id, and the panel's poll would be the sole path to a published REST
+resource.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.pool_removal_journal import PoolRemovalJournal
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_pool_removal_journals_retrieve(cluster_id, id)
+        print("The response of KubernetesApi->kubernetes_clusters_pool_removal_journals_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_pool_removal_journals_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+[**PoolRemovalJournal**](PoolRemovalJournal.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_port_forwards_create**
+> K8sPortForward kubernetes_clusters_port_forwards_create(cluster_id, k8s_port_forward_request)
+
+Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
+intersection with the route's existing permission classes (spec §6).
+
+Detail routes (``self.detail``) defer the role/scope check to
+``has_object_permission`` so the account-scoped ``get_object`` answers 404
+for foreign IDs before any role denial; every other route enforces in
+``has_permission``. A detail action that never calls ``get_object`` would
+skip enforcement — the route probes pin the denial for each route.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.k8s_port_forward import K8sPortForward
+from pidginhost_sdk.models.k8s_port_forward_request import K8sPortForwardRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    k8s_port_forward_request = pidginhost_sdk.K8sPortForwardRequest() # K8sPortForwardRequest | 
+
+    try:
+        api_response = api_instance.kubernetes_clusters_port_forwards_create(cluster_id, k8s_port_forward_request)
         print("The response of KubernetesApi->kubernetes_clusters_port_forwards_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -2234,7 +3319,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
- **k8s_port_forward** | [**K8sPortForward**](K8sPortForward.md)|  | 
+ **k8s_port_forward_request** | [**K8sPortForwardRequest**](K8sPortForwardRequest.md)|  | 
 
 ### Return type
 
@@ -2439,7 +3524,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_port_forwards_partial_update**
-> K8sPortForward kubernetes_clusters_port_forwards_partial_update(cluster_id, id, patched_k8s_port_forward=patched_k8s_port_forward)
+> K8sPortForward kubernetes_clusters_port_forwards_partial_update(cluster_id, id, patched_k8s_port_forward_request=patched_k8s_port_forward_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -2458,7 +3543,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.k8s_port_forward import K8sPortForward
-from pidginhost_sdk.models.patched_k8s_port_forward import PatchedK8sPortForward
+from pidginhost_sdk.models.patched_k8s_port_forward_request import PatchedK8sPortForwardRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -2491,10 +3576,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    patched_k8s_port_forward = pidginhost_sdk.PatchedK8sPortForward() # PatchedK8sPortForward |  (optional)
+    patched_k8s_port_forward_request = pidginhost_sdk.PatchedK8sPortForwardRequest() # PatchedK8sPortForwardRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_port_forwards_partial_update(cluster_id, id, patched_k8s_port_forward=patched_k8s_port_forward)
+        api_response = api_instance.kubernetes_clusters_port_forwards_partial_update(cluster_id, id, patched_k8s_port_forward_request=patched_k8s_port_forward_request)
         print("The response of KubernetesApi->kubernetes_clusters_port_forwards_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -2510,7 +3595,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **patched_k8s_port_forward** | [**PatchedK8sPortForward**](PatchedK8sPortForward.md)|  | [optional] 
+ **patched_k8s_port_forward_request** | [**PatchedK8sPortForwardRequest**](PatchedK8sPortForwardRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -2626,7 +3711,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_port_forwards_update**
-> K8sPortForward kubernetes_clusters_port_forwards_update(cluster_id, id, k8s_port_forward)
+> K8sPortForward kubernetes_clusters_port_forwards_update(cluster_id, id, k8s_port_forward_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -2645,6 +3730,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.k8s_port_forward import K8sPortForward
+from pidginhost_sdk.models.k8s_port_forward_request import K8sPortForwardRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -2677,10 +3763,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    k8s_port_forward = pidginhost_sdk.K8sPortForward() # K8sPortForward | 
+    k8s_port_forward_request = pidginhost_sdk.K8sPortForwardRequest() # K8sPortForwardRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_port_forwards_update(cluster_id, id, k8s_port_forward)
+        api_response = api_instance.kubernetes_clusters_port_forwards_update(cluster_id, id, k8s_port_forward_request)
         print("The response of KubernetesApi->kubernetes_clusters_port_forwards_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -2696,7 +3782,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **k8s_port_forward** | [**K8sPortForward**](K8sPortForward.md)|  | 
+ **k8s_port_forward_request** | [**K8sPortForwardRequest**](K8sPortForwardRequest.md)|  | 
 
 ### Return type
 
@@ -2720,7 +3806,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_resource_pools_create**
-> ResourcePoolAddResponse kubernetes_clusters_resource_pools_create(cluster_id, resource_pool_add)
+> ResourcePoolAddResponse kubernetes_clusters_resource_pools_create(cluster_id, resource_pool_add_request)
 
 Create new resource pool
 
@@ -2731,7 +3817,7 @@ Create new resource pool
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.resource_pool_add import ResourcePoolAdd
+from pidginhost_sdk.models.resource_pool_add_request import ResourcePoolAddRequest
 from pidginhost_sdk.models.resource_pool_add_response import ResourcePoolAddResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -2764,10 +3850,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
-    resource_pool_add = pidginhost_sdk.ResourcePoolAdd() # ResourcePoolAdd | 
+    resource_pool_add_request = pidginhost_sdk.ResourcePoolAddRequest() # ResourcePoolAddRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_resource_pools_create(cluster_id, resource_pool_add)
+        api_response = api_instance.kubernetes_clusters_resource_pools_create(cluster_id, resource_pool_add_request)
         print("The response of KubernetesApi->kubernetes_clusters_resource_pools_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -2782,7 +3868,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
- **resource_pool_add** | [**ResourcePoolAdd**](ResourcePoolAdd.md)|  | 
+ **resource_pool_add_request** | [**ResourcePoolAddRequest**](ResourcePoolAddRequest.md)|  | 
 
 ### Return type
 
@@ -2987,16 +4073,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_resource_pools_nodes_destroy**
-> kubernetes_clusters_resource_pools_nodes_destroy(cluster_id, id, pool_id)
+> NodeOperation kubernetes_clusters_resource_pools_nodes_destroy(cluster_id, id, pool_id)
 
-Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
-intersection with the route's existing permission classes (spec §6).
-
-Detail routes (``self.detail``) defer the role/scope check to
-``has_object_permission`` so the account-scoped ``get_object`` answers 404
-for foreign IDs before any role denial; every other route enforces in
-``has_permission``. A detail action that never calls ``get_object`` would
-skip enforcement — the route probes pin the denial for each route.
+Start a safe delete of one worker node.
 
 ### Example
 
@@ -3005,6 +4084,7 @@ skip enforcement — the route probes pin the denial for each route.
 
 ```python
 import pidginhost_sdk
+from pidginhost_sdk.models.node_operation import NodeOperation
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -3040,7 +4120,9 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     pool_id = 56 # int | 
 
     try:
-        api_instance.kubernetes_clusters_resource_pools_nodes_destroy(cluster_id, id, pool_id)
+        api_response = api_instance.kubernetes_clusters_resource_pools_nodes_destroy(cluster_id, id, pool_id)
+        print("The response of KubernetesApi->kubernetes_clusters_resource_pools_nodes_destroy:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling KubernetesApi->kubernetes_clusters_resource_pools_nodes_destroy: %s\n" % e)
 ```
@@ -3058,7 +4140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**NodeOperation**](NodeOperation.md)
 
 ### Authorization
 
@@ -3067,13 +4149,13 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | No response body |  -  |
+**202** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3255,6 +4337,96 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_resource_pools_nodes_reboot_create**
+> NodeOperation kubernetes_clusters_resource_pools_nodes_reboot_create(cluster_id, id, pool_id, node_operation_reboot_request=node_operation_reboot_request)
+
+Restart one worker node, draining it first.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.node_operation import NodeOperation
+from pidginhost_sdk.models.node_operation_reboot_request import NodeOperationRebootRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    cluster_id = 56 # int | 
+    id = 'id_example' # str | 
+    pool_id = 56 # int | 
+    node_operation_reboot_request = pidginhost_sdk.NodeOperationRebootRequest() # NodeOperationRebootRequest |  (optional)
+
+    try:
+        api_response = api_instance.kubernetes_clusters_resource_pools_nodes_reboot_create(cluster_id, id, pool_id, node_operation_reboot_request=node_operation_reboot_request)
+        print("The response of KubernetesApi->kubernetes_clusters_resource_pools_nodes_reboot_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_resource_pools_nodes_reboot_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cluster_id** | **int**|  | 
+ **id** | **str**|  | 
+ **pool_id** | **int**|  | 
+ **node_operation_reboot_request** | [**NodeOperationRebootRequest**](NodeOperationRebootRequest.md)|  | [optional] 
+
+### Return type
+
+[**NodeOperation**](NodeOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3442,7 +4614,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_resource_pools_partial_update**
-> ResourcePool kubernetes_clusters_resource_pools_partial_update(cluster_id, id, patched_resource_pool=patched_resource_pool)
+> ResourcePool kubernetes_clusters_resource_pools_partial_update(cluster_id, id, patched_resource_pool_request=patched_resource_pool_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -3460,7 +4632,7 @@ skip enforcement — the route probes pin the denial for each route.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_resource_pool import PatchedResourcePool
+from pidginhost_sdk.models.patched_resource_pool_request import PatchedResourcePoolRequest
 from pidginhost_sdk.models.resource_pool import ResourcePool
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -3494,10 +4666,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    patched_resource_pool = pidginhost_sdk.PatchedResourcePool() # PatchedResourcePool |  (optional)
+    patched_resource_pool_request = pidginhost_sdk.PatchedResourcePoolRequest() # PatchedResourcePoolRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_resource_pools_partial_update(cluster_id, id, patched_resource_pool=patched_resource_pool)
+        api_response = api_instance.kubernetes_clusters_resource_pools_partial_update(cluster_id, id, patched_resource_pool_request=patched_resource_pool_request)
         print("The response of KubernetesApi->kubernetes_clusters_resource_pools_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -3513,7 +4685,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **patched_resource_pool** | [**PatchedResourcePool**](PatchedResourcePool.md)|  | [optional] 
+ **patched_resource_pool_request** | [**PatchedResourcePoolRequest**](PatchedResourcePoolRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -3629,7 +4801,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_resource_pools_update**
-> ResourcePool kubernetes_clusters_resource_pools_update(cluster_id, id, resource_pool=resource_pool)
+> ResourcePool kubernetes_clusters_resource_pools_update(cluster_id, id, resource_pool_request=resource_pool_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -3648,6 +4820,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.resource_pool import ResourcePool
+from pidginhost_sdk.models.resource_pool_request import ResourcePoolRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -3680,10 +4853,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    resource_pool = pidginhost_sdk.ResourcePool() # ResourcePool |  (optional)
+    resource_pool_request = pidginhost_sdk.ResourcePoolRequest() # ResourcePoolRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_resource_pools_update(cluster_id, id, resource_pool=resource_pool)
+        api_response = api_instance.kubernetes_clusters_resource_pools_update(cluster_id, id, resource_pool_request=resource_pool_request)
         print("The response of KubernetesApi->kubernetes_clusters_resource_pools_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -3699,7 +4872,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **resource_pool** | [**ResourcePool**](ResourcePool.md)|  | [optional] 
+ **resource_pool_request** | [**ResourcePoolRequest**](ResourcePoolRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -3896,7 +5069,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_tcproutes_create**
-> TCPRoute kubernetes_clusters_tcproutes_create(cluster_id, tcp_route)
+> TCPRoute kubernetes_clusters_tcproutes_create(cluster_id, tcp_route_request)
 
 Create new TCPRoute
 
@@ -3908,6 +5081,7 @@ Create new TCPRoute
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.tcp_route import TCPRoute
+from pidginhost_sdk.models.tcp_route_request import TCPRouteRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -3939,10 +5113,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
-    tcp_route = pidginhost_sdk.TCPRoute() # TCPRoute | 
+    tcp_route_request = pidginhost_sdk.TCPRouteRequest() # TCPRouteRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_tcproutes_create(cluster_id, tcp_route)
+        api_response = api_instance.kubernetes_clusters_tcproutes_create(cluster_id, tcp_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_tcproutes_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -3957,7 +5131,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
- **tcp_route** | [**TCPRoute**](TCPRoute.md)|  | 
+ **tcp_route_request** | [**TCPRouteRequest**](TCPRouteRequest.md)|  | 
 
 ### Return type
 
@@ -4154,7 +5328,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_tcproutes_partial_update**
-> TCPRoute kubernetes_clusters_tcproutes_partial_update(cluster_id, id, patched_tcp_route=patched_tcp_route)
+> TCPRoute kubernetes_clusters_tcproutes_partial_update(cluster_id, id, patched_tcp_route_request=patched_tcp_route_request)
 
 Partially update TCPRoute
 
@@ -4165,7 +5339,7 @@ Partially update TCPRoute
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_tcp_route import PatchedTCPRoute
+from pidginhost_sdk.models.patched_tcp_route_request import PatchedTCPRouteRequest
 from pidginhost_sdk.models.tcp_route import TCPRoute
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -4199,10 +5373,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    patched_tcp_route = pidginhost_sdk.PatchedTCPRoute() # PatchedTCPRoute |  (optional)
+    patched_tcp_route_request = pidginhost_sdk.PatchedTCPRouteRequest() # PatchedTCPRouteRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_tcproutes_partial_update(cluster_id, id, patched_tcp_route=patched_tcp_route)
+        api_response = api_instance.kubernetes_clusters_tcproutes_partial_update(cluster_id, id, patched_tcp_route_request=patched_tcp_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_tcproutes_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -4218,7 +5392,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **patched_tcp_route** | [**PatchedTCPRoute**](PatchedTCPRoute.md)|  | [optional] 
+ **patched_tcp_route_request** | [**PatchedTCPRouteRequest**](PatchedTCPRouteRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -4330,7 +5504,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_tcproutes_update**
-> TCPRoute kubernetes_clusters_tcproutes_update(cluster_id, id, tcp_route)
+> TCPRoute kubernetes_clusters_tcproutes_update(cluster_id, id, tcp_route_request)
 
 Update TCPRoute
 
@@ -4342,6 +5516,7 @@ Update TCPRoute
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.tcp_route import TCPRoute
+from pidginhost_sdk.models.tcp_route_request import TCPRouteRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4374,10 +5549,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    tcp_route = pidginhost_sdk.TCPRoute() # TCPRoute | 
+    tcp_route_request = pidginhost_sdk.TCPRouteRequest() # TCPRouteRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_tcproutes_update(cluster_id, id, tcp_route)
+        api_response = api_instance.kubernetes_clusters_tcproutes_update(cluster_id, id, tcp_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_tcproutes_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -4393,7 +5568,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **tcp_route** | [**TCPRoute**](TCPRoute.md)|  | 
+ **tcp_route_request** | [**TCPRouteRequest**](TCPRouteRequest.md)|  | 
 
 ### Return type
 
@@ -4500,7 +5675,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_udproutes_create**
-> UDPRoute kubernetes_clusters_udproutes_create(cluster_id, udp_route)
+> UDPRoute kubernetes_clusters_udproutes_create(cluster_id, udp_route_request)
 
 Create new UDPRoute
 
@@ -4512,6 +5687,7 @@ Create new UDPRoute
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.udp_route import UDPRoute
+from pidginhost_sdk.models.udp_route_request import UDPRouteRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4543,10 +5719,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
-    udp_route = pidginhost_sdk.UDPRoute() # UDPRoute | 
+    udp_route_request = pidginhost_sdk.UDPRouteRequest() # UDPRouteRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_udproutes_create(cluster_id, udp_route)
+        api_response = api_instance.kubernetes_clusters_udproutes_create(cluster_id, udp_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_udproutes_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -4561,7 +5737,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
- **udp_route** | [**UDPRoute**](UDPRoute.md)|  | 
+ **udp_route_request** | [**UDPRouteRequest**](UDPRouteRequest.md)|  | 
 
 ### Return type
 
@@ -4756,7 +5932,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_udproutes_partial_update**
-> UDPRoute kubernetes_clusters_udproutes_partial_update(cluster_id, id, patched_udp_route=patched_udp_route)
+> UDPRoute kubernetes_clusters_udproutes_partial_update(cluster_id, id, patched_udp_route_request=patched_udp_route_request)
 
 Partially update UDPRoute
 
@@ -4767,7 +5943,7 @@ Partially update UDPRoute
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_udp_route import PatchedUDPRoute
+from pidginhost_sdk.models.patched_udp_route_request import PatchedUDPRouteRequest
 from pidginhost_sdk.models.udp_route import UDPRoute
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -4801,10 +5977,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    patched_udp_route = pidginhost_sdk.PatchedUDPRoute() # PatchedUDPRoute |  (optional)
+    patched_udp_route_request = pidginhost_sdk.PatchedUDPRouteRequest() # PatchedUDPRouteRequest |  (optional)
 
     try:
-        api_response = api_instance.kubernetes_clusters_udproutes_partial_update(cluster_id, id, patched_udp_route=patched_udp_route)
+        api_response = api_instance.kubernetes_clusters_udproutes_partial_update(cluster_id, id, patched_udp_route_request=patched_udp_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_udproutes_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -4820,7 +5996,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **patched_udp_route** | [**PatchedUDPRoute**](PatchedUDPRoute.md)|  | [optional] 
+ **patched_udp_route_request** | [**PatchedUDPRouteRequest**](PatchedUDPRouteRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -4931,7 +6107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_udproutes_update**
-> UDPRoute kubernetes_clusters_udproutes_update(cluster_id, id, udp_route)
+> UDPRoute kubernetes_clusters_udproutes_update(cluster_id, id, udp_route_request)
 
 Update UDPRoute
 
@@ -4943,6 +6119,7 @@ Update UDPRoute
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.udp_route import UDPRoute
+from pidginhost_sdk.models.udp_route_request import UDPRouteRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4975,10 +6152,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     cluster_id = 56 # int | 
     id = 'id_example' # str | 
-    udp_route = pidginhost_sdk.UDPRoute() # UDPRoute | 
+    udp_route_request = pidginhost_sdk.UDPRouteRequest() # UDPRouteRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_udproutes_update(cluster_id, id, udp_route)
+        api_response = api_instance.kubernetes_clusters_udproutes_update(cluster_id, id, udp_route_request)
         print("The response of KubernetesApi->kubernetes_clusters_udproutes_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -4994,7 +6171,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cluster_id** | **int**|  | 
  **id** | **str**|  | 
- **udp_route** | [**UDPRoute**](UDPRoute.md)|  | 
+ **udp_route_request** | [**UDPRouteRequest**](UDPRouteRequest.md)|  | 
 
 ### Return type
 
@@ -5018,7 +6195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kubernetes_clusters_update**
-> ClusterDetail kubernetes_clusters_update(id, cluster_detail)
+> ClusterDetail kubernetes_clusters_update(id, cluster_detail_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -5037,6 +6214,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.cluster_detail import ClusterDetail
+from pidginhost_sdk.models.cluster_detail_request import ClusterDetailRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -5068,10 +6246,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.KubernetesApi(api_client)
     id = 'id_example' # str | 
-    cluster_detail = pidginhost_sdk.ClusterDetail() # ClusterDetail | 
+    cluster_detail_request = pidginhost_sdk.ClusterDetailRequest() # ClusterDetailRequest | 
 
     try:
-        api_response = api_instance.kubernetes_clusters_update(id, cluster_detail)
+        api_response = api_instance.kubernetes_clusters_update(id, cluster_detail_request)
         print("The response of KubernetesApi->kubernetes_clusters_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -5086,7 +6264,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **cluster_detail** | [**ClusterDetail**](ClusterDetail.md)|  | 
+ **cluster_detail_request** | [**ClusterDetailRequest**](ClusterDetailRequest.md)|  | 
 
 ### Return type
 
@@ -5192,6 +6370,93 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kubernetes_clusters_upgrade_lb_create**
+> LBUpgradePlanResponse kubernetes_clusters_upgrade_lb_create(id, lb_upgrade_request=lb_upgrade_request)
+
+Inspect or perform the load-balancer upgrade the server computes for this cluster. The caller never selects a level.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.lb_upgrade_plan_response import LBUpgradePlanResponse
+from pidginhost_sdk.models.lb_upgrade_request import LBUpgradeRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.KubernetesApi(api_client)
+    id = 'id_example' # str | 
+    lb_upgrade_request = pidginhost_sdk.LBUpgradeRequest() # LBUpgradeRequest |  (optional)
+
+    try:
+        api_response = api_instance.kubernetes_clusters_upgrade_lb_create(id, lb_upgrade_request=lb_upgrade_request)
+        print("The response of KubernetesApi->kubernetes_clusters_upgrade_lb_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KubernetesApi->kubernetes_clusters_upgrade_lb_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **lb_upgrade_request** | [**LBUpgradeRequest**](LBUpgradeRequest.md)|  | [optional] 
+
+### Return type
+
+[**LBUpgradePlanResponse**](LBUpgradePlanResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**202** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

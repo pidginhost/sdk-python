@@ -48,8 +48,13 @@ class TestPaginatedDedicatedServerList(unittest.TestCase):
                         next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
                         created = '', 
                         billing_cycle = '', 
-                        server_status = '', 
-                        ips = '', 
+                        server_status = null, 
+                        ips = [
+                            pidginhost_sdk.models.dedicated_server_ip.DedicatedServerIP(
+                                id = 56, 
+                                ip = '', 
+                                reverse_dns = '', )
+                            ], 
                         os_name = '', )
                     ]
             )
@@ -65,8 +70,13 @@ class TestPaginatedDedicatedServerList(unittest.TestCase):
                         next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
                         created = '', 
                         billing_cycle = '', 
-                        server_status = '', 
-                        ips = '', 
+                        server_status = null, 
+                        ips = [
+                            pidginhost_sdk.models.dedicated_server_ip.DedicatedServerIP(
+                                id = 56, 
+                                ip = '', 
+                                reverse_dns = '', )
+                            ], 
                         os_name = '', )
                     ],
         )

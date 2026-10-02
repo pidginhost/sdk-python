@@ -58,9 +58,24 @@ class TestServerDetail(unittest.TestCase):
                         attached = True, 
                         server = '', )
                     ],
-                networks = {
-                    'key' : null
-                    },
+                networks = pidginhost_sdk.models.server_networks.ServerNetworks(
+                    public = pidginhost_sdk.models.server_public_network.ServerPublicNetwork(
+                        interface = '', 
+                        ipv4 = '', 
+                        ipv6 = '', 
+                        interfaces = [
+                            pidginhost_sdk.models.server_public_interface.ServerPublicInterface(
+                                interface = '', 
+                                ipv4 = '', 
+                                ipv6 = '', 
+                                primary = True, )
+                            ], ), 
+                    private = [
+                        pidginhost_sdk.models.server_private_interface.ServerPrivateInterface(
+                            interface = '', 
+                            address = '', 
+                            network = '', )
+                        ], ),
                 floating_ips = [
                     pidginhost_sdk.models.floating_ip_summary.FloatingIPSummary(
                         id = 56, 
@@ -69,7 +84,6 @@ class TestServerDetail(unittest.TestCase):
                         label = '', 
                         reverse_dns = '', )
                     ],
-                password = '',
                 ssh_pub_key = '',
                 status = 'pending',
                 username = '',
@@ -103,9 +117,24 @@ class TestServerDetail(unittest.TestCase):
                         attached = True, 
                         server = '', )
                     ],
-                networks = {
-                    'key' : null
-                    },
+                networks = pidginhost_sdk.models.server_networks.ServerNetworks(
+                    public = pidginhost_sdk.models.server_public_network.ServerPublicNetwork(
+                        interface = '', 
+                        ipv4 = '', 
+                        ipv6 = '', 
+                        interfaces = [
+                            pidginhost_sdk.models.server_public_interface.ServerPublicInterface(
+                                interface = '', 
+                                ipv4 = '', 
+                                ipv6 = '', 
+                                primary = True, )
+                            ], ), 
+                    private = [
+                        pidginhost_sdk.models.server_private_interface.ServerPrivateInterface(
+                            interface = '', 
+                            address = '', 
+                            network = '', )
+                        ], ),
                 floating_ips = [
                     pidginhost_sdk.models.floating_ip_summary.FloatingIPSummary(
                         id = 56, 

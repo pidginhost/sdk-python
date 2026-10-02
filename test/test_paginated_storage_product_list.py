@@ -47,8 +47,8 @@ class TestPaginatedStorageProductList(unittest.TestCase):
                         type = '', 
                         unit = '', 
                         price = '-807', 
-                        min_size = '', 
-                        max_size = '', )
+                        min_size = 56, 
+                        max_size = 56, )
                     ]
             )
         else:
@@ -62,8 +62,8 @@ class TestPaginatedStorageProductList(unittest.TestCase):
                         type = '', 
                         unit = '', 
                         price = '-807', 
-                        min_size = '', 
-                        max_size = '', )
+                        min_size = 56, 
+                        max_size = 56, )
                     ],
         )
         """

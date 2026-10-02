@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **created** | **str** |  | [readonly] 
 **last_used** | **str** |  | [readonly] 
 **request_count** | **int** |  | [readonly] 
-**account** | **str** |  | [readonly] 
-**membership_status** | **str** |  | [readonly] 
+**account** | **str** |  | [optional] 
+**membership_status** | **str** |  | [optional] 
 
 ## Example
 

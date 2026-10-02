@@ -97,6 +97,7 @@ Method | HTTP request | Description
 [**cloud_servers_snapshots_destroy**](CloudApi.md#cloud_servers_snapshots_destroy) | **DELETE** /api/cloud/servers/{id}/snapshots/{snapshot_name}/ | 
 [**cloud_servers_snapshots_list**](CloudApi.md#cloud_servers_snapshots_list) | **GET** /api/cloud/servers/{id}/snapshots/ | 
 [**cloud_servers_snapshots_rollback_create**](CloudApi.md#cloud_servers_snapshots_rollback_create) | **POST** /api/cloud/servers/{id}/snapshots/{snapshot_name}/rollback/ | 
+[**cloud_servers_traffic_retrieve**](CloudApi.md#cloud_servers_traffic_retrieve) | **GET** /api/cloud/servers/{id}/traffic/ | 
 [**cloud_servers_update**](CloudApi.md#cloud_servers_update) | **PUT** /api/cloud/servers/{id}/ | 
 [**cloud_servers_usage_retrieve**](CloudApi.md#cloud_servers_usage_retrieve) | **GET** /api/cloud/servers/{id}/usage/ | 
 [**cloud_servers_volumes_create**](CloudApi.md#cloud_servers_volumes_create) | **POST** /api/cloud/servers/{server_id}/volumes/ | 
@@ -117,7 +118,7 @@ Method | HTTP request | Description
 
 
 # **cloud_buckets_create**
-> Bucket cloud_buckets_create(bucket_create)
+> Bucket cloud_buckets_create(bucket_create_request)
 
 Create a bucket
 
@@ -129,7 +130,7 @@ Create a bucket
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.bucket import Bucket
-from pidginhost_sdk.models.bucket_create import BucketCreate
+from pidginhost_sdk.models.bucket_create_request import BucketCreateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -160,10 +161,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    bucket_create = pidginhost_sdk.BucketCreate() # BucketCreate | 
+    bucket_create_request = pidginhost_sdk.BucketCreateRequest() # BucketCreateRequest | 
 
     try:
-        api_response = api_instance.cloud_buckets_create(bucket_create)
+        api_response = api_instance.cloud_buckets_create(bucket_create_request)
         print("The response of CloudApi->cloud_buckets_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -177,7 +178,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bucket_create** | [**BucketCreate**](BucketCreate.md)|  | 
+ **bucket_create_request** | [**BucketCreateRequest**](BucketCreateRequest.md)|  | 
 
 ### Return type
 
@@ -536,7 +537,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_buckets_resize_create**
-> Bucket cloud_buckets_resize_create(id, bucket_resize)
+> Bucket cloud_buckets_resize_create(id, bucket_resize_request)
 
 Resize a bucket
 
@@ -548,7 +549,7 @@ Resize a bucket
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.bucket import Bucket
-from pidginhost_sdk.models.bucket_resize import BucketResize
+from pidginhost_sdk.models.bucket_resize_request import BucketResizeRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -580,10 +581,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this S3 bucket.
-    bucket_resize = pidginhost_sdk.BucketResize() # BucketResize | 
+    bucket_resize_request = pidginhost_sdk.BucketResizeRequest() # BucketResizeRequest | 
 
     try:
-        api_response = api_instance.cloud_buckets_resize_create(id, bucket_resize)
+        api_response = api_instance.cloud_buckets_resize_create(id, bucket_resize_request)
         print("The response of CloudApi->cloud_buckets_resize_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -598,7 +599,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this S3 bucket. | 
- **bucket_resize** | [**BucketResize**](BucketResize.md)|  | 
+ **bucket_resize_request** | [**BucketResizeRequest**](BucketResizeRequest.md)|  | 
 
 ### Return type
 
@@ -712,7 +713,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_buckets_visibility_create**
-> Bucket cloud_buckets_visibility_create(id, bucket_visibility)
+> Bucket cloud_buckets_visibility_create(id, bucket_visibility_request)
 
 Set bucket visibility
 
@@ -724,7 +725,7 @@ Set bucket visibility
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.bucket import Bucket
-from pidginhost_sdk.models.bucket_visibility import BucketVisibility
+from pidginhost_sdk.models.bucket_visibility_request import BucketVisibilityRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -756,10 +757,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this S3 bucket.
-    bucket_visibility = pidginhost_sdk.BucketVisibility() # BucketVisibility | 
+    bucket_visibility_request = pidginhost_sdk.BucketVisibilityRequest() # BucketVisibilityRequest | 
 
     try:
-        api_response = api_instance.cloud_buckets_visibility_create(id, bucket_visibility)
+        api_response = api_instance.cloud_buckets_visibility_create(id, bucket_visibility_request)
         print("The response of CloudApi->cloud_buckets_visibility_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -774,7 +775,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this S3 bucket. | 
- **bucket_visibility** | [**BucketVisibility**](BucketVisibility.md)|  | 
+ **bucket_visibility_request** | [**BucketVisibilityRequest**](BucketVisibilityRequest.md)|  | 
 
 ### Return type
 
@@ -798,7 +799,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_firewall_rules_set_create**
-> FirewallRulesSet cloud_firewall_rules_set_create(firewall_rules_set)
+> FirewallRulesSet cloud_firewall_rules_set_create(firewall_rules_set_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -817,6 +818,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.firewall_rules_set import FirewallRulesSet
+from pidginhost_sdk.models.firewall_rules_set_request import FirewallRulesSetRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -847,10 +849,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    firewall_rules_set = pidginhost_sdk.FirewallRulesSet() # FirewallRulesSet | 
+    firewall_rules_set_request = pidginhost_sdk.FirewallRulesSetRequest() # FirewallRulesSetRequest | 
 
     try:
-        api_response = api_instance.cloud_firewall_rules_set_create(firewall_rules_set)
+        api_response = api_instance.cloud_firewall_rules_set_create(firewall_rules_set_request)
         print("The response of CloudApi->cloud_firewall_rules_set_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -864,7 +866,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **firewall_rules_set** | [**FirewallRulesSet**](FirewallRulesSet.md)|  | 
+ **firewall_rules_set_request** | [**FirewallRulesSetRequest**](FirewallRulesSetRequest.md)|  | 
 
 ### Return type
 
@@ -1061,7 +1063,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_firewall_rules_set_partial_update**
-> FirewallRulesSet cloud_firewall_rules_set_partial_update(id, patched_firewall_rules_set=patched_firewall_rules_set)
+> FirewallRulesSet cloud_firewall_rules_set_partial_update(id, patched_firewall_rules_set_request=patched_firewall_rules_set_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1080,7 +1082,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.firewall_rules_set import FirewallRulesSet
-from pidginhost_sdk.models.patched_firewall_rules_set import PatchedFirewallRulesSet
+from pidginhost_sdk.models.patched_firewall_rules_set_request import PatchedFirewallRulesSetRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1112,10 +1114,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this firewall rules set.
-    patched_firewall_rules_set = pidginhost_sdk.PatchedFirewallRulesSet() # PatchedFirewallRulesSet |  (optional)
+    patched_firewall_rules_set_request = pidginhost_sdk.PatchedFirewallRulesSetRequest() # PatchedFirewallRulesSetRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_firewall_rules_set_partial_update(id, patched_firewall_rules_set=patched_firewall_rules_set)
+        api_response = api_instance.cloud_firewall_rules_set_partial_update(id, patched_firewall_rules_set_request=patched_firewall_rules_set_request)
         print("The response of CloudApi->cloud_firewall_rules_set_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1130,7 +1132,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this firewall rules set. | 
- **patched_firewall_rules_set** | [**PatchedFirewallRulesSet**](PatchedFirewallRulesSet.md)|  | [optional] 
+ **patched_firewall_rules_set_request** | [**PatchedFirewallRulesSetRequest**](PatchedFirewallRulesSetRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1244,7 +1246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_firewall_rules_set_rules_create**
-> FirewallRule cloud_firewall_rules_set_rules_create(rules_set_id, firewall_rule)
+> FirewallRule cloud_firewall_rules_set_rules_create(rules_set_id, firewall_rule_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1263,6 +1265,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.firewall_rule import FirewallRule
+from pidginhost_sdk.models.firewall_rule_request import FirewallRuleRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1294,10 +1297,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     rules_set_id = 'rules_set_id_example' # str | 
-    firewall_rule = pidginhost_sdk.FirewallRule() # FirewallRule | 
+    firewall_rule_request = pidginhost_sdk.FirewallRuleRequest() # FirewallRuleRequest | 
 
     try:
-        api_response = api_instance.cloud_firewall_rules_set_rules_create(rules_set_id, firewall_rule)
+        api_response = api_instance.cloud_firewall_rules_set_rules_create(rules_set_id, firewall_rule_request)
         print("The response of CloudApi->cloud_firewall_rules_set_rules_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -1312,7 +1315,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rules_set_id** | **str**|  | 
- **firewall_rule** | [**FirewallRule**](FirewallRule.md)|  | 
+ **firewall_rule_request** | [**FirewallRuleRequest**](FirewallRuleRequest.md)|  | 
 
 ### Return type
 
@@ -1515,7 +1518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_firewall_rules_set_rules_partial_update**
-> FirewallRule cloud_firewall_rules_set_rules_partial_update(rule_id, rules_set_id, patched_firewall_rule=patched_firewall_rule)
+> FirewallRule cloud_firewall_rules_set_rules_partial_update(rule_id, rules_set_id, patched_firewall_rule_request=patched_firewall_rule_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1534,7 +1537,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.firewall_rule import FirewallRule
-from pidginhost_sdk.models.patched_firewall_rule import PatchedFirewallRule
+from pidginhost_sdk.models.patched_firewall_rule_request import PatchedFirewallRuleRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1567,10 +1570,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.CloudApi(api_client)
     rule_id = 'rule_id_example' # str | 
     rules_set_id = 'rules_set_id_example' # str | 
-    patched_firewall_rule = pidginhost_sdk.PatchedFirewallRule() # PatchedFirewallRule |  (optional)
+    patched_firewall_rule_request = pidginhost_sdk.PatchedFirewallRuleRequest() # PatchedFirewallRuleRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_firewall_rules_set_rules_partial_update(rule_id, rules_set_id, patched_firewall_rule=patched_firewall_rule)
+        api_response = api_instance.cloud_firewall_rules_set_rules_partial_update(rule_id, rules_set_id, patched_firewall_rule_request=patched_firewall_rule_request)
         print("The response of CloudApi->cloud_firewall_rules_set_rules_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1586,7 +1589,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rule_id** | **str**|  | 
  **rules_set_id** | **str**|  | 
- **patched_firewall_rule** | [**PatchedFirewallRule**](PatchedFirewallRule.md)|  | [optional] 
+ **patched_firewall_rule_request** | [**PatchedFirewallRuleRequest**](PatchedFirewallRuleRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1702,7 +1705,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_firewall_rules_set_rules_update**
-> FirewallRule cloud_firewall_rules_set_rules_update(rule_id, rules_set_id, firewall_rule)
+> FirewallRule cloud_firewall_rules_set_rules_update(rule_id, rules_set_id, firewall_rule_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1721,6 +1724,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.firewall_rule import FirewallRule
+from pidginhost_sdk.models.firewall_rule_request import FirewallRuleRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1753,10 +1757,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.CloudApi(api_client)
     rule_id = 'rule_id_example' # str | 
     rules_set_id = 'rules_set_id_example' # str | 
-    firewall_rule = pidginhost_sdk.FirewallRule() # FirewallRule | 
+    firewall_rule_request = pidginhost_sdk.FirewallRuleRequest() # FirewallRuleRequest | 
 
     try:
-        api_response = api_instance.cloud_firewall_rules_set_rules_update(rule_id, rules_set_id, firewall_rule)
+        api_response = api_instance.cloud_firewall_rules_set_rules_update(rule_id, rules_set_id, firewall_rule_request)
         print("The response of CloudApi->cloud_firewall_rules_set_rules_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1772,7 +1776,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rule_id** | **str**|  | 
  **rules_set_id** | **str**|  | 
- **firewall_rule** | [**FirewallRule**](FirewallRule.md)|  | 
+ **firewall_rule_request** | [**FirewallRuleRequest**](FirewallRuleRequest.md)|  | 
 
 ### Return type
 
@@ -1796,7 +1800,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_firewall_rules_set_update**
-> FirewallRulesSet cloud_firewall_rules_set_update(id, firewall_rules_set)
+> FirewallRulesSet cloud_firewall_rules_set_update(id, firewall_rules_set_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -1815,6 +1819,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.firewall_rules_set import FirewallRulesSet
+from pidginhost_sdk.models.firewall_rules_set_request import FirewallRulesSetRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1846,10 +1851,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this firewall rules set.
-    firewall_rules_set = pidginhost_sdk.FirewallRulesSet() # FirewallRulesSet | 
+    firewall_rules_set_request = pidginhost_sdk.FirewallRulesSetRequest() # FirewallRulesSetRequest | 
 
     try:
-        api_response = api_instance.cloud_firewall_rules_set_update(id, firewall_rules_set)
+        api_response = api_instance.cloud_firewall_rules_set_update(id, firewall_rules_set_request)
         print("The response of CloudApi->cloud_firewall_rules_set_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1864,7 +1869,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this firewall rules set. | 
- **firewall_rules_set** | [**FirewallRulesSet**](FirewallRulesSet.md)|  | 
+ **firewall_rules_set_request** | [**FirewallRulesSetRequest**](FirewallRulesSetRequest.md)|  | 
 
 ### Return type
 
@@ -2063,7 +2068,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_floating_ipv4_create**
-> FloatingIPv4 cloud_floating_ipv4_create(floating_ipv4_create=floating_ipv4_create)
+> FloatingIPv4 cloud_floating_ipv4_create(floating_ipv4_create_request=floating_ipv4_create_request)
 
 Manage floating IPv4 addresses. A floating IP can be authorized on multiple
 VMs simultaneously; the customer asserts ownership inside the guest via
@@ -2077,7 +2082,7 @@ keepalived/VRRP.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.floating_ipv4 import FloatingIPv4
-from pidginhost_sdk.models.floating_ipv4_create import FloatingIPv4Create
+from pidginhost_sdk.models.floating_ipv4_create_request import FloatingIPv4CreateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -2108,10 +2113,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    floating_ipv4_create = pidginhost_sdk.FloatingIPv4Create() # FloatingIPv4Create |  (optional)
+    floating_ipv4_create_request = pidginhost_sdk.FloatingIPv4CreateRequest() # FloatingIPv4CreateRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_floating_ipv4_create(floating_ipv4_create=floating_ipv4_create)
+        api_response = api_instance.cloud_floating_ipv4_create(floating_ipv4_create_request=floating_ipv4_create_request)
         print("The response of CloudApi->cloud_floating_ipv4_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -2125,7 +2130,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **floating_ipv4_create** | [**FloatingIPv4Create**](FloatingIPv4Create.md)|  | [optional] 
+ **floating_ipv4_create_request** | [**FloatingIPv4CreateRequest**](FloatingIPv4CreateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -2316,7 +2321,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_floating_ipv4_rdns_create**
-> ReverseDNS cloud_floating_ipv4_rdns_create(id, reverse_dns)
+> ReverseDNS cloud_floating_ipv4_rdns_create(id, reverse_dns_request)
 
 Get or update reverse DNS (PTR) for the IPv4 address wrapped by this floating IP.
 
@@ -2328,6 +2333,7 @@ Get or update reverse DNS (PTR) for the IPv4 address wrapped by this floating IP
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.reverse_dns import ReverseDNS
+from pidginhost_sdk.models.reverse_dns_request import ReverseDNSRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -2359,10 +2365,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this floating IPv4.
-    reverse_dns = pidginhost_sdk.ReverseDNS() # ReverseDNS | 
+    reverse_dns_request = pidginhost_sdk.ReverseDNSRequest() # ReverseDNSRequest | 
 
     try:
-        api_response = api_instance.cloud_floating_ipv4_rdns_create(id, reverse_dns)
+        api_response = api_instance.cloud_floating_ipv4_rdns_create(id, reverse_dns_request)
         print("The response of CloudApi->cloud_floating_ipv4_rdns_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -2377,7 +2383,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this floating IPv4. | 
- **reverse_dns** | [**ReverseDNS**](ReverseDNS.md)|  | 
+ **reverse_dns_request** | [**ReverseDNSRequest**](ReverseDNSRequest.md)|  | 
 
 ### Return type
 
@@ -2828,7 +2834,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_floating_ipv6_create**
-> FloatingIPv6 cloud_floating_ipv6_create(floating_ipv6_create=floating_ipv6_create)
+> FloatingIPv6 cloud_floating_ipv6_create(floating_ipv6_create_request=floating_ipv6_create_request)
 
 Manage floating IPv6 addresses.
 
@@ -2840,7 +2846,7 @@ Manage floating IPv6 addresses.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.floating_ipv6 import FloatingIPv6
-from pidginhost_sdk.models.floating_ipv6_create import FloatingIPv6Create
+from pidginhost_sdk.models.floating_ipv6_create_request import FloatingIPv6CreateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -2871,10 +2877,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    floating_ipv6_create = pidginhost_sdk.FloatingIPv6Create() # FloatingIPv6Create |  (optional)
+    floating_ipv6_create_request = pidginhost_sdk.FloatingIPv6CreateRequest() # FloatingIPv6CreateRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_floating_ipv6_create(floating_ipv6_create=floating_ipv6_create)
+        api_response = api_instance.cloud_floating_ipv6_create(floating_ipv6_create_request=floating_ipv6_create_request)
         print("The response of CloudApi->cloud_floating_ipv6_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -2888,7 +2894,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **floating_ipv6_create** | [**FloatingIPv6Create**](FloatingIPv6Create.md)|  | [optional] 
+ **floating_ipv6_create_request** | [**FloatingIPv6CreateRequest**](FloatingIPv6CreateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -3075,7 +3081,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_floating_ipv6_rdns_create**
-> ReverseDNS cloud_floating_ipv6_rdns_create(id, reverse_dns)
+> ReverseDNS cloud_floating_ipv6_rdns_create(id, reverse_dns_request)
 
 Get or update reverse DNS (PTR) for the IPv6 address wrapped by this floating IP.
 
@@ -3087,6 +3093,7 @@ Get or update reverse DNS (PTR) for the IPv6 address wrapped by this floating IP
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.reverse_dns import ReverseDNS
+from pidginhost_sdk.models.reverse_dns_request import ReverseDNSRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -3118,10 +3125,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this floating IPv6.
-    reverse_dns = pidginhost_sdk.ReverseDNS() # ReverseDNS | 
+    reverse_dns_request = pidginhost_sdk.ReverseDNSRequest() # ReverseDNSRequest | 
 
     try:
-        api_response = api_instance.cloud_floating_ipv6_rdns_create(id, reverse_dns)
+        api_response = api_instance.cloud_floating_ipv6_rdns_create(id, reverse_dns_request)
         print("The response of CloudApi->cloud_floating_ipv6_rdns_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -3136,7 +3143,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this floating IPv6. | 
- **reverse_dns** | [**ReverseDNS**](ReverseDNS.md)|  | 
+ **reverse_dns_request** | [**ReverseDNSRequest**](ReverseDNSRequest.md)|  | 
 
 ### Return type
 
@@ -3757,7 +3764,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_ipv4_create**
-> PublicIPv4 cloud_ipv4_create(public_ipv4=public_ipv4)
+> PublicIPv4 cloud_ipv4_create()
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -3806,10 +3813,9 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    public_ipv4 = pidginhost_sdk.PublicIPv4() # PublicIPv4 |  (optional)
 
     try:
-        api_response = api_instance.cloud_ipv4_create(public_ipv4=public_ipv4)
+        api_response = api_instance.cloud_ipv4_create()
         print("The response of CloudApi->cloud_ipv4_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -3820,10 +3826,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **public_ipv4** | [**PublicIPv4**](PublicIPv4.md)|  | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -3835,7 +3838,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -3934,7 +3937,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_ipv4_detach_create**
-> DetachIPv4Response cloud_ipv4_detach_create(id, public_ipv4=public_ipv4)
+> DetachIPv4Response cloud_ipv4_detach_create(id)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -3953,7 +3956,6 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.detach_ipv4_response import DetachIPv4Response
-from pidginhost_sdk.models.public_ipv4 import PublicIPv4
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -3985,10 +3987,9 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this Public IPv4.
-    public_ipv4 = pidginhost_sdk.PublicIPv4() # PublicIPv4 |  (optional)
 
     try:
-        api_response = api_instance.cloud_ipv4_detach_create(id, public_ipv4=public_ipv4)
+        api_response = api_instance.cloud_ipv4_detach_create(id)
         print("The response of CloudApi->cloud_ipv4_detach_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -4003,7 +4004,6 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this Public IPv4. | 
- **public_ipv4** | [**PublicIPv4**](PublicIPv4.md)|  | [optional] 
 
 ### Return type
 
@@ -4015,7 +4015,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -4117,7 +4117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_ipv4_rdns_create**
-> ReverseDNS cloud_ipv4_rdns_create(id, reverse_dns)
+> ReverseDNS cloud_ipv4_rdns_create(id, reverse_dns_request)
 
 Get or update reverse DNS (PTR) for this IPv4 address.
 
@@ -4129,6 +4129,7 @@ Get or update reverse DNS (PTR) for this IPv4 address.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.reverse_dns import ReverseDNS
+from pidginhost_sdk.models.reverse_dns_request import ReverseDNSRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4160,10 +4161,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this Public IPv4.
-    reverse_dns = pidginhost_sdk.ReverseDNS() # ReverseDNS | 
+    reverse_dns_request = pidginhost_sdk.ReverseDNSRequest() # ReverseDNSRequest | 
 
     try:
-        api_response = api_instance.cloud_ipv4_rdns_create(id, reverse_dns)
+        api_response = api_instance.cloud_ipv4_rdns_create(id, reverse_dns_request)
         print("The response of CloudApi->cloud_ipv4_rdns_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -4178,7 +4179,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this Public IPv4. | 
- **reverse_dns** | [**ReverseDNS**](ReverseDNS.md)|  | 
+ **reverse_dns_request** | [**ReverseDNSRequest**](ReverseDNSRequest.md)|  | 
 
 ### Return type
 
@@ -4375,7 +4376,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_ipv6_create**
-> PublicIPv6 cloud_ipv6_create(public_ipv6=public_ipv6)
+> PublicIPv6 cloud_ipv6_create()
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -4424,10 +4425,9 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    public_ipv6 = pidginhost_sdk.PublicIPv6() # PublicIPv6 |  (optional)
 
     try:
-        api_response = api_instance.cloud_ipv6_create(public_ipv6=public_ipv6)
+        api_response = api_instance.cloud_ipv6_create()
         print("The response of CloudApi->cloud_ipv6_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -4438,10 +4438,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **public_ipv6** | [**PublicIPv6**](PublicIPv6.md)|  | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -4453,7 +4450,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -4552,7 +4549,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_ipv6_detach_create**
-> DetachIPv6Response cloud_ipv6_detach_create(id, public_ipv6=public_ipv6)
+> DetachIPv6Response cloud_ipv6_detach_create(id)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -4571,7 +4568,6 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.detach_ipv6_response import DetachIPv6Response
-from pidginhost_sdk.models.public_ipv6 import PublicIPv6
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4603,10 +4599,9 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this Public IPv6.
-    public_ipv6 = pidginhost_sdk.PublicIPv6() # PublicIPv6 |  (optional)
 
     try:
-        api_response = api_instance.cloud_ipv6_detach_create(id, public_ipv6=public_ipv6)
+        api_response = api_instance.cloud_ipv6_detach_create(id)
         print("The response of CloudApi->cloud_ipv6_detach_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -4621,7 +4616,6 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this Public IPv6. | 
- **public_ipv6** | [**PublicIPv6**](PublicIPv6.md)|  | [optional] 
 
 ### Return type
 
@@ -4633,7 +4627,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -4735,7 +4729,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_ipv6_rdns_create**
-> ReverseDNS cloud_ipv6_rdns_create(id, reverse_dns)
+> ReverseDNS cloud_ipv6_rdns_create(id, reverse_dns_request)
 
 Get or update reverse DNS (PTR) for this IPv6 address.
 
@@ -4747,6 +4741,7 @@ Get or update reverse DNS (PTR) for this IPv6 address.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.reverse_dns import ReverseDNS
+from pidginhost_sdk.models.reverse_dns_request import ReverseDNSRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4778,10 +4773,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this Public IPv6.
-    reverse_dns = pidginhost_sdk.ReverseDNS() # ReverseDNS | 
+    reverse_dns_request = pidginhost_sdk.ReverseDNSRequest() # ReverseDNSRequest | 
 
     try:
-        api_response = api_instance.cloud_ipv6_rdns_create(id, reverse_dns)
+        api_response = api_instance.cloud_ipv6_rdns_create(id, reverse_dns_request)
         print("The response of CloudApi->cloud_ipv6_rdns_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -4796,7 +4791,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this Public IPv6. | 
- **reverse_dns** | [**ReverseDNS**](ReverseDNS.md)|  | 
+ **reverse_dns_request** | [**ReverseDNSRequest**](ReverseDNSRequest.md)|  | 
 
 ### Return type
 
@@ -4993,7 +4988,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_private_networks_add_server_create**
-> AddServerResponse cloud_private_networks_add_server_create(id, private_network_add_host)
+> AddServerResponse cloud_private_networks_add_server_create(id, private_network_add_host_request)
 
 Manage private networks
 
@@ -5005,7 +5000,7 @@ Manage private networks
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.add_server_response import AddServerResponse
-from pidginhost_sdk.models.private_network_add_host import PrivateNetworkAddHost
+from pidginhost_sdk.models.private_network_add_host_request import PrivateNetworkAddHostRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -5037,10 +5032,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this private network.
-    private_network_add_host = pidginhost_sdk.PrivateNetworkAddHost() # PrivateNetworkAddHost | 
+    private_network_add_host_request = pidginhost_sdk.PrivateNetworkAddHostRequest() # PrivateNetworkAddHostRequest | 
 
     try:
-        api_response = api_instance.cloud_private_networks_add_server_create(id, private_network_add_host)
+        api_response = api_instance.cloud_private_networks_add_server_create(id, private_network_add_host_request)
         print("The response of CloudApi->cloud_private_networks_add_server_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -5055,7 +5050,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this private network. | 
- **private_network_add_host** | [**PrivateNetworkAddHost**](PrivateNetworkAddHost.md)|  | 
+ **private_network_add_host_request** | [**PrivateNetworkAddHostRequest**](PrivateNetworkAddHostRequest.md)|  | 
 
 ### Return type
 
@@ -5079,7 +5074,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_private_networks_create**
-> PrivateNetwork cloud_private_networks_create(private_network)
+> PrivateNetwork cloud_private_networks_create(private_network_request)
 
 Manage private networks
 
@@ -5091,6 +5086,7 @@ Manage private networks
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.private_network import PrivateNetwork
+from pidginhost_sdk.models.private_network_request import PrivateNetworkRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -5121,10 +5117,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    private_network = pidginhost_sdk.PrivateNetwork() # PrivateNetwork | 
+    private_network_request = pidginhost_sdk.PrivateNetworkRequest() # PrivateNetworkRequest | 
 
     try:
-        api_response = api_instance.cloud_private_networks_create(private_network)
+        api_response = api_instance.cloud_private_networks_create(private_network_request)
         print("The response of CloudApi->cloud_private_networks_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -5138,7 +5134,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **private_network** | [**PrivateNetwork**](PrivateNetwork.md)|  | 
+ **private_network_request** | [**PrivateNetworkRequest**](PrivateNetworkRequest.md)|  | 
 
 ### Return type
 
@@ -5325,7 +5321,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_private_networks_partial_update**
-> PrivateNetwork cloud_private_networks_partial_update(id, patched_private_network=patched_private_network)
+> PrivateNetwork cloud_private_networks_partial_update(id, patched_private_network_update_request=patched_private_network_update_request)
 
 Manage private networks
 
@@ -5336,7 +5332,7 @@ Manage private networks
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_private_network import PatchedPrivateNetwork
+from pidginhost_sdk.models.patched_private_network_update_request import PatchedPrivateNetworkUpdateRequest
 from pidginhost_sdk.models.private_network import PrivateNetwork
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -5369,10 +5365,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this private network.
-    patched_private_network = pidginhost_sdk.PatchedPrivateNetwork() # PatchedPrivateNetwork |  (optional)
+    patched_private_network_update_request = pidginhost_sdk.PatchedPrivateNetworkUpdateRequest() # PatchedPrivateNetworkUpdateRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_private_networks_partial_update(id, patched_private_network=patched_private_network)
+        api_response = api_instance.cloud_private_networks_partial_update(id, patched_private_network_update_request=patched_private_network_update_request)
         print("The response of CloudApi->cloud_private_networks_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -5387,7 +5383,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this private network. | 
- **patched_private_network** | [**PatchedPrivateNetwork**](PatchedPrivateNetwork.md)|  | [optional] 
+ **patched_private_network_update_request** | [**PatchedPrivateNetworkUpdateRequest**](PatchedPrivateNetworkUpdateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -5411,7 +5407,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_private_networks_remove_server_create**
-> RemoveServerResponse cloud_private_networks_remove_server_create(id, private_network_remove_host)
+> RemoveServerResponse cloud_private_networks_remove_server_create(id, private_network_remove_host_request)
 
 Manage private networks
 
@@ -5422,7 +5418,7 @@ Manage private networks
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.private_network_remove_host import PrivateNetworkRemoveHost
+from pidginhost_sdk.models.private_network_remove_host_request import PrivateNetworkRemoveHostRequest
 from pidginhost_sdk.models.remove_server_response import RemoveServerResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -5455,10 +5451,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this private network.
-    private_network_remove_host = pidginhost_sdk.PrivateNetworkRemoveHost() # PrivateNetworkRemoveHost | 
+    private_network_remove_host_request = pidginhost_sdk.PrivateNetworkRemoveHostRequest() # PrivateNetworkRemoveHostRequest | 
 
     try:
-        api_response = api_instance.cloud_private_networks_remove_server_create(id, private_network_remove_host)
+        api_response = api_instance.cloud_private_networks_remove_server_create(id, private_network_remove_host_request)
         print("The response of CloudApi->cloud_private_networks_remove_server_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -5473,7 +5469,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this private network. | 
- **private_network_remove_host** | [**PrivateNetworkRemoveHost**](PrivateNetworkRemoveHost.md)|  | 
+ **private_network_remove_host_request** | [**PrivateNetworkRemoveHostRequest**](PrivateNetworkRemoveHostRequest.md)|  | 
 
 ### Return type
 
@@ -5580,7 +5576,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_private_networks_update**
-> PrivateNetwork cloud_private_networks_update(id, private_network)
+> PrivateNetwork cloud_private_networks_update(id, private_network_update_request=private_network_update_request)
 
 Manage private networks
 
@@ -5592,6 +5588,7 @@ Manage private networks
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.private_network import PrivateNetwork
+from pidginhost_sdk.models.private_network_update_request import PrivateNetworkUpdateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -5623,10 +5620,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this private network.
-    private_network = pidginhost_sdk.PrivateNetwork() # PrivateNetwork | 
+    private_network_update_request = pidginhost_sdk.PrivateNetworkUpdateRequest() # PrivateNetworkUpdateRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_private_networks_update(id, private_network)
+        api_response = api_instance.cloud_private_networks_update(id, private_network_update_request=private_network_update_request)
         print("The response of CloudApi->cloud_private_networks_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -5641,7 +5638,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this private network. | 
- **private_network** | [**PrivateNetwork**](PrivateNetwork.md)|  | 
+ **private_network_update_request** | [**PrivateNetworkUpdateRequest**](PrivateNetworkUpdateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -6167,7 +6164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_boot_isos_list**
-> PaginatedBootISOList cloud_servers_boot_isos_list(id, page=page)
+> List[BootISO] cloud_servers_boot_isos_list(id)
 
 List the ISO catalog entries visible to this user and their package compatibility.
 
@@ -6178,7 +6175,7 @@ List the ISO catalog entries visible to this user and their package compatibilit
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.paginated_boot_iso_list import PaginatedBootISOList
+from pidginhost_sdk.models.boot_iso import BootISO
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -6210,10 +6207,9 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    page = 56 # int | A page number within the paginated result set. (optional)
 
     try:
-        api_response = api_instance.cloud_servers_boot_isos_list(id, page=page)
+        api_response = api_instance.cloud_servers_boot_isos_list(id)
         print("The response of CloudApi->cloud_servers_boot_isos_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -6228,11 +6224,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **page** | **int**| A page number within the paginated result set. | [optional] 
 
 ### Return type
 
-[**PaginatedBootISOList**](PaginatedBootISOList.md)
+[**List[BootISO]**](BootISO.md)
 
 ### Authorization
 
@@ -6335,7 +6330,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_create**
-> ServerAddResponse cloud_servers_create(server_add)
+> ServerAddResponse cloud_servers_create(server_add_request)
 
 Create new server
 
@@ -6346,7 +6341,7 @@ Create new server
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.server_add import ServerAdd
+from pidginhost_sdk.models.server_add_request import ServerAddRequest
 from pidginhost_sdk.models.server_add_response import ServerAddResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -6378,10 +6373,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
-    server_add = pidginhost_sdk.ServerAdd() # ServerAdd | 
+    server_add_request = pidginhost_sdk.ServerAddRequest() # ServerAddRequest | 
 
     try:
-        api_response = api_instance.cloud_servers_create(server_add)
+        api_response = api_instance.cloud_servers_create(server_add_request)
         print("The response of CloudApi->cloud_servers_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -6395,7 +6390,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **server_add** | [**ServerAdd**](ServerAdd.md)|  | 
+ **server_add_request** | [**ServerAddRequest**](ServerAddRequest.md)|  | 
 
 ### Return type
 
@@ -6499,7 +6494,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_destroy_protection_create**
-> DestroyProtectionResponse cloud_servers_destroy_protection_create(id, destroy_protection)
+> DestroyProtectionResponse cloud_servers_destroy_protection_create(id, destroy_protection_request)
 
 Enable or disable destroy protection.
 
@@ -6510,7 +6505,7 @@ Enable or disable destroy protection.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.destroy_protection import DestroyProtection
+from pidginhost_sdk.models.destroy_protection_request import DestroyProtectionRequest
 from pidginhost_sdk.models.destroy_protection_response import DestroyProtectionResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -6543,10 +6538,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    destroy_protection = pidginhost_sdk.DestroyProtection() # DestroyProtection | 
+    destroy_protection_request = pidginhost_sdk.DestroyProtectionRequest() # DestroyProtectionRequest | 
 
     try:
-        api_response = api_instance.cloud_servers_destroy_protection_create(id, destroy_protection)
+        api_response = api_instance.cloud_servers_destroy_protection_create(id, destroy_protection_request)
         print("The response of CloudApi->cloud_servers_destroy_protection_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -6561,7 +6556,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **destroy_protection** | [**DestroyProtection**](DestroyProtection.md)|  | 
+ **destroy_protection_request** | [**DestroyProtectionRequest**](DestroyProtectionRequest.md)|  | 
 
 ### Return type
 
@@ -6836,7 +6831,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_modify_package_create**
-> ServerUpgradeResponse cloud_servers_modify_package_create(id, server_product_upgrade)
+> ServerUpgradeResponse cloud_servers_modify_package_create(id, server_product_upgrade_request)
 
 Modify server package: downgrade available only for packages with the same disk size.
 
@@ -6847,7 +6842,7 @@ Modify server package: downgrade available only for packages with the same disk 
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.server_product_upgrade import ServerProductUpgrade
+from pidginhost_sdk.models.server_product_upgrade_request import ServerProductUpgradeRequest
 from pidginhost_sdk.models.server_upgrade_response import ServerUpgradeResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -6880,10 +6875,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    server_product_upgrade = pidginhost_sdk.ServerProductUpgrade() # ServerProductUpgrade | 
+    server_product_upgrade_request = pidginhost_sdk.ServerProductUpgradeRequest() # ServerProductUpgradeRequest | 
 
     try:
-        api_response = api_instance.cloud_servers_modify_package_create(id, server_product_upgrade)
+        api_response = api_instance.cloud_servers_modify_package_create(id, server_product_upgrade_request)
         print("The response of CloudApi->cloud_servers_modify_package_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -6898,7 +6893,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **server_product_upgrade** | [**ServerProductUpgrade**](ServerProductUpgrade.md)|  | 
+ **server_product_upgrade_request** | [**ServerProductUpgradeRequest**](ServerProductUpgradeRequest.md)|  | 
 
 ### Return type
 
@@ -6922,7 +6917,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_partial_update**
-> ServerDetail cloud_servers_partial_update(id, patched_server_detail=patched_server_detail)
+> ServerDetail cloud_servers_partial_update(id, patched_server_detail_request=patched_server_detail_request)
 
 Cloud servers
 
@@ -6933,7 +6928,7 @@ Cloud servers
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_server_detail import PatchedServerDetail
+from pidginhost_sdk.models.patched_server_detail_request import PatchedServerDetailRequest
 from pidginhost_sdk.models.server_detail import ServerDetail
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -6966,10 +6961,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    patched_server_detail = pidginhost_sdk.PatchedServerDetail() # PatchedServerDetail |  (optional)
+    patched_server_detail_request = pidginhost_sdk.PatchedServerDetailRequest() # PatchedServerDetailRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_servers_partial_update(id, patched_server_detail=patched_server_detail)
+        api_response = api_instance.cloud_servers_partial_update(id, patched_server_detail_request=patched_server_detail_request)
         print("The response of CloudApi->cloud_servers_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -6984,7 +6979,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **patched_server_detail** | [**PatchedServerDetail**](PatchedServerDetail.md)|  | [optional] 
+ **patched_server_detail_request** | [**PatchedServerDetailRequest**](PatchedServerDetailRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -7177,7 +7172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_public_interface_create**
-> PublicInterface cloud_servers_public_interface_create(id, public_interface=public_interface)
+> PublicInterface cloud_servers_public_interface_create(id, public_interface_request=public_interface_request)
 
 Public interface
 
@@ -7189,6 +7184,7 @@ Public interface
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.public_interface import PublicInterface
+from pidginhost_sdk.models.public_interface_request import PublicInterfaceRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -7220,10 +7216,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    public_interface = pidginhost_sdk.PublicInterface() # PublicInterface |  (optional)
+    public_interface_request = pidginhost_sdk.PublicInterfaceRequest() # PublicInterfaceRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_servers_public_interface_create(id, public_interface=public_interface)
+        api_response = api_instance.cloud_servers_public_interface_create(id, public_interface_request=public_interface_request)
         print("The response of CloudApi->cloud_servers_public_interface_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -7238,7 +7234,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **public_interface** | [**PublicInterface**](PublicInterface.md)|  | [optional] 
+ **public_interface_request** | [**PublicInterfaceRequest**](PublicInterfaceRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -7760,9 +7756,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_snapshots_create**
-> PaginatedSnapshotList cloud_servers_snapshots_create(id, snapshot_create, page=page)
+> SnapshotCreateQueued cloud_servers_snapshots_create(id, snapshot_create_request)
 
-List snapshots for this server or queue a new snapshot.
+Cloud servers
 
 ### Example
 
@@ -7771,8 +7767,8 @@ List snapshots for this server or queue a new snapshot.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.paginated_snapshot_list import PaginatedSnapshotList
-from pidginhost_sdk.models.snapshot_create import SnapshotCreate
+from pidginhost_sdk.models.snapshot_create_queued import SnapshotCreateQueued
+from pidginhost_sdk.models.snapshot_create_request import SnapshotCreateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -7804,11 +7800,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    snapshot_create = pidginhost_sdk.SnapshotCreate() # SnapshotCreate | 
-    page = 56 # int | A page number within the paginated result set. (optional)
+    snapshot_create_request = pidginhost_sdk.SnapshotCreateRequest() # SnapshotCreateRequest | 
 
     try:
-        api_response = api_instance.cloud_servers_snapshots_create(id, snapshot_create, page=page)
+        api_response = api_instance.cloud_servers_snapshots_create(id, snapshot_create_request)
         print("The response of CloudApi->cloud_servers_snapshots_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -7823,12 +7818,11 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **snapshot_create** | [**SnapshotCreate**](SnapshotCreate.md)|  | 
- **page** | **int**| A page number within the paginated result set. | [optional] 
+ **snapshot_create_request** | [**SnapshotCreateRequest**](SnapshotCreateRequest.md)|  | 
 
 ### Return type
 
-[**PaginatedSnapshotList**](PaginatedSnapshotList.md)
+[**SnapshotCreateQueued**](SnapshotCreateQueued.md)
 
 ### Authorization
 
@@ -7843,7 +7837,6 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
 **202** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7934,7 +7927,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_snapshots_list**
-> PaginatedSnapshotList cloud_servers_snapshots_list(id, page=page)
+> List[Snapshot] cloud_servers_snapshots_list(id)
 
 List snapshots for this server or queue a new snapshot.
 
@@ -7945,7 +7938,7 @@ List snapshots for this server or queue a new snapshot.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.paginated_snapshot_list import PaginatedSnapshotList
+from pidginhost_sdk.models.snapshot import Snapshot
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -7977,10 +7970,9 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    page = 56 # int | A page number within the paginated result set. (optional)
 
     try:
-        api_response = api_instance.cloud_servers_snapshots_list(id, page=page)
+        api_response = api_instance.cloud_servers_snapshots_list(id)
         print("The response of CloudApi->cloud_servers_snapshots_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -7995,11 +7987,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **page** | **int**| A page number within the paginated result set. | [optional] 
 
 ### Return type
 
-[**PaginatedSnapshotList**](PaginatedSnapshotList.md)
+[**List[Snapshot]**](Snapshot.md)
 
 ### Authorization
 
@@ -8015,7 +8006,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
-**202** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8104,10 +8094,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **cloud_servers_update**
-> ServerDetail cloud_servers_update(id, server_detail=server_detail)
+# **cloud_servers_traffic_retrieve**
+> ServerTrafficResponse cloud_servers_traffic_retrieve(id)
 
-Cloud servers
+Get this month's traffic usage for a server.
 
 ### Example
 
@@ -8116,7 +8106,7 @@ Cloud servers
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.server_detail import ServerDetail
+from pidginhost_sdk.models.server_traffic_response import ServerTrafficResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -8148,10 +8138,94 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this virtual machine.
-    server_detail = pidginhost_sdk.ServerDetail() # ServerDetail |  (optional)
 
     try:
-        api_response = api_instance.cloud_servers_update(id, server_detail=server_detail)
+        api_response = api_instance.cloud_servers_traffic_retrieve(id)
+        print("The response of CloudApi->cloud_servers_traffic_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_servers_traffic_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this virtual machine. | 
+
+### Return type
+
+[**ServerTrafficResponse**](ServerTrafficResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_servers_update**
+> ServerDetail cloud_servers_update(id, server_detail_request=server_detail_request)
+
+Cloud servers
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.server_detail import ServerDetail
+from pidginhost_sdk.models.server_detail_request import ServerDetailRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 56 # int | A unique integer value identifying this virtual machine.
+    server_detail_request = pidginhost_sdk.ServerDetailRequest() # ServerDetailRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_servers_update(id, server_detail_request=server_detail_request)
         print("The response of CloudApi->cloud_servers_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -8166,7 +8240,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this virtual machine. | 
- **server_detail** | [**ServerDetail**](ServerDetail.md)|  | [optional] 
+ **server_detail_request** | [**ServerDetailRequest**](ServerDetailRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -8273,7 +8347,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_volumes_create**
-> Volume cloud_servers_volumes_create(server_id, volume)
+> Volume cloud_servers_volumes_create(server_id, volume_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -8292,6 +8366,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.volume import Volume
+from pidginhost_sdk.models.volume_request import VolumeRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -8323,10 +8398,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     server_id = 'server_id_example' # str | 
-    volume = pidginhost_sdk.Volume() # Volume | 
+    volume_request = pidginhost_sdk.VolumeRequest() # VolumeRequest | 
 
     try:
-        api_response = api_instance.cloud_servers_volumes_create(server_id, volume)
+        api_response = api_instance.cloud_servers_volumes_create(server_id, volume_request)
         print("The response of CloudApi->cloud_servers_volumes_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -8341,7 +8416,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **server_id** | **str**|  | 
- **volume** | [**Volume**](Volume.md)|  | 
+ **volume_request** | [**VolumeRequest**](VolumeRequest.md)|  | 
 
 ### Return type
 
@@ -8544,7 +8619,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_volumes_partial_update**
-> Volume cloud_servers_volumes_partial_update(server_id, volume_id, patched_volume=patched_volume)
+> Volume cloud_servers_volumes_partial_update(server_id, volume_id, patched_volume_update_request=patched_volume_update_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -8562,7 +8637,7 @@ skip enforcement — the route probes pin the denial for each route.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_volume import PatchedVolume
+from pidginhost_sdk.models.patched_volume_update_request import PatchedVolumeUpdateRequest
 from pidginhost_sdk.models.volume import Volume
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -8596,10 +8671,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.CloudApi(api_client)
     server_id = 'server_id_example' # str | 
     volume_id = 'volume_id_example' # str | 
-    patched_volume = pidginhost_sdk.PatchedVolume() # PatchedVolume |  (optional)
+    patched_volume_update_request = pidginhost_sdk.PatchedVolumeUpdateRequest() # PatchedVolumeUpdateRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_servers_volumes_partial_update(server_id, volume_id, patched_volume=patched_volume)
+        api_response = api_instance.cloud_servers_volumes_partial_update(server_id, volume_id, patched_volume_update_request=patched_volume_update_request)
         print("The response of CloudApi->cloud_servers_volumes_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -8615,7 +8690,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **server_id** | **str**|  | 
  **volume_id** | **str**|  | 
- **patched_volume** | [**PatchedVolume**](PatchedVolume.md)|  | [optional] 
+ **patched_volume_update_request** | [**PatchedVolumeUpdateRequest**](PatchedVolumeUpdateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -8731,7 +8806,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_volumes_update**
-> Volume cloud_servers_volumes_update(server_id, volume_id, volume)
+> Volume cloud_servers_volumes_update(server_id, volume_id, volume_update_request)
 
 Adds :class:`~account.iam_enforcement.IAMActionPermission` as an
 intersection with the route's existing permission classes (spec §6).
@@ -8750,6 +8825,7 @@ skip enforcement — the route probes pin the denial for each route.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.volume import Volume
+from pidginhost_sdk.models.volume_update_request import VolumeUpdateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -8782,10 +8858,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     api_instance = pidginhost_sdk.CloudApi(api_client)
     server_id = 'server_id_example' # str | 
     volume_id = 'volume_id_example' # str | 
-    volume = pidginhost_sdk.Volume() # Volume | 
+    volume_update_request = pidginhost_sdk.VolumeUpdateRequest() # VolumeUpdateRequest | 
 
     try:
-        api_response = api_instance.cloud_servers_volumes_update(server_id, volume_id, volume)
+        api_response = api_instance.cloud_servers_volumes_update(server_id, volume_id, volume_update_request)
         print("The response of CloudApi->cloud_servers_volumes_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -8801,7 +8877,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **server_id** | **str**|  | 
  **volume_id** | **str**|  | 
- **volume** | [**Volume**](Volume.md)|  | 
+ **volume_update_request** | [**VolumeUpdateRequest**](VolumeUpdateRequest.md)|  | 
 
 ### Return type
 
@@ -8991,7 +9067,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_volumes_attach_create**
-> AttachVolume cloud_volumes_attach_create(id, attach_volume)
+> AttachVolume cloud_volumes_attach_create(id, attach_volume_request)
 
 Attach existing volume to a server
 
@@ -9003,6 +9079,7 @@ Attach existing volume to a server
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.attach_volume import AttachVolume
+from pidginhost_sdk.models.attach_volume_request import AttachVolumeRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -9034,10 +9111,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this storage.
-    attach_volume = pidginhost_sdk.AttachVolume() # AttachVolume | 
+    attach_volume_request = pidginhost_sdk.AttachVolumeRequest() # AttachVolumeRequest | 
 
     try:
-        api_response = api_instance.cloud_volumes_attach_create(id, attach_volume)
+        api_response = api_instance.cloud_volumes_attach_create(id, attach_volume_request)
         print("The response of CloudApi->cloud_volumes_attach_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -9052,7 +9129,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this storage. | 
- **attach_volume** | [**AttachVolume**](AttachVolume.md)|  | 
+ **attach_volume_request** | [**AttachVolumeRequest**](AttachVolumeRequest.md)|  | 
 
 ### Return type
 
@@ -9156,7 +9233,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_volumes_detach_create**
-> DetachVolume cloud_volumes_detach_create(id, volume)
+> DetachVolume cloud_volumes_detach_create(id)
 
 Detach volume from server
 
@@ -9168,7 +9245,6 @@ Detach volume from server
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.detach_volume import DetachVolume
-from pidginhost_sdk.models.volume import Volume
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -9200,10 +9276,9 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this storage.
-    volume = pidginhost_sdk.Volume() # Volume | 
 
     try:
-        api_response = api_instance.cloud_volumes_detach_create(id, volume)
+        api_response = api_instance.cloud_volumes_detach_create(id)
         print("The response of CloudApi->cloud_volumes_detach_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -9218,7 +9293,6 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this storage. | 
- **volume** | [**Volume**](Volume.md)|  | 
 
 ### Return type
 
@@ -9230,7 +9304,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9321,7 +9395,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_volumes_partial_update**
-> Volume cloud_volumes_partial_update(id, patched_volume=patched_volume)
+> Volume cloud_volumes_partial_update(id, patched_volume_update_request=patched_volume_update_request)
 
 Volumes management
 
@@ -9332,7 +9406,7 @@ Volumes management
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_volume import PatchedVolume
+from pidginhost_sdk.models.patched_volume_update_request import PatchedVolumeUpdateRequest
 from pidginhost_sdk.models.volume import Volume
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -9365,10 +9439,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this storage.
-    patched_volume = pidginhost_sdk.PatchedVolume() # PatchedVolume |  (optional)
+    patched_volume_update_request = pidginhost_sdk.PatchedVolumeUpdateRequest() # PatchedVolumeUpdateRequest |  (optional)
 
     try:
-        api_response = api_instance.cloud_volumes_partial_update(id, patched_volume=patched_volume)
+        api_response = api_instance.cloud_volumes_partial_update(id, patched_volume_update_request=patched_volume_update_request)
         print("The response of CloudApi->cloud_volumes_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -9383,7 +9457,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this storage. | 
- **patched_volume** | [**PatchedVolume**](PatchedVolume.md)|  | [optional] 
+ **patched_volume_update_request** | [**PatchedVolumeUpdateRequest**](PatchedVolumeUpdateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -9490,7 +9564,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_volumes_update**
-> Volume cloud_volumes_update(id, volume)
+> Volume cloud_volumes_update(id, volume_update_request)
 
 Volumes management
 
@@ -9502,6 +9576,7 @@ Volumes management
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.volume import Volume
+from pidginhost_sdk.models.volume_update_request import VolumeUpdateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -9533,10 +9608,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.CloudApi(api_client)
     id = 56 # int | A unique integer value identifying this storage.
-    volume = pidginhost_sdk.Volume() # Volume | 
+    volume_update_request = pidginhost_sdk.VolumeUpdateRequest() # VolumeUpdateRequest | 
 
     try:
-        api_response = api_instance.cloud_volumes_update(id, volume)
+        api_response = api_instance.cloud_volumes_update(id, volume_update_request)
         print("The response of CloudApi->cloud_volumes_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -9551,7 +9626,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this storage. | 
- **volume** | [**Volume**](Volume.md)|  | 
+ **volume_update_request** | [**VolumeUpdateRequest**](VolumeUpdateRequest.md)|  | 
 
 ### Return type
 

@@ -8,9 +8,8 @@ Name | Type | Description | Notes
 **id** | **int** |  | [readonly] 
 **package** | **str** |  | [readonly] 
 **generation** | **str** |  | [readonly] 
-**size** | **str** |  | [readonly] 
+**size** | **int** |  | [readonly] 
 **nodes** | [**List[ResourcePoolNode]**](ResourcePoolNode.md) |  | [readonly] 
-**new_size** | **int** |  | [optional] 
 
 ## Example
 

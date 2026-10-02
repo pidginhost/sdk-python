@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictBool
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,8 +28,8 @@ class AttachVolume(BaseModel):
     """
     AttachVolume
     """ # noqa: E501
-    vm: StrictInt = Field(description="Server ID")
-    __properties: ClassVar[List[str]] = ["vm"]
+    attached: StrictBool
+    __properties: ClassVar[List[str]] = ["attached"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -82,7 +82,7 @@ class AttachVolume(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "vm": obj.get("vm")
+            "attached": obj.get("attached")
         })
         return _obj
 

@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Union
 from typing_extensions import Annotated
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
 from typing import Optional, Set
@@ -41,8 +41,8 @@ class EmailService(BaseModel):
     bounce_rate_pct: Annotated[str, Field(strict=True)]
     complaint_rate_pct: Annotated[str, Field(strict=True)]
     dedicated_ip_addon: StrictBool
-    quota_monthly: StrictStr
-    price_monthly_eur: StrictStr
+    quota_monthly: StrictInt
+    price_monthly_eur: Union[StrictFloat, StrictInt]
     __properties: ClassVar[List[str]] = ["id", "tier", "status", "sandbox_mode", "auto_suspended", "auto_suspend_reason", "msgs_sent_24h", "msgs_sent_30d", "bounce_rate_pct", "complaint_rate_pct", "dedicated_ip_addon", "quota_monthly", "price_monthly_eur"]
 
     @field_validator('bounce_rate_pct', mode="before")

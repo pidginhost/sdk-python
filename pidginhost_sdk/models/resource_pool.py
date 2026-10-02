@@ -18,9 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from pidginhost_sdk.models.resource_pool_node import ResourcePoolNode
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,10 +32,9 @@ class ResourcePool(BaseModel):
     id: StrictInt
     package: StrictStr
     generation: StrictStr
-    size: StrictStr
+    size: StrictInt
     nodes: List[ResourcePoolNode]
-    new_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None
-    __properties: ClassVar[List[str]] = ["id", "package", "generation", "size", "nodes", "new_size"]
+    __properties: ClassVar[List[str]] = ["id", "package", "generation", "size", "nodes"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -110,8 +108,7 @@ class ResourcePool(BaseModel):
             "package": obj.get("package"),
             "generation": obj.get("generation"),
             "size": obj.get("size"),
-            "nodes": [ResourcePoolNode.from_dict(_item) for _item in obj["nodes"]] if obj.get("nodes") is not None else None,
-            "new_size": obj.get("new_size")
+            "nodes": [ResourcePoolNode.from_dict(_item) for _item in obj["nodes"]] if obj.get("nodes") is not None else None
         })
         return _obj
 

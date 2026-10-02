@@ -50,8 +50,6 @@ class TestAPITokenCreate(unittest.TestCase):
                 name = '',
                 key = '',
                 created = '',
-                account = '',
-                membership_status = '',
         )
         """
 

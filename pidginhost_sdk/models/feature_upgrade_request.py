@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,7 +29,7 @@ class FeatureUpgradeRequest(BaseModel):
     """
     FeatureUpgradeRequest
     """ # noqa: E501
-    feature_name: StrictStr = Field(description="Name of the feature to upgrade (e.g. cert-manager)")
+    feature_name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Name of the feature to upgrade (e.g. cert-manager)")
     retry: Optional[StrictBool] = Field(default=False, description="Retry a failed install")
     __properties: ClassVar[List[str]] = ["feature_name", "retry"]
 

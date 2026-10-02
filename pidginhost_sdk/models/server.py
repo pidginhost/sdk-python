@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
+from pidginhost_sdk.models.server_networks import ServerNetworks
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -43,7 +44,7 @@ class Server(BaseModel):
     destroy_protection: StrictBool = Field(description="Prevents the server from being destroyed until disabled.")
     ha_enabled: StrictBool = Field(description="Enables Proxmox HA — automatic restart and migration on node failure.")
     custom_os: StrictBool = Field(description="Customer installed their own OS from an ISO; cloud-init features no longer apply")
-    networks: Dict[str, Any]
+    networks: ServerNetworks
     rescue_mode: StrictBool
     boot_iso: Optional[StrictStr]
     rescue_supported: StrictBool
@@ -116,6 +117,9 @@ class Server(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of networks
+        if self.networks:
+            _dict['networks'] = self.networks.to_dict()
         # set to None if boot_iso (nullable) is None
         # and model_fields_set contains the field
         if self.boot_iso is None and "boot_iso" in self.model_fields_set:
@@ -146,7 +150,7 @@ class Server(BaseModel):
             "destroy_protection": obj.get("destroy_protection"),
             "ha_enabled": obj.get("ha_enabled"),
             "custom_os": obj.get("custom_os"),
-            "networks": obj.get("networks"),
+            "networks": ServerNetworks.from_dict(obj["networks"]) if obj.get("networks") is not None else None,
             "rescue_mode": obj.get("rescue_mode"),
             "boot_iso": obj.get("boot_iso"),
             "rescue_supported": obj.get("rescue_supported")

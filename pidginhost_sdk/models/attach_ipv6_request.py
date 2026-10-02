@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,7 +29,7 @@ class AttachIPv6Request(BaseModel):
     """
     AttachIPv6Request
     """ # noqa: E501
-    ipv6: StrictStr = Field(description="ID or address of an IPv6 you own.")
+    ipv6: Annotated[str, Field(min_length=1, strict=True)] = Field(description="ID or address of an IPv6 you own.")
     reboot: Optional[StrictBool] = Field(default=False, description="Restart the server so the guest OS picks up the address.")
     __properties: ClassVar[List[str]] = ["ipv6", "reboot"]
 

@@ -51,7 +51,7 @@ class TestTicketDetail(unittest.TestCase):
                         date = '', 
                         message = '', 
                         author_name = '', 
-                        has_attachment = '', 
+                        has_attachment = True, 
                         attachment_filename = '', )
                     ]
             )
@@ -72,7 +72,7 @@ class TestTicketDetail(unittest.TestCase):
                         date = '', 
                         message = '', 
                         author_name = '', 
-                        has_attachment = '', 
+                        has_attachment = True, 
                         attachment_filename = '', )
                     ],
         )

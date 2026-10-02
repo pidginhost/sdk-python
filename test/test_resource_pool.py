@@ -39,21 +39,20 @@ class TestResourcePool(unittest.TestCase):
                 id = 56,
                 package = '',
                 generation = '',
-                size = '',
+                size = 56,
                 nodes = [
                     pidginhost_sdk.models.resource_pool_node.ResourcePoolNode(
                         id = 56, 
                         name = '', 
                         ip = '', )
-                    ],
-                new_size = 1
+                    ]
             )
         else:
             return ResourcePool(
                 id = 56,
                 package = '',
                 generation = '',
-                size = '',
+                size = 56,
                 nodes = [
                     pidginhost_sdk.models.resource_pool_node.ResourcePoolNode(
                         id = 56, 

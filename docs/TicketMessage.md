@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **var_date** | **str** |  | [readonly] 
 **message** | **str** |  | [readonly] 
 **author_name** | **str** |  | [readonly] 
-**has_attachment** | **str** |  | [readonly] 
+**has_attachment** | **bool** |  | [readonly] 
 **attachment_filename** | **str** |  | [readonly] 
 
 ## Example

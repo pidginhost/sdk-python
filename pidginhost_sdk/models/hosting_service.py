@@ -20,7 +20,7 @@ import json
 
 from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.service_status_enum import ServiceStatusEnum
 from typing import Optional, Set
@@ -38,9 +38,9 @@ class HostingService(BaseModel):
     next_invoice: date
     created: StrictStr
     billing_cycle: StrictStr
-    package_name: StrictStr
-    node_url: StrictStr
-    username: StrictStr
+    package_name: Optional[StrictStr]
+    node_url: Optional[StrictStr]
+    username: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "hostname", "status", "price", "next_invoice", "created", "billing_cycle", "package_name", "node_url", "username"]
 
     @field_validator('price', mode="before")
@@ -109,6 +109,21 @@ class HostingService(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if package_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.package_name is None and "package_name" in self.model_fields_set:
+            _dict['package_name'] = None
+
+        # set to None if node_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.node_url is None and "node_url" in self.model_fields_set:
+            _dict['node_url'] = None
+
+        # set to None if username (nullable) is None
+        # and model_fields_set contains the field
+        if self.username is None and "username" in self.model_fields_set:
+            _dict['username'] = None
+
         return _dict
 
     @classmethod

@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 
 # **billing_deposits_create**
-> Deposit billing_deposits_create(deposit_create)
+> Deposit billing_deposits_create(deposit_create_request)
 
 Create a new funds deposit.
 
@@ -37,7 +37,7 @@ Create a new funds deposit.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.deposit import Deposit
-from pidginhost_sdk.models.deposit_create import DepositCreate
+from pidginhost_sdk.models.deposit_create_request import DepositCreateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -68,10 +68,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.BillingApi(api_client)
-    deposit_create = pidginhost_sdk.DepositCreate() # DepositCreate | 
+    deposit_create_request = pidginhost_sdk.DepositCreateRequest() # DepositCreateRequest | 
 
     try:
-        api_response = api_instance.billing_deposits_create(deposit_create)
+        api_response = api_instance.billing_deposits_create(deposit_create_request)
         print("The response of BillingApi->billing_deposits_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -85,7 +85,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deposit_create** | [**DepositCreate**](DepositCreate.md)|  | 
+ **deposit_create_request** | [**DepositCreateRequest**](DepositCreateRequest.md)|  | 
 
 ### Return type
 
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_funds_notification_settings_create**
-> NotificationSettingsResponse billing_funds_notification_settings_create(low_balance_settings)
+> NotificationSettingsResponse billing_funds_notification_settings_create(low_balance_settings_request)
 
 Update low-balance notification settings.
 
@@ -448,7 +448,7 @@ Update low-balance notification settings.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.low_balance_settings import LowBalanceSettings
+from pidginhost_sdk.models.low_balance_settings_request import LowBalanceSettingsRequest
 from pidginhost_sdk.models.notification_settings_response import NotificationSettingsResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -480,10 +480,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.BillingApi(api_client)
-    low_balance_settings = pidginhost_sdk.LowBalanceSettings() # LowBalanceSettings | 
+    low_balance_settings_request = pidginhost_sdk.LowBalanceSettingsRequest() # LowBalanceSettingsRequest | 
 
     try:
-        api_response = api_instance.billing_funds_notification_settings_create(low_balance_settings)
+        api_response = api_instance.billing_funds_notification_settings_create(low_balance_settings_request)
         print("The response of BillingApi->billing_funds_notification_settings_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -497,7 +497,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **low_balance_settings** | [**LowBalanceSettings**](LowBalanceSettings.md)|  | 
+ **low_balance_settings_request** | [**LowBalanceSettingsRequest**](LowBalanceSettingsRequest.md)|  | 
 
 ### Return type
 
@@ -935,7 +935,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_services_change_billing_cycle_create**
-> ChangeBillingCycleResponse billing_services_change_billing_cycle_create(id, change_billing_cycle)
+> ChangeBillingCycleResponse billing_services_change_billing_cycle_create(id, change_billing_cycle_request)
 
 Change the billing cycle of a service.
 
@@ -946,7 +946,7 @@ Change the billing cycle of a service.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.change_billing_cycle import ChangeBillingCycle
+from pidginhost_sdk.models.change_billing_cycle_request import ChangeBillingCycleRequest
 from pidginhost_sdk.models.change_billing_cycle_response import ChangeBillingCycleResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -979,10 +979,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.BillingApi(api_client)
     id = 'id_example' # str | 
-    change_billing_cycle = pidginhost_sdk.ChangeBillingCycle() # ChangeBillingCycle | 
+    change_billing_cycle_request = pidginhost_sdk.ChangeBillingCycleRequest() # ChangeBillingCycleRequest | 
 
     try:
-        api_response = api_instance.billing_services_change_billing_cycle_create(id, change_billing_cycle)
+        api_response = api_instance.billing_services_change_billing_cycle_create(id, change_billing_cycle_request)
         print("The response of BillingApi->billing_services_change_billing_cycle_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -997,7 +997,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **change_billing_cycle** | [**ChangeBillingCycle**](ChangeBillingCycle.md)|  | 
+ **change_billing_cycle_request** | [**ChangeBillingCycleRequest**](ChangeBillingCycleRequest.md)|  | 
 
 ### Return type
 
@@ -1021,7 +1021,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_services_change_company_create**
-> ChangeCompanyResponse billing_services_change_company_create(id, change_company=change_company)
+> ChangeCompanyResponse billing_services_change_company_create(id, change_company_request=change_company_request)
 
 Change the company associated with a service.
 
@@ -1032,7 +1032,7 @@ Change the company associated with a service.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.change_company import ChangeCompany
+from pidginhost_sdk.models.change_company_request import ChangeCompanyRequest
 from pidginhost_sdk.models.change_company_response import ChangeCompanyResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -1065,10 +1065,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.BillingApi(api_client)
     id = 'id_example' # str | 
-    change_company = pidginhost_sdk.ChangeCompany() # ChangeCompany |  (optional)
+    change_company_request = pidginhost_sdk.ChangeCompanyRequest() # ChangeCompanyRequest |  (optional)
 
     try:
-        api_response = api_instance.billing_services_change_company_create(id, change_company=change_company)
+        api_response = api_instance.billing_services_change_company_create(id, change_company_request=change_company_request)
         print("The response of BillingApi->billing_services_change_company_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -1083,7 +1083,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **change_company** | [**ChangeCompany**](ChangeCompany.md)|  | [optional] 
+ **change_company_request** | [**ChangeCompanyRequest**](ChangeCompanyRequest.md)|  | [optional] 
 
 ### Return type
 

@@ -49,9 +49,24 @@ class TestServer(unittest.TestCase):
                 destroy_protection = True,
                 ha_enabled = True,
                 custom_os = True,
-                networks = {
-                    'key' : null
-                    },
+                networks = pidginhost_sdk.models.server_networks.ServerNetworks(
+                    public = pidginhost_sdk.models.server_public_network.ServerPublicNetwork(
+                        interface = '', 
+                        ipv4 = '', 
+                        ipv6 = '', 
+                        interfaces = [
+                            pidginhost_sdk.models.server_public_interface.ServerPublicInterface(
+                                interface = '', 
+                                ipv4 = '', 
+                                ipv6 = '', 
+                                primary = True, )
+                            ], ), 
+                    private = [
+                        pidginhost_sdk.models.server_private_interface.ServerPrivateInterface(
+                            interface = '', 
+                            address = '', 
+                            network = '', )
+                        ], ),
                 rescue_mode = True,
                 boot_iso = '',
                 rescue_supported = True
@@ -68,9 +83,24 @@ class TestServer(unittest.TestCase):
                 destroy_protection = True,
                 ha_enabled = True,
                 custom_os = True,
-                networks = {
-                    'key' : null
-                    },
+                networks = pidginhost_sdk.models.server_networks.ServerNetworks(
+                    public = pidginhost_sdk.models.server_public_network.ServerPublicNetwork(
+                        interface = '', 
+                        ipv4 = '', 
+                        ipv6 = '', 
+                        interfaces = [
+                            pidginhost_sdk.models.server_public_interface.ServerPublicInterface(
+                                interface = '', 
+                                ipv4 = '', 
+                                ipv6 = '', 
+                                primary = True, )
+                            ], ), 
+                    private = [
+                        pidginhost_sdk.models.server_private_interface.ServerPrivateInterface(
+                            interface = '', 
+                            address = '', 
+                            network = '', )
+                        ], ),
                 rescue_mode = True,
                 boot_iso = '',
                 rescue_supported = True,

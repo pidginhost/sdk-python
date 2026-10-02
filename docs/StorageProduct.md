@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **type** | **str** |  | [readonly] 
 **unit** | **str** |  | [readonly] 
 **price** | **decimal.Decimal** | price per quantity units per month (if applicable) | 
-**min_size** | **str** |  | [readonly] 
-**max_size** | **str** |  | [readonly] 
+**min_size** | **int** |  | [readonly] 
+**max_size** | **int** |  | [readonly] 
 
 ## Example
 

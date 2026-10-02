@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**vm** | **int** | Server ID | 
+**attached** | **bool** |  | 
 
 ## Example
 

@@ -115,6 +115,7 @@ AuthSettings = TypedDict(
     "AuthSettings",
     {
         "cookieAuth": APIKeyAuthSetting,
+        "emailApiKey": BearerFormatAuthSetting,
         "tokenAuth": APIKeyAuthSetting,
     },
     total=False,
@@ -562,6 +563,14 @@ conf = pidginhost_sdk.Configuration(
                     'cookieAuth',
                 ),
             }
+        if self.access_token is not None:
+            auth['emailApiKey'] = {
+                'type': 'bearer',
+                'in': 'header',
+                'format': 'phme_<key>',
+                'key': 'Authorization',
+                'value': 'Bearer ' + self.access_token
+            }
         if 'tokenAuth' in self.api_key:
             auth['tokenAuth'] = {
                 'type': 'api_key',
@@ -582,7 +591,7 @@ conf = pidginhost_sdk.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0.0 (v1)\n"\
-               "SDK Package Version: 0.13.0".\
+               "SDK Package Version: 0.14.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:

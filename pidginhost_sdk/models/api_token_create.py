@@ -35,8 +35,8 @@ class APITokenCreate(BaseModel):
     scope: Optional[ScopeEnum] = None
     key: StrictStr
     created: StrictStr
-    account: Optional[StrictStr]
-    membership_status: Optional[StrictStr]
+    account: Optional[StrictStr] = None
+    membership_status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "name", "scope", "key", "created", "account", "membership_status"]
 
     model_config = ConfigDict(
@@ -72,15 +72,11 @@ class APITokenCreate(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "key",
             "created",
-            "account",
-            "membership_status",
         ])
 
         _dict = self.model_dump(

@@ -586,6 +586,12 @@ class TestCloudApi(unittest.TestCase):
         """
         pass
 
+    def test_cloud_servers_traffic_retrieve(self) -> None:
+        """Test case for cloud_servers_traffic_retrieve
+
+        """
+        pass
+
     def test_cloud_servers_update(self) -> None:
         """Test case for cloud_servers_update
 

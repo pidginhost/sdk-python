@@ -67,12 +67,10 @@ class SSHKey(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "fingerprint",
-            "key",
         ])
 
         _dict = self.model_dump(

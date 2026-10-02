@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **bounce_rate_pct** | **decimal.Decimal** |  | [readonly] 
 **complaint_rate_pct** | **decimal.Decimal** |  | [readonly] 
 **dedicated_ip_addon** | **bool** |  | [readonly] 
-**quota_monthly** | **str** |  | [readonly] 
-**price_monthly_eur** | **str** |  | [readonly] 
+**quota_monthly** | **int** |  | [readonly] 
+**price_monthly_eur** | **float** |  | [readonly] 
 
 ## Example
 

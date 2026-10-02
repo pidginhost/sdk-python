@@ -35,8 +35,8 @@ class StorageProduct(BaseModel):
     type: StrictStr
     unit: StrictStr
     price: Annotated[str, Field(strict=True)] = Field(description="price per quantity units per month (if applicable)")
-    min_size: StrictStr
-    max_size: StrictStr
+    min_size: StrictInt
+    max_size: StrictInt
     __properties: ClassVar[List[str]] = ["id", "slug", "name", "type", "unit", "price", "min_size", "max_size"]
 
     @field_validator('slug', mode="before")

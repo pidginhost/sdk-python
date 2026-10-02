@@ -36,7 +36,7 @@ class TestIsoBootRequest(unittest.TestCase):
         model = IsoBootRequest()
         if include_optional:
             return IsoBootRequest(
-                iso = 'z'
+                iso = 'z0'
             )
         else:
             return IsoBootRequest(

@@ -16,13 +16,21 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from datetime import date
 from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
+from typing import Any, Dict, Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.api_credential import ApiCredential
-from pidginhost_sdk.models.domain_add import DomainAdd
+from pidginhost_sdk.models.api_credential_created import ApiCredentialCreated
+from pidginhost_sdk.models.credential_create_request import CredentialCreateRequest
+from pidginhost_sdk.models.domain_add_request import DomainAddRequest
+from pidginhost_sdk.models.email_message_list import EmailMessageList
+from pidginhost_sdk.models.email_send_response import EmailSendResponse
 from pidginhost_sdk.models.email_service import EmailService
+from pidginhost_sdk.models.email_stats import EmailStats
 from pidginhost_sdk.models.inbound_route import InboundRoute
+from pidginhost_sdk.models.inbound_route_create_request import InboundRouteCreateRequest
+from pidginhost_sdk.models.inbound_route_write_response import InboundRouteWriteResponse
 from pidginhost_sdk.models.paginated_api_credential_list import PaginatedApiCredentialList
 from pidginhost_sdk.models.paginated_email_service_list import PaginatedEmailServiceList
 from pidginhost_sdk.models.paginated_inbound_route_list import PaginatedInboundRouteList
@@ -30,14 +38,17 @@ from pidginhost_sdk.models.paginated_sandbox_address_list import PaginatedSandbo
 from pidginhost_sdk.models.paginated_sending_domain_list import PaginatedSendingDomainList
 from pidginhost_sdk.models.paginated_smtp_credential_list import PaginatedSmtpCredentialList
 from pidginhost_sdk.models.paginated_suppression_entry_list import PaginatedSuppressionEntryList
-from pidginhost_sdk.models.patched_email_service import PatchedEmailService
-from pidginhost_sdk.models.patched_inbound_route import PatchedInboundRoute
-from pidginhost_sdk.models.patched_subscribe import PatchedSubscribe
+from pidginhost_sdk.models.patched_inbound_route_create_request import PatchedInboundRouteCreateRequest
 from pidginhost_sdk.models.sandbox_address import SandboxAddress
+from pidginhost_sdk.models.sandbox_address_request import SandboxAddressRequest
+from pidginhost_sdk.models.send_request import SendRequest
 from pidginhost_sdk.models.sending_domain import SendingDomain
 from pidginhost_sdk.models.smtp_credential import SmtpCredential
-from pidginhost_sdk.models.subscribe import Subscribe
+from pidginhost_sdk.models.smtp_credential_created import SmtpCredentialCreated
+from pidginhost_sdk.models.subscribe_request import SubscribeRequest
+from pidginhost_sdk.models.suppression_add_request import SuppressionAddRequest
 from pidginhost_sdk.models.suppression_entry import SuppressionEntry
+from pidginhost_sdk.models.toggle_inbound_request import ToggleInboundRequest
 
 from pidginhost_sdk.api_client import ApiClient, RequestSerialized
 from pidginhost_sdk.api_response import ApiResponse
@@ -60,7 +71,7 @@ class EmailApi:
     @validate_call
     def email_api_credentials_create(
         self,
-        api_credential: Optional[ApiCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -73,13 +84,13 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiCredential:
+    ) -> ApiCredentialCreated:
         """email_api_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param api_credential:
-        :type api_credential: ApiCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -103,7 +114,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_api_credentials_create_serialize(
-            api_credential=api_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,7 +122,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ApiCredential",
+            '201': "ApiCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -127,7 +138,7 @@ class EmailApi:
     @validate_call
     def email_api_credentials_create_with_http_info(
         self,
-        api_credential: Optional[ApiCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,13 +151,13 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ApiCredential]:
+    ) -> ApiResponse[ApiCredentialCreated]:
         """email_api_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param api_credential:
-        :type api_credential: ApiCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,7 +181,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_api_credentials_create_serialize(
-            api_credential=api_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -178,7 +189,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ApiCredential",
+            '201': "ApiCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -194,7 +205,7 @@ class EmailApi:
     @validate_call
     def email_api_credentials_create_without_preload_content(
         self,
-        api_credential: Optional[ApiCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,8 +223,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param api_credential:
-        :type api_credential: ApiCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -237,7 +248,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_api_credentials_create_serialize(
-            api_credential=api_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -245,7 +256,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ApiCredential",
+            '201': "ApiCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -256,7 +267,7 @@ class EmailApi:
 
     def _email_api_credentials_create_serialize(
         self,
-        api_credential,
+        credential_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -282,8 +293,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if api_credential is not None:
-            _body_params = api_credential
+        if credential_create_request is not None:
+            _body_params = credential_create_request
 
 
         # set the HTTP header `Accept`
@@ -1116,7 +1127,7 @@ class EmailApi:
     @validate_call
     def email_domains_create(
         self,
-        domain_add: DomainAdd,
+        domain_add_request: DomainAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1134,8 +1145,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param domain_add: (required)
-        :type domain_add: DomainAdd
+        :param domain_add_request: (required)
+        :type domain_add_request: DomainAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1159,7 +1170,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_domains_create_serialize(
-            domain_add=domain_add,
+            domain_add_request=domain_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1183,7 +1194,7 @@ class EmailApi:
     @validate_call
     def email_domains_create_with_http_info(
         self,
-        domain_add: DomainAdd,
+        domain_add_request: DomainAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1201,8 +1212,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param domain_add: (required)
-        :type domain_add: DomainAdd
+        :param domain_add_request: (required)
+        :type domain_add_request: DomainAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1226,7 +1237,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_domains_create_serialize(
-            domain_add=domain_add,
+            domain_add_request=domain_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1250,7 +1261,7 @@ class EmailApi:
     @validate_call
     def email_domains_create_without_preload_content(
         self,
-        domain_add: DomainAdd,
+        domain_add_request: DomainAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1268,8 +1279,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param domain_add: (required)
-        :type domain_add: DomainAdd
+        :param domain_add_request: (required)
+        :type domain_add_request: DomainAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1293,7 +1304,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_domains_create_serialize(
-            domain_add=domain_add,
+            domain_add_request=domain_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1312,7 +1323,7 @@ class EmailApi:
 
     def _email_domains_create_serialize(
         self,
-        domain_add,
+        domain_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1338,8 +1349,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if domain_add is not None:
-            _body_params = domain_add
+        if domain_add_request is not None:
+            _body_params = domain_add_request
 
 
         # set the HTTP header `Accept`
@@ -1392,7 +1403,7 @@ class EmailApi:
     def email_domains_inbound_routes_create(
         self,
         domain_pk: StrictInt,
-        inbound_route: InboundRoute,
+        inbound_route_create_request: InboundRouteCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1405,15 +1416,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> InboundRoute:
+    ) -> InboundRouteWriteResponse:
         """email_domains_inbound_routes_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param domain_pk: (required)
         :type domain_pk: int
-        :param inbound_route: (required)
-        :type inbound_route: InboundRoute
+        :param inbound_route_create_request: (required)
+        :type inbound_route_create_request: InboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1438,7 +1449,7 @@ class EmailApi:
 
         _param = self._email_domains_inbound_routes_create_serialize(
             domain_pk=domain_pk,
-            inbound_route=inbound_route,
+            inbound_route_create_request=inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1446,7 +1457,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "InboundRoute",
+            '201': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1463,7 +1474,7 @@ class EmailApi:
     def email_domains_inbound_routes_create_with_http_info(
         self,
         domain_pk: StrictInt,
-        inbound_route: InboundRoute,
+        inbound_route_create_request: InboundRouteCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1476,15 +1487,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[InboundRoute]:
+    ) -> ApiResponse[InboundRouteWriteResponse]:
         """email_domains_inbound_routes_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param domain_pk: (required)
         :type domain_pk: int
-        :param inbound_route: (required)
-        :type inbound_route: InboundRoute
+        :param inbound_route_create_request: (required)
+        :type inbound_route_create_request: InboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1509,7 +1520,7 @@ class EmailApi:
 
         _param = self._email_domains_inbound_routes_create_serialize(
             domain_pk=domain_pk,
-            inbound_route=inbound_route,
+            inbound_route_create_request=inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1517,7 +1528,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "InboundRoute",
+            '201': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1534,7 +1545,7 @@ class EmailApi:
     def email_domains_inbound_routes_create_without_preload_content(
         self,
         domain_pk: StrictInt,
-        inbound_route: InboundRoute,
+        inbound_route_create_request: InboundRouteCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1554,8 +1565,8 @@ class EmailApi:
 
         :param domain_pk: (required)
         :type domain_pk: int
-        :param inbound_route: (required)
-        :type inbound_route: InboundRoute
+        :param inbound_route_create_request: (required)
+        :type inbound_route_create_request: InboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1580,7 +1591,7 @@ class EmailApi:
 
         _param = self._email_domains_inbound_routes_create_serialize(
             domain_pk=domain_pk,
-            inbound_route=inbound_route,
+            inbound_route_create_request=inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1588,7 +1599,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "InboundRoute",
+            '201': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1600,7 +1611,7 @@ class EmailApi:
     def _email_domains_inbound_routes_create_serialize(
         self,
         domain_pk,
-        inbound_route,
+        inbound_route_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1628,8 +1639,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if inbound_route is not None:
-            _body_params = inbound_route
+        if inbound_route_create_request is not None:
+            _body_params = inbound_route_create_request
 
 
         # set the HTTP header `Accept`
@@ -2487,7 +2498,6 @@ class EmailApi:
     def email_domains_rotate_dkim_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2507,8 +2517,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2533,7 +2541,6 @@ class EmailApi:
 
         _param = self._email_domains_rotate_dkim_create_serialize(
             id=id,
-            sending_domain=sending_domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2558,7 +2565,6 @@ class EmailApi:
     def email_domains_rotate_dkim_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2578,8 +2584,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2604,7 +2608,6 @@ class EmailApi:
 
         _param = self._email_domains_rotate_dkim_create_serialize(
             id=id,
-            sending_domain=sending_domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2629,7 +2632,6 @@ class EmailApi:
     def email_domains_rotate_dkim_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2649,8 +2651,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2675,7 +2675,6 @@ class EmailApi:
 
         _param = self._email_domains_rotate_dkim_create_serialize(
             id=id,
-            sending_domain=sending_domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2695,7 +2694,6 @@ class EmailApi:
     def _email_domains_rotate_dkim_create_serialize(
         self,
         id,
-        sending_domain,
         _request_auth,
         _content_type,
         _headers,
@@ -2723,8 +2721,6 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sending_domain is not None:
-            _body_params = sending_domain
 
 
         # set the HTTP header `Accept`
@@ -2735,19 +2731,6 @@ class EmailApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -2777,7 +2760,7 @@ class EmailApi:
     def email_domains_toggle_inbound_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
+        toggle_inbound_request: Optional[ToggleInboundRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2797,8 +2780,8 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
+        :param toggle_inbound_request:
+        :type toggle_inbound_request: ToggleInboundRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2823,7 +2806,7 @@ class EmailApi:
 
         _param = self._email_domains_toggle_inbound_create_serialize(
             id=id,
-            sending_domain=sending_domain,
+            toggle_inbound_request=toggle_inbound_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2848,7 +2831,7 @@ class EmailApi:
     def email_domains_toggle_inbound_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
+        toggle_inbound_request: Optional[ToggleInboundRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2868,8 +2851,8 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
+        :param toggle_inbound_request:
+        :type toggle_inbound_request: ToggleInboundRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2894,7 +2877,7 @@ class EmailApi:
 
         _param = self._email_domains_toggle_inbound_create_serialize(
             id=id,
-            sending_domain=sending_domain,
+            toggle_inbound_request=toggle_inbound_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2919,7 +2902,7 @@ class EmailApi:
     def email_domains_toggle_inbound_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
+        toggle_inbound_request: Optional[ToggleInboundRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2939,8 +2922,8 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
+        :param toggle_inbound_request:
+        :type toggle_inbound_request: ToggleInboundRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2965,7 +2948,7 @@ class EmailApi:
 
         _param = self._email_domains_toggle_inbound_create_serialize(
             id=id,
-            sending_domain=sending_domain,
+            toggle_inbound_request=toggle_inbound_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2985,7 +2968,7 @@ class EmailApi:
     def _email_domains_toggle_inbound_create_serialize(
         self,
         id,
-        sending_domain,
+        toggle_inbound_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3013,8 +2996,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sending_domain is not None:
-            _body_params = sending_domain
+        if toggle_inbound_request is not None:
+            _body_params = toggle_inbound_request
 
 
         # set the HTTP header `Accept`
@@ -3067,7 +3050,6 @@ class EmailApi:
     def email_domains_verify_create(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3087,8 +3069,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3113,7 +3093,6 @@ class EmailApi:
 
         _param = self._email_domains_verify_create_serialize(
             id=id,
-            sending_domain=sending_domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3138,7 +3117,6 @@ class EmailApi:
     def email_domains_verify_create_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3158,8 +3136,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3184,7 +3160,6 @@ class EmailApi:
 
         _param = self._email_domains_verify_create_serialize(
             id=id,
-            sending_domain=sending_domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3209,7 +3184,6 @@ class EmailApi:
     def email_domains_verify_create_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this sending domain.")],
-        sending_domain: Optional[SendingDomain] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3229,8 +3203,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this sending domain. (required)
         :type id: int
-        :param sending_domain:
-        :type sending_domain: SendingDomain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3255,7 +3227,6 @@ class EmailApi:
 
         _param = self._email_domains_verify_create_serialize(
             id=id,
-            sending_domain=sending_domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3275,7 +3246,6 @@ class EmailApi:
     def _email_domains_verify_create_serialize(
         self,
         id,
-        sending_domain,
         _request_auth,
         _content_type,
         _headers,
@@ -3303,8 +3273,6 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sending_domain is not None:
-            _body_params = sending_domain
 
 
         # set the HTTP header `Accept`
@@ -3315,19 +3283,6 @@ class EmailApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -3356,7 +3311,7 @@ class EmailApi:
     @validate_call
     def email_inbound_routes_create(
         self,
-        inbound_route: InboundRoute,
+        inbound_route_create_request: InboundRouteCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3369,13 +3324,13 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> InboundRoute:
+    ) -> InboundRouteWriteResponse:
         """email_inbound_routes_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param inbound_route: (required)
-        :type inbound_route: InboundRoute
+        :param inbound_route_create_request: (required)
+        :type inbound_route_create_request: InboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3399,7 +3354,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_inbound_routes_create_serialize(
-            inbound_route=inbound_route,
+            inbound_route_create_request=inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3407,7 +3362,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "InboundRoute",
+            '201': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3423,7 +3378,7 @@ class EmailApi:
     @validate_call
     def email_inbound_routes_create_with_http_info(
         self,
-        inbound_route: InboundRoute,
+        inbound_route_create_request: InboundRouteCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3436,13 +3391,13 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[InboundRoute]:
+    ) -> ApiResponse[InboundRouteWriteResponse]:
         """email_inbound_routes_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param inbound_route: (required)
-        :type inbound_route: InboundRoute
+        :param inbound_route_create_request: (required)
+        :type inbound_route_create_request: InboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3466,7 +3421,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_inbound_routes_create_serialize(
-            inbound_route=inbound_route,
+            inbound_route_create_request=inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3474,7 +3429,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "InboundRoute",
+            '201': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3490,7 +3445,7 @@ class EmailApi:
     @validate_call
     def email_inbound_routes_create_without_preload_content(
         self,
-        inbound_route: InboundRoute,
+        inbound_route_create_request: InboundRouteCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3508,8 +3463,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param inbound_route: (required)
-        :type inbound_route: InboundRoute
+        :param inbound_route_create_request: (required)
+        :type inbound_route_create_request: InboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3533,7 +3488,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_inbound_routes_create_serialize(
-            inbound_route=inbound_route,
+            inbound_route_create_request=inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3541,7 +3496,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "InboundRoute",
+            '201': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3552,7 +3507,7 @@ class EmailApi:
 
     def _email_inbound_routes_create_serialize(
         self,
-        inbound_route,
+        inbound_route_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3578,8 +3533,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if inbound_route is not None:
-            _body_params = inbound_route
+        if inbound_route_create_request is not None:
+            _body_params = inbound_route_create_request
 
 
         # set the HTTP header `Accept`
@@ -4151,7 +4106,7 @@ class EmailApi:
     def email_inbound_routes_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this inbound route.")],
-        patched_inbound_route: Optional[PatchedInboundRoute] = None,
+        patched_inbound_route_create_request: Optional[PatchedInboundRouteCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4164,15 +4119,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> InboundRoute:
+    ) -> InboundRouteWriteResponse:
         """email_inbound_routes_partial_update
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param id: A unique integer value identifying this inbound route. (required)
         :type id: int
-        :param patched_inbound_route:
-        :type patched_inbound_route: PatchedInboundRoute
+        :param patched_inbound_route_create_request:
+        :type patched_inbound_route_create_request: PatchedInboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4197,7 +4152,7 @@ class EmailApi:
 
         _param = self._email_inbound_routes_partial_update_serialize(
             id=id,
-            patched_inbound_route=patched_inbound_route,
+            patched_inbound_route_create_request=patched_inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4205,7 +4160,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InboundRoute",
+            '200': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4222,7 +4177,7 @@ class EmailApi:
     def email_inbound_routes_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this inbound route.")],
-        patched_inbound_route: Optional[PatchedInboundRoute] = None,
+        patched_inbound_route_create_request: Optional[PatchedInboundRouteCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4235,15 +4190,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[InboundRoute]:
+    ) -> ApiResponse[InboundRouteWriteResponse]:
         """email_inbound_routes_partial_update
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param id: A unique integer value identifying this inbound route. (required)
         :type id: int
-        :param patched_inbound_route:
-        :type patched_inbound_route: PatchedInboundRoute
+        :param patched_inbound_route_create_request:
+        :type patched_inbound_route_create_request: PatchedInboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4268,7 +4223,7 @@ class EmailApi:
 
         _param = self._email_inbound_routes_partial_update_serialize(
             id=id,
-            patched_inbound_route=patched_inbound_route,
+            patched_inbound_route_create_request=patched_inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4276,7 +4231,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InboundRoute",
+            '200': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4293,7 +4248,7 @@ class EmailApi:
     def email_inbound_routes_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this inbound route.")],
-        patched_inbound_route: Optional[PatchedInboundRoute] = None,
+        patched_inbound_route_create_request: Optional[PatchedInboundRouteCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4313,8 +4268,8 @@ class EmailApi:
 
         :param id: A unique integer value identifying this inbound route. (required)
         :type id: int
-        :param patched_inbound_route:
-        :type patched_inbound_route: PatchedInboundRoute
+        :param patched_inbound_route_create_request:
+        :type patched_inbound_route_create_request: PatchedInboundRouteCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4339,7 +4294,7 @@ class EmailApi:
 
         _param = self._email_inbound_routes_partial_update_serialize(
             id=id,
-            patched_inbound_route=patched_inbound_route,
+            patched_inbound_route_create_request=patched_inbound_route_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4347,7 +4302,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InboundRoute",
+            '200': "InboundRouteWriteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4359,7 +4314,7 @@ class EmailApi:
     def _email_inbound_routes_partial_update_serialize(
         self,
         id,
-        patched_inbound_route,
+        patched_inbound_route_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4387,8 +4342,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_inbound_route is not None:
-            _body_params = patched_inbound_route
+        if patched_inbound_route_create_request is not None:
+            _body_params = patched_inbound_route_create_request
 
 
         # set the HTTP header `Accept`
@@ -4715,7 +4670,7 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> Dict[str, object]:
         """email_messages_retrieve
 
         Look up a single message via Postal v3 legacy API using the server's own token.
@@ -4753,7 +4708,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "Dict[str, object]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4782,7 +4737,7 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[Dict[str, object]]:
         """email_messages_retrieve
 
         Look up a single message via Postal v3 legacy API using the server's own token.
@@ -4820,7 +4775,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "Dict[str, object]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4887,7 +4842,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "Dict[str, object]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4928,6 +4883,13 @@ class EmailApi:
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -4957,7 +4919,7 @@ class EmailApi:
     @validate_call
     def email_sandbox_addresses_create(
         self,
-        sandbox_address: SandboxAddress,
+        sandbox_address_request: SandboxAddressRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4975,8 +4937,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param sandbox_address: (required)
-        :type sandbox_address: SandboxAddress
+        :param sandbox_address_request: (required)
+        :type sandbox_address_request: SandboxAddressRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5000,7 +4962,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_sandbox_addresses_create_serialize(
-            sandbox_address=sandbox_address,
+            sandbox_address_request=sandbox_address_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5024,7 +4986,7 @@ class EmailApi:
     @validate_call
     def email_sandbox_addresses_create_with_http_info(
         self,
-        sandbox_address: SandboxAddress,
+        sandbox_address_request: SandboxAddressRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5042,8 +5004,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param sandbox_address: (required)
-        :type sandbox_address: SandboxAddress
+        :param sandbox_address_request: (required)
+        :type sandbox_address_request: SandboxAddressRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5067,7 +5029,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_sandbox_addresses_create_serialize(
-            sandbox_address=sandbox_address,
+            sandbox_address_request=sandbox_address_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5091,7 +5053,7 @@ class EmailApi:
     @validate_call
     def email_sandbox_addresses_create_without_preload_content(
         self,
-        sandbox_address: SandboxAddress,
+        sandbox_address_request: SandboxAddressRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5109,8 +5071,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param sandbox_address: (required)
-        :type sandbox_address: SandboxAddress
+        :param sandbox_address_request: (required)
+        :type sandbox_address_request: SandboxAddressRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5134,7 +5096,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_sandbox_addresses_create_serialize(
-            sandbox_address=sandbox_address,
+            sandbox_address_request=sandbox_address_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5153,7 +5115,7 @@ class EmailApi:
 
     def _email_sandbox_addresses_create_serialize(
         self,
-        sandbox_address,
+        sandbox_address_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5179,8 +5141,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sandbox_address is not None:
-            _body_params = sandbox_address
+        if sandbox_address_request is not None:
+            _body_params = sandbox_address_request
 
 
         # set the HTTP header `Accept`
@@ -6013,6 +5975,7 @@ class EmailApi:
     @validate_call
     def email_send_create(
         self,
+        send_request: SendRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6025,10 +5988,12 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> EmailSendResponse:
         """email_send_create
 
 
+        :param send_request: (required)
+        :type send_request: SendRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6052,6 +6017,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_send_create_serialize(
+            send_request=send_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6059,7 +6025,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailSendResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6075,6 +6041,7 @@ class EmailApi:
     @validate_call
     def email_send_create_with_http_info(
         self,
+        send_request: SendRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6087,10 +6054,12 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[EmailSendResponse]:
         """email_send_create
 
 
+        :param send_request: (required)
+        :type send_request: SendRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6114,6 +6083,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_send_create_serialize(
+            send_request=send_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6121,7 +6091,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailSendResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6137,6 +6107,7 @@ class EmailApi:
     @validate_call
     def email_send_create_without_preload_content(
         self,
+        send_request: SendRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6153,6 +6124,8 @@ class EmailApi:
         """email_send_create
 
 
+        :param send_request: (required)
+        :type send_request: SendRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6176,6 +6149,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_send_create_serialize(
+            send_request=send_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6183,7 +6157,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailSendResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6194,6 +6168,7 @@ class EmailApi:
 
     def _email_send_create_serialize(
         self,
+        send_request,
         _request_auth,
         _content_type,
         _headers,
@@ -6219,12 +6194,35 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if send_request is not None:
+            _body_params = send_request
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
+            'emailApiKey'
         ]
 
         return self.api_client.param_serialize(
@@ -6249,7 +6247,7 @@ class EmailApi:
     def email_services_api_credentials_create(
         self,
         service_pk: StrictInt,
-        api_credential: Optional[ApiCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6262,15 +6260,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiCredential:
+    ) -> ApiCredentialCreated:
         """email_services_api_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param service_pk: (required)
         :type service_pk: int
-        :param api_credential:
-        :type api_credential: ApiCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6295,7 +6293,7 @@ class EmailApi:
 
         _param = self._email_services_api_credentials_create_serialize(
             service_pk=service_pk,
-            api_credential=api_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6303,7 +6301,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ApiCredential",
+            '201': "ApiCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6320,7 +6318,7 @@ class EmailApi:
     def email_services_api_credentials_create_with_http_info(
         self,
         service_pk: StrictInt,
-        api_credential: Optional[ApiCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6333,15 +6331,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ApiCredential]:
+    ) -> ApiResponse[ApiCredentialCreated]:
         """email_services_api_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param service_pk: (required)
         :type service_pk: int
-        :param api_credential:
-        :type api_credential: ApiCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6366,7 +6364,7 @@ class EmailApi:
 
         _param = self._email_services_api_credentials_create_serialize(
             service_pk=service_pk,
-            api_credential=api_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6374,7 +6372,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ApiCredential",
+            '201': "ApiCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6391,7 +6389,7 @@ class EmailApi:
     def email_services_api_credentials_create_without_preload_content(
         self,
         service_pk: StrictInt,
-        api_credential: Optional[ApiCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6411,8 +6409,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param api_credential:
-        :type api_credential: ApiCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6437,7 +6435,7 @@ class EmailApi:
 
         _param = self._email_services_api_credentials_create_serialize(
             service_pk=service_pk,
-            api_credential=api_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6445,7 +6443,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ApiCredential",
+            '201': "ApiCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6457,7 +6455,7 @@ class EmailApi:
     def _email_services_api_credentials_create_serialize(
         self,
         service_pk,
-        api_credential,
+        credential_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -6485,8 +6483,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if api_credential is not None:
-            _body_params = api_credential
+        if credential_create_request is not None:
+            _body_params = credential_create_request
 
 
         # set the HTTP header `Accept`
@@ -7080,7 +7078,7 @@ class EmailApi:
     def email_services_change_tier_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        patched_subscribe: Optional[PatchedSubscribe] = None,
+        subscribe_request: SubscribeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7100,8 +7098,8 @@ class EmailApi:
 
         :param id: A unique integer value identifying this email service. (required)
         :type id: int
-        :param patched_subscribe:
-        :type patched_subscribe: PatchedSubscribe
+        :param subscribe_request: (required)
+        :type subscribe_request: SubscribeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7126,7 +7124,7 @@ class EmailApi:
 
         _param = self._email_services_change_tier_partial_update_serialize(
             id=id,
-            patched_subscribe=patched_subscribe,
+            subscribe_request=subscribe_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7151,7 +7149,7 @@ class EmailApi:
     def email_services_change_tier_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        patched_subscribe: Optional[PatchedSubscribe] = None,
+        subscribe_request: SubscribeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7171,8 +7169,8 @@ class EmailApi:
 
         :param id: A unique integer value identifying this email service. (required)
         :type id: int
-        :param patched_subscribe:
-        :type patched_subscribe: PatchedSubscribe
+        :param subscribe_request: (required)
+        :type subscribe_request: SubscribeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7197,7 +7195,7 @@ class EmailApi:
 
         _param = self._email_services_change_tier_partial_update_serialize(
             id=id,
-            patched_subscribe=patched_subscribe,
+            subscribe_request=subscribe_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7222,7 +7220,7 @@ class EmailApi:
     def email_services_change_tier_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        patched_subscribe: Optional[PatchedSubscribe] = None,
+        subscribe_request: SubscribeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7242,8 +7240,8 @@ class EmailApi:
 
         :param id: A unique integer value identifying this email service. (required)
         :type id: int
-        :param patched_subscribe:
-        :type patched_subscribe: PatchedSubscribe
+        :param subscribe_request: (required)
+        :type subscribe_request: SubscribeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7268,7 +7266,7 @@ class EmailApi:
 
         _param = self._email_services_change_tier_partial_update_serialize(
             id=id,
-            patched_subscribe=patched_subscribe,
+            subscribe_request=subscribe_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7288,7 +7286,7 @@ class EmailApi:
     def _email_services_change_tier_partial_update_serialize(
         self,
         id,
-        patched_subscribe,
+        subscribe_request,
         _request_auth,
         _content_type,
         _headers,
@@ -7316,8 +7314,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_subscribe is not None:
-            _body_params = patched_subscribe
+        if subscribe_request is not None:
+            _body_params = subscribe_request
 
 
         # set the HTTP header `Accept`
@@ -7369,7 +7367,7 @@ class EmailApi:
     @validate_call
     def email_services_create(
         self,
-        subscribe: Subscribe,
+        subscribe_request: SubscribeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7387,8 +7385,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param subscribe: (required)
-        :type subscribe: Subscribe
+        :param subscribe_request: (required)
+        :type subscribe_request: SubscribeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7412,7 +7410,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_services_create_serialize(
-            subscribe=subscribe,
+            subscribe_request=subscribe_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7436,7 +7434,7 @@ class EmailApi:
     @validate_call
     def email_services_create_with_http_info(
         self,
-        subscribe: Subscribe,
+        subscribe_request: SubscribeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7454,8 +7452,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param subscribe: (required)
-        :type subscribe: Subscribe
+        :param subscribe_request: (required)
+        :type subscribe_request: SubscribeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7479,7 +7477,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_services_create_serialize(
-            subscribe=subscribe,
+            subscribe_request=subscribe_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7503,7 +7501,7 @@ class EmailApi:
     @validate_call
     def email_services_create_without_preload_content(
         self,
-        subscribe: Subscribe,
+        subscribe_request: SubscribeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7521,8 +7519,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param subscribe: (required)
-        :type subscribe: Subscribe
+        :param subscribe_request: (required)
+        :type subscribe_request: SubscribeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7546,7 +7544,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_services_create_serialize(
-            subscribe=subscribe,
+            subscribe_request=subscribe_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7565,7 +7563,7 @@ class EmailApi:
 
     def _email_services_create_serialize(
         self,
-        subscribe,
+        subscribe_request,
         _request_auth,
         _content_type,
         _headers,
@@ -7591,8 +7589,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if subscribe is not None:
-            _body_params = subscribe
+        if subscribe_request is not None:
+            _body_params = subscribe_request
 
 
         # set the HTTP header `Accept`
@@ -7919,7 +7917,7 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> EmailService:
         """email_services_dedicated_ip_destroy
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -7957,7 +7955,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': "EmailService",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7986,7 +7984,7 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[EmailService]:
         """email_services_dedicated_ip_destroy
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
@@ -8024,7 +8022,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': "EmailService",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8091,7 +8089,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '200': "EmailService",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8132,6 +8130,13 @@ class EmailApi:
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -8159,265 +8164,10 @@ class EmailApi:
 
 
     @validate_call
-    def email_services_destroy(
-        self,
-        id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """email_services_destroy
-
-        Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-
-        :param id: A unique integer value identifying this email service. (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._email_services_destroy_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def email_services_destroy_with_http_info(
-        self,
-        id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """email_services_destroy
-
-        Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-
-        :param id: A unique integer value identifying this email service. (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._email_services_destroy_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def email_services_destroy_without_preload_content(
-        self,
-        id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """email_services_destroy
-
-        Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
-
-        :param id: A unique integer value identifying this email service. (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._email_services_destroy_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _email_services_destroy_serialize(
-        self,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'tokenAuth', 
-            'cookieAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/api/email/services/{id}/',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def email_services_domains_create(
         self,
         service_pk: StrictInt,
-        domain_add: DomainAdd,
+        domain_add_request: DomainAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8437,8 +8187,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param domain_add: (required)
-        :type domain_add: DomainAdd
+        :param domain_add_request: (required)
+        :type domain_add_request: DomainAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8463,7 +8213,7 @@ class EmailApi:
 
         _param = self._email_services_domains_create_serialize(
             service_pk=service_pk,
-            domain_add=domain_add,
+            domain_add_request=domain_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8488,7 +8238,7 @@ class EmailApi:
     def email_services_domains_create_with_http_info(
         self,
         service_pk: StrictInt,
-        domain_add: DomainAdd,
+        domain_add_request: DomainAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8508,8 +8258,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param domain_add: (required)
-        :type domain_add: DomainAdd
+        :param domain_add_request: (required)
+        :type domain_add_request: DomainAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8534,7 +8284,7 @@ class EmailApi:
 
         _param = self._email_services_domains_create_serialize(
             service_pk=service_pk,
-            domain_add=domain_add,
+            domain_add_request=domain_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8559,7 +8309,7 @@ class EmailApi:
     def email_services_domains_create_without_preload_content(
         self,
         service_pk: StrictInt,
-        domain_add: DomainAdd,
+        domain_add_request: DomainAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8579,8 +8329,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param domain_add: (required)
-        :type domain_add: DomainAdd
+        :param domain_add_request: (required)
+        :type domain_add_request: DomainAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8605,7 +8355,7 @@ class EmailApi:
 
         _param = self._email_services_domains_create_serialize(
             service_pk=service_pk,
-            domain_add=domain_add,
+            domain_add_request=domain_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8625,7 +8375,7 @@ class EmailApi:
     def _email_services_domains_create_serialize(
         self,
         service_pk,
-        domain_add,
+        domain_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -8653,8 +8403,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if domain_add is not None:
-            _body_params = domain_add
+        if domain_add_request is not None:
+            _body_params = domain_add_request
 
 
         # set the HTTP header `Accept`
@@ -9250,6 +9000,8 @@ class EmailApi:
     def email_services_messages_retrieve(
         self,
         service_pk: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="Page number, starting at 1.")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Page size, capped at 200; defaults to 50.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9262,13 +9014,17 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> EmailMessageList:
         """email_services_messages_retrieve
 
         List recently observed messages for a customer's email service.  Postal v3 legacy API exposes per-message lookups only; phclient builds the list locally from webhook events. Each message_id is deduped, keeping the most recent event_type as the message status.
 
         :param service_pk: (required)
         :type service_pk: int
+        :param page: Page number, starting at 1.
+        :type page: int
+        :param per_page: Page size, capped at 200; defaults to 50.
+        :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9293,6 +9049,8 @@ class EmailApi:
 
         _param = self._email_services_messages_retrieve_serialize(
             service_pk=service_pk,
+            page=page,
+            per_page=per_page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9300,7 +9058,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailMessageList",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9317,6 +9075,8 @@ class EmailApi:
     def email_services_messages_retrieve_with_http_info(
         self,
         service_pk: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="Page number, starting at 1.")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Page size, capped at 200; defaults to 50.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9329,13 +9089,17 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[EmailMessageList]:
         """email_services_messages_retrieve
 
         List recently observed messages for a customer's email service.  Postal v3 legacy API exposes per-message lookups only; phclient builds the list locally from webhook events. Each message_id is deduped, keeping the most recent event_type as the message status.
 
         :param service_pk: (required)
         :type service_pk: int
+        :param page: Page number, starting at 1.
+        :type page: int
+        :param per_page: Page size, capped at 200; defaults to 50.
+        :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9360,6 +9124,8 @@ class EmailApi:
 
         _param = self._email_services_messages_retrieve_serialize(
             service_pk=service_pk,
+            page=page,
+            per_page=per_page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9367,7 +9133,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailMessageList",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9384,6 +9150,8 @@ class EmailApi:
     def email_services_messages_retrieve_without_preload_content(
         self,
         service_pk: StrictInt,
+        page: Annotated[Optional[StrictInt], Field(description="Page number, starting at 1.")] = None,
+        per_page: Annotated[Optional[StrictInt], Field(description="Page size, capped at 200; defaults to 50.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9403,6 +9171,10 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
+        :param page: Page number, starting at 1.
+        :type page: int
+        :param per_page: Page size, capped at 200; defaults to 50.
+        :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9427,6 +9199,8 @@ class EmailApi:
 
         _param = self._email_services_messages_retrieve_serialize(
             service_pk=service_pk,
+            page=page,
+            per_page=per_page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9434,7 +9208,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailMessageList",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9446,6 +9220,8 @@ class EmailApi:
     def _email_services_messages_retrieve_serialize(
         self,
         service_pk,
+        page,
+        per_page,
         _request_auth,
         _content_type,
         _headers,
@@ -9470,11 +9246,26 @@ class EmailApi:
         if service_pk is not None:
             _path_params['service_pk'] = service_pk
         # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if per_page is not None:
+            
+            _query_params.append(('per_page', per_page))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -9505,7 +9296,6 @@ class EmailApi:
     def email_services_partial_update(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        patched_email_service: Optional[PatchedEmailService] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9525,8 +9315,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this email service. (required)
         :type id: int
-        :param patched_email_service:
-        :type patched_email_service: PatchedEmailService
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9551,7 +9339,6 @@ class EmailApi:
 
         _param = self._email_services_partial_update_serialize(
             id=id,
-            patched_email_service=patched_email_service,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9576,7 +9363,6 @@ class EmailApi:
     def email_services_partial_update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        patched_email_service: Optional[PatchedEmailService] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9596,8 +9382,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this email service. (required)
         :type id: int
-        :param patched_email_service:
-        :type patched_email_service: PatchedEmailService
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9622,7 +9406,6 @@ class EmailApi:
 
         _param = self._email_services_partial_update_serialize(
             id=id,
-            patched_email_service=patched_email_service,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9647,7 +9430,6 @@ class EmailApi:
     def email_services_partial_update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="A unique integer value identifying this email service.")],
-        patched_email_service: Optional[PatchedEmailService] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9667,8 +9449,6 @@ class EmailApi:
 
         :param id: A unique integer value identifying this email service. (required)
         :type id: int
-        :param patched_email_service:
-        :type patched_email_service: PatchedEmailService
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9693,7 +9473,6 @@ class EmailApi:
 
         _param = self._email_services_partial_update_serialize(
             id=id,
-            patched_email_service=patched_email_service,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9713,7 +9492,6 @@ class EmailApi:
     def _email_services_partial_update_serialize(
         self,
         id,
-        patched_email_service,
         _request_auth,
         _content_type,
         _headers,
@@ -9741,8 +9519,6 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patched_email_service is not None:
-            _body_params = patched_email_service
 
 
         # set the HTTP header `Accept`
@@ -9753,19 +9529,6 @@ class EmailApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -10319,7 +10082,7 @@ class EmailApi:
     def email_services_sandbox_addresses_create(
         self,
         service_pk: StrictInt,
-        sandbox_address: SandboxAddress,
+        sandbox_address_request: SandboxAddressRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10339,8 +10102,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param sandbox_address: (required)
-        :type sandbox_address: SandboxAddress
+        :param sandbox_address_request: (required)
+        :type sandbox_address_request: SandboxAddressRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10365,7 +10128,7 @@ class EmailApi:
 
         _param = self._email_services_sandbox_addresses_create_serialize(
             service_pk=service_pk,
-            sandbox_address=sandbox_address,
+            sandbox_address_request=sandbox_address_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10390,7 +10153,7 @@ class EmailApi:
     def email_services_sandbox_addresses_create_with_http_info(
         self,
         service_pk: StrictInt,
-        sandbox_address: SandboxAddress,
+        sandbox_address_request: SandboxAddressRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10410,8 +10173,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param sandbox_address: (required)
-        :type sandbox_address: SandboxAddress
+        :param sandbox_address_request: (required)
+        :type sandbox_address_request: SandboxAddressRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10436,7 +10199,7 @@ class EmailApi:
 
         _param = self._email_services_sandbox_addresses_create_serialize(
             service_pk=service_pk,
-            sandbox_address=sandbox_address,
+            sandbox_address_request=sandbox_address_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10461,7 +10224,7 @@ class EmailApi:
     def email_services_sandbox_addresses_create_without_preload_content(
         self,
         service_pk: StrictInt,
-        sandbox_address: SandboxAddress,
+        sandbox_address_request: SandboxAddressRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10481,8 +10244,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param sandbox_address: (required)
-        :type sandbox_address: SandboxAddress
+        :param sandbox_address_request: (required)
+        :type sandbox_address_request: SandboxAddressRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10507,7 +10270,7 @@ class EmailApi:
 
         _param = self._email_services_sandbox_addresses_create_serialize(
             service_pk=service_pk,
-            sandbox_address=sandbox_address,
+            sandbox_address_request=sandbox_address_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10527,7 +10290,7 @@ class EmailApi:
     def _email_services_sandbox_addresses_create_serialize(
         self,
         service_pk,
-        sandbox_address,
+        sandbox_address_request,
         _request_auth,
         _content_type,
         _headers,
@@ -10555,8 +10318,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sandbox_address is not None:
-            _body_params = sandbox_address
+        if sandbox_address_request is not None:
+            _body_params = sandbox_address_request
 
 
         # set the HTTP header `Accept`
@@ -10888,7 +10651,7 @@ class EmailApi:
     def email_services_smtp_credentials_create(
         self,
         service_pk: StrictInt,
-        smtp_credential: Optional[SmtpCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10901,15 +10664,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SmtpCredential:
+    ) -> SmtpCredentialCreated:
         """email_services_smtp_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param service_pk: (required)
         :type service_pk: int
-        :param smtp_credential:
-        :type smtp_credential: SmtpCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10934,7 +10697,7 @@ class EmailApi:
 
         _param = self._email_services_smtp_credentials_create_serialize(
             service_pk=service_pk,
-            smtp_credential=smtp_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10942,7 +10705,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SmtpCredential",
+            '201': "SmtpCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10959,7 +10722,7 @@ class EmailApi:
     def email_services_smtp_credentials_create_with_http_info(
         self,
         service_pk: StrictInt,
-        smtp_credential: Optional[SmtpCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10972,15 +10735,15 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SmtpCredential]:
+    ) -> ApiResponse[SmtpCredentialCreated]:
         """email_services_smtp_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param service_pk: (required)
         :type service_pk: int
-        :param smtp_credential:
-        :type smtp_credential: SmtpCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11005,7 +10768,7 @@ class EmailApi:
 
         _param = self._email_services_smtp_credentials_create_serialize(
             service_pk=service_pk,
-            smtp_credential=smtp_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11013,7 +10776,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SmtpCredential",
+            '201': "SmtpCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11030,7 +10793,7 @@ class EmailApi:
     def email_services_smtp_credentials_create_without_preload_content(
         self,
         service_pk: StrictInt,
-        smtp_credential: Optional[SmtpCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11050,8 +10813,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param smtp_credential:
-        :type smtp_credential: SmtpCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11076,7 +10839,7 @@ class EmailApi:
 
         _param = self._email_services_smtp_credentials_create_serialize(
             service_pk=service_pk,
-            smtp_credential=smtp_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11084,7 +10847,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SmtpCredential",
+            '201': "SmtpCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11096,7 +10859,7 @@ class EmailApi:
     def _email_services_smtp_credentials_create_serialize(
         self,
         service_pk,
-        smtp_credential,
+        credential_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -11124,8 +10887,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if smtp_credential is not None:
-            _body_params = smtp_credential
+        if credential_create_request is not None:
+            _body_params = credential_create_request
 
 
         # set the HTTP header `Accept`
@@ -11457,6 +11220,8 @@ class EmailApi:
     def email_services_stats_retrieve(
         self,
         service_pk: StrictInt,
+        end: Optional[date] = None,
+        start: Optional[date] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11469,13 +11234,17 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> EmailStats:
         """email_services_stats_retrieve
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param service_pk: (required)
         :type service_pk: int
+        :param end:
+        :type end: date
+        :param start:
+        :type start: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11500,6 +11269,8 @@ class EmailApi:
 
         _param = self._email_services_stats_retrieve_serialize(
             service_pk=service_pk,
+            end=end,
+            start=start,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11507,7 +11278,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailStats",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11524,6 +11295,8 @@ class EmailApi:
     def email_services_stats_retrieve_with_http_info(
         self,
         service_pk: StrictInt,
+        end: Optional[date] = None,
+        start: Optional[date] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11536,13 +11309,17 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[EmailStats]:
         """email_services_stats_retrieve
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
         :param service_pk: (required)
         :type service_pk: int
+        :param end:
+        :type end: date
+        :param start:
+        :type start: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11567,6 +11344,8 @@ class EmailApi:
 
         _param = self._email_services_stats_retrieve_serialize(
             service_pk=service_pk,
+            end=end,
+            start=start,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11574,7 +11353,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailStats",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11591,6 +11370,8 @@ class EmailApi:
     def email_services_stats_retrieve_without_preload_content(
         self,
         service_pk: StrictInt,
+        end: Optional[date] = None,
+        start: Optional[date] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11610,6 +11391,10 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
+        :param end:
+        :type end: date
+        :param start:
+        :type start: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11634,6 +11419,8 @@ class EmailApi:
 
         _param = self._email_services_stats_retrieve_serialize(
             service_pk=service_pk,
+            end=end,
+            start=start,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11641,7 +11428,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "EmailStats",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11653,6 +11440,8 @@ class EmailApi:
     def _email_services_stats_retrieve_serialize(
         self,
         service_pk,
+        end,
+        start,
         _request_auth,
         _content_type,
         _headers,
@@ -11677,11 +11466,44 @@ class EmailApi:
         if service_pk is not None:
             _path_params['service_pk'] = service_pk
         # process the query parameters
+        if end is not None:
+            if isinstance(end, date):
+                _query_params.append(
+                    (
+                        'end',
+                        end.strftime(
+                            self.api_client.configuration.date_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('end', end))
+            
+        if start is not None:
+            if isinstance(start, date):
+                _query_params.append(
+                    (
+                        'start',
+                        start.strftime(
+                            self.api_client.configuration.date_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('start', start))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -11712,7 +11534,7 @@ class EmailApi:
     def email_services_suppressions_create(
         self,
         service_pk: StrictInt,
-        suppression_entry: Optional[SuppressionEntry] = None,
+        suppression_add_request: SuppressionAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11732,8 +11554,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param suppression_entry:
-        :type suppression_entry: SuppressionEntry
+        :param suppression_add_request: (required)
+        :type suppression_add_request: SuppressionAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11758,7 +11580,7 @@ class EmailApi:
 
         _param = self._email_services_suppressions_create_serialize(
             service_pk=service_pk,
-            suppression_entry=suppression_entry,
+            suppression_add_request=suppression_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11783,7 +11605,7 @@ class EmailApi:
     def email_services_suppressions_create_with_http_info(
         self,
         service_pk: StrictInt,
-        suppression_entry: Optional[SuppressionEntry] = None,
+        suppression_add_request: SuppressionAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11803,8 +11625,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param suppression_entry:
-        :type suppression_entry: SuppressionEntry
+        :param suppression_add_request: (required)
+        :type suppression_add_request: SuppressionAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11829,7 +11651,7 @@ class EmailApi:
 
         _param = self._email_services_suppressions_create_serialize(
             service_pk=service_pk,
-            suppression_entry=suppression_entry,
+            suppression_add_request=suppression_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11854,7 +11676,7 @@ class EmailApi:
     def email_services_suppressions_create_without_preload_content(
         self,
         service_pk: StrictInt,
-        suppression_entry: Optional[SuppressionEntry] = None,
+        suppression_add_request: SuppressionAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11874,8 +11696,8 @@ class EmailApi:
 
         :param service_pk: (required)
         :type service_pk: int
-        :param suppression_entry:
-        :type suppression_entry: SuppressionEntry
+        :param suppression_add_request: (required)
+        :type suppression_add_request: SuppressionAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11900,7 +11722,7 @@ class EmailApi:
 
         _param = self._email_services_suppressions_create_serialize(
             service_pk=service_pk,
-            suppression_entry=suppression_entry,
+            suppression_add_request=suppression_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11920,7 +11742,7 @@ class EmailApi:
     def _email_services_suppressions_create_serialize(
         self,
         service_pk,
-        suppression_entry,
+        suppression_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -11948,8 +11770,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if suppression_entry is not None:
-            _body_params = suppression_entry
+        if suppression_add_request is not None:
+            _body_params = suppression_add_request
 
 
         # set the HTTP header `Accept`
@@ -12280,7 +12102,7 @@ class EmailApi:
     @validate_call
     def email_smtp_credentials_create(
         self,
-        smtp_credential: Optional[SmtpCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12293,13 +12115,13 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SmtpCredential:
+    ) -> SmtpCredentialCreated:
         """email_smtp_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param smtp_credential:
-        :type smtp_credential: SmtpCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12323,7 +12145,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_smtp_credentials_create_serialize(
-            smtp_credential=smtp_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12331,7 +12153,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SmtpCredential",
+            '201': "SmtpCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12347,7 +12169,7 @@ class EmailApi:
     @validate_call
     def email_smtp_credentials_create_with_http_info(
         self,
-        smtp_credential: Optional[SmtpCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12360,13 +12182,13 @@ class EmailApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SmtpCredential]:
+    ) -> ApiResponse[SmtpCredentialCreated]:
         """email_smtp_credentials_create
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param smtp_credential:
-        :type smtp_credential: SmtpCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12390,7 +12212,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_smtp_credentials_create_serialize(
-            smtp_credential=smtp_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12398,7 +12220,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SmtpCredential",
+            '201': "SmtpCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12414,7 +12236,7 @@ class EmailApi:
     @validate_call
     def email_smtp_credentials_create_without_preload_content(
         self,
-        smtp_credential: Optional[SmtpCredential] = None,
+        credential_create_request: Optional[CredentialCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12432,8 +12254,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param smtp_credential:
-        :type smtp_credential: SmtpCredential
+        :param credential_create_request:
+        :type credential_create_request: CredentialCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12457,7 +12279,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_smtp_credentials_create_serialize(
-            smtp_credential=smtp_credential,
+            credential_create_request=credential_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12465,7 +12287,7 @@ class EmailApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SmtpCredential",
+            '201': "SmtpCredentialCreated",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12476,7 +12298,7 @@ class EmailApi:
 
     def _email_smtp_credentials_create_serialize(
         self,
-        smtp_credential,
+        credential_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -12502,8 +12324,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if smtp_credential is not None:
-            _body_params = smtp_credential
+        if credential_create_request is not None:
+            _body_params = credential_create_request
 
 
         # set the HTTP header `Accept`
@@ -13336,7 +13158,7 @@ class EmailApi:
     @validate_call
     def email_suppressions_create(
         self,
-        suppression_entry: Optional[SuppressionEntry] = None,
+        suppression_add_request: SuppressionAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13354,8 +13176,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param suppression_entry:
-        :type suppression_entry: SuppressionEntry
+        :param suppression_add_request: (required)
+        :type suppression_add_request: SuppressionAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13379,7 +13201,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_suppressions_create_serialize(
-            suppression_entry=suppression_entry,
+            suppression_add_request=suppression_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13403,7 +13225,7 @@ class EmailApi:
     @validate_call
     def email_suppressions_create_with_http_info(
         self,
-        suppression_entry: Optional[SuppressionEntry] = None,
+        suppression_add_request: SuppressionAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13421,8 +13243,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param suppression_entry:
-        :type suppression_entry: SuppressionEntry
+        :param suppression_add_request: (required)
+        :type suppression_add_request: SuppressionAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13446,7 +13268,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_suppressions_create_serialize(
-            suppression_entry=suppression_entry,
+            suppression_add_request=suppression_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13470,7 +13292,7 @@ class EmailApi:
     @validate_call
     def email_suppressions_create_without_preload_content(
         self,
-        suppression_entry: Optional[SuppressionEntry] = None,
+        suppression_add_request: SuppressionAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13488,8 +13310,8 @@ class EmailApi:
 
         Intersect the beta gate and IAM with the configured API permissions.  Keeping the gate additive preserves authentication, custom-token scope, and OAuth scope checks when the customer-facing feature flag is open. Per-action permission overrides (the staff-only restore action) remain in the same intersection.
 
-        :param suppression_entry:
-        :type suppression_entry: SuppressionEntry
+        :param suppression_add_request: (required)
+        :type suppression_add_request: SuppressionAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13513,7 +13335,7 @@ class EmailApi:
         """ # noqa: E501
 
         _param = self._email_suppressions_create_serialize(
-            suppression_entry=suppression_entry,
+            suppression_add_request=suppression_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13532,7 +13354,7 @@ class EmailApi:
 
     def _email_suppressions_create_serialize(
         self,
-        suppression_entry,
+        suppression_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -13558,8 +13380,8 @@ class EmailApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if suppression_entry is not None:
-            _body_params = suppression_entry
+        if suppression_add_request is not None:
+            _body_params = suppression_add_request
 
 
         # set the HTTP header `Accept`

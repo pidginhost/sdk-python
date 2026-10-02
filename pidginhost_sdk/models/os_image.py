@@ -32,7 +32,7 @@ class OSImage(BaseModel):
     id: StrictInt
     slug: Annotated[str, Field(strict=True, max_length=100)]
     name: Annotated[str, Field(strict=True, max_length=200)] = Field(description="Display name for users")
-    family_name: StrictStr
+    family_name: Optional[StrictStr]
     is_default: Optional[StrictBool] = Field(default=None, description="Default version within this family (shown pre-selected)")
     default_username: StrictStr = Field(description="Account the image provisions for SSH login.")
     __properties: ClassVar[List[str]] = ["id", "slug", "name", "family_name", "is_default", "default_username"]
@@ -89,6 +89,11 @@ class OSImage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if family_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.family_name is None and "family_name" in self.model_fields_set:
+            _dict['family_name'] = None
+
         return _dict
 
     @classmethod

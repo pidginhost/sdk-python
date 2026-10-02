@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.13.0"
+__version__ = "0.14.0"
 
 # Define package exports
 __all__ = [
@@ -42,69 +42,89 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "APITokenCreate",
+    "APITokenCreateRequest",
     "APITokenList",
-    "ActivateFreeDNS",
+    "ActivateFreeDNSRequest",
     "ActivateFreeDNSResponse",
     "ActivityLogEntry",
     "ActivityLogResponse",
     "AddServerResponse",
     "Address",
+    "AddressRequest",
     "ApiCredential",
+    "ApiCredentialCreated",
     "AttachIPv4Request",
     "AttachIPv4Response",
     "AttachIPv6Request",
     "AttachIPv6Response",
     "AttachVolume",
+    "AttachVolumeRequest",
+    "AttachmentRequest",
+    "BlankEnum",
     "BootISO",
     "Bucket",
     "BucketCancelResponse",
-    "BucketCreate",
+    "BucketCreateRequest",
     "BucketCredentials",
-    "BucketResize",
-    "BucketVisibility",
+    "BucketResizeRequest",
+    "BucketVisibilityRequest",
     "CLISessionCreateResponse",
     "CLISessionPollResponse",
     "CLISessionPollResponseStatusEnum",
     "CancelServiceResponse",
     "CategoryEnum",
-    "ChangeBillingCycle",
+    "ChangeBillingCycleRequest",
     "ChangeBillingCycleResponse",
-    "ChangeCompany",
+    "ChangeCompanyRequest",
     "ChangeCompanyResponse",
-    "ChangePassword",
+    "ChangePasswordRequest",
     "CheckAvailability",
-    "ClusterAdd",
+    "CheckAvailabilityRequest",
+    "ClusterAddRequest",
     "ClusterAddResponse",
     "ClusterDetail",
+    "ClusterDetailRequest",
+    "ClusterEncryption",
+    "ClusterEncryptionError",
+    "ClusterEncryptionOperation",
+    "ClusterEncryptionReconcileRequest",
+    "ClusterEncryptionRefusal",
+    "ClusterEncryptionRequest",
+    "ClusterEncryptionStatusEnum",
     "ClusterPackage",
     "ClusterType",
     "ClusterTypeEnum",
     "Company",
+    "CompanyRequest",
     "ConnectVMRequest",
     "ConnectVMResponse",
     "ConnectedVM",
     "ConnectedVMsResponse",
     "ConsoleToken",
     "ContactTypeEnum",
-    "ContactsUpdate",
+    "ContactsUpdateRequest",
     "ContactsUpdateResponse",
     "CountryEnum",
+    "CredentialCreateRequest",
     "DNSGlue",
+    "DNSGlueRequest",
     "DNSRecord",
-    "DNSRecordCreate",
+    "DNSRecordCreateRequest",
     "DNSRecordCreateTypeEnum",
     "DNSRecordMutateResponse",
-    "DeactivateFreeDNS",
+    "DeactivateFreeDNSRequest",
     "DeactivateFreeDNSResponse",
-    "DedicatedRDNS",
+    "DedicatedRDNSRequest",
     "DedicatedServer",
-    "DeleteRecord",
+    "DedicatedServerIP",
+    "DedicatedServerStatus",
+    "DeleteRecordRequest",
     "DeleteRecordResponse",
     "Department",
     "Deposit",
-    "DepositCreate",
+    "DepositCreateRequest",
     "DepositStatusEnum",
-    "DestroyProtection",
+    "DestroyProtectionRequest",
     "DestroyProtectionResponse",
     "DetachIPv4Response",
     "DetachIPv6",
@@ -114,63 +134,90 @@ __all__ = [
     "DisconnectVMResponse",
     "DnsSourceEnum",
     "Domain",
-    "DomainAdd",
+    "DomainAddRequest",
     "DomainCancelResponse",
     "DomainCreate",
+    "DomainCreateRequest",
     "DomainRegistrant",
+    "DomainRegistrantRequest",
+    "DomainRequest",
     "EligibleVM",
     "EligibleVMsResponse",
     "EmailHistory",
+    "EmailMessageList",
+    "EmailMessageSummary",
+    "EmailReputation",
+    "EmailSendResponse",
+    "EmailSendResponseStatusEnum",
     "EmailService",
+    "EmailStats",
+    "EncryptionModeEnum",
+    "EncryptionReasonCodeEnum",
     "FeatureUpgradeRequest",
     "FeatureUpgradeResponse",
     "FeaturesEnum",
     "FirewallRule",
     "FirewallRuleDirectionEnum",
+    "FirewallRuleRequest",
     "FirewallRulesSet",
+    "FirewallRulesSetRequest",
     "FirewallRulesSetStatusEnum",
     "FloatingIPAuthorization",
     "FloatingIPAuthorizeRequest",
     "FloatingIPSummary",
     "FloatingIPv4",
     "FloatingIPv4AuthorizeResponse",
-    "FloatingIPv4Create",
+    "FloatingIPv4CreateRequest",
     "FloatingIPv4UnauthorizeResponse",
     "FloatingIPv6",
     "FloatingIPv6AuthorizeResponse",
-    "FloatingIPv6Create",
+    "FloatingIPv6CreateRequest",
     "FloatingIPv6UnauthorizeResponse",
     "FreeDNSDomain",
     "FundsBalanceResponse",
     "FundsLog",
     "FwPolicyOutEnum",
     "HTTPRoute",
+    "HTTPRouteRequest",
     "HardwareGeneration",
     "HostingChangePasswordResponse",
     "HostingService",
     "InboundRoute",
+    "InboundRouteCreateRequest",
+    "InboundRouteWriteResponse",
     "InvoiceDetail",
     "InvoiceList",
+    "InvoiceService",
     "InvoiceStatusEnum",
     "IsoBootRequest",
     "K8sPortForward",
+    "K8sPortForwardRequest",
     "KubeUpgradeResponse",
     "KubeVersionEnum",
     "LBFirewallRule",
     "LBFirewallRuleActionEnum",
     "LBFirewallRuleDirectionEnum",
-    "LowBalanceSettings",
+    "LBFirewallRuleRequest",
+    "LBUpgradeDispatchResponse",
+    "LBUpgradePlanResponse",
+    "LBUpgradeRequest",
+    "LowBalanceSettingsRequest",
     "ModeEnum",
-    "NameserversUpdate",
+    "NameserversUpdateRequest",
     "NameserversUpdateResponse",
     "NodeMetricsResponse",
+    "NodeOperation",
+    "NodeOperationKindEnum",
+    "NodeOperationRebootRequest",
+    "NodeOperationRetryRequest",
+    "NodeOperationSourceEnum",
+    "NodeOperationStatusEnum",
     "NodeRRDResponse",
     "NotificationSettingsResponse",
     "OSImage",
     "OperationEnum",
     "PaginatedAPITokenListList",
     "PaginatedApiCredentialList",
-    "PaginatedBootISOList",
     "PaginatedClusterDetailList",
     "PaginatedClusterTypeList",
     "PaginatedCompanyList",
@@ -191,7 +238,9 @@ __all__ = [
     "PaginatedInvoiceListList",
     "PaginatedK8sPortForwardList",
     "PaginatedLBFirewallRuleList",
+    "PaginatedNodeOperationList",
     "PaginatedOSImageList",
+    "PaginatedPoolRemovalJournalList",
     "PaginatedPrivateNetworkList",
     "PaginatedPublicIPv4List",
     "PaginatedPublicIPv6List",
@@ -204,7 +253,6 @@ __all__ = [
     "PaginatedServerProductList",
     "PaginatedServiceListList",
     "PaginatedSmtpCredentialList",
-    "PaginatedSnapshotList",
     "PaginatedStorageProductList",
     "PaginatedSubscriptionList",
     "PaginatedSuppressionEntryList",
@@ -212,68 +260,87 @@ __all__ = [
     "PaginatedTLDList",
     "PaginatedTicketListList",
     "PaginatedUDPRouteList",
-    "PatchedClusterDetail",
-    "PatchedCompany",
-    "PatchedDomain",
-    "PatchedDomainRegistrant",
-    "PatchedEmailService",
-    "PatchedFirewallRule",
-    "PatchedFirewallRulesSet",
-    "PatchedHTTPRoute",
-    "PatchedInboundRoute",
-    "PatchedK8sPortForward",
-    "PatchedLBFirewallRule",
-    "PatchedPrivateNetwork",
-    "PatchedProfile",
-    "PatchedResourcePool",
-    "PatchedSSHKey",
-    "PatchedServerDetail",
-    "PatchedSubscribe",
-    "PatchedTCPRoute",
-    "PatchedUDPRoute",
-    "PatchedVolume",
+    "PatchedClusterDetailRequest",
+    "PatchedCompanyRequest",
+    "PatchedDomainRegistrantRequest",
+    "PatchedDomainRequest",
+    "PatchedFirewallRuleRequest",
+    "PatchedFirewallRulesSetRequest",
+    "PatchedHTTPRouteRequest",
+    "PatchedInboundRouteCreateRequest",
+    "PatchedK8sPortForwardRequest",
+    "PatchedLBFirewallRuleRequest",
+    "PatchedPrivateNetworkUpdateRequest",
+    "PatchedProfileRequest",
+    "PatchedResourcePoolRequest",
+    "PatchedSSHKeyUpdateRequest",
+    "PatchedServerDetailRequest",
+    "PatchedTCPRouteRequest",
+    "PatchedUDPRouteRequest",
+    "PatchedVolumeUpdateRequest",
     "PayWithFundsResponse",
-    "PowerAction",
+    "PoolRemovalItem",
+    "PoolRemovalJournal",
+    "PoolRemovalJournalKindEnum",
+    "PoolRemovalJournalStatusEnum",
     "PowerActionActionEnum",
+    "PowerActionRequest",
     "PowerActionResponse",
     "PowerManagement",
     "PowerManagementRequest",
     "PowerManagementRequestActionEnum",
     "PrivateNetwork",
-    "PrivateNetworkAddHost",
-    "PrivateNetworkRemoveHost",
+    "PrivateNetworkAddHostRequest",
+    "PrivateNetworkRemoveHostRequest",
+    "PrivateNetworkRequest",
+    "PrivateNetworkUpdateRequest",
     "Profile",
+    "ProfileRequest",
     "ProtocolEnum",
     "PublicIPv4",
     "PublicIPv6",
     "PublicInterface",
+    "PublicInterfaceRequest",
     "RDNSUpdateResponse",
     "ReasonEnum",
-    "Reinstall",
+    "ReinstallRequest",
     "ReinstallResponse",
     "RemoveServerResponse",
     "RenewDomain",
+    "RenewDomainRequest",
     "RescueEnterQueued",
     "RescueExitQueued",
     "ResourcePool",
-    "ResourcePoolAdd",
+    "ResourcePoolAddRequest",
     "ResourcePoolAddResponse",
     "ResourcePoolNode",
+    "ResourcePoolRequest",
     "ResourceStatusEnum",
     "RetryProvision",
     "ReverseDNS",
+    "ReverseDNSRequest",
     "SSHKey",
+    "SSHKeyRequest",
+    "SSHKeyUpdateRequest",
     "SandboxAddress",
+    "SandboxAddressRequest",
     "ScopeEnum",
+    "SendRequest",
     "SendingDomain",
     "SendingDomainStatusEnum",
     "Server",
-    "ServerAdd",
+    "ServerAddRequest",
     "ServerAddResponse",
     "ServerDetachIPv4Response",
     "ServerDetail",
+    "ServerDetailRequest",
+    "ServerNetworks",
+    "ServerPrivateInterface",
     "ServerProduct",
-    "ServerProductUpgrade",
+    "ServerProductUpgradeRequest",
+    "ServerPublicInterface",
+    "ServerPublicNetwork",
+    "ServerTrafficResponse",
     "ServerUpgradeResponse",
     "ServerUsageResponse",
     "Service",
@@ -281,39 +348,49 @@ __all__ = [
     "ServiceList",
     "ServiceStatusEnum",
     "SmtpCredential",
+    "SmtpCredentialCreated",
     "Snapshot",
-    "SnapshotCreate",
     "SnapshotCreateQueued",
+    "SnapshotCreateRequest",
     "SnapshotDeleteQueued",
     "SnapshotRollbackQueued",
     "SourceEnum",
+    "StatsDay",
+    "StatsTotals",
     "StorageProduct",
-    "Subscribe",
+    "SubscribeRequest",
     "Subscription",
     "SubscriptionStatusEnum",
+    "SuppressionAddRequest",
     "SuppressionEntry",
     "TCPRoute",
+    "TCPRouteRequest",
     "TLD",
     "TalosUpgradeResponse",
     "ThresholdTypeEnum",
     "TicketCloseResponse",
-    "TicketCreate",
     "TicketCreatePriorityEnum",
+    "TicketCreateRequest",
     "TicketDetail",
     "TicketList",
     "TicketMessage",
     "TicketPriorityEnum",
     "TicketReopenResponse",
-    "TicketReply",
+    "TicketReplyRequest",
     "TicketReplyResponse",
     "TicketStatusEnum",
     "TierEnum",
     "ToggleAutoPaymentResponse",
     "ToggleCloudVMAccessResponse",
+    "ToggleInboundRequest",
     "TransferRoDomain",
+    "TransferRoDomainRequest",
     "UDPRoute",
+    "UDPRouteRequest",
     "VersionEnum",
     "Volume",
+    "VolumeRequest",
+    "VolumeUpdateRequest",
 ]
 
 # import apis into sdk package
@@ -344,69 +421,89 @@ from pidginhost_sdk.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from pidginhost_sdk.models.api_token_create import APITokenCreate as APITokenCreate
+from pidginhost_sdk.models.api_token_create_request import APITokenCreateRequest as APITokenCreateRequest
 from pidginhost_sdk.models.api_token_list import APITokenList as APITokenList
-from pidginhost_sdk.models.activate_free_dns import ActivateFreeDNS as ActivateFreeDNS
+from pidginhost_sdk.models.activate_free_dns_request import ActivateFreeDNSRequest as ActivateFreeDNSRequest
 from pidginhost_sdk.models.activate_free_dns_response import ActivateFreeDNSResponse as ActivateFreeDNSResponse
 from pidginhost_sdk.models.activity_log_entry import ActivityLogEntry as ActivityLogEntry
 from pidginhost_sdk.models.activity_log_response import ActivityLogResponse as ActivityLogResponse
 from pidginhost_sdk.models.add_server_response import AddServerResponse as AddServerResponse
 from pidginhost_sdk.models.address import Address as Address
+from pidginhost_sdk.models.address_request import AddressRequest as AddressRequest
 from pidginhost_sdk.models.api_credential import ApiCredential as ApiCredential
+from pidginhost_sdk.models.api_credential_created import ApiCredentialCreated as ApiCredentialCreated
 from pidginhost_sdk.models.attach_ipv4_request import AttachIPv4Request as AttachIPv4Request
 from pidginhost_sdk.models.attach_ipv4_response import AttachIPv4Response as AttachIPv4Response
 from pidginhost_sdk.models.attach_ipv6_request import AttachIPv6Request as AttachIPv6Request
 from pidginhost_sdk.models.attach_ipv6_response import AttachIPv6Response as AttachIPv6Response
 from pidginhost_sdk.models.attach_volume import AttachVolume as AttachVolume
+from pidginhost_sdk.models.attach_volume_request import AttachVolumeRequest as AttachVolumeRequest
+from pidginhost_sdk.models.attachment_request import AttachmentRequest as AttachmentRequest
+from pidginhost_sdk.models.blank_enum import BlankEnum as BlankEnum
 from pidginhost_sdk.models.boot_iso import BootISO as BootISO
 from pidginhost_sdk.models.bucket import Bucket as Bucket
 from pidginhost_sdk.models.bucket_cancel_response import BucketCancelResponse as BucketCancelResponse
-from pidginhost_sdk.models.bucket_create import BucketCreate as BucketCreate
+from pidginhost_sdk.models.bucket_create_request import BucketCreateRequest as BucketCreateRequest
 from pidginhost_sdk.models.bucket_credentials import BucketCredentials as BucketCredentials
-from pidginhost_sdk.models.bucket_resize import BucketResize as BucketResize
-from pidginhost_sdk.models.bucket_visibility import BucketVisibility as BucketVisibility
+from pidginhost_sdk.models.bucket_resize_request import BucketResizeRequest as BucketResizeRequest
+from pidginhost_sdk.models.bucket_visibility_request import BucketVisibilityRequest as BucketVisibilityRequest
 from pidginhost_sdk.models.cli_session_create_response import CLISessionCreateResponse as CLISessionCreateResponse
 from pidginhost_sdk.models.cli_session_poll_response import CLISessionPollResponse as CLISessionPollResponse
 from pidginhost_sdk.models.cli_session_poll_response_status_enum import CLISessionPollResponseStatusEnum as CLISessionPollResponseStatusEnum
 from pidginhost_sdk.models.cancel_service_response import CancelServiceResponse as CancelServiceResponse
 from pidginhost_sdk.models.category_enum import CategoryEnum as CategoryEnum
-from pidginhost_sdk.models.change_billing_cycle import ChangeBillingCycle as ChangeBillingCycle
+from pidginhost_sdk.models.change_billing_cycle_request import ChangeBillingCycleRequest as ChangeBillingCycleRequest
 from pidginhost_sdk.models.change_billing_cycle_response import ChangeBillingCycleResponse as ChangeBillingCycleResponse
-from pidginhost_sdk.models.change_company import ChangeCompany as ChangeCompany
+from pidginhost_sdk.models.change_company_request import ChangeCompanyRequest as ChangeCompanyRequest
 from pidginhost_sdk.models.change_company_response import ChangeCompanyResponse as ChangeCompanyResponse
-from pidginhost_sdk.models.change_password import ChangePassword as ChangePassword
+from pidginhost_sdk.models.change_password_request import ChangePasswordRequest as ChangePasswordRequest
 from pidginhost_sdk.models.check_availability import CheckAvailability as CheckAvailability
-from pidginhost_sdk.models.cluster_add import ClusterAdd as ClusterAdd
+from pidginhost_sdk.models.check_availability_request import CheckAvailabilityRequest as CheckAvailabilityRequest
+from pidginhost_sdk.models.cluster_add_request import ClusterAddRequest as ClusterAddRequest
 from pidginhost_sdk.models.cluster_add_response import ClusterAddResponse as ClusterAddResponse
 from pidginhost_sdk.models.cluster_detail import ClusterDetail as ClusterDetail
+from pidginhost_sdk.models.cluster_detail_request import ClusterDetailRequest as ClusterDetailRequest
+from pidginhost_sdk.models.cluster_encryption import ClusterEncryption as ClusterEncryption
+from pidginhost_sdk.models.cluster_encryption_error import ClusterEncryptionError as ClusterEncryptionError
+from pidginhost_sdk.models.cluster_encryption_operation import ClusterEncryptionOperation as ClusterEncryptionOperation
+from pidginhost_sdk.models.cluster_encryption_reconcile_request import ClusterEncryptionReconcileRequest as ClusterEncryptionReconcileRequest
+from pidginhost_sdk.models.cluster_encryption_refusal import ClusterEncryptionRefusal as ClusterEncryptionRefusal
+from pidginhost_sdk.models.cluster_encryption_request import ClusterEncryptionRequest as ClusterEncryptionRequest
+from pidginhost_sdk.models.cluster_encryption_status_enum import ClusterEncryptionStatusEnum as ClusterEncryptionStatusEnum
 from pidginhost_sdk.models.cluster_package import ClusterPackage as ClusterPackage
 from pidginhost_sdk.models.cluster_type import ClusterType as ClusterType
 from pidginhost_sdk.models.cluster_type_enum import ClusterTypeEnum as ClusterTypeEnum
 from pidginhost_sdk.models.company import Company as Company
+from pidginhost_sdk.models.company_request import CompanyRequest as CompanyRequest
 from pidginhost_sdk.models.connect_vm_request import ConnectVMRequest as ConnectVMRequest
 from pidginhost_sdk.models.connect_vm_response import ConnectVMResponse as ConnectVMResponse
 from pidginhost_sdk.models.connected_vm import ConnectedVM as ConnectedVM
 from pidginhost_sdk.models.connected_vms_response import ConnectedVMsResponse as ConnectedVMsResponse
 from pidginhost_sdk.models.console_token import ConsoleToken as ConsoleToken
 from pidginhost_sdk.models.contact_type_enum import ContactTypeEnum as ContactTypeEnum
-from pidginhost_sdk.models.contacts_update import ContactsUpdate as ContactsUpdate
+from pidginhost_sdk.models.contacts_update_request import ContactsUpdateRequest as ContactsUpdateRequest
 from pidginhost_sdk.models.contacts_update_response import ContactsUpdateResponse as ContactsUpdateResponse
 from pidginhost_sdk.models.country_enum import CountryEnum as CountryEnum
+from pidginhost_sdk.models.credential_create_request import CredentialCreateRequest as CredentialCreateRequest
 from pidginhost_sdk.models.dns_glue import DNSGlue as DNSGlue
+from pidginhost_sdk.models.dns_glue_request import DNSGlueRequest as DNSGlueRequest
 from pidginhost_sdk.models.dns_record import DNSRecord as DNSRecord
-from pidginhost_sdk.models.dns_record_create import DNSRecordCreate as DNSRecordCreate
+from pidginhost_sdk.models.dns_record_create_request import DNSRecordCreateRequest as DNSRecordCreateRequest
 from pidginhost_sdk.models.dns_record_create_type_enum import DNSRecordCreateTypeEnum as DNSRecordCreateTypeEnum
 from pidginhost_sdk.models.dns_record_mutate_response import DNSRecordMutateResponse as DNSRecordMutateResponse
-from pidginhost_sdk.models.deactivate_free_dns import DeactivateFreeDNS as DeactivateFreeDNS
+from pidginhost_sdk.models.deactivate_free_dns_request import DeactivateFreeDNSRequest as DeactivateFreeDNSRequest
 from pidginhost_sdk.models.deactivate_free_dns_response import DeactivateFreeDNSResponse as DeactivateFreeDNSResponse
-from pidginhost_sdk.models.dedicated_rdns import DedicatedRDNS as DedicatedRDNS
+from pidginhost_sdk.models.dedicated_rdns_request import DedicatedRDNSRequest as DedicatedRDNSRequest
 from pidginhost_sdk.models.dedicated_server import DedicatedServer as DedicatedServer
-from pidginhost_sdk.models.delete_record import DeleteRecord as DeleteRecord
+from pidginhost_sdk.models.dedicated_server_ip import DedicatedServerIP as DedicatedServerIP
+from pidginhost_sdk.models.dedicated_server_status import DedicatedServerStatus as DedicatedServerStatus
+from pidginhost_sdk.models.delete_record_request import DeleteRecordRequest as DeleteRecordRequest
 from pidginhost_sdk.models.delete_record_response import DeleteRecordResponse as DeleteRecordResponse
 from pidginhost_sdk.models.department import Department as Department
 from pidginhost_sdk.models.deposit import Deposit as Deposit
-from pidginhost_sdk.models.deposit_create import DepositCreate as DepositCreate
+from pidginhost_sdk.models.deposit_create_request import DepositCreateRequest as DepositCreateRequest
 from pidginhost_sdk.models.deposit_status_enum import DepositStatusEnum as DepositStatusEnum
-from pidginhost_sdk.models.destroy_protection import DestroyProtection as DestroyProtection
+from pidginhost_sdk.models.destroy_protection_request import DestroyProtectionRequest as DestroyProtectionRequest
 from pidginhost_sdk.models.destroy_protection_response import DestroyProtectionResponse as DestroyProtectionResponse
 from pidginhost_sdk.models.detach_ipv4_response import DetachIPv4Response as DetachIPv4Response
 from pidginhost_sdk.models.detach_ipv6 import DetachIPv6 as DetachIPv6
@@ -416,63 +513,90 @@ from pidginhost_sdk.models.disconnect_vm_request import DisconnectVMRequest as D
 from pidginhost_sdk.models.disconnect_vm_response import DisconnectVMResponse as DisconnectVMResponse
 from pidginhost_sdk.models.dns_source_enum import DnsSourceEnum as DnsSourceEnum
 from pidginhost_sdk.models.domain import Domain as Domain
-from pidginhost_sdk.models.domain_add import DomainAdd as DomainAdd
+from pidginhost_sdk.models.domain_add_request import DomainAddRequest as DomainAddRequest
 from pidginhost_sdk.models.domain_cancel_response import DomainCancelResponse as DomainCancelResponse
 from pidginhost_sdk.models.domain_create import DomainCreate as DomainCreate
+from pidginhost_sdk.models.domain_create_request import DomainCreateRequest as DomainCreateRequest
 from pidginhost_sdk.models.domain_registrant import DomainRegistrant as DomainRegistrant
+from pidginhost_sdk.models.domain_registrant_request import DomainRegistrantRequest as DomainRegistrantRequest
+from pidginhost_sdk.models.domain_request import DomainRequest as DomainRequest
 from pidginhost_sdk.models.eligible_vm import EligibleVM as EligibleVM
 from pidginhost_sdk.models.eligible_vms_response import EligibleVMsResponse as EligibleVMsResponse
 from pidginhost_sdk.models.email_history import EmailHistory as EmailHistory
+from pidginhost_sdk.models.email_message_list import EmailMessageList as EmailMessageList
+from pidginhost_sdk.models.email_message_summary import EmailMessageSummary as EmailMessageSummary
+from pidginhost_sdk.models.email_reputation import EmailReputation as EmailReputation
+from pidginhost_sdk.models.email_send_response import EmailSendResponse as EmailSendResponse
+from pidginhost_sdk.models.email_send_response_status_enum import EmailSendResponseStatusEnum as EmailSendResponseStatusEnum
 from pidginhost_sdk.models.email_service import EmailService as EmailService
+from pidginhost_sdk.models.email_stats import EmailStats as EmailStats
+from pidginhost_sdk.models.encryption_mode_enum import EncryptionModeEnum as EncryptionModeEnum
+from pidginhost_sdk.models.encryption_reason_code_enum import EncryptionReasonCodeEnum as EncryptionReasonCodeEnum
 from pidginhost_sdk.models.feature_upgrade_request import FeatureUpgradeRequest as FeatureUpgradeRequest
 from pidginhost_sdk.models.feature_upgrade_response import FeatureUpgradeResponse as FeatureUpgradeResponse
 from pidginhost_sdk.models.features_enum import FeaturesEnum as FeaturesEnum
 from pidginhost_sdk.models.firewall_rule import FirewallRule as FirewallRule
 from pidginhost_sdk.models.firewall_rule_direction_enum import FirewallRuleDirectionEnum as FirewallRuleDirectionEnum
+from pidginhost_sdk.models.firewall_rule_request import FirewallRuleRequest as FirewallRuleRequest
 from pidginhost_sdk.models.firewall_rules_set import FirewallRulesSet as FirewallRulesSet
+from pidginhost_sdk.models.firewall_rules_set_request import FirewallRulesSetRequest as FirewallRulesSetRequest
 from pidginhost_sdk.models.firewall_rules_set_status_enum import FirewallRulesSetStatusEnum as FirewallRulesSetStatusEnum
 from pidginhost_sdk.models.floating_ip_authorization import FloatingIPAuthorization as FloatingIPAuthorization
 from pidginhost_sdk.models.floating_ip_authorize_request import FloatingIPAuthorizeRequest as FloatingIPAuthorizeRequest
 from pidginhost_sdk.models.floating_ip_summary import FloatingIPSummary as FloatingIPSummary
 from pidginhost_sdk.models.floating_ipv4 import FloatingIPv4 as FloatingIPv4
 from pidginhost_sdk.models.floating_ipv4_authorize_response import FloatingIPv4AuthorizeResponse as FloatingIPv4AuthorizeResponse
-from pidginhost_sdk.models.floating_ipv4_create import FloatingIPv4Create as FloatingIPv4Create
+from pidginhost_sdk.models.floating_ipv4_create_request import FloatingIPv4CreateRequest as FloatingIPv4CreateRequest
 from pidginhost_sdk.models.floating_ipv4_unauthorize_response import FloatingIPv4UnauthorizeResponse as FloatingIPv4UnauthorizeResponse
 from pidginhost_sdk.models.floating_ipv6 import FloatingIPv6 as FloatingIPv6
 from pidginhost_sdk.models.floating_ipv6_authorize_response import FloatingIPv6AuthorizeResponse as FloatingIPv6AuthorizeResponse
-from pidginhost_sdk.models.floating_ipv6_create import FloatingIPv6Create as FloatingIPv6Create
+from pidginhost_sdk.models.floating_ipv6_create_request import FloatingIPv6CreateRequest as FloatingIPv6CreateRequest
 from pidginhost_sdk.models.floating_ipv6_unauthorize_response import FloatingIPv6UnauthorizeResponse as FloatingIPv6UnauthorizeResponse
 from pidginhost_sdk.models.free_dns_domain import FreeDNSDomain as FreeDNSDomain
 from pidginhost_sdk.models.funds_balance_response import FundsBalanceResponse as FundsBalanceResponse
 from pidginhost_sdk.models.funds_log import FundsLog as FundsLog
 from pidginhost_sdk.models.fw_policy_out_enum import FwPolicyOutEnum as FwPolicyOutEnum
 from pidginhost_sdk.models.http_route import HTTPRoute as HTTPRoute
+from pidginhost_sdk.models.http_route_request import HTTPRouteRequest as HTTPRouteRequest
 from pidginhost_sdk.models.hardware_generation import HardwareGeneration as HardwareGeneration
 from pidginhost_sdk.models.hosting_change_password_response import HostingChangePasswordResponse as HostingChangePasswordResponse
 from pidginhost_sdk.models.hosting_service import HostingService as HostingService
 from pidginhost_sdk.models.inbound_route import InboundRoute as InboundRoute
+from pidginhost_sdk.models.inbound_route_create_request import InboundRouteCreateRequest as InboundRouteCreateRequest
+from pidginhost_sdk.models.inbound_route_write_response import InboundRouteWriteResponse as InboundRouteWriteResponse
 from pidginhost_sdk.models.invoice_detail import InvoiceDetail as InvoiceDetail
 from pidginhost_sdk.models.invoice_list import InvoiceList as InvoiceList
+from pidginhost_sdk.models.invoice_service import InvoiceService as InvoiceService
 from pidginhost_sdk.models.invoice_status_enum import InvoiceStatusEnum as InvoiceStatusEnum
 from pidginhost_sdk.models.iso_boot_request import IsoBootRequest as IsoBootRequest
 from pidginhost_sdk.models.k8s_port_forward import K8sPortForward as K8sPortForward
+from pidginhost_sdk.models.k8s_port_forward_request import K8sPortForwardRequest as K8sPortForwardRequest
 from pidginhost_sdk.models.kube_upgrade_response import KubeUpgradeResponse as KubeUpgradeResponse
 from pidginhost_sdk.models.kube_version_enum import KubeVersionEnum as KubeVersionEnum
 from pidginhost_sdk.models.lb_firewall_rule import LBFirewallRule as LBFirewallRule
 from pidginhost_sdk.models.lb_firewall_rule_action_enum import LBFirewallRuleActionEnum as LBFirewallRuleActionEnum
 from pidginhost_sdk.models.lb_firewall_rule_direction_enum import LBFirewallRuleDirectionEnum as LBFirewallRuleDirectionEnum
-from pidginhost_sdk.models.low_balance_settings import LowBalanceSettings as LowBalanceSettings
+from pidginhost_sdk.models.lb_firewall_rule_request import LBFirewallRuleRequest as LBFirewallRuleRequest
+from pidginhost_sdk.models.lb_upgrade_dispatch_response import LBUpgradeDispatchResponse as LBUpgradeDispatchResponse
+from pidginhost_sdk.models.lb_upgrade_plan_response import LBUpgradePlanResponse as LBUpgradePlanResponse
+from pidginhost_sdk.models.lb_upgrade_request import LBUpgradeRequest as LBUpgradeRequest
+from pidginhost_sdk.models.low_balance_settings_request import LowBalanceSettingsRequest as LowBalanceSettingsRequest
 from pidginhost_sdk.models.mode_enum import ModeEnum as ModeEnum
-from pidginhost_sdk.models.nameservers_update import NameserversUpdate as NameserversUpdate
+from pidginhost_sdk.models.nameservers_update_request import NameserversUpdateRequest as NameserversUpdateRequest
 from pidginhost_sdk.models.nameservers_update_response import NameserversUpdateResponse as NameserversUpdateResponse
 from pidginhost_sdk.models.node_metrics_response import NodeMetricsResponse as NodeMetricsResponse
+from pidginhost_sdk.models.node_operation import NodeOperation as NodeOperation
+from pidginhost_sdk.models.node_operation_kind_enum import NodeOperationKindEnum as NodeOperationKindEnum
+from pidginhost_sdk.models.node_operation_reboot_request import NodeOperationRebootRequest as NodeOperationRebootRequest
+from pidginhost_sdk.models.node_operation_retry_request import NodeOperationRetryRequest as NodeOperationRetryRequest
+from pidginhost_sdk.models.node_operation_source_enum import NodeOperationSourceEnum as NodeOperationSourceEnum
+from pidginhost_sdk.models.node_operation_status_enum import NodeOperationStatusEnum as NodeOperationStatusEnum
 from pidginhost_sdk.models.node_rrd_response import NodeRRDResponse as NodeRRDResponse
 from pidginhost_sdk.models.notification_settings_response import NotificationSettingsResponse as NotificationSettingsResponse
 from pidginhost_sdk.models.os_image import OSImage as OSImage
 from pidginhost_sdk.models.operation_enum import OperationEnum as OperationEnum
 from pidginhost_sdk.models.paginated_api_token_list_list import PaginatedAPITokenListList as PaginatedAPITokenListList
 from pidginhost_sdk.models.paginated_api_credential_list import PaginatedApiCredentialList as PaginatedApiCredentialList
-from pidginhost_sdk.models.paginated_boot_iso_list import PaginatedBootISOList as PaginatedBootISOList
 from pidginhost_sdk.models.paginated_cluster_detail_list import PaginatedClusterDetailList as PaginatedClusterDetailList
 from pidginhost_sdk.models.paginated_cluster_type_list import PaginatedClusterTypeList as PaginatedClusterTypeList
 from pidginhost_sdk.models.paginated_company_list import PaginatedCompanyList as PaginatedCompanyList
@@ -493,7 +617,9 @@ from pidginhost_sdk.models.paginated_inbound_route_list import PaginatedInboundR
 from pidginhost_sdk.models.paginated_invoice_list_list import PaginatedInvoiceListList as PaginatedInvoiceListList
 from pidginhost_sdk.models.paginated_k8s_port_forward_list import PaginatedK8sPortForwardList as PaginatedK8sPortForwardList
 from pidginhost_sdk.models.paginated_lb_firewall_rule_list import PaginatedLBFirewallRuleList as PaginatedLBFirewallRuleList
+from pidginhost_sdk.models.paginated_node_operation_list import PaginatedNodeOperationList as PaginatedNodeOperationList
 from pidginhost_sdk.models.paginated_os_image_list import PaginatedOSImageList as PaginatedOSImageList
+from pidginhost_sdk.models.paginated_pool_removal_journal_list import PaginatedPoolRemovalJournalList as PaginatedPoolRemovalJournalList
 from pidginhost_sdk.models.paginated_private_network_list import PaginatedPrivateNetworkList as PaginatedPrivateNetworkList
 from pidginhost_sdk.models.paginated_public_ipv4_list import PaginatedPublicIPv4List as PaginatedPublicIPv4List
 from pidginhost_sdk.models.paginated_public_ipv6_list import PaginatedPublicIPv6List as PaginatedPublicIPv6List
@@ -506,7 +632,6 @@ from pidginhost_sdk.models.paginated_server_list import PaginatedServerList as P
 from pidginhost_sdk.models.paginated_server_product_list import PaginatedServerProductList as PaginatedServerProductList
 from pidginhost_sdk.models.paginated_service_list_list import PaginatedServiceListList as PaginatedServiceListList
 from pidginhost_sdk.models.paginated_smtp_credential_list import PaginatedSmtpCredentialList as PaginatedSmtpCredentialList
-from pidginhost_sdk.models.paginated_snapshot_list import PaginatedSnapshotList as PaginatedSnapshotList
 from pidginhost_sdk.models.paginated_storage_product_list import PaginatedStorageProductList as PaginatedStorageProductList
 from pidginhost_sdk.models.paginated_subscription_list import PaginatedSubscriptionList as PaginatedSubscriptionList
 from pidginhost_sdk.models.paginated_suppression_entry_list import PaginatedSuppressionEntryList as PaginatedSuppressionEntryList
@@ -514,68 +639,87 @@ from pidginhost_sdk.models.paginated_tcp_route_list import PaginatedTCPRouteList
 from pidginhost_sdk.models.paginated_tld_list import PaginatedTLDList as PaginatedTLDList
 from pidginhost_sdk.models.paginated_ticket_list_list import PaginatedTicketListList as PaginatedTicketListList
 from pidginhost_sdk.models.paginated_udp_route_list import PaginatedUDPRouteList as PaginatedUDPRouteList
-from pidginhost_sdk.models.patched_cluster_detail import PatchedClusterDetail as PatchedClusterDetail
-from pidginhost_sdk.models.patched_company import PatchedCompany as PatchedCompany
-from pidginhost_sdk.models.patched_domain import PatchedDomain as PatchedDomain
-from pidginhost_sdk.models.patched_domain_registrant import PatchedDomainRegistrant as PatchedDomainRegistrant
-from pidginhost_sdk.models.patched_email_service import PatchedEmailService as PatchedEmailService
-from pidginhost_sdk.models.patched_firewall_rule import PatchedFirewallRule as PatchedFirewallRule
-from pidginhost_sdk.models.patched_firewall_rules_set import PatchedFirewallRulesSet as PatchedFirewallRulesSet
-from pidginhost_sdk.models.patched_http_route import PatchedHTTPRoute as PatchedHTTPRoute
-from pidginhost_sdk.models.patched_inbound_route import PatchedInboundRoute as PatchedInboundRoute
-from pidginhost_sdk.models.patched_k8s_port_forward import PatchedK8sPortForward as PatchedK8sPortForward
-from pidginhost_sdk.models.patched_lb_firewall_rule import PatchedLBFirewallRule as PatchedLBFirewallRule
-from pidginhost_sdk.models.patched_private_network import PatchedPrivateNetwork as PatchedPrivateNetwork
-from pidginhost_sdk.models.patched_profile import PatchedProfile as PatchedProfile
-from pidginhost_sdk.models.patched_resource_pool import PatchedResourcePool as PatchedResourcePool
-from pidginhost_sdk.models.patched_ssh_key import PatchedSSHKey as PatchedSSHKey
-from pidginhost_sdk.models.patched_server_detail import PatchedServerDetail as PatchedServerDetail
-from pidginhost_sdk.models.patched_subscribe import PatchedSubscribe as PatchedSubscribe
-from pidginhost_sdk.models.patched_tcp_route import PatchedTCPRoute as PatchedTCPRoute
-from pidginhost_sdk.models.patched_udp_route import PatchedUDPRoute as PatchedUDPRoute
-from pidginhost_sdk.models.patched_volume import PatchedVolume as PatchedVolume
+from pidginhost_sdk.models.patched_cluster_detail_request import PatchedClusterDetailRequest as PatchedClusterDetailRequest
+from pidginhost_sdk.models.patched_company_request import PatchedCompanyRequest as PatchedCompanyRequest
+from pidginhost_sdk.models.patched_domain_registrant_request import PatchedDomainRegistrantRequest as PatchedDomainRegistrantRequest
+from pidginhost_sdk.models.patched_domain_request import PatchedDomainRequest as PatchedDomainRequest
+from pidginhost_sdk.models.patched_firewall_rule_request import PatchedFirewallRuleRequest as PatchedFirewallRuleRequest
+from pidginhost_sdk.models.patched_firewall_rules_set_request import PatchedFirewallRulesSetRequest as PatchedFirewallRulesSetRequest
+from pidginhost_sdk.models.patched_http_route_request import PatchedHTTPRouteRequest as PatchedHTTPRouteRequest
+from pidginhost_sdk.models.patched_inbound_route_create_request import PatchedInboundRouteCreateRequest as PatchedInboundRouteCreateRequest
+from pidginhost_sdk.models.patched_k8s_port_forward_request import PatchedK8sPortForwardRequest as PatchedK8sPortForwardRequest
+from pidginhost_sdk.models.patched_lb_firewall_rule_request import PatchedLBFirewallRuleRequest as PatchedLBFirewallRuleRequest
+from pidginhost_sdk.models.patched_private_network_update_request import PatchedPrivateNetworkUpdateRequest as PatchedPrivateNetworkUpdateRequest
+from pidginhost_sdk.models.patched_profile_request import PatchedProfileRequest as PatchedProfileRequest
+from pidginhost_sdk.models.patched_resource_pool_request import PatchedResourcePoolRequest as PatchedResourcePoolRequest
+from pidginhost_sdk.models.patched_ssh_key_update_request import PatchedSSHKeyUpdateRequest as PatchedSSHKeyUpdateRequest
+from pidginhost_sdk.models.patched_server_detail_request import PatchedServerDetailRequest as PatchedServerDetailRequest
+from pidginhost_sdk.models.patched_tcp_route_request import PatchedTCPRouteRequest as PatchedTCPRouteRequest
+from pidginhost_sdk.models.patched_udp_route_request import PatchedUDPRouteRequest as PatchedUDPRouteRequest
+from pidginhost_sdk.models.patched_volume_update_request import PatchedVolumeUpdateRequest as PatchedVolumeUpdateRequest
 from pidginhost_sdk.models.pay_with_funds_response import PayWithFundsResponse as PayWithFundsResponse
-from pidginhost_sdk.models.power_action import PowerAction as PowerAction
+from pidginhost_sdk.models.pool_removal_item import PoolRemovalItem as PoolRemovalItem
+from pidginhost_sdk.models.pool_removal_journal import PoolRemovalJournal as PoolRemovalJournal
+from pidginhost_sdk.models.pool_removal_journal_kind_enum import PoolRemovalJournalKindEnum as PoolRemovalJournalKindEnum
+from pidginhost_sdk.models.pool_removal_journal_status_enum import PoolRemovalJournalStatusEnum as PoolRemovalJournalStatusEnum
 from pidginhost_sdk.models.power_action_action_enum import PowerActionActionEnum as PowerActionActionEnum
+from pidginhost_sdk.models.power_action_request import PowerActionRequest as PowerActionRequest
 from pidginhost_sdk.models.power_action_response import PowerActionResponse as PowerActionResponse
 from pidginhost_sdk.models.power_management import PowerManagement as PowerManagement
 from pidginhost_sdk.models.power_management_request import PowerManagementRequest as PowerManagementRequest
 from pidginhost_sdk.models.power_management_request_action_enum import PowerManagementRequestActionEnum as PowerManagementRequestActionEnum
 from pidginhost_sdk.models.private_network import PrivateNetwork as PrivateNetwork
-from pidginhost_sdk.models.private_network_add_host import PrivateNetworkAddHost as PrivateNetworkAddHost
-from pidginhost_sdk.models.private_network_remove_host import PrivateNetworkRemoveHost as PrivateNetworkRemoveHost
+from pidginhost_sdk.models.private_network_add_host_request import PrivateNetworkAddHostRequest as PrivateNetworkAddHostRequest
+from pidginhost_sdk.models.private_network_remove_host_request import PrivateNetworkRemoveHostRequest as PrivateNetworkRemoveHostRequest
+from pidginhost_sdk.models.private_network_request import PrivateNetworkRequest as PrivateNetworkRequest
+from pidginhost_sdk.models.private_network_update_request import PrivateNetworkUpdateRequest as PrivateNetworkUpdateRequest
 from pidginhost_sdk.models.profile import Profile as Profile
+from pidginhost_sdk.models.profile_request import ProfileRequest as ProfileRequest
 from pidginhost_sdk.models.protocol_enum import ProtocolEnum as ProtocolEnum
 from pidginhost_sdk.models.public_ipv4 import PublicIPv4 as PublicIPv4
 from pidginhost_sdk.models.public_ipv6 import PublicIPv6 as PublicIPv6
 from pidginhost_sdk.models.public_interface import PublicInterface as PublicInterface
+from pidginhost_sdk.models.public_interface_request import PublicInterfaceRequest as PublicInterfaceRequest
 from pidginhost_sdk.models.rdns_update_response import RDNSUpdateResponse as RDNSUpdateResponse
 from pidginhost_sdk.models.reason_enum import ReasonEnum as ReasonEnum
-from pidginhost_sdk.models.reinstall import Reinstall as Reinstall
+from pidginhost_sdk.models.reinstall_request import ReinstallRequest as ReinstallRequest
 from pidginhost_sdk.models.reinstall_response import ReinstallResponse as ReinstallResponse
 from pidginhost_sdk.models.remove_server_response import RemoveServerResponse as RemoveServerResponse
 from pidginhost_sdk.models.renew_domain import RenewDomain as RenewDomain
+from pidginhost_sdk.models.renew_domain_request import RenewDomainRequest as RenewDomainRequest
 from pidginhost_sdk.models.rescue_enter_queued import RescueEnterQueued as RescueEnterQueued
 from pidginhost_sdk.models.rescue_exit_queued import RescueExitQueued as RescueExitQueued
 from pidginhost_sdk.models.resource_pool import ResourcePool as ResourcePool
-from pidginhost_sdk.models.resource_pool_add import ResourcePoolAdd as ResourcePoolAdd
+from pidginhost_sdk.models.resource_pool_add_request import ResourcePoolAddRequest as ResourcePoolAddRequest
 from pidginhost_sdk.models.resource_pool_add_response import ResourcePoolAddResponse as ResourcePoolAddResponse
 from pidginhost_sdk.models.resource_pool_node import ResourcePoolNode as ResourcePoolNode
+from pidginhost_sdk.models.resource_pool_request import ResourcePoolRequest as ResourcePoolRequest
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum as ResourceStatusEnum
 from pidginhost_sdk.models.retry_provision import RetryProvision as RetryProvision
 from pidginhost_sdk.models.reverse_dns import ReverseDNS as ReverseDNS
+from pidginhost_sdk.models.reverse_dns_request import ReverseDNSRequest as ReverseDNSRequest
 from pidginhost_sdk.models.ssh_key import SSHKey as SSHKey
+from pidginhost_sdk.models.ssh_key_request import SSHKeyRequest as SSHKeyRequest
+from pidginhost_sdk.models.ssh_key_update_request import SSHKeyUpdateRequest as SSHKeyUpdateRequest
 from pidginhost_sdk.models.sandbox_address import SandboxAddress as SandboxAddress
+from pidginhost_sdk.models.sandbox_address_request import SandboxAddressRequest as SandboxAddressRequest
 from pidginhost_sdk.models.scope_enum import ScopeEnum as ScopeEnum
+from pidginhost_sdk.models.send_request import SendRequest as SendRequest
 from pidginhost_sdk.models.sending_domain import SendingDomain as SendingDomain
 from pidginhost_sdk.models.sending_domain_status_enum import SendingDomainStatusEnum as SendingDomainStatusEnum
 from pidginhost_sdk.models.server import Server as Server
-from pidginhost_sdk.models.server_add import ServerAdd as ServerAdd
+from pidginhost_sdk.models.server_add_request import ServerAddRequest as ServerAddRequest
 from pidginhost_sdk.models.server_add_response import ServerAddResponse as ServerAddResponse
 from pidginhost_sdk.models.server_detach_ipv4_response import ServerDetachIPv4Response as ServerDetachIPv4Response
 from pidginhost_sdk.models.server_detail import ServerDetail as ServerDetail
+from pidginhost_sdk.models.server_detail_request import ServerDetailRequest as ServerDetailRequest
+from pidginhost_sdk.models.server_networks import ServerNetworks as ServerNetworks
+from pidginhost_sdk.models.server_private_interface import ServerPrivateInterface as ServerPrivateInterface
 from pidginhost_sdk.models.server_product import ServerProduct as ServerProduct
-from pidginhost_sdk.models.server_product_upgrade import ServerProductUpgrade as ServerProductUpgrade
+from pidginhost_sdk.models.server_product_upgrade_request import ServerProductUpgradeRequest as ServerProductUpgradeRequest
+from pidginhost_sdk.models.server_public_interface import ServerPublicInterface as ServerPublicInterface
+from pidginhost_sdk.models.server_public_network import ServerPublicNetwork as ServerPublicNetwork
+from pidginhost_sdk.models.server_traffic_response import ServerTrafficResponse as ServerTrafficResponse
 from pidginhost_sdk.models.server_upgrade_response import ServerUpgradeResponse as ServerUpgradeResponse
 from pidginhost_sdk.models.server_usage_response import ServerUsageResponse as ServerUsageResponse
 from pidginhost_sdk.models.service import Service as Service
@@ -583,37 +727,47 @@ from pidginhost_sdk.models.service_company import ServiceCompany as ServiceCompa
 from pidginhost_sdk.models.service_list import ServiceList as ServiceList
 from pidginhost_sdk.models.service_status_enum import ServiceStatusEnum as ServiceStatusEnum
 from pidginhost_sdk.models.smtp_credential import SmtpCredential as SmtpCredential
+from pidginhost_sdk.models.smtp_credential_created import SmtpCredentialCreated as SmtpCredentialCreated
 from pidginhost_sdk.models.snapshot import Snapshot as Snapshot
-from pidginhost_sdk.models.snapshot_create import SnapshotCreate as SnapshotCreate
 from pidginhost_sdk.models.snapshot_create_queued import SnapshotCreateQueued as SnapshotCreateQueued
+from pidginhost_sdk.models.snapshot_create_request import SnapshotCreateRequest as SnapshotCreateRequest
 from pidginhost_sdk.models.snapshot_delete_queued import SnapshotDeleteQueued as SnapshotDeleteQueued
 from pidginhost_sdk.models.snapshot_rollback_queued import SnapshotRollbackQueued as SnapshotRollbackQueued
 from pidginhost_sdk.models.source_enum import SourceEnum as SourceEnum
+from pidginhost_sdk.models.stats_day import StatsDay as StatsDay
+from pidginhost_sdk.models.stats_totals import StatsTotals as StatsTotals
 from pidginhost_sdk.models.storage_product import StorageProduct as StorageProduct
-from pidginhost_sdk.models.subscribe import Subscribe as Subscribe
+from pidginhost_sdk.models.subscribe_request import SubscribeRequest as SubscribeRequest
 from pidginhost_sdk.models.subscription import Subscription as Subscription
 from pidginhost_sdk.models.subscription_status_enum import SubscriptionStatusEnum as SubscriptionStatusEnum
+from pidginhost_sdk.models.suppression_add_request import SuppressionAddRequest as SuppressionAddRequest
 from pidginhost_sdk.models.suppression_entry import SuppressionEntry as SuppressionEntry
 from pidginhost_sdk.models.tcp_route import TCPRoute as TCPRoute
+from pidginhost_sdk.models.tcp_route_request import TCPRouteRequest as TCPRouteRequest
 from pidginhost_sdk.models.tld import TLD as TLD
 from pidginhost_sdk.models.talos_upgrade_response import TalosUpgradeResponse as TalosUpgradeResponse
 from pidginhost_sdk.models.threshold_type_enum import ThresholdTypeEnum as ThresholdTypeEnum
 from pidginhost_sdk.models.ticket_close_response import TicketCloseResponse as TicketCloseResponse
-from pidginhost_sdk.models.ticket_create import TicketCreate as TicketCreate
 from pidginhost_sdk.models.ticket_create_priority_enum import TicketCreatePriorityEnum as TicketCreatePriorityEnum
+from pidginhost_sdk.models.ticket_create_request import TicketCreateRequest as TicketCreateRequest
 from pidginhost_sdk.models.ticket_detail import TicketDetail as TicketDetail
 from pidginhost_sdk.models.ticket_list import TicketList as TicketList
 from pidginhost_sdk.models.ticket_message import TicketMessage as TicketMessage
 from pidginhost_sdk.models.ticket_priority_enum import TicketPriorityEnum as TicketPriorityEnum
 from pidginhost_sdk.models.ticket_reopen_response import TicketReopenResponse as TicketReopenResponse
-from pidginhost_sdk.models.ticket_reply import TicketReply as TicketReply
+from pidginhost_sdk.models.ticket_reply_request import TicketReplyRequest as TicketReplyRequest
 from pidginhost_sdk.models.ticket_reply_response import TicketReplyResponse as TicketReplyResponse
 from pidginhost_sdk.models.ticket_status_enum import TicketStatusEnum as TicketStatusEnum
 from pidginhost_sdk.models.tier_enum import TierEnum as TierEnum
 from pidginhost_sdk.models.toggle_auto_payment_response import ToggleAutoPaymentResponse as ToggleAutoPaymentResponse
 from pidginhost_sdk.models.toggle_cloud_vm_access_response import ToggleCloudVMAccessResponse as ToggleCloudVMAccessResponse
+from pidginhost_sdk.models.toggle_inbound_request import ToggleInboundRequest as ToggleInboundRequest
 from pidginhost_sdk.models.transfer_ro_domain import TransferRoDomain as TransferRoDomain
+from pidginhost_sdk.models.transfer_ro_domain_request import TransferRoDomainRequest as TransferRoDomainRequest
 from pidginhost_sdk.models.udp_route import UDPRoute as UDPRoute
+from pidginhost_sdk.models.udp_route_request import UDPRouteRequest as UDPRouteRequest
 from pidginhost_sdk.models.version_enum import VersionEnum as VersionEnum
 from pidginhost_sdk.models.volume import Volume as Volume
+from pidginhost_sdk.models.volume_request import VolumeRequest as VolumeRequest
+from pidginhost_sdk.models.volume_update_request import VolumeUpdateRequest as VolumeUpdateRequest
 

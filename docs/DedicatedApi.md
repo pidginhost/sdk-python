@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_servers_power_create**
-> PowerActionResponse dedicated_servers_power_create(id, power_action)
+> PowerActionResponse dedicated_servers_power_create(id, power_action_request)
 
 Execute a power management action (start, stop, restart, shutdown).
 
@@ -106,7 +106,7 @@ Execute a power management action (start, stop, restart, shutdown).
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.power_action import PowerAction
+from pidginhost_sdk.models.power_action_request import PowerActionRequest
 from pidginhost_sdk.models.power_action_response import PowerActionResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -139,10 +139,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.DedicatedApi(api_client)
     id = 'id_example' # str | 
-    power_action = pidginhost_sdk.PowerAction() # PowerAction | 
+    power_action_request = pidginhost_sdk.PowerActionRequest() # PowerActionRequest | 
 
     try:
-        api_response = api_instance.dedicated_servers_power_create(id, power_action)
+        api_response = api_instance.dedicated_servers_power_create(id, power_action_request)
         print("The response of DedicatedApi->dedicated_servers_power_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -157,7 +157,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **power_action** | [**PowerAction**](PowerAction.md)|  | 
+ **power_action_request** | [**PowerActionRequest**](PowerActionRequest.md)|  | 
 
 ### Return type
 
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_servers_rdns_create**
-> RDNSUpdateResponse dedicated_servers_rdns_create(id, dedicated_rdns)
+> RDNSUpdateResponse dedicated_servers_rdns_create(id, dedicated_rdns_request)
 
 Update reverse DNS for a dedicated server IP.
 
@@ -192,7 +192,7 @@ Update reverse DNS for a dedicated server IP.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.dedicated_rdns import DedicatedRDNS
+from pidginhost_sdk.models.dedicated_rdns_request import DedicatedRDNSRequest
 from pidginhost_sdk.models.rdns_update_response import RDNSUpdateResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -225,10 +225,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.DedicatedApi(api_client)
     id = 'id_example' # str | 
-    dedicated_rdns = pidginhost_sdk.DedicatedRDNS() # DedicatedRDNS | 
+    dedicated_rdns_request = pidginhost_sdk.DedicatedRDNSRequest() # DedicatedRDNSRequest | 
 
     try:
-        api_response = api_instance.dedicated_servers_rdns_create(id, dedicated_rdns)
+        api_response = api_instance.dedicated_servers_rdns_create(id, dedicated_rdns_request)
         print("The response of DedicatedApi->dedicated_servers_rdns_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -243,7 +243,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **dedicated_rdns** | [**DedicatedRDNS**](DedicatedRDNS.md)|  | 
+ **dedicated_rdns_request** | [**DedicatedRDNSRequest**](DedicatedRDNSRequest.md)|  | 
 
 ### Return type
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dedicated_servers_reinstall_create**
-> ReinstallResponse dedicated_servers_reinstall_create(id, reinstall)
+> ReinstallResponse dedicated_servers_reinstall_create(id, reinstall_request)
 
 Reinstall the dedicated server with a new operating system.
 
@@ -278,7 +278,7 @@ Reinstall the dedicated server with a new operating system.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.reinstall import Reinstall
+from pidginhost_sdk.models.reinstall_request import ReinstallRequest
 from pidginhost_sdk.models.reinstall_response import ReinstallResponse
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -311,10 +311,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.DedicatedApi(api_client)
     id = 'id_example' # str | 
-    reinstall = pidginhost_sdk.Reinstall() # Reinstall | 
+    reinstall_request = pidginhost_sdk.ReinstallRequest() # ReinstallRequest | 
 
     try:
-        api_response = api_instance.dedicated_servers_reinstall_create(id, reinstall)
+        api_response = api_instance.dedicated_servers_reinstall_create(id, reinstall_request)
         print("The response of DedicatedApi->dedicated_servers_reinstall_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -329,7 +329,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **reinstall** | [**Reinstall**](Reinstall.md)|  | 
+ **reinstall_request** | [**ReinstallRequest**](ReinstallRequest.md)|  | 
 
 ### Return type
 

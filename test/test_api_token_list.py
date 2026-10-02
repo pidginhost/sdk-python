@@ -55,8 +55,6 @@ class TestAPITokenList(unittest.TestCase):
                 created = '',
                 last_used = '',
                 request_count = 56,
-                account = '',
-                membership_status = '',
         )
         """
 

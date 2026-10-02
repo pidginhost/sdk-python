@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 
 # **account_api_tokens_create**
-> APITokenCreate account_api_tokens_create(api_token_create)
+> APITokenCreate account_api_tokens_create(api_token_create_request)
 
 Manage your API tokens
 
@@ -38,6 +38,7 @@ Manage your API tokens
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.api_token_create import APITokenCreate
+from pidginhost_sdk.models.api_token_create_request import APITokenCreateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -68,10 +69,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
-    api_token_create = pidginhost_sdk.APITokenCreate() # APITokenCreate | 
+    api_token_create_request = pidginhost_sdk.APITokenCreateRequest() # APITokenCreateRequest | 
 
     try:
-        api_response = api_instance.account_api_tokens_create(api_token_create)
+        api_response = api_instance.account_api_tokens_create(api_token_create_request)
         print("The response of AccountApi->account_api_tokens_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -85,7 +86,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **api_token_create** | [**APITokenCreate**](APITokenCreate.md)|  | 
+ **api_token_create_request** | [**APITokenCreateRequest**](APITokenCreateRequest.md)|  | 
 
 ### Return type
 
@@ -272,7 +273,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_companies_create**
-> Company account_companies_create(company)
+> Company account_companies_create(company_request)
 
 Manage your companies
 
@@ -284,6 +285,7 @@ Manage your companies
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.company import Company
+from pidginhost_sdk.models.company_request import CompanyRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -314,10 +316,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
-    company = pidginhost_sdk.Company() # Company | 
+    company_request = pidginhost_sdk.CompanyRequest() # CompanyRequest | 
 
     try:
-        api_response = api_instance.account_companies_create(company)
+        api_response = api_instance.account_companies_create(company_request)
         print("The response of AccountApi->account_companies_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -331,7 +333,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **company** | [**Company**](Company.md)|  | 
+ **company_request** | [**CompanyRequest**](CompanyRequest.md)|  | 
 
 ### Return type
 
@@ -518,7 +520,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_companies_partial_update**
-> Company account_companies_partial_update(id, patched_company=patched_company)
+> Company account_companies_partial_update(id, patched_company_request=patched_company_request)
 
 Manage your companies
 
@@ -530,7 +532,7 @@ Manage your companies
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.company import Company
-from pidginhost_sdk.models.patched_company import PatchedCompany
+from pidginhost_sdk.models.patched_company_request import PatchedCompanyRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -562,10 +564,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
     id = 56 # int | A unique integer value identifying this company.
-    patched_company = pidginhost_sdk.PatchedCompany() # PatchedCompany |  (optional)
+    patched_company_request = pidginhost_sdk.PatchedCompanyRequest() # PatchedCompanyRequest |  (optional)
 
     try:
-        api_response = api_instance.account_companies_partial_update(id, patched_company=patched_company)
+        api_response = api_instance.account_companies_partial_update(id, patched_company_request=patched_company_request)
         print("The response of AccountApi->account_companies_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -580,7 +582,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this company. | 
- **patched_company** | [**PatchedCompany**](PatchedCompany.md)|  | [optional] 
+ **patched_company_request** | [**PatchedCompanyRequest**](PatchedCompanyRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -687,7 +689,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_companies_update**
-> Company account_companies_update(id, company)
+> Company account_companies_update(id, company_request)
 
 Manage your companies
 
@@ -699,6 +701,7 @@ Manage your companies
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.company import Company
+from pidginhost_sdk.models.company_request import CompanyRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -730,10 +733,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
     id = 56 # int | A unique integer value identifying this company.
-    company = pidginhost_sdk.Company() # Company | 
+    company_request = pidginhost_sdk.CompanyRequest() # CompanyRequest | 
 
     try:
-        api_response = api_instance.account_companies_update(id, company)
+        api_response = api_instance.account_companies_update(id, company_request)
         print("The response of AccountApi->account_companies_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -748,7 +751,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this company. | 
- **company** | [**Company**](Company.md)|  | 
+ **company_request** | [**CompanyRequest**](CompanyRequest.md)|  | 
 
 ### Return type
 
@@ -855,7 +858,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_profile_partial_update**
-> Profile account_profile_partial_update(patched_profile=patched_profile)
+> Profile account_profile_partial_update(patched_profile_request=patched_profile_request)
 
 Manage your profile data
 
@@ -866,7 +869,7 @@ Manage your profile data
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_profile import PatchedProfile
+from pidginhost_sdk.models.patched_profile_request import PatchedProfileRequest
 from pidginhost_sdk.models.profile import Profile
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -898,10 +901,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
-    patched_profile = pidginhost_sdk.PatchedProfile() # PatchedProfile |  (optional)
+    patched_profile_request = pidginhost_sdk.PatchedProfileRequest() # PatchedProfileRequest |  (optional)
 
     try:
-        api_response = api_instance.account_profile_partial_update(patched_profile=patched_profile)
+        api_response = api_instance.account_profile_partial_update(patched_profile_request=patched_profile_request)
         print("The response of AccountApi->account_profile_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -915,7 +918,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **patched_profile** | [**PatchedProfile**](PatchedProfile.md)|  | [optional] 
+ **patched_profile_request** | [**PatchedProfileRequest**](PatchedProfileRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1018,7 +1021,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_profile_update**
-> Profile account_profile_update(profile)
+> Profile account_profile_update(profile_request)
 
 Manage your profile data
 
@@ -1030,6 +1033,7 @@ Manage your profile data
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.profile import Profile
+from pidginhost_sdk.models.profile_request import ProfileRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1060,10 +1064,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
-    profile = pidginhost_sdk.Profile() # Profile | 
+    profile_request = pidginhost_sdk.ProfileRequest() # ProfileRequest | 
 
     try:
-        api_response = api_instance.account_profile_update(profile)
+        api_response = api_instance.account_profile_update(profile_request)
         print("The response of AccountApi->account_profile_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1077,7 +1081,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **profile** | [**Profile**](Profile.md)|  | 
+ **profile_request** | [**ProfileRequest**](ProfileRequest.md)|  | 
 
 ### Return type
 
@@ -1101,7 +1105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_ssh_keys_create**
-> SSHKey account_ssh_keys_create(ssh_key=ssh_key)
+> SSHKey account_ssh_keys_create(ssh_key_request)
 
 Account context + IAM role enforcement for the account residue:
 billing identity (profile/companies/email history) is owner-only account
@@ -1115,6 +1119,7 @@ state, SSH keys are account infra, tokens stay actor-owned.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.ssh_key import SSHKey
+from pidginhost_sdk.models.ssh_key_request import SSHKeyRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1145,10 +1150,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
-    ssh_key = pidginhost_sdk.SSHKey() # SSHKey |  (optional)
+    ssh_key_request = pidginhost_sdk.SSHKeyRequest() # SSHKeyRequest | 
 
     try:
-        api_response = api_instance.account_ssh_keys_create(ssh_key=ssh_key)
+        api_response = api_instance.account_ssh_keys_create(ssh_key_request)
         print("The response of AccountApi->account_ssh_keys_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -1162,7 +1167,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ssh_key** | [**SSHKey**](SSHKey.md)|  | [optional] 
+ **ssh_key_request** | [**SSHKeyRequest**](SSHKeyRequest.md)|  | 
 
 ### Return type
 
@@ -1353,7 +1358,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_ssh_keys_partial_update**
-> SSHKey account_ssh_keys_partial_update(id, patched_ssh_key=patched_ssh_key)
+> SSHKey account_ssh_keys_partial_update(id, patched_ssh_key_update_request=patched_ssh_key_update_request)
 
 Account context + IAM role enforcement for the account residue:
 billing identity (profile/companies/email history) is owner-only account
@@ -1366,7 +1371,7 @@ state, SSH keys are account infra, tokens stay actor-owned.
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.patched_ssh_key import PatchedSSHKey
+from pidginhost_sdk.models.patched_ssh_key_update_request import PatchedSSHKeyUpdateRequest
 from pidginhost_sdk.models.ssh_key import SSHKey
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
@@ -1399,10 +1404,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
     id = 'id_example' # str | 
-    patched_ssh_key = pidginhost_sdk.PatchedSSHKey() # PatchedSSHKey |  (optional)
+    patched_ssh_key_update_request = pidginhost_sdk.PatchedSSHKeyUpdateRequest() # PatchedSSHKeyUpdateRequest |  (optional)
 
     try:
-        api_response = api_instance.account_ssh_keys_partial_update(id, patched_ssh_key=patched_ssh_key)
+        api_response = api_instance.account_ssh_keys_partial_update(id, patched_ssh_key_update_request=patched_ssh_key_update_request)
         print("The response of AccountApi->account_ssh_keys_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1417,7 +1422,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **patched_ssh_key** | [**PatchedSSHKey**](PatchedSSHKey.md)|  | [optional] 
+ **patched_ssh_key_update_request** | [**PatchedSSHKeyUpdateRequest**](PatchedSSHKeyUpdateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1526,7 +1531,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **account_ssh_keys_update**
-> SSHKey account_ssh_keys_update(id, ssh_key=ssh_key)
+> SSHKey account_ssh_keys_update(id, ssh_key_update_request=ssh_key_update_request)
 
 Account context + IAM role enforcement for the account residue:
 billing identity (profile/companies/email history) is owner-only account
@@ -1540,6 +1545,7 @@ state, SSH keys are account infra, tokens stay actor-owned.
 ```python
 import pidginhost_sdk
 from pidginhost_sdk.models.ssh_key import SSHKey
+from pidginhost_sdk.models.ssh_key_update_request import SSHKeyUpdateRequest
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1571,10 +1577,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.AccountApi(api_client)
     id = 'id_example' # str | 
-    ssh_key = pidginhost_sdk.SSHKey() # SSHKey |  (optional)
+    ssh_key_update_request = pidginhost_sdk.SSHKeyUpdateRequest() # SSHKeyUpdateRequest |  (optional)
 
     try:
-        api_response = api_instance.account_ssh_keys_update(id, ssh_key=ssh_key)
+        api_response = api_instance.account_ssh_keys_update(id, ssh_key_update_request=ssh_key_update_request)
         print("The response of AccountApi->account_ssh_keys_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1589,7 +1595,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **ssh_key** | [**SSHKey**](SSHKey.md)|  | [optional] 
+ **ssh_key_update_request** | [**SSHKeyUpdateRequest**](SSHKeyUpdateRequest.md)|  | [optional] 
 
 ### Return type
 

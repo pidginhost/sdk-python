@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **next_invoice** | **date** |  | [readonly] 
 **created** | **str** |  | [readonly] 
 **billing_cycle** | **str** |  | [readonly] 
-**server_status** | **str** |  | [readonly] 
-**ips** | **str** |  | [readonly] 
+**server_status** | [**DedicatedServerStatus**](DedicatedServerStatus.md) |  | [readonly] 
+**ips** | [**List[DedicatedServerIP]**](DedicatedServerIP.md) |  | [readonly] 
 **os_name** | **str** |  | [readonly] 
 
 ## Example

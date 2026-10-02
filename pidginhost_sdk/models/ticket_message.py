@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,7 @@ class TicketMessage(BaseModel):
     var_date: StrictStr = Field(alias="date")
     message: StrictStr
     author_name: StrictStr
-    has_attachment: StrictStr
+    has_attachment: StrictBool
     attachment_filename: StrictStr
     __properties: ClassVar[List[str]] = ["id", "date", "message", "author_name", "has_attachment", "attachment_filename"]
 

@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.floating_ip_summary import FloatingIPSummary
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
+from pidginhost_sdk.models.server_networks import ServerNetworks
 from pidginhost_sdk.models.volume import Volume
 from typing import Optional, Set
 from typing_extensions import Self
@@ -43,9 +44,8 @@ class ServerDetail(BaseModel):
     generation: StrictStr
     machine: Dict[str, Any]
     volumes: List[Volume]
-    networks: Dict[str, Any]
+    networks: ServerNetworks
     floating_ips: List[FloatingIPSummary]
-    password: Optional[Annotated[str, Field(strict=True, max_length=300)]] = None
     ssh_pub_key: Optional[Annotated[str, Field(strict=True, max_length=3000)]] = Field(default=None, description="Public key to apply for SSH login. Applying a non-empty key regenerates cloud-init and reboots a running server. Clearing removes the key from future cloud-init data, but does not revoke keys already in the guest.")
     status: ResourceStatusEnum
     username: StrictStr
@@ -55,7 +55,7 @@ class ServerDetail(BaseModel):
     rescue_mode: StrictBool
     boot_iso: Optional[StrictStr]
     rescue_supported: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "hostname", "project", "image", "package", "cpus", "memory", "disk_size", "generation", "machine", "volumes", "networks", "floating_ips", "password", "ssh_pub_key", "status", "username", "destroy_protection", "ha_enabled", "custom_os", "rescue_mode", "boot_iso", "rescue_supported"]
+    __properties: ClassVar[List[str]] = ["id", "hostname", "project", "image", "package", "cpus", "memory", "disk_size", "generation", "machine", "volumes", "networks", "floating_ips", "ssh_pub_key", "status", "username", "destroy_protection", "ha_enabled", "custom_os", "rescue_mode", "boot_iso", "rescue_supported"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -143,6 +143,9 @@ class ServerDetail(BaseModel):
                 if _item_volumes:
                     _items.append(_item_volumes.to_dict())
             _dict['volumes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of networks
+        if self.networks:
+            _dict['networks'] = self.networks.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in floating_ips (list)
         _items = []
         if self.floating_ips:
@@ -178,9 +181,8 @@ class ServerDetail(BaseModel):
             "generation": obj.get("generation"),
             "machine": obj.get("machine"),
             "volumes": [Volume.from_dict(_item) for _item in obj["volumes"]] if obj.get("volumes") is not None else None,
-            "networks": obj.get("networks"),
+            "networks": ServerNetworks.from_dict(obj["networks"]) if obj.get("networks") is not None else None,
             "floating_ips": [FloatingIPSummary.from_dict(_item) for _item in obj["floating_ips"]] if obj.get("floating_ips") is not None else None,
-            "password": obj.get("password"),
             "ssh_pub_key": obj.get("ssh_pub_key"),
             "status": obj.get("status"),
             "username": obj.get("username"),

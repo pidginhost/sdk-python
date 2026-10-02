@@ -42,7 +42,8 @@ class TestPublicIPv4(unittest.TestCase):
                 gateway = '',
                 prefix = 56,
                 attached = True,
-                server = ''
+                server = '',
+                server_id = 56
             )
         else:
             return PublicIPv4(
@@ -53,6 +54,7 @@ class TestPublicIPv4(unittest.TestCase):
                 prefix = 56,
                 attached = True,
                 server = '',
+                server_id = 56,
         )
         """
 

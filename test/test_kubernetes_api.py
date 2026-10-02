@@ -69,6 +69,30 @@ class TestKubernetesApi(unittest.TestCase):
         """
         pass
 
+    def test_kubernetes_clusters_encryption_create(self) -> None:
+        """Test case for kubernetes_clusters_encryption_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_encryption_recheck_create(self) -> None:
+        """Test case for kubernetes_clusters_encryption_recheck_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_encryption_reconcile_create(self) -> None:
+        """Test case for kubernetes_clusters_encryption_reconcile_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_encryption_retrieve(self) -> None:
+        """Test case for kubernetes_clusters_encryption_retrieve
+
+        """
+        pass
+
     def test_kubernetes_clusters_httproutes_create(self) -> None:
         """Test case for kubernetes_clusters_httproutes_create
 
@@ -165,8 +189,56 @@ class TestKubernetesApi(unittest.TestCase):
         """
         pass
 
+    def test_kubernetes_clusters_node_operations_cancel_create(self) -> None:
+        """Test case for kubernetes_clusters_node_operations_cancel_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_node_operations_list(self) -> None:
+        """Test case for kubernetes_clusters_node_operations_list
+
+        """
+        pass
+
+    def test_kubernetes_clusters_node_operations_resume_create(self) -> None:
+        """Test case for kubernetes_clusters_node_operations_resume_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_node_operations_retrieve(self) -> None:
+        """Test case for kubernetes_clusters_node_operations_retrieve
+
+        """
+        pass
+
+    def test_kubernetes_clusters_node_operations_retry_create(self) -> None:
+        """Test case for kubernetes_clusters_node_operations_retry_create
+
+        """
+        pass
+
     def test_kubernetes_clusters_partial_update(self) -> None:
         """Test case for kubernetes_clusters_partial_update
+
+        """
+        pass
+
+    def test_kubernetes_clusters_pool_removal_journals_list(self) -> None:
+        """Test case for kubernetes_clusters_pool_removal_journals_list
+
+        """
+        pass
+
+    def test_kubernetes_clusters_pool_removal_journals_resume_create(self) -> None:
+        """Test case for kubernetes_clusters_pool_removal_journals_resume_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_pool_removal_journals_retrieve(self) -> None:
+        """Test case for kubernetes_clusters_pool_removal_journals_retrieve
 
         """
         pass
@@ -239,6 +311,12 @@ class TestKubernetesApi(unittest.TestCase):
 
     def test_kubernetes_clusters_resource_pools_nodes_metrics_retrieve(self) -> None:
         """Test case for kubernetes_clusters_resource_pools_nodes_metrics_retrieve
+
+        """
+        pass
+
+    def test_kubernetes_clusters_resource_pools_nodes_reboot_create(self) -> None:
+        """Test case for kubernetes_clusters_resource_pools_nodes_reboot_create
 
         """
         pass
@@ -371,6 +449,12 @@ class TestKubernetesApi(unittest.TestCase):
 
     def test_kubernetes_clusters_upgrade_feature_create(self) -> None:
         """Test case for kubernetes_clusters_upgrade_feature_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_upgrade_lb_create(self) -> None:
+        """Test case for kubernetes_clusters_upgrade_lb_create
 
         """
         pass

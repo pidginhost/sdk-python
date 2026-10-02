@@ -36,12 +36,12 @@ class TestAttachIPv4Request(unittest.TestCase):
         model = AttachIPv4Request()
         if include_optional:
             return AttachIPv4Request(
-                ipv4 = '',
+                ipv4 = '0',
                 reboot = True
             )
         else:
             return AttachIPv4Request(
-                ipv4 = '',
+                ipv4 = '0',
         )
         """
 

@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from pidginhost_sdk.models.change_password import ChangePassword
+from pidginhost_sdk.models.change_password_request import ChangePasswordRequest
 from pidginhost_sdk.models.hosting_change_password_response import HostingChangePasswordResponse
 from pidginhost_sdk.models.hosting_service import HostingService
 from pidginhost_sdk.models.paginated_hosting_service_list import PaginatedHostingServiceList
@@ -46,7 +46,7 @@ class HostingApi:
     def hosting_hosting_change_password_create(
         self,
         id: StrictStr,
-        change_password: ChangePassword,
+        change_password_request: ChangePasswordRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,8 +66,8 @@ class HostingApi:
 
         :param id: (required)
         :type id: str
-        :param change_password: (required)
-        :type change_password: ChangePassword
+        :param change_password_request: (required)
+        :type change_password_request: ChangePasswordRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -92,7 +92,7 @@ class HostingApi:
 
         _param = self._hosting_hosting_change_password_create_serialize(
             id=id,
-            change_password=change_password,
+            change_password_request=change_password_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -117,7 +117,7 @@ class HostingApi:
     def hosting_hosting_change_password_create_with_http_info(
         self,
         id: StrictStr,
-        change_password: ChangePassword,
+        change_password_request: ChangePasswordRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,8 +137,8 @@ class HostingApi:
 
         :param id: (required)
         :type id: str
-        :param change_password: (required)
-        :type change_password: ChangePassword
+        :param change_password_request: (required)
+        :type change_password_request: ChangePasswordRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -163,7 +163,7 @@ class HostingApi:
 
         _param = self._hosting_hosting_change_password_create_serialize(
             id=id,
-            change_password=change_password,
+            change_password_request=change_password_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -188,7 +188,7 @@ class HostingApi:
     def hosting_hosting_change_password_create_without_preload_content(
         self,
         id: StrictStr,
-        change_password: ChangePassword,
+        change_password_request: ChangePasswordRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,8 +208,8 @@ class HostingApi:
 
         :param id: (required)
         :type id: str
-        :param change_password: (required)
-        :type change_password: ChangePassword
+        :param change_password_request: (required)
+        :type change_password_request: ChangePasswordRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -234,7 +234,7 @@ class HostingApi:
 
         _param = self._hosting_hosting_change_password_create_serialize(
             id=id,
-            change_password=change_password,
+            change_password_request=change_password_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -254,7 +254,7 @@ class HostingApi:
     def _hosting_hosting_change_password_create_serialize(
         self,
         id,
-        change_password,
+        change_password_request,
         _request_auth,
         _content_type,
         _headers,
@@ -282,8 +282,8 @@ class HostingApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if change_password is not None:
-            _body_params = change_password
+        if change_password_request is not None:
+            _body_params = change_password_request
 
 
         # set the HTTP header `Accept`

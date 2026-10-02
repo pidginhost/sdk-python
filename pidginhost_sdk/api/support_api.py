@@ -22,10 +22,10 @@ from typing_extensions import Annotated
 from pidginhost_sdk.models.department import Department
 from pidginhost_sdk.models.paginated_ticket_list_list import PaginatedTicketListList
 from pidginhost_sdk.models.ticket_close_response import TicketCloseResponse
-from pidginhost_sdk.models.ticket_create import TicketCreate
+from pidginhost_sdk.models.ticket_create_request import TicketCreateRequest
 from pidginhost_sdk.models.ticket_detail import TicketDetail
 from pidginhost_sdk.models.ticket_reopen_response import TicketReopenResponse
-from pidginhost_sdk.models.ticket_reply import TicketReply
+from pidginhost_sdk.models.ticket_reply_request import TicketReplyRequest
 from pidginhost_sdk.models.ticket_reply_response import TicketReplyResponse
 
 from pidginhost_sdk.api_client import ApiClient, RequestSerialized
@@ -558,7 +558,7 @@ class SupportApi:
     @validate_call
     def support_tickets_create(
         self,
-        ticket_create: TicketCreate,
+        ticket_create_request: TicketCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -576,8 +576,8 @@ class SupportApi:
 
         Create a new support ticket.
 
-        :param ticket_create: (required)
-        :type ticket_create: TicketCreate
+        :param ticket_create_request: (required)
+        :type ticket_create_request: TicketCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -601,7 +601,7 @@ class SupportApi:
         """ # noqa: E501
 
         _param = self._support_tickets_create_serialize(
-            ticket_create=ticket_create,
+            ticket_create_request=ticket_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -625,7 +625,7 @@ class SupportApi:
     @validate_call
     def support_tickets_create_with_http_info(
         self,
-        ticket_create: TicketCreate,
+        ticket_create_request: TicketCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -643,8 +643,8 @@ class SupportApi:
 
         Create a new support ticket.
 
-        :param ticket_create: (required)
-        :type ticket_create: TicketCreate
+        :param ticket_create_request: (required)
+        :type ticket_create_request: TicketCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -668,7 +668,7 @@ class SupportApi:
         """ # noqa: E501
 
         _param = self._support_tickets_create_serialize(
-            ticket_create=ticket_create,
+            ticket_create_request=ticket_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -692,7 +692,7 @@ class SupportApi:
     @validate_call
     def support_tickets_create_without_preload_content(
         self,
-        ticket_create: TicketCreate,
+        ticket_create_request: TicketCreateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -710,8 +710,8 @@ class SupportApi:
 
         Create a new support ticket.
 
-        :param ticket_create: (required)
-        :type ticket_create: TicketCreate
+        :param ticket_create_request: (required)
+        :type ticket_create_request: TicketCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -735,7 +735,7 @@ class SupportApi:
         """ # noqa: E501
 
         _param = self._support_tickets_create_serialize(
-            ticket_create=ticket_create,
+            ticket_create_request=ticket_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -754,7 +754,7 @@ class SupportApi:
 
     def _support_tickets_create_serialize(
         self,
-        ticket_create,
+        ticket_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -780,8 +780,8 @@ class SupportApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ticket_create is not None:
-            _body_params = ticket_create
+        if ticket_create_request is not None:
+            _body_params = ticket_create_request
 
 
         # set the HTTP header `Accept`
@@ -1637,7 +1637,7 @@ class SupportApi:
     def support_tickets_reply_create(
         self,
         id: StrictStr,
-        ticket_reply: TicketReply,
+        ticket_reply_request: TicketReplyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1657,8 +1657,8 @@ class SupportApi:
 
         :param id: (required)
         :type id: str
-        :param ticket_reply: (required)
-        :type ticket_reply: TicketReply
+        :param ticket_reply_request: (required)
+        :type ticket_reply_request: TicketReplyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1683,7 +1683,7 @@ class SupportApi:
 
         _param = self._support_tickets_reply_create_serialize(
             id=id,
-            ticket_reply=ticket_reply,
+            ticket_reply_request=ticket_reply_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1708,7 +1708,7 @@ class SupportApi:
     def support_tickets_reply_create_with_http_info(
         self,
         id: StrictStr,
-        ticket_reply: TicketReply,
+        ticket_reply_request: TicketReplyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1728,8 +1728,8 @@ class SupportApi:
 
         :param id: (required)
         :type id: str
-        :param ticket_reply: (required)
-        :type ticket_reply: TicketReply
+        :param ticket_reply_request: (required)
+        :type ticket_reply_request: TicketReplyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1754,7 +1754,7 @@ class SupportApi:
 
         _param = self._support_tickets_reply_create_serialize(
             id=id,
-            ticket_reply=ticket_reply,
+            ticket_reply_request=ticket_reply_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1779,7 +1779,7 @@ class SupportApi:
     def support_tickets_reply_create_without_preload_content(
         self,
         id: StrictStr,
-        ticket_reply: TicketReply,
+        ticket_reply_request: TicketReplyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1799,8 +1799,8 @@ class SupportApi:
 
         :param id: (required)
         :type id: str
-        :param ticket_reply: (required)
-        :type ticket_reply: TicketReply
+        :param ticket_reply_request: (required)
+        :type ticket_reply_request: TicketReplyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1825,7 +1825,7 @@ class SupportApi:
 
         _param = self._support_tickets_reply_create_serialize(
             id=id,
-            ticket_reply=ticket_reply,
+            ticket_reply_request=ticket_reply_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1845,7 +1845,7 @@ class SupportApi:
     def _support_tickets_reply_create_serialize(
         self,
         id,
-        ticket_reply,
+        ticket_reply_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1873,8 +1873,8 @@ class SupportApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ticket_reply is not None:
-            _body_params = ticket_reply
+        if ticket_reply_request is not None:
+            _body_params = ticket_reply_request
 
 
         # set the HTTP header `Accept`
