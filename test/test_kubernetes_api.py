@@ -81,12 +81,6 @@ class TestKubernetesApi(unittest.TestCase):
         """
         pass
 
-    def test_kubernetes_clusters_encryption_reconcile_create(self) -> None:
-        """Test case for kubernetes_clusters_encryption_reconcile_create
-
-        """
-        pass
-
     def test_kubernetes_clusters_encryption_retrieve(self) -> None:
         """Test case for kubernetes_clusters_encryption_retrieve
 
@@ -147,24 +141,6 @@ class TestKubernetesApi(unittest.TestCase):
         """
         pass
 
-    def test_kubernetes_clusters_l3_cutover_create(self) -> None:
-        """Test case for kubernetes_clusters_l3_cutover_create
-
-        """
-        pass
-
-    def test_kubernetes_clusters_l3_retrieve(self) -> None:
-        """Test case for kubernetes_clusters_l3_retrieve
-
-        """
-        pass
-
-    def test_kubernetes_clusters_l3_revert_create(self) -> None:
-        """Test case for kubernetes_clusters_l3_revert_create
-
-        """
-        pass
-
     def test_kubernetes_clusters_lb_firewall_create(self) -> None:
         """Test case for kubernetes_clusters_lb_firewall_create
 
@@ -219,12 +195,6 @@ class TestKubernetesApi(unittest.TestCase):
         """
         pass
 
-    def test_kubernetes_clusters_node_operations_resume_create(self) -> None:
-        """Test case for kubernetes_clusters_node_operations_resume_create
-
-        """
-        pass
-
     def test_kubernetes_clusters_node_operations_retrieve(self) -> None:
         """Test case for kubernetes_clusters_node_operations_retrieve
 
@@ -245,12 +215,6 @@ class TestKubernetesApi(unittest.TestCase):
 
     def test_kubernetes_clusters_pool_removal_journals_list(self) -> None:
         """Test case for kubernetes_clusters_pool_removal_journals_list
-
-        """
-        pass
-
-    def test_kubernetes_clusters_pool_removal_journals_resume_create(self) -> None:
-        """Test case for kubernetes_clusters_pool_removal_journals_resume_create
 
         """
         pass

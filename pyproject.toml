@@ -1,6 +1,6 @@
 [project]
 name = "pidginhost_sdk"
-version = "0.15.0"
+version = "0.16.0"
 description = "Pidgin Host API"
 authors = [
   {name = "PidginHost",email = "support@pidginhost.com"},

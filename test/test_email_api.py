@@ -237,12 +237,6 @@ class TestEmailApi(unittest.TestCase):
         """
         pass
 
-    def test_email_services_restore_create(self) -> None:
-        """Test case for email_services_restore_create
-
-        """
-        pass
-
     def test_email_services_retrieve(self) -> None:
         """Test case for email_services_retrieve
 

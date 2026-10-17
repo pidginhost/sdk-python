@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.15.0"
+__version__ = "0.16.0"
 
 # Define package exports
 __all__ = [
@@ -29,7 +29,6 @@ __all__ = [
     "FreednsApi",
     "HostingApi",
     "KubernetesApi",
-    "OApi",
     "SchemaApi",
     "SupportApi",
     "ApiResponse",
@@ -87,7 +86,6 @@ __all__ = [
     "ClusterEncryption",
     "ClusterEncryptionError",
     "ClusterEncryptionOperation",
-    "ClusterEncryptionReconcileRequest",
     "ClusterEncryptionRefusal",
     "ClusterEncryptionRequest",
     "ClusterEncryptionStatusEnum",
@@ -217,7 +215,6 @@ __all__ = [
     "LBUpgradePlanResponse",
     "LBUpgradeRequest",
     "LowBalanceSettingsRequest",
-    "MobileOAuthSession",
     "ModeEnum",
     "NameserversUpdateRequest",
     "NameserversUpdateResponse",
@@ -426,7 +423,6 @@ from pidginhost_sdk.api.email_api import EmailApi as EmailApi
 from pidginhost_sdk.api.freedns_api import FreednsApi as FreednsApi
 from pidginhost_sdk.api.hosting_api import HostingApi as HostingApi
 from pidginhost_sdk.api.kubernetes_api import KubernetesApi as KubernetesApi
-from pidginhost_sdk.api.o_api import OApi as OApi
 from pidginhost_sdk.api.schema_api import SchemaApi as SchemaApi
 from pidginhost_sdk.api.support_api import SupportApi as SupportApi
 
@@ -488,7 +484,6 @@ from pidginhost_sdk.models.cluster_detail_request import ClusterDetailRequest as
 from pidginhost_sdk.models.cluster_encryption import ClusterEncryption as ClusterEncryption
 from pidginhost_sdk.models.cluster_encryption_error import ClusterEncryptionError as ClusterEncryptionError
 from pidginhost_sdk.models.cluster_encryption_operation import ClusterEncryptionOperation as ClusterEncryptionOperation
-from pidginhost_sdk.models.cluster_encryption_reconcile_request import ClusterEncryptionReconcileRequest as ClusterEncryptionReconcileRequest
 from pidginhost_sdk.models.cluster_encryption_refusal import ClusterEncryptionRefusal as ClusterEncryptionRefusal
 from pidginhost_sdk.models.cluster_encryption_request import ClusterEncryptionRequest as ClusterEncryptionRequest
 from pidginhost_sdk.models.cluster_encryption_status_enum import ClusterEncryptionStatusEnum as ClusterEncryptionStatusEnum
@@ -618,7 +613,6 @@ from pidginhost_sdk.models.lb_upgrade_dispatch_response import LBUpgradeDispatch
 from pidginhost_sdk.models.lb_upgrade_plan_response import LBUpgradePlanResponse as LBUpgradePlanResponse
 from pidginhost_sdk.models.lb_upgrade_request import LBUpgradeRequest as LBUpgradeRequest
 from pidginhost_sdk.models.low_balance_settings_request import LowBalanceSettingsRequest as LowBalanceSettingsRequest
-from pidginhost_sdk.models.mobile_o_auth_session import MobileOAuthSession as MobileOAuthSession
 from pidginhost_sdk.models.mode_enum import ModeEnum as ModeEnum
 from pidginhost_sdk.models.nameservers_update_request import NameserversUpdateRequest as NameserversUpdateRequest
 from pidginhost_sdk.models.nameservers_update_response import NameserversUpdateResponse as NameserversUpdateResponse

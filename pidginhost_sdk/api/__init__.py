@@ -11,7 +11,6 @@ from pidginhost_sdk.api.email_api import EmailApi
 from pidginhost_sdk.api.freedns_api import FreednsApi
 from pidginhost_sdk.api.hosting_api import HostingApi
 from pidginhost_sdk.api.kubernetes_api import KubernetesApi
-from pidginhost_sdk.api.o_api import OApi
 from pidginhost_sdk.api.schema_api import SchemaApi
 from pidginhost_sdk.api.support_api import SupportApi
 

@@ -39,7 +39,6 @@ Method | HTTP request | Description
 [**email_services_list**](EmailApi.md#email_services_list) | **GET** /api/email/services/ | 
 [**email_services_messages_retrieve**](EmailApi.md#email_services_messages_retrieve) | **GET** /api/email/services/{service_pk}/messages/ | 
 [**email_services_partial_update**](EmailApi.md#email_services_partial_update) | **PATCH** /api/email/services/{id}/ | 
-[**email_services_restore_create**](EmailApi.md#email_services_restore_create) | **POST** /api/email/services/{id}/restore/ | 
 [**email_services_retrieve**](EmailApi.md#email_services_retrieve) | **GET** /api/email/services/{id}/ | 
 [**email_services_sandbox_addresses_create**](EmailApi.md#email_services_sandbox_addresses_create) | **POST** /api/email/services/{service_pk}/sandbox_addresses/ | 
 [**email_services_sandbox_addresses_list**](EmailApi.md#email_services_sandbox_addresses_list) | **GET** /api/email/services/{service_pk}/sandbox_addresses/ | 
@@ -3109,94 +3108,6 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
         pprint(api_response)
     except Exception as e:
         print("Exception when calling EmailApi->email_services_partial_update: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| A unique integer value identifying this email service. | 
-
-### Return type
-
-[**EmailService**](EmailService.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **email_services_restore_create**
-> EmailService email_services_restore_create(id)
-
-Intersect the beta gate and IAM with the configured API permissions.
-
-Keeping the gate additive preserves authentication, custom-token scope,
-and OAuth scope checks when the customer-facing feature flag is open.
-Per-action permission overrides (the staff-only restore action) remain in
-the same intersection.
-
-### Example
-
-* Api Key Authentication (tokenAuth):
-* Api Key Authentication (cookieAuth):
-
-```python
-import pidginhost_sdk
-from pidginhost_sdk.models.email_service import EmailService
-from pidginhost_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://www.pidginhost.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pidginhost_sdk.Configuration(
-    host = "https://www.pidginhost.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: tokenAuth
-configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
-
-# Configure API key authorization: cookieAuth
-configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with pidginhost_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pidginhost_sdk.EmailApi(api_client)
-    id = 56 # int | A unique integer value identifying this email service.
-
-    try:
-        api_response = api_instance.email_services_restore_create(id)
-        print("The response of EmailApi->email_services_restore_create:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling EmailApi->email_services_restore_create: %s\n" % e)
 ```
 
 
