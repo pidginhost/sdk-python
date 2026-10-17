@@ -386,6 +386,7 @@ class FreednsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DNSRecordMutateResponse",
+            '201': "DNSRecordMutateResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -461,6 +462,7 @@ class FreednsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DNSRecordMutateResponse",
+            '201': "DNSRecordMutateResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -536,6 +538,7 @@ class FreednsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DNSRecordMutateResponse",
+            '201': "DNSRecordMutateResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

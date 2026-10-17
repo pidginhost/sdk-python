@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.14.0"
+__version__ = "0.15.0"
 
 # Define package exports
 __all__ = [
@@ -44,6 +44,7 @@ __all__ = [
     "APITokenCreate",
     "APITokenCreateRequest",
     "APITokenList",
+    "AccountSessionResponse",
     "ActivateFreeDNSRequest",
     "ActivateFreeDNSResponse",
     "ActivityLogEntry",
@@ -78,7 +79,6 @@ __all__ = [
     "ChangeCompanyRequest",
     "ChangeCompanyResponse",
     "ChangePasswordRequest",
-    "CheckAvailability",
     "CheckAvailabilityRequest",
     "ClusterAddRequest",
     "ClusterAddResponse",
@@ -106,14 +106,20 @@ __all__ = [
     "ContactsUpdateResponse",
     "CountryEnum",
     "CredentialCreateRequest",
+    "CurrencyEnum",
     "DNSGlue",
     "DNSGlueRequest",
     "DNSRecord",
     "DNSRecordCreateRequest",
     "DNSRecordCreateTypeEnum",
     "DNSRecordMutateResponse",
+    "Dashboard",
+    "DashboardBilling",
+    "DashboardResources",
+    "DashboardServer",
     "DeactivateFreeDNSRequest",
     "DeactivateFreeDNSResponse",
+    "DedicatedHardware",
     "DedicatedRDNSRequest",
     "DedicatedServer",
     "DedicatedServerIP",
@@ -135,6 +141,7 @@ __all__ = [
     "DnsSourceEnum",
     "Domain",
     "DomainAddRequest",
+    "DomainAvailability",
     "DomainCancelResponse",
     "DomainCreate",
     "DomainCreateRequest",
@@ -153,6 +160,7 @@ __all__ = [
     "EmailStats",
     "EncryptionModeEnum",
     "EncryptionReasonCodeEnum",
+    "ExpiringDomain",
     "FeatureUpgradeRequest",
     "FeatureUpgradeResponse",
     "FeaturesEnum",
@@ -181,14 +189,21 @@ __all__ = [
     "HTTPRouteRequest",
     "HardwareGeneration",
     "HostingChangePasswordResponse",
+    "HostingLVEPeriod",
     "HostingService",
+    "HostingUpgradeOption",
+    "HostingUpgradeOptions",
+    "HostingUsage",
+    "HostingUsageMetric",
     "InboundRoute",
     "InboundRouteCreateRequest",
     "InboundRouteWriteResponse",
     "InvoiceDetail",
     "InvoiceList",
+    "InvoiceLocalAmounts",
     "InvoiceService",
     "InvoiceStatusEnum",
+    "InvoiceTypeEnum",
     "IsoBootRequest",
     "K8sPortForward",
     "K8sPortForwardRequest",
@@ -202,11 +217,13 @@ __all__ = [
     "LBUpgradePlanResponse",
     "LBUpgradeRequest",
     "LowBalanceSettingsRequest",
+    "MobileOAuthSession",
     "ModeEnum",
     "NameserversUpdateRequest",
     "NameserversUpdateResponse",
     "NodeMetricsResponse",
     "NodeOperation",
+    "NodeOperationDeleteRequest",
     "NodeOperationKindEnum",
     "NodeOperationRebootRequest",
     "NodeOperationRetryRequest",
@@ -310,9 +327,12 @@ __all__ = [
     "RenewDomainRequest",
     "RescueEnterQueued",
     "RescueExitQueued",
+    "ResourceBilling",
+    "ResourceBillingProfile",
     "ResourcePool",
     "ResourcePoolAddRequest",
     "ResourcePoolAddResponse",
+    "ResourcePoolDeleteRequest",
     "ResourcePoolNode",
     "ResourcePoolRequest",
     "ResourceStatusEnum",
@@ -366,6 +386,7 @@ __all__ = [
     "TCPRoute",
     "TCPRouteRequest",
     "TLD",
+    "TLDCatalog",
     "TalosUpgradeResponse",
     "ThresholdTypeEnum",
     "TicketCloseResponse",
@@ -389,6 +410,7 @@ __all__ = [
     "UDPRouteRequest",
     "VersionEnum",
     "Volume",
+    "VolumeBusy",
     "VolumeRequest",
     "VolumeUpdateRequest",
 ]
@@ -423,6 +445,7 @@ from pidginhost_sdk.exceptions import ApiException as ApiException
 from pidginhost_sdk.models.api_token_create import APITokenCreate as APITokenCreate
 from pidginhost_sdk.models.api_token_create_request import APITokenCreateRequest as APITokenCreateRequest
 from pidginhost_sdk.models.api_token_list import APITokenList as APITokenList
+from pidginhost_sdk.models.account_session_response import AccountSessionResponse as AccountSessionResponse
 from pidginhost_sdk.models.activate_free_dns_request import ActivateFreeDNSRequest as ActivateFreeDNSRequest
 from pidginhost_sdk.models.activate_free_dns_response import ActivateFreeDNSResponse as ActivateFreeDNSResponse
 from pidginhost_sdk.models.activity_log_entry import ActivityLogEntry as ActivityLogEntry
@@ -457,7 +480,6 @@ from pidginhost_sdk.models.change_billing_cycle_response import ChangeBillingCyc
 from pidginhost_sdk.models.change_company_request import ChangeCompanyRequest as ChangeCompanyRequest
 from pidginhost_sdk.models.change_company_response import ChangeCompanyResponse as ChangeCompanyResponse
 from pidginhost_sdk.models.change_password_request import ChangePasswordRequest as ChangePasswordRequest
-from pidginhost_sdk.models.check_availability import CheckAvailability as CheckAvailability
 from pidginhost_sdk.models.check_availability_request import CheckAvailabilityRequest as CheckAvailabilityRequest
 from pidginhost_sdk.models.cluster_add_request import ClusterAddRequest as ClusterAddRequest
 from pidginhost_sdk.models.cluster_add_response import ClusterAddResponse as ClusterAddResponse
@@ -485,14 +507,20 @@ from pidginhost_sdk.models.contacts_update_request import ContactsUpdateRequest 
 from pidginhost_sdk.models.contacts_update_response import ContactsUpdateResponse as ContactsUpdateResponse
 from pidginhost_sdk.models.country_enum import CountryEnum as CountryEnum
 from pidginhost_sdk.models.credential_create_request import CredentialCreateRequest as CredentialCreateRequest
+from pidginhost_sdk.models.currency_enum import CurrencyEnum as CurrencyEnum
 from pidginhost_sdk.models.dns_glue import DNSGlue as DNSGlue
 from pidginhost_sdk.models.dns_glue_request import DNSGlueRequest as DNSGlueRequest
 from pidginhost_sdk.models.dns_record import DNSRecord as DNSRecord
 from pidginhost_sdk.models.dns_record_create_request import DNSRecordCreateRequest as DNSRecordCreateRequest
 from pidginhost_sdk.models.dns_record_create_type_enum import DNSRecordCreateTypeEnum as DNSRecordCreateTypeEnum
 from pidginhost_sdk.models.dns_record_mutate_response import DNSRecordMutateResponse as DNSRecordMutateResponse
+from pidginhost_sdk.models.dashboard import Dashboard as Dashboard
+from pidginhost_sdk.models.dashboard_billing import DashboardBilling as DashboardBilling
+from pidginhost_sdk.models.dashboard_resources import DashboardResources as DashboardResources
+from pidginhost_sdk.models.dashboard_server import DashboardServer as DashboardServer
 from pidginhost_sdk.models.deactivate_free_dns_request import DeactivateFreeDNSRequest as DeactivateFreeDNSRequest
 from pidginhost_sdk.models.deactivate_free_dns_response import DeactivateFreeDNSResponse as DeactivateFreeDNSResponse
+from pidginhost_sdk.models.dedicated_hardware import DedicatedHardware as DedicatedHardware
 from pidginhost_sdk.models.dedicated_rdns_request import DedicatedRDNSRequest as DedicatedRDNSRequest
 from pidginhost_sdk.models.dedicated_server import DedicatedServer as DedicatedServer
 from pidginhost_sdk.models.dedicated_server_ip import DedicatedServerIP as DedicatedServerIP
@@ -514,6 +542,7 @@ from pidginhost_sdk.models.disconnect_vm_response import DisconnectVMResponse as
 from pidginhost_sdk.models.dns_source_enum import DnsSourceEnum as DnsSourceEnum
 from pidginhost_sdk.models.domain import Domain as Domain
 from pidginhost_sdk.models.domain_add_request import DomainAddRequest as DomainAddRequest
+from pidginhost_sdk.models.domain_availability import DomainAvailability as DomainAvailability
 from pidginhost_sdk.models.domain_cancel_response import DomainCancelResponse as DomainCancelResponse
 from pidginhost_sdk.models.domain_create import DomainCreate as DomainCreate
 from pidginhost_sdk.models.domain_create_request import DomainCreateRequest as DomainCreateRequest
@@ -532,6 +561,7 @@ from pidginhost_sdk.models.email_service import EmailService as EmailService
 from pidginhost_sdk.models.email_stats import EmailStats as EmailStats
 from pidginhost_sdk.models.encryption_mode_enum import EncryptionModeEnum as EncryptionModeEnum
 from pidginhost_sdk.models.encryption_reason_code_enum import EncryptionReasonCodeEnum as EncryptionReasonCodeEnum
+from pidginhost_sdk.models.expiring_domain import ExpiringDomain as ExpiringDomain
 from pidginhost_sdk.models.feature_upgrade_request import FeatureUpgradeRequest as FeatureUpgradeRequest
 from pidginhost_sdk.models.feature_upgrade_response import FeatureUpgradeResponse as FeatureUpgradeResponse
 from pidginhost_sdk.models.features_enum import FeaturesEnum as FeaturesEnum
@@ -560,14 +590,21 @@ from pidginhost_sdk.models.http_route import HTTPRoute as HTTPRoute
 from pidginhost_sdk.models.http_route_request import HTTPRouteRequest as HTTPRouteRequest
 from pidginhost_sdk.models.hardware_generation import HardwareGeneration as HardwareGeneration
 from pidginhost_sdk.models.hosting_change_password_response import HostingChangePasswordResponse as HostingChangePasswordResponse
+from pidginhost_sdk.models.hosting_lve_period import HostingLVEPeriod as HostingLVEPeriod
 from pidginhost_sdk.models.hosting_service import HostingService as HostingService
+from pidginhost_sdk.models.hosting_upgrade_option import HostingUpgradeOption as HostingUpgradeOption
+from pidginhost_sdk.models.hosting_upgrade_options import HostingUpgradeOptions as HostingUpgradeOptions
+from pidginhost_sdk.models.hosting_usage import HostingUsage as HostingUsage
+from pidginhost_sdk.models.hosting_usage_metric import HostingUsageMetric as HostingUsageMetric
 from pidginhost_sdk.models.inbound_route import InboundRoute as InboundRoute
 from pidginhost_sdk.models.inbound_route_create_request import InboundRouteCreateRequest as InboundRouteCreateRequest
 from pidginhost_sdk.models.inbound_route_write_response import InboundRouteWriteResponse as InboundRouteWriteResponse
 from pidginhost_sdk.models.invoice_detail import InvoiceDetail as InvoiceDetail
 from pidginhost_sdk.models.invoice_list import InvoiceList as InvoiceList
+from pidginhost_sdk.models.invoice_local_amounts import InvoiceLocalAmounts as InvoiceLocalAmounts
 from pidginhost_sdk.models.invoice_service import InvoiceService as InvoiceService
 from pidginhost_sdk.models.invoice_status_enum import InvoiceStatusEnum as InvoiceStatusEnum
+from pidginhost_sdk.models.invoice_type_enum import InvoiceTypeEnum as InvoiceTypeEnum
 from pidginhost_sdk.models.iso_boot_request import IsoBootRequest as IsoBootRequest
 from pidginhost_sdk.models.k8s_port_forward import K8sPortForward as K8sPortForward
 from pidginhost_sdk.models.k8s_port_forward_request import K8sPortForwardRequest as K8sPortForwardRequest
@@ -581,11 +618,13 @@ from pidginhost_sdk.models.lb_upgrade_dispatch_response import LBUpgradeDispatch
 from pidginhost_sdk.models.lb_upgrade_plan_response import LBUpgradePlanResponse as LBUpgradePlanResponse
 from pidginhost_sdk.models.lb_upgrade_request import LBUpgradeRequest as LBUpgradeRequest
 from pidginhost_sdk.models.low_balance_settings_request import LowBalanceSettingsRequest as LowBalanceSettingsRequest
+from pidginhost_sdk.models.mobile_o_auth_session import MobileOAuthSession as MobileOAuthSession
 from pidginhost_sdk.models.mode_enum import ModeEnum as ModeEnum
 from pidginhost_sdk.models.nameservers_update_request import NameserversUpdateRequest as NameserversUpdateRequest
 from pidginhost_sdk.models.nameservers_update_response import NameserversUpdateResponse as NameserversUpdateResponse
 from pidginhost_sdk.models.node_metrics_response import NodeMetricsResponse as NodeMetricsResponse
 from pidginhost_sdk.models.node_operation import NodeOperation as NodeOperation
+from pidginhost_sdk.models.node_operation_delete_request import NodeOperationDeleteRequest as NodeOperationDeleteRequest
 from pidginhost_sdk.models.node_operation_kind_enum import NodeOperationKindEnum as NodeOperationKindEnum
 from pidginhost_sdk.models.node_operation_reboot_request import NodeOperationRebootRequest as NodeOperationRebootRequest
 from pidginhost_sdk.models.node_operation_retry_request import NodeOperationRetryRequest as NodeOperationRetryRequest
@@ -689,9 +728,12 @@ from pidginhost_sdk.models.renew_domain import RenewDomain as RenewDomain
 from pidginhost_sdk.models.renew_domain_request import RenewDomainRequest as RenewDomainRequest
 from pidginhost_sdk.models.rescue_enter_queued import RescueEnterQueued as RescueEnterQueued
 from pidginhost_sdk.models.rescue_exit_queued import RescueExitQueued as RescueExitQueued
+from pidginhost_sdk.models.resource_billing import ResourceBilling as ResourceBilling
+from pidginhost_sdk.models.resource_billing_profile import ResourceBillingProfile as ResourceBillingProfile
 from pidginhost_sdk.models.resource_pool import ResourcePool as ResourcePool
 from pidginhost_sdk.models.resource_pool_add_request import ResourcePoolAddRequest as ResourcePoolAddRequest
 from pidginhost_sdk.models.resource_pool_add_response import ResourcePoolAddResponse as ResourcePoolAddResponse
+from pidginhost_sdk.models.resource_pool_delete_request import ResourcePoolDeleteRequest as ResourcePoolDeleteRequest
 from pidginhost_sdk.models.resource_pool_node import ResourcePoolNode as ResourcePoolNode
 from pidginhost_sdk.models.resource_pool_request import ResourcePoolRequest as ResourcePoolRequest
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum as ResourceStatusEnum
@@ -745,6 +787,7 @@ from pidginhost_sdk.models.suppression_entry import SuppressionEntry as Suppress
 from pidginhost_sdk.models.tcp_route import TCPRoute as TCPRoute
 from pidginhost_sdk.models.tcp_route_request import TCPRouteRequest as TCPRouteRequest
 from pidginhost_sdk.models.tld import TLD as TLD
+from pidginhost_sdk.models.tld_catalog import TLDCatalog as TLDCatalog
 from pidginhost_sdk.models.talos_upgrade_response import TalosUpgradeResponse as TalosUpgradeResponse
 from pidginhost_sdk.models.threshold_type_enum import ThresholdTypeEnum as ThresholdTypeEnum
 from pidginhost_sdk.models.ticket_close_response import TicketCloseResponse as TicketCloseResponse
@@ -768,6 +811,7 @@ from pidginhost_sdk.models.udp_route import UDPRoute as UDPRoute
 from pidginhost_sdk.models.udp_route_request import UDPRouteRequest as UDPRouteRequest
 from pidginhost_sdk.models.version_enum import VersionEnum as VersionEnum
 from pidginhost_sdk.models.volume import Volume as Volume
+from pidginhost_sdk.models.volume_busy import VolumeBusy as VolumeBusy
 from pidginhost_sdk.models.volume_request import VolumeRequest as VolumeRequest
 from pidginhost_sdk.models.volume_update_request import VolumeUpdateRequest as VolumeUpdateRequest
 

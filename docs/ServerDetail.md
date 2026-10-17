@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billing** | [**ResourceBilling**](ResourceBilling.md) |  | [readonly] 
 **id** | **int** |  | [readonly] 
 **hostname** | **str** |  | [readonly] 
 **project** | **str** |  | [optional] 

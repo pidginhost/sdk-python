@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from pidginhost_sdk.models.check_availability import CheckAvailability
 from pidginhost_sdk.models.check_availability_request import CheckAvailabilityRequest
 from pidginhost_sdk.models.contacts_update_request import ContactsUpdateRequest
 from pidginhost_sdk.models.contacts_update_response import ContactsUpdateResponse
 from pidginhost_sdk.models.dns_glue import DNSGlue
 from pidginhost_sdk.models.dns_glue_request import DNSGlueRequest
 from pidginhost_sdk.models.domain import Domain
+from pidginhost_sdk.models.domain_availability import DomainAvailability
 from pidginhost_sdk.models.domain_cancel_response import DomainCancelResponse
 from pidginhost_sdk.models.domain_create import DomainCreate
 from pidginhost_sdk.models.domain_create_request import DomainCreateRequest
@@ -43,6 +43,7 @@ from pidginhost_sdk.models.patched_domain_request import PatchedDomainRequest
 from pidginhost_sdk.models.renew_domain import RenewDomain
 from pidginhost_sdk.models.renew_domain_request import RenewDomainRequest
 from pidginhost_sdk.models.tld import TLD
+from pidginhost_sdk.models.tld_catalog import TLDCatalog
 from pidginhost_sdk.models.transfer_ro_domain import TransferRoDomain
 from pidginhost_sdk.models.transfer_ro_domain_request import TransferRoDomainRequest
 
@@ -342,7 +343,7 @@ class DomainApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CheckAvailability:
+    ) -> DomainAvailability:
         """domain_domain_check_availability_create
 
         Manage your domains
@@ -380,7 +381,7 @@ class DomainApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CheckAvailability",
+            '200': "DomainAvailability",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -409,7 +410,7 @@ class DomainApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CheckAvailability]:
+    ) -> ApiResponse[DomainAvailability]:
         """domain_domain_check_availability_create
 
         Manage your domains
@@ -447,7 +448,7 @@ class DomainApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CheckAvailability",
+            '200': "DomainAvailability",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -514,7 +515,7 @@ class DomainApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CheckAvailability",
+            '200': "DomainAvailability",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -585,6 +586,270 @@ class DomainApi:
 
         return self.api_client.param_serialize(
             method='POST',
+            resource_path='/api/domain/domain/check-availability/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def domain_domain_check_availability_retrieve(
+        self,
+        domain: Annotated[str, Field(min_length=1, strict=True, max_length=255, description="Domain with tld, ex: example.com")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DomainAvailability:
+        """domain_domain_check_availability_retrieve
+
+        Manage your domains
+
+        :param domain: Domain with tld, ex: example.com (required)
+        :type domain: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._domain_domain_check_availability_retrieve_serialize(
+            domain=domain,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DomainAvailability",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def domain_domain_check_availability_retrieve_with_http_info(
+        self,
+        domain: Annotated[str, Field(min_length=1, strict=True, max_length=255, description="Domain with tld, ex: example.com")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DomainAvailability]:
+        """domain_domain_check_availability_retrieve
+
+        Manage your domains
+
+        :param domain: Domain with tld, ex: example.com (required)
+        :type domain: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._domain_domain_check_availability_retrieve_serialize(
+            domain=domain,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DomainAvailability",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def domain_domain_check_availability_retrieve_without_preload_content(
+        self,
+        domain: Annotated[str, Field(min_length=1, strict=True, max_length=255, description="Domain with tld, ex: example.com")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """domain_domain_check_availability_retrieve
+
+        Manage your domains
+
+        :param domain: Domain with tld, ex: example.com (required)
+        :type domain: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._domain_domain_check_availability_retrieve_serialize(
+            domain=domain,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DomainAvailability",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _domain_domain_check_availability_retrieve_serialize(
+        self,
+        domain,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if domain is not None:
+            
+            _query_params.append(('domain', domain))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
             resource_path='/api/domain/domain/check-availability/',
             path_params=_path_params,
             query_params=_query_params,
@@ -2009,6 +2274,7 @@ class DomainApi:
     def domain_domain_list(
         self,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        status_group: Annotated[Optional[StrictStr], Field(description="Filter by the account service status before pagination; ordered by expiry, then ID.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2028,6 +2294,8 @@ class DomainApi:
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param status_group: Filter by the account service status before pagination; ordered by expiry, then ID.
+        :type status_group: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2052,6 +2320,7 @@ class DomainApi:
 
         _param = self._domain_domain_list_serialize(
             page=page,
+            status_group=status_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2076,6 +2345,7 @@ class DomainApi:
     def domain_domain_list_with_http_info(
         self,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        status_group: Annotated[Optional[StrictStr], Field(description="Filter by the account service status before pagination; ordered by expiry, then ID.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2095,6 +2365,8 @@ class DomainApi:
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param status_group: Filter by the account service status before pagination; ordered by expiry, then ID.
+        :type status_group: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2119,6 +2391,7 @@ class DomainApi:
 
         _param = self._domain_domain_list_serialize(
             page=page,
+            status_group=status_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2143,6 +2416,7 @@ class DomainApi:
     def domain_domain_list_without_preload_content(
         self,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        status_group: Annotated[Optional[StrictStr], Field(description="Filter by the account service status before pagination; ordered by expiry, then ID.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2162,6 +2436,8 @@ class DomainApi:
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param status_group: Filter by the account service status before pagination; ordered by expiry, then ID.
+        :type status_group: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2186,6 +2462,7 @@ class DomainApi:
 
         _param = self._domain_domain_list_serialize(
             page=page,
+            status_group=status_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2205,6 +2482,7 @@ class DomainApi:
     def _domain_domain_list_serialize(
         self,
         page,
+        status_group,
         _request_auth,
         _content_type,
         _headers,
@@ -2230,6 +2508,10 @@ class DomainApi:
         if page is not None:
             
             _query_params.append(('page', page))
+            
+        if status_group is not None:
+            
+            _query_params.append(('status_group', status_group))
             
         # process the header parameters
         # process the form parameters
@@ -5587,6 +5869,253 @@ class DomainApi:
         return self.api_client.param_serialize(
             method='PUT',
             resource_path='/api/domain/registrants/{id}/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def domain_tld_catalog_retrieve(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TLDCatalog:
+        """domain_tld_catalog_retrieve
+
+        Registration catalog uses exactly the registrar/prices used by create.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._domain_tld_catalog_retrieve_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TLDCatalog",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def domain_tld_catalog_retrieve_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TLDCatalog]:
+        """domain_tld_catalog_retrieve
+
+        Registration catalog uses exactly the registrar/prices used by create.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._domain_tld_catalog_retrieve_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TLDCatalog",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def domain_tld_catalog_retrieve_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """domain_tld_catalog_retrieve
+
+        Registration catalog uses exactly the registrar/prices used by create.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._domain_tld_catalog_retrieve_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TLDCatalog",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _domain_tld_catalog_retrieve_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth', 
+            'cookieAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/domain/tld/catalog/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -41,6 +41,7 @@ class TestPaginatedHostingServiceList(unittest.TestCase):
                 previous = 'http://api.example.org/accounts/?page=2',
                 results = [
                     pidginhost_sdk.models.hosting_service.HostingService(
+                        billing = null, 
                         id = 56, 
                         hostname = '', 
                         status = null, 
@@ -58,6 +59,7 @@ class TestPaginatedHostingServiceList(unittest.TestCase):
                 count = 123,
                 results = [
                     pidginhost_sdk.models.hosting_service.HostingService(
+                        billing = null, 
                         id = 56, 
                         hostname = '', 
                         status = null, 

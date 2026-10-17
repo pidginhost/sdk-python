@@ -19,10 +19,12 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.invoice_local_amounts import InvoiceLocalAmounts
 from pidginhost_sdk.models.invoice_status_enum import InvoiceStatusEnum
+from pidginhost_sdk.models.invoice_type_enum import InvoiceTypeEnum
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -35,14 +37,17 @@ class InvoiceList(BaseModel):
     number_proforma: StrictStr
     number_fiscal: StrictStr
     status: InvoiceStatusEnum
+    invoice_type: InvoiceTypeEnum
+    can_pay_with_funds: StrictBool
     subtotal: Annotated[str, Field(strict=True)]
     vat_value: Annotated[str, Field(strict=True)]
     vat_percentage: StrictInt
     total: Annotated[str, Field(strict=True)]
+    local_amounts: Optional[InvoiceLocalAmounts]
     invoice_date: date
     due_date: Optional[date]
     payment_date: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["id", "number_proforma", "number_fiscal", "status", "subtotal", "vat_value", "vat_percentage", "total", "invoice_date", "due_date", "payment_date"]
+    __properties: ClassVar[List[str]] = ["id", "number_proforma", "number_fiscal", "status", "invoice_type", "can_pay_with_funds", "subtotal", "vat_value", "vat_percentage", "total", "local_amounts", "invoice_date", "due_date", "payment_date"]
 
     @field_validator('subtotal', mode="before")
     def subtotal_validate_regular_expression(cls, value):
@@ -106,16 +111,22 @@ class InvoiceList(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "number_proforma",
             "number_fiscal",
             "status",
+            "invoice_type",
+            "can_pay_with_funds",
             "subtotal",
             "vat_value",
             "vat_percentage",
             "total",
+            "local_amounts",
             "invoice_date",
             "due_date",
             "payment_date",
@@ -126,6 +137,14 @@ class InvoiceList(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of local_amounts
+        if self.local_amounts:
+            _dict['local_amounts'] = self.local_amounts.to_dict()
+        # set to None if local_amounts (nullable) is None
+        # and model_fields_set contains the field
+        if self.local_amounts is None and "local_amounts" in self.model_fields_set:
+            _dict['local_amounts'] = None
+
         # set to None if due_date (nullable) is None
         # and model_fields_set contains the field
         if self.due_date is None and "due_date" in self.model_fields_set:
@@ -152,10 +171,13 @@ class InvoiceList(BaseModel):
             "number_proforma": obj.get("number_proforma"),
             "number_fiscal": obj.get("number_fiscal"),
             "status": obj.get("status"),
+            "invoice_type": obj.get("invoice_type"),
+            "can_pay_with_funds": obj.get("can_pay_with_funds"),
             "subtotal": obj.get("subtotal"),
             "vat_value": obj.get("vat_value"),
             "vat_percentage": obj.get("vat_percentage"),
             "total": obj.get("total"),
+            "local_amounts": InvoiceLocalAmounts.from_dict(obj["local_amounts"]) if obj.get("local_amounts") is not None else None,
             "invoice_date": obj.get("invoice_date"),
             "due_date": obj.get("due_date"),
             "payment_date": obj.get("payment_date")

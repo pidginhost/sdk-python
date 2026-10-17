@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **idna_support** | **bool** |  | [optional] 
 **wg_support** | **bool** |  | [optional] 
 **reactivate_max_days** | **int** |  | [optional] 
+**min_years** | **int** | Smallest registration term the registry accepts (e.g. 2 for .ai). | [optional] 
+**year_step** | **int** | Allowed step between registration terms (e.g. 2 for .ai → 2, 4, 6 years). | [optional] 
 
 ## Example
 

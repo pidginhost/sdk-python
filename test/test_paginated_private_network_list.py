@@ -50,7 +50,8 @@ class TestPaginatedPrivateNetworkList(unittest.TestCase):
                             {
                                 'key' : ''
                                 }
-                            ], )
+                            ], 
+                        billing = null, )
                     ]
             )
         else:
@@ -67,7 +68,8 @@ class TestPaginatedPrivateNetworkList(unittest.TestCase):
                             {
                                 'key' : ''
                                 }
-                            ], )
+                            ], 
+                        billing = null, )
                     ],
         )
         """

@@ -27075,6 +27075,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -27150,6 +27151,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -27225,6 +27227,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -27657,6 +27660,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -27732,6 +27736,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -27807,6 +27812,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -29538,6 +29544,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -29609,6 +29616,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -29680,6 +29688,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -30090,6 +30099,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -30161,6 +30171,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -30232,6 +30243,7 @@ class CloudApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Volume",
+            '409': "VolumeBusy",
         }
         response_data = self.api_client.call_api(
             *_param,

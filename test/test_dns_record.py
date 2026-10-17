@@ -60,19 +60,6 @@ class TestDNSRecord(unittest.TestCase):
                 name = '',
                 ttl = 56,
                 type = '',
-                address = '',
-                cname = '',
-                exchange = '',
-                preference = 56,
-                txtdata = '',
-                unencoded = '',
-                target = '',
-                priority = 56,
-                weight = 56,
-                port = 56,
-                flag = 56,
-                tag = '',
-                value = '',
         )
         """
 

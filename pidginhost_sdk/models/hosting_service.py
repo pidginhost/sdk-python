@@ -22,6 +22,7 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.resource_billing import ResourceBilling
 from pidginhost_sdk.models.service_status_enum import ServiceStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,6 +32,7 @@ class HostingService(BaseModel):
     """
     Read-only serializer for shared/cPanel hosting services.
     """ # noqa: E501
+    billing: Optional[ResourceBilling]
     id: StrictInt
     hostname: StrictStr
     status: ServiceStatusEnum
@@ -41,7 +43,7 @@ class HostingService(BaseModel):
     package_name: Optional[StrictStr]
     node_url: Optional[StrictStr]
     username: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["id", "hostname", "status", "price", "next_invoice", "created", "billing_cycle", "package_name", "node_url", "username"]
+    __properties: ClassVar[List[str]] = ["billing", "id", "hostname", "status", "price", "next_invoice", "created", "billing_cycle", "package_name", "node_url", "username"]
 
     @field_validator('price', mode="before")
     def price_validate_regular_expression(cls, value):
@@ -90,8 +92,10 @@ class HostingService(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "billing",
             "id",
             "hostname",
             "status",
@@ -109,6 +113,14 @@ class HostingService(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
+
         # set to None if package_name (nullable) is None
         # and model_fields_set contains the field
         if self.package_name is None and "package_name" in self.model_fields_set:
@@ -136,6 +148,7 @@ class HostingService(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None,
             "id": obj.get("id"),
             "hostname": obj.get("hostname"),
             "status": obj.get("status"),

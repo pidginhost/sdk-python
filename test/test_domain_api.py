@@ -39,6 +39,12 @@ class TestDomainApi(unittest.TestCase):
         """
         pass
 
+    def test_domain_domain_check_availability_retrieve(self) -> None:
+        """Test case for domain_domain_check_availability_retrieve
+
+        """
+        pass
+
     def test_domain_domain_contacts_create(self) -> None:
         """Test case for domain_domain_contacts_create
 
@@ -143,6 +149,12 @@ class TestDomainApi(unittest.TestCase):
 
     def test_domain_registrants_update(self) -> None:
         """Test case for domain_registrants_update
+
+        """
+        pass
+
+    def test_domain_tld_catalog_retrieve(self) -> None:
+        """Test case for domain_tld_catalog_retrieve
 
         """
         pass

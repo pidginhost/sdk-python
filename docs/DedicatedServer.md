@@ -6,6 +6,7 @@ Read-only serializer for dedicated server services.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billing** | [**ResourceBilling**](ResourceBilling.md) |  | [readonly] 
 **id** | **int** |  | [readonly] 
 **hostname** | **str** |  | [readonly] 
 **status** | [**ServiceStatusEnum**](ServiceStatusEnum.md) |  | [readonly] 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **server_status** | [**DedicatedServerStatus**](DedicatedServerStatus.md) |  | [readonly] 
 **ips** | [**List[DedicatedServerIP]**](DedicatedServerIP.md) |  | [readonly] 
 **os_name** | **str** |  | [readonly] 
+**hardware** | [**DedicatedHardware**](DedicatedHardware.md) |  | [readonly] 
 
 ## Example
 

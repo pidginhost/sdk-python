@@ -27,6 +27,18 @@ class TestOApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_o_mobile_dashboard_retrieve(self) -> None:
+        """Test case for o_mobile_dashboard_retrieve
+
+        """
+        pass
+
+    def test_o_mobile_session_retrieve(self) -> None:
+        """Test case for o_mobile_session_retrieve
+
+        """
+        pass
+
     def test_o_register_create(self) -> None:
         """Test case for o_register_create
 

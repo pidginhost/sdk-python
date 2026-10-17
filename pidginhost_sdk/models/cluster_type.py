@@ -80,8 +80,7 @@ class ClusterType(BaseModel):
         _items = []
         if self.worker_node_packages:
             for _item_worker_node_packages in self.worker_node_packages:
-                if _item_worker_node_packages:
-                    _items.append(_item_worker_node_packages.to_dict())
+                _items.append(_item_worker_node_packages.to_dict() if _item_worker_node_packages is not None else None)
             _dict['worker_node_packages'] = _items
         return _dict
 

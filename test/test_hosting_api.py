@@ -45,6 +45,18 @@ class TestHostingApi(unittest.TestCase):
         """
         pass
 
+    def test_hosting_hosting_upgrade_options_retrieve(self) -> None:
+        """Test case for hosting_hosting_upgrade_options_retrieve
+
+        """
+        pass
+
+    def test_hosting_hosting_usage_retrieve(self) -> None:
+        """Test case for hosting_hosting_usage_retrieve
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

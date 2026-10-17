@@ -6,6 +6,7 @@ Read-only serializer for shared/cPanel hosting services.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**billing** | [**ResourceBilling**](ResourceBilling.md) |  | [readonly] 
 **id** | **int** |  | [readonly] 
 **hostname** | **str** |  | [readonly] 
 **status** | [**ServiceStatusEnum**](ServiceStatusEnum.md) |  | [readonly] 

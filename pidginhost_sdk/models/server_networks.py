@@ -80,8 +80,7 @@ class ServerNetworks(BaseModel):
         _items = []
         if self.private:
             for _item_private in self.private:
-                if _item_private:
-                    _items.append(_item_private.to_dict())
+                _items.append(_item_private.to_dict() if _item_private is not None else None)
             _dict['private'] = _items
         return _dict
 

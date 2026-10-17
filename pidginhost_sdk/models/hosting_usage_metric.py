@@ -18,19 +18,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
-from typing_extensions import Annotated
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class CheckAvailability(BaseModel):
+class HostingUsageMetric(BaseModel):
     """
-    CheckAvailability
+    HostingUsageMetric
     """ # noqa: E501
-    domain: Annotated[str, Field(strict=True, max_length=255)] = Field(description="Domain with tld, ex: example.com")
-    __properties: ClassVar[List[str]] = ["domain"]
+    key: StrictStr
+    label: StrictStr
+    used: Optional[Union[StrictFloat, StrictInt]]
+    limit: Optional[Union[StrictFloat, StrictInt]]
+    unit: StrictStr
+    percentage: Optional[Union[StrictFloat, StrictInt]]
+    faults: Optional[Union[StrictFloat, StrictInt]] = None
+    source: StrictStr
+    near_limit: StrictBool
+    __properties: ClassVar[List[str]] = ["key", "label", "used", "limit", "unit", "percentage", "faults", "source", "near_limit"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -50,7 +57,7 @@ class CheckAvailability(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CheckAvailability from a JSON string"""
+        """Create an instance of HostingUsageMetric from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,11 +78,31 @@ class CheckAvailability(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if used (nullable) is None
+        # and model_fields_set contains the field
+        if self.used is None and "used" in self.model_fields_set:
+            _dict['used'] = None
+
+        # set to None if limit (nullable) is None
+        # and model_fields_set contains the field
+        if self.limit is None and "limit" in self.model_fields_set:
+            _dict['limit'] = None
+
+        # set to None if percentage (nullable) is None
+        # and model_fields_set contains the field
+        if self.percentage is None and "percentage" in self.model_fields_set:
+            _dict['percentage'] = None
+
+        # set to None if faults (nullable) is None
+        # and model_fields_set contains the field
+        if self.faults is None and "faults" in self.model_fields_set:
+            _dict['faults'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CheckAvailability from a dict"""
+        """Create an instance of HostingUsageMetric from a dict"""
         if obj is None:
             return None
 
@@ -83,7 +110,15 @@ class CheckAvailability(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "domain": obj.get("domain")
+            "key": obj.get("key"),
+            "label": obj.get("label"),
+            "used": obj.get("used"),
+            "limit": obj.get("limit"),
+            "unit": obj.get("unit"),
+            "percentage": obj.get("percentage"),
+            "faults": obj.get("faults"),
+            "source": obj.get("source"),
+            "near_limit": obj.get("near_limit")
         })
         return _obj
 

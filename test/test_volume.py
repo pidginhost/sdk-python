@@ -42,7 +42,23 @@ class TestVolume(unittest.TestCase):
                 size = 0,
                 product = '',
                 attached = True,
-                server = ''
+                server = '',
+                status = 'pending',
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, )
             )
         else:
             return Volume(
@@ -51,6 +67,22 @@ class TestVolume(unittest.TestCase):
                 product = '',
                 attached = True,
                 server = '',
+                status = 'pending',
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, ),
         )
         """
 

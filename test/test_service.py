@@ -36,6 +36,21 @@ class TestService(unittest.TestCase):
         model = Service()
         if include_optional:
             return Service(
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, ),
                 id = 56,
                 company = 56,
                 billing_cycle = 56,
@@ -50,6 +65,21 @@ class TestService(unittest.TestCase):
             )
         else:
             return Service(
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, ),
                 id = 56,
                 billing_cycle = 56,
                 hostname = '',

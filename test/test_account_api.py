@@ -81,6 +81,12 @@ class TestAccountApi(unittest.TestCase):
         """
         pass
 
+    def test_account_dashboard_retrieve(self) -> None:
+        """Test case for account_dashboard_retrieve
+
+        """
+        pass
+
     def test_account_emails_list(self) -> None:
         """Test case for account_emails_list
 
@@ -101,6 +107,12 @@ class TestAccountApi(unittest.TestCase):
 
     def test_account_profile_update(self) -> None:
         """Test case for account_profile_update
+
+        """
+        pass
+
+    def test_account_session_retrieve(self) -> None:
+        """Test case for account_session_retrieve
 
         """
         pass

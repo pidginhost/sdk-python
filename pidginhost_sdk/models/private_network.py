@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.resource_billing import ResourceBilling
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -35,7 +36,8 @@ class PrivateNetwork(BaseModel):
     gateway: Optional[StrictStr] = None
     provisioned: StrictBool
     servers: List[Dict[str, StrictStr]]
-    __properties: ClassVar[List[str]] = ["id", "slug", "address", "gateway", "provisioned", "servers"]
+    billing: Optional[ResourceBilling]
+    __properties: ClassVar[List[str]] = ["id", "slug", "address", "gateway", "provisioned", "servers", "billing"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -71,12 +73,14 @@ class PrivateNetwork(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "slug",
             "provisioned",
             "servers",
+            "billing",
         ])
 
         _dict = self.model_dump(
@@ -84,10 +88,18 @@ class PrivateNetwork(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
         # set to None if gateway (nullable) is None
         # and model_fields_set contains the field
         if self.gateway is None and "gateway" in self.model_fields_set:
             _dict['gateway'] = None
+
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
 
         return _dict
 
@@ -106,7 +118,8 @@ class PrivateNetwork(BaseModel):
             "address": obj.get("address"),
             "gateway": obj.get("gateway"),
             "provisioned": obj.get("provisioned"),
-            "servers": obj.get("servers")
+            "servers": obj.get("servers"),
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None
         })
         return _obj
 

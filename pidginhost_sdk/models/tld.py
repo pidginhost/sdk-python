@@ -39,7 +39,9 @@ class TLD(BaseModel):
     idna_support: Optional[StrictBool] = None
     wg_support: Optional[StrictBool] = None
     reactivate_max_days: Optional[Annotated[int, Field(le=32767, strict=True, ge=0)]] = None
-    __properties: ClassVar[List[str]] = ["id", "tld", "price", "renew_price", "transfer_price", "registrar", "api_renewable", "idna_support", "wg_support", "reactivate_max_days"]
+    min_years: Optional[Annotated[int, Field(le=32767, strict=True, ge=0)]] = Field(default=None, description="Smallest registration term the registry accepts (e.g. 2 for .ai).")
+    year_step: Optional[Annotated[int, Field(le=32767, strict=True, ge=0)]] = Field(default=None, description="Allowed step between registration terms (e.g. 2 for .ai → 2, 4, 6 years).")
+    __properties: ClassVar[List[str]] = ["id", "tld", "price", "renew_price", "transfer_price", "registrar", "api_renewable", "idna_support", "wg_support", "reactivate_max_days", "min_years", "year_step"]
 
     @field_validator('price', mode="before")
     def price_validate_regular_expression(cls, value):
@@ -140,7 +142,9 @@ class TLD(BaseModel):
             "api_renewable": obj.get("api_renewable"),
             "idna_support": obj.get("idna_support"),
             "wg_support": obj.get("wg_support"),
-            "reactivate_max_days": obj.get("reactivate_max_days")
+            "reactivate_max_days": obj.get("reactivate_max_days"),
+            "min_years": obj.get("min_years"),
+            "year_step": obj.get("year_step")
         })
         return _obj
 

@@ -22,6 +22,7 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.resource_billing import ResourceBilling
 from pidginhost_sdk.models.service_status_enum import ServiceStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,6 +32,7 @@ class Service(BaseModel):
     """
     Service
     """ # noqa: E501
+    billing: Optional[ResourceBilling]
     id: StrictInt
     company: Optional[StrictInt] = None
     billing_cycle: StrictInt
@@ -42,7 +44,7 @@ class Service(BaseModel):
     terminated: Optional[date]
     next_invoice: date
     primary_service: Optional[StrictInt]
-    __properties: ClassVar[List[str]] = ["id", "company", "billing_cycle", "hostname", "price", "status", "created", "modified", "terminated", "next_invoice", "primary_service"]
+    __properties: ClassVar[List[str]] = ["billing", "id", "company", "billing_cycle", "hostname", "price", "status", "created", "modified", "terminated", "next_invoice", "primary_service"]
 
     @field_validator('price', mode="before")
     def price_validate_regular_expression(cls, value):
@@ -91,8 +93,10 @@ class Service(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "billing",
             "id",
             "billing_cycle",
             "hostname",
@@ -110,6 +114,14 @@ class Service(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
+
         # set to None if company (nullable) is None
         # and model_fields_set contains the field
         if self.company is None and "company" in self.model_fields_set:
@@ -137,6 +149,7 @@ class Service(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None,
             "id": obj.get("id"),
             "company": obj.get("company"),
             "billing_cycle": obj.get("billing_cycle"),

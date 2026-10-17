@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**price_per_month** | **decimal.Decimal** |  | 
 **features** | [**List[FeaturesEnum]**](FeaturesEnum.md) |  | [optional] 
 **protected** | **bool** |  | [optional] 
 

@@ -37,7 +37,6 @@ class TestClusterDetailRequest(unittest.TestCase):
         if include_optional:
             return ClusterDetailRequest(
                 name = '',
-                price_per_month = '-80728880015280.7',
                 features = [
                     'cert-manager'
                     ],
@@ -45,7 +44,6 @@ class TestClusterDetailRequest(unittest.TestCase):
             )
         else:
             return ClusterDetailRequest(
-                price_per_month = '-80728880015280.7',
         )
         """
 

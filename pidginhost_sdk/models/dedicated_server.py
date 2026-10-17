@@ -22,8 +22,10 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.dedicated_hardware import DedicatedHardware
 from pidginhost_sdk.models.dedicated_server_ip import DedicatedServerIP
 from pidginhost_sdk.models.dedicated_server_status import DedicatedServerStatus
+from pidginhost_sdk.models.resource_billing import ResourceBilling
 from pidginhost_sdk.models.service_status_enum import ServiceStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,6 +35,7 @@ class DedicatedServer(BaseModel):
     """
     Read-only serializer for dedicated server services.
     """ # noqa: E501
+    billing: Optional[ResourceBilling]
     id: StrictInt
     hostname: StrictStr
     status: ServiceStatusEnum
@@ -43,7 +46,8 @@ class DedicatedServer(BaseModel):
     server_status: Optional[DedicatedServerStatus]
     ips: List[DedicatedServerIP]
     os_name: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["id", "hostname", "status", "price", "next_invoice", "created", "billing_cycle", "server_status", "ips", "os_name"]
+    hardware: Optional[DedicatedHardware]
+    __properties: ClassVar[List[str]] = ["billing", "id", "hostname", "status", "price", "next_invoice", "created", "billing_cycle", "server_status", "ips", "os_name", "hardware"]
 
     @field_validator('price', mode="before")
     def price_validate_regular_expression(cls, value):
@@ -92,8 +96,11 @@ class DedicatedServer(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "billing",
             "id",
             "hostname",
             "status",
@@ -104,6 +111,7 @@ class DedicatedServer(BaseModel):
             "server_status",
             "ips",
             "os_name",
+            "hardware",
         ])
 
         _dict = self.model_dump(
@@ -111,6 +119,9 @@ class DedicatedServer(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
         # override the default output from pydantic by calling `to_dict()` of server_status
         if self.server_status:
             _dict['server_status'] = self.server_status.to_dict()
@@ -118,9 +129,16 @@ class DedicatedServer(BaseModel):
         _items = []
         if self.ips:
             for _item_ips in self.ips:
-                if _item_ips:
-                    _items.append(_item_ips.to_dict())
+                _items.append(_item_ips.to_dict() if _item_ips is not None else None)
             _dict['ips'] = _items
+        # override the default output from pydantic by calling `to_dict()` of hardware
+        if self.hardware:
+            _dict['hardware'] = self.hardware.to_dict()
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
+
         # set to None if server_status (nullable) is None
         # and model_fields_set contains the field
         if self.server_status is None and "server_status" in self.model_fields_set:
@@ -130,6 +148,11 @@ class DedicatedServer(BaseModel):
         # and model_fields_set contains the field
         if self.os_name is None and "os_name" in self.model_fields_set:
             _dict['os_name'] = None
+
+        # set to None if hardware (nullable) is None
+        # and model_fields_set contains the field
+        if self.hardware is None and "hardware" in self.model_fields_set:
+            _dict['hardware'] = None
 
         return _dict
 
@@ -143,6 +166,7 @@ class DedicatedServer(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None,
             "id": obj.get("id"),
             "hostname": obj.get("hostname"),
             "status": obj.get("status"),
@@ -152,7 +176,8 @@ class DedicatedServer(BaseModel):
             "billing_cycle": obj.get("billing_cycle"),
             "server_status": DedicatedServerStatus.from_dict(obj["server_status"]) if obj.get("server_status") is not None else None,
             "ips": [DedicatedServerIP.from_dict(_item) for _item in obj["ips"]] if obj.get("ips") is not None else None,
-            "os_name": obj.get("os_name")
+            "os_name": obj.get("os_name"),
+            "hardware": DedicatedHardware.from_dict(obj["hardware"]) if obj.get("hardware") is not None else None
         })
         return _obj
 

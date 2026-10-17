@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **gateway** | **str** |  | [optional] 
 **provisioned** | **bool** |  | [readonly] 
 **servers** | **List[Dict[str, str]]** |  | [readonly] 
+**billing** | [**ResourceBilling**](ResourceBilling.md) |  | [readonly] 
 
 ## Example
 

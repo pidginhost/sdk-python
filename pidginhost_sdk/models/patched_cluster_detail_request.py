@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.features_enum import FeaturesEnum
@@ -31,20 +31,9 @@ class PatchedClusterDetailRequest(BaseModel):
     PatchedClusterDetailRequest
     """ # noqa: E501
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = None
-    price_per_month: Optional[Annotated[str, Field(strict=True)]] = None
     features: Optional[List[FeaturesEnum]] = None
     protected: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "price_per_month", "features", "protected"]
-
-    @field_validator('price_per_month', mode="before")
-    def price_per_month_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if isinstance(value, str) and not re.match(r"^-?\d{0,16}(?:\.\d{0,4})?$", value):
-            raise ValueError(r"must validate the regular expression /^-?\d{0,16}(?:\.\d{0,4})?$/")
-        return value
+    __properties: ClassVar[List[str]] = ["name", "features", "protected"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -98,7 +87,6 @@ class PatchedClusterDetailRequest(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "price_per_month": obj.get("price_per_month"),
             "features": obj.get("features"),
             "protected": obj.get("protected")
         })

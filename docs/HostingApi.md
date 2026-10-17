@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**hosting_hosting_change_password_create**](HostingApi.md#hosting_hosting_change_password_create) | **POST** /api/hosting/hosting/{id}/change-password/ | 
 [**hosting_hosting_list**](HostingApi.md#hosting_hosting_list) | **GET** /api/hosting/hosting/ | 
 [**hosting_hosting_retrieve**](HostingApi.md#hosting_hosting_retrieve) | **GET** /api/hosting/hosting/{id}/ | 
+[**hosting_hosting_upgrade_options_retrieve**](HostingApi.md#hosting_hosting_upgrade_options_retrieve) | **GET** /api/hosting/hosting/{id}/upgrade-options/ | 
+[**hosting_hosting_usage_retrieve**](HostingApi.md#hosting_hosting_usage_retrieve) | **GET** /api/hosting/hosting/{id}/usage/ | 
 
 
 # **hosting_hosting_change_password_create**
@@ -243,6 +245,172 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**HostingService**](HostingService.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **hosting_hosting_upgrade_options_retrieve**
+> HostingUpgradeOptions hosting_hosting_upgrade_options_retrieve(id)
+
+List and manage cPanel/shared hosting services.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.hosting_upgrade_options import HostingUpgradeOptions
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.HostingApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.hosting_hosting_upgrade_options_retrieve(id)
+        print("The response of HostingApi->hosting_hosting_upgrade_options_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling HostingApi->hosting_hosting_upgrade_options_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**HostingUpgradeOptions**](HostingUpgradeOptions.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **hosting_hosting_usage_retrieve**
+> HostingUsage hosting_hosting_usage_retrieve(id)
+
+List and manage cPanel/shared hosting services.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.hosting_usage import HostingUsage
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.HostingApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.hosting_hosting_usage_retrieve(id)
+        print("The response of HostingApi->hosting_hosting_usage_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling HostingApi->hosting_hosting_usage_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**HostingUsage**](HostingUsage.md)
 
 ### Authorization
 

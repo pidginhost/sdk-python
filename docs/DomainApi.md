@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**domain_domain_cancel_create**](DomainApi.md#domain_domain_cancel_create) | **POST** /api/domain/domain/{domain}/cancel/ | 
 [**domain_domain_check_availability_create**](DomainApi.md#domain_domain_check_availability_create) | **POST** /api/domain/domain/check-availability/ | 
+[**domain_domain_check_availability_retrieve**](DomainApi.md#domain_domain_check_availability_retrieve) | **GET** /api/domain/domain/check-availability/ | 
 [**domain_domain_contacts_create**](DomainApi.md#domain_domain_contacts_create) | **POST** /api/domain/domain/{domain}/contacts/ | 
 [**domain_domain_create**](DomainApi.md#domain_domain_create) | **POST** /api/domain/domain/ | 
 [**domain_domain_dns_create**](DomainApi.md#domain_domain_dns_create) | **POST** /api/domain/domain/{domain}/dns/ | 
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**domain_registrants_partial_update**](DomainApi.md#domain_registrants_partial_update) | **PATCH** /api/domain/registrants/{id}/ | 
 [**domain_registrants_retrieve**](DomainApi.md#domain_registrants_retrieve) | **GET** /api/domain/registrants/{id}/ | 
 [**domain_registrants_update**](DomainApi.md#domain_registrants_update) | **PUT** /api/domain/registrants/{id}/ | 
+[**domain_tld_catalog_retrieve**](DomainApi.md#domain_tld_catalog_retrieve) | **GET** /api/domain/tld/catalog/ | 
 [**domain_tld_list**](DomainApi.md#domain_tld_list) | **GET** /api/domain/tld/ | 
 [**domain_tld_retrieve**](DomainApi.md#domain_tld_retrieve) | **GET** /api/domain/tld/{id}/ | 
 
@@ -112,7 +114,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **domain_domain_check_availability_create**
-> CheckAvailability domain_domain_check_availability_create(check_availability_request)
+> DomainAvailability domain_domain_check_availability_create(check_availability_request)
 
 Manage your domains
 
@@ -123,8 +125,8 @@ Manage your domains
 
 ```python
 import pidginhost_sdk
-from pidginhost_sdk.models.check_availability import CheckAvailability
 from pidginhost_sdk.models.check_availability_request import CheckAvailabilityRequest
+from pidginhost_sdk.models.domain_availability import DomainAvailability
 from pidginhost_sdk.rest import ApiException
 from pprint import pprint
 
@@ -176,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CheckAvailability**](CheckAvailability.md)
+[**DomainAvailability**](DomainAvailability.md)
 
 ### Authorization
 
@@ -185,6 +187,89 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **domain_domain_check_availability_retrieve**
+> DomainAvailability domain_domain_check_availability_retrieve(domain)
+
+Manage your domains
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.domain_availability import DomainAvailability
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.DomainApi(api_client)
+    domain = 'domain_example' # str | Domain with tld, ex: example.com
+
+    try:
+        api_response = api_instance.domain_domain_check_availability_retrieve(domain)
+        print("The response of DomainApi->domain_domain_check_availability_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DomainApi->domain_domain_check_availability_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domain** | **str**| Domain with tld, ex: example.com | 
+
+### Return type
+
+[**DomainAvailability**](DomainAvailability.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -622,7 +707,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **domain_domain_list**
-> PaginatedDomainList domain_domain_list(page=page)
+> PaginatedDomainList domain_domain_list(page=page, status_group=status_group)
 
 Manage your domains
 
@@ -665,9 +750,10 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pidginhost_sdk.DomainApi(api_client)
     page = 56 # int | A page number within the paginated result set. (optional)
+    status_group = 'status_group_example' # str | Filter by the account service status before pagination; ordered by expiry, then ID. (optional)
 
     try:
-        api_response = api_instance.domain_domain_list(page=page)
+        api_response = api_instance.domain_domain_list(page=page, status_group=status_group)
         print("The response of DomainApi->domain_domain_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -682,6 +768,7 @@ with pidginhost_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
+ **status_group** | **str**| Filter by the account service status before pagination; ordered by expiry, then ID. | [optional] 
 
 ### Return type
 
@@ -1707,6 +1794,85 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **domain_tld_catalog_retrieve**
+> TLDCatalog domain_tld_catalog_retrieve()
+
+Registration catalog uses exactly the registrar/prices used by create.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.tld_catalog import TLDCatalog
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.DomainApi(api_client)
+
+    try:
+        api_response = api_instance.domain_tld_catalog_retrieve()
+        print("The response of DomainApi->domain_tld_catalog_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DomainApi->domain_tld_catalog_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TLDCatalog**](TLDCatalog.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

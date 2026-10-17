@@ -19,7 +19,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from pidginhost_sdk.models.resource_billing import ResourceBilling
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,6 +30,7 @@ class Bucket(BaseModel):
     """
     Bucket
     """ # noqa: E501
+    billing: Optional[ResourceBilling]
     id: StrictInt
     name: StrictStr
     full_name: StrictStr
@@ -40,7 +42,7 @@ class Bucket(BaseModel):
     endpoint: StrictStr
     region: StrictStr
     created: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "name", "full_name", "quota_gb", "used_bytes", "object_count", "public_read", "status", "endpoint", "region", "created"]
+    __properties: ClassVar[List[str]] = ["billing", "id", "name", "full_name", "quota_gb", "used_bytes", "object_count", "public_read", "status", "endpoint", "region", "created"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,8 +85,10 @@ class Bucket(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "billing",
             "id",
             "name",
             "full_name",
@@ -103,6 +107,14 @@ class Bucket(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
+
         return _dict
 
     @classmethod
@@ -115,6 +127,7 @@ class Bucket(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None,
             "id": obj.get("id"),
             "name": obj.get("name"),
             "full_name": obj.get("full_name"),

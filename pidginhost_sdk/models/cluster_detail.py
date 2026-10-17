@@ -108,6 +108,7 @@ class ClusterDetail(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -115,6 +116,7 @@ class ClusterDetail(BaseModel):
             "generation",
             "cluster_type",
             "kube_version",
+            "price_per_month",
             "price_per_hour",
             "features_ready",
             "kubeconfig_valid_until",

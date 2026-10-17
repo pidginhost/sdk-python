@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -32,19 +32,19 @@ class DNSRecord(BaseModel):
     name: StrictStr
     ttl: StrictInt
     type: StrictStr
-    address: StrictStr
-    cname: StrictStr
-    exchange: StrictStr
-    preference: StrictInt
-    txtdata: StrictStr
-    unencoded: StrictStr
-    target: StrictStr
-    priority: StrictInt
-    weight: StrictInt
-    port: StrictInt
-    flag: StrictInt
-    tag: StrictStr
-    value: StrictStr
+    address: Optional[StrictStr] = None
+    cname: Optional[StrictStr] = None
+    exchange: Optional[StrictStr] = None
+    preference: Optional[StrictInt] = None
+    txtdata: Optional[StrictStr] = None
+    unencoded: Optional[StrictStr] = None
+    target: Optional[StrictStr] = None
+    priority: Optional[StrictInt] = None
+    weight: Optional[StrictInt] = None
+    port: Optional[StrictInt] = None
+    flag: Optional[StrictInt] = None
+    tag: Optional[StrictStr] = None
+    value: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["Line", "name", "ttl", "type", "address", "cname", "exchange", "preference", "txtdata", "unencoded", "target", "priority", "weight", "port", "flag", "tag", "value"]
 
     model_config = ConfigDict(
@@ -81,38 +81,12 @@ class DNSRecord(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "line",
             "name",
             "ttl",
             "type",
-            "address",
-            "cname",
-            "exchange",
-            "preference",
-            "txtdata",
-            "unencoded",
-            "target",
-            "priority",
-            "weight",
-            "port",
-            "flag",
-            "tag",
-            "value",
         ])
 
         _dict = self.model_dump(

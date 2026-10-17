@@ -36,6 +36,21 @@ class TestServerDetail(unittest.TestCase):
         model = ServerDetail()
         if include_optional:
             return ServerDetail(
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, ),
                 id = 56,
                 hostname = '',
                 project = '',
@@ -56,7 +71,9 @@ class TestServerDetail(unittest.TestCase):
                         size = 0, 
                         product = '', 
                         attached = True, 
-                        server = '', )
+                        server = '', 
+                        status = null, 
+                        billing = null, )
                     ],
                 networks = pidginhost_sdk.models.server_networks.ServerNetworks(
                     public = pidginhost_sdk.models.server_public_network.ServerPublicNetwork(
@@ -96,6 +113,21 @@ class TestServerDetail(unittest.TestCase):
             )
         else:
             return ServerDetail(
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, ),
                 id = 56,
                 hostname = '',
                 image = '',
@@ -115,7 +147,9 @@ class TestServerDetail(unittest.TestCase):
                         size = 0, 
                         product = '', 
                         attached = True, 
-                        server = '', )
+                        server = '', 
+                        status = null, 
+                        billing = null, )
                     ],
                 networks = pidginhost_sdk.models.server_networks.ServerNetworks(
                     public = pidginhost_sdk.models.server_public_network.ServerPublicNetwork(

@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.resource_billing import ResourceBilling
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
 from pidginhost_sdk.models.server_networks import ServerNetworks
 from typing import Optional, Set
@@ -31,6 +32,7 @@ class Server(BaseModel):
     """
     Server
     """ # noqa: E501
+    billing: Optional[ResourceBilling]
     id: StrictInt
     hostname: Optional[Annotated[str, Field(strict=True, max_length=200)]] = None
     project: Optional[Annotated[str, Field(strict=True, max_length=200)]] = None
@@ -48,7 +50,7 @@ class Server(BaseModel):
     rescue_mode: StrictBool
     boot_iso: Optional[StrictStr]
     rescue_supported: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "hostname", "project", "image", "package", "cpus", "memory", "disk_size", "generation", "status", "destroy_protection", "ha_enabled", "custom_os", "networks", "rescue_mode", "boot_iso", "rescue_supported"]
+    __properties: ClassVar[List[str]] = ["billing", "id", "hostname", "project", "image", "package", "cpus", "memory", "disk_size", "generation", "status", "destroy_protection", "ha_enabled", "custom_os", "networks", "rescue_mode", "boot_iso", "rescue_supported"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -94,8 +96,10 @@ class Server(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "billing",
             "id",
             "image",
             "package",
@@ -117,9 +121,17 @@ class Server(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
         # override the default output from pydantic by calling `to_dict()` of networks
         if self.networks:
             _dict['networks'] = self.networks.to_dict()
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
+
         # set to None if boot_iso (nullable) is None
         # and model_fields_set contains the field
         if self.boot_iso is None and "boot_iso" in self.model_fields_set:
@@ -137,6 +149,7 @@ class Server(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None,
             "id": obj.get("id"),
             "hostname": obj.get("hostname"),
             "project": obj.get("project"),

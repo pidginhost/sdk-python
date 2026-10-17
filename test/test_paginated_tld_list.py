@@ -50,7 +50,9 @@ class TestPaginatedTLDList(unittest.TestCase):
                         api_renewable = True, 
                         idna_support = True, 
                         wg_support = True, 
-                        reactivate_max_days = 0, )
+                        reactivate_max_days = 0, 
+                        min_years = 0, 
+                        year_step = 0, )
                     ]
             )
         else:
@@ -67,7 +69,9 @@ class TestPaginatedTLDList(unittest.TestCase):
                         api_renewable = True, 
                         idna_support = True, 
                         wg_support = True, 
-                        reactivate_max_days = 0, )
+                        reactivate_max_days = 0, 
+                        min_years = 0, 
+                        year_step = 0, )
                     ],
         )
         """

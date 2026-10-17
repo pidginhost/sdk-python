@@ -15,10 +15,10 @@
 
 import unittest
 
-from pidginhost_sdk.models.check_availability import CheckAvailability
+from pidginhost_sdk.models.volume_busy import VolumeBusy
 
-class TestCheckAvailability(unittest.TestCase):
-    """CheckAvailability unit test stubs"""
+class TestVolumeBusy(unittest.TestCase):
+    """VolumeBusy unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,32 @@ class TestCheckAvailability(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CheckAvailability:
-        """Test CheckAvailability
+    def make_instance(self, include_optional) -> VolumeBusy:
+        """Test VolumeBusy
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `CheckAvailability`
+        # uncomment below to create an instance of `VolumeBusy`
         """
-        model = CheckAvailability()
+        model = VolumeBusy()
         if include_optional:
-            return CheckAvailability(
-                domain = ''
+            return VolumeBusy(
+                message = '',
+                extra = {
+                    'key' : null
+                    }
             )
         else:
-            return CheckAvailability(
-                domain = '',
+            return VolumeBusy(
+                message = '',
+                extra = {
+                    'key' : null
+                    },
         )
         """
 
-    def testCheckAvailability(self):
-        """Test CheckAvailability"""
+    def testVolumeBusy(self):
+        """Test VolumeBusy"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

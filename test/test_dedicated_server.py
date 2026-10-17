@@ -36,26 +36,21 @@ class TestDedicatedServer(unittest.TestCase):
         model = DedicatedServer()
         if include_optional:
             return DedicatedServer(
-                id = 56,
-                hostname = '',
-                status = 'pending',
-                price = '-80728880',
-                next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
-                created = '',
-                billing_cycle = '',
-                server_status = pidginhost_sdk.models.dedicated_server_status.DedicatedServerStatus(
-                    status = '', 
-                    status_text = '', ),
-                ips = [
-                    pidginhost_sdk.models.dedicated_server_ip.DedicatedServerIP(
-                        id = 56, 
-                        ip = '', 
-                        reverse_dns = '', )
-                    ],
-                os_name = ''
-            )
-        else:
-            return DedicatedServer(
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, ),
                 id = 56,
                 hostname = '',
                 status = 'pending',
@@ -73,6 +68,69 @@ class TestDedicatedServer(unittest.TestCase):
                         reverse_dns = '', )
                     ],
                 os_name = '',
+                hardware = pidginhost_sdk.models.dedicated_hardware.DedicatedHardware(
+                    title = '', 
+                    processor = '', 
+                    processor_count = 56, 
+                    memory_gb = 56, 
+                    disks = '', 
+                    raid = '', 
+                    network = '', 
+                    traffic = '', 
+                    gpu = '', 
+                    extra_hardware = [
+                        ''
+                        ], 
+                    software = '', )
+            )
+        else:
+            return DedicatedServer(
+                billing = pidginhost_sdk.models.resource_billing.ResourceBilling(
+                    amount = '-80728880015280217.09', 
+                    currency = '', 
+                    tax_included = True, 
+                    cycle_months = 56, 
+                    cycle_label = '', 
+                    next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
+                    profile = null, 
+                    metered = True, 
+                    included = True, 
+                    hourly_amount = '-80728880015280.7', 
+                    monthly_total = '-80728880015280217.09', 
+                    components = {
+                        'key' : '-80728880015280217.09'
+                        }, ),
+                id = 56,
+                hostname = '',
+                status = 'pending',
+                price = '-80728880',
+                next_invoice = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                created = '',
+                billing_cycle = '',
+                server_status = pidginhost_sdk.models.dedicated_server_status.DedicatedServerStatus(
+                    status = '', 
+                    status_text = '', ),
+                ips = [
+                    pidginhost_sdk.models.dedicated_server_ip.DedicatedServerIP(
+                        id = 56, 
+                        ip = '', 
+                        reverse_dns = '', )
+                    ],
+                os_name = '',
+                hardware = pidginhost_sdk.models.dedicated_hardware.DedicatedHardware(
+                    title = '', 
+                    processor = '', 
+                    processor_count = 56, 
+                    memory_gb = 56, 
+                    disks = '', 
+                    raid = '', 
+                    network = '', 
+                    traffic = '', 
+                    gpu = '', 
+                    extra_hardware = [
+                        ''
+                        ], 
+                    software = '', ),
         )
         """
 

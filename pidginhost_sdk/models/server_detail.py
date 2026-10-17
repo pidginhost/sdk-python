@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.floating_ip_summary import FloatingIPSummary
+from pidginhost_sdk.models.resource_billing import ResourceBilling
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
 from pidginhost_sdk.models.server_networks import ServerNetworks
 from pidginhost_sdk.models.volume import Volume
@@ -33,6 +34,7 @@ class ServerDetail(BaseModel):
     """
     ServerDetail
     """ # noqa: E501
+    billing: Optional[ResourceBilling]
     id: StrictInt
     hostname: StrictStr
     project: Optional[Annotated[str, Field(strict=True, max_length=200)]] = None
@@ -55,7 +57,7 @@ class ServerDetail(BaseModel):
     rescue_mode: StrictBool
     boot_iso: Optional[StrictStr]
     rescue_supported: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "hostname", "project", "image", "package", "cpus", "memory", "disk_size", "generation", "machine", "volumes", "networks", "floating_ips", "ssh_pub_key", "status", "username", "destroy_protection", "ha_enabled", "custom_os", "rescue_mode", "boot_iso", "rescue_supported"]
+    __properties: ClassVar[List[str]] = ["billing", "id", "hostname", "project", "image", "package", "cpus", "memory", "disk_size", "generation", "machine", "volumes", "networks", "floating_ips", "ssh_pub_key", "status", "username", "destroy_protection", "ha_enabled", "custom_os", "rescue_mode", "boot_iso", "rescue_supported"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -107,8 +109,10 @@ class ServerDetail(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "billing",
             "id",
             "hostname",
             "image",
@@ -136,12 +140,14 @@ class ServerDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in volumes (list)
         _items = []
         if self.volumes:
             for _item_volumes in self.volumes:
-                if _item_volumes:
-                    _items.append(_item_volumes.to_dict())
+                _items.append(_item_volumes.to_dict() if _item_volumes is not None else None)
             _dict['volumes'] = _items
         # override the default output from pydantic by calling `to_dict()` of networks
         if self.networks:
@@ -150,9 +156,13 @@ class ServerDetail(BaseModel):
         _items = []
         if self.floating_ips:
             for _item_floating_ips in self.floating_ips:
-                if _item_floating_ips:
-                    _items.append(_item_floating_ips.to_dict())
+                _items.append(_item_floating_ips.to_dict() if _item_floating_ips is not None else None)
             _dict['floating_ips'] = _items
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
+
         # set to None if boot_iso (nullable) is None
         # and model_fields_set contains the field
         if self.boot_iso is None and "boot_iso" in self.model_fields_set:
@@ -170,6 +180,7 @@ class ServerDetail(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None,
             "id": obj.get("id"),
             "hostname": obj.get("hostname"),
             "project": obj.get("project"),

@@ -147,6 +147,24 @@ class TestKubernetesApi(unittest.TestCase):
         """
         pass
 
+    def test_kubernetes_clusters_l3_cutover_create(self) -> None:
+        """Test case for kubernetes_clusters_l3_cutover_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_l3_retrieve(self) -> None:
+        """Test case for kubernetes_clusters_l3_retrieve
+
+        """
+        pass
+
+    def test_kubernetes_clusters_l3_revert_create(self) -> None:
+        """Test case for kubernetes_clusters_l3_revert_create
+
+        """
+        pass
+
     def test_kubernetes_clusters_lb_firewall_create(self) -> None:
         """Test case for kubernetes_clusters_lb_firewall_create
 

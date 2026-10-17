@@ -41,6 +41,7 @@ class TestPaginatedDedicatedServerList(unittest.TestCase):
                 previous = 'http://api.example.org/accounts/?page=2',
                 results = [
                     pidginhost_sdk.models.dedicated_server.DedicatedServer(
+                        billing = null, 
                         id = 56, 
                         hostname = '', 
                         status = null, 
@@ -55,7 +56,8 @@ class TestPaginatedDedicatedServerList(unittest.TestCase):
                                 ip = '', 
                                 reverse_dns = '', )
                             ], 
-                        os_name = '', )
+                        os_name = '', 
+                        hardware = null, )
                     ]
             )
         else:
@@ -63,6 +65,7 @@ class TestPaginatedDedicatedServerList(unittest.TestCase):
                 count = 123,
                 results = [
                     pidginhost_sdk.models.dedicated_server.DedicatedServer(
+                        billing = null, 
                         id = 56, 
                         hostname = '', 
                         status = null, 
@@ -77,7 +80,8 @@ class TestPaginatedDedicatedServerList(unittest.TestCase):
                                 ip = '', 
                                 reverse_dns = '', )
                             ], 
-                        os_name = '', )
+                        os_name = '', 
+                        hardware = null, )
                     ],
         )
         """

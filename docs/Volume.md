@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **product** | **str** | ID or slug | 
 **attached** | **bool** |  | [readonly] 
 **server** | **str** |  | [readonly] [default to '']
+**status** | [**ResourceStatusEnum**](ResourceStatusEnum.md) |  | [readonly] 
+**billing** | [**ResourceBilling**](ResourceBilling.md) |  | [readonly] 
 
 ## Example
 

@@ -75,8 +75,7 @@ class EligibleVMsResponse(BaseModel):
         _items = []
         if self.vms:
             for _item_vms in self.vms:
-                if _item_vms:
-                    _items.append(_item_vms.to_dict())
+                _items.append(_item_vms.to_dict() if _item_vms is not None else None)
             _dict['vms'] = _items
         return _dict
 

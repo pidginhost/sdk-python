@@ -21,6 +21,8 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pidginhost_sdk.models.resource_billing import ResourceBilling
+from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -36,7 +38,9 @@ class Volume(BaseModel):
     product: StrictStr = Field(description="ID or slug")
     attached: StrictBool
     server: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "project", "alias", "size", "product", "attached", "server"]
+    status: ResourceStatusEnum
+    billing: Optional[ResourceBilling]
+    __properties: ClassVar[List[str]] = ["id", "project", "alias", "size", "product", "attached", "server", "status", "billing"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -71,11 +75,15 @@ class Volume(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "attached",
             "server",
+            "status",
+            "billing",
         ])
 
         _dict = self.model_dump(
@@ -83,6 +91,14 @@ class Volume(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of billing
+        if self.billing:
+            _dict['billing'] = self.billing.to_dict()
+        # set to None if billing (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing is None and "billing" in self.model_fields_set:
+            _dict['billing'] = None
+
         return _dict
 
     @classmethod
@@ -101,7 +117,9 @@ class Volume(BaseModel):
             "size": obj.get("size"),
             "product": obj.get("product"),
             "attached": obj.get("attached"),
-            "server": obj.get("server") if obj.get("server") is not None else ''
+            "server": obj.get("server") if obj.get("server") is not None else '',
+            "status": obj.get("status"),
+            "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None
         })
         return _obj
 
