@@ -129,7 +129,6 @@ class TestServerDetail(unittest.TestCase):
                         'key' : '-80728880015280217.09'
                         }, ),
                 id = 56,
-                hostname = '',
                 image = '',
                 package = '',
                 cpus = 56,

@@ -29,10 +29,11 @@ class ServerDetailRequest(BaseModel):
     """
     ServerDetailRequest
     """ # noqa: E501
+    hostname: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Renaming also moves reverse DNS still on the old name. The server takes the new name at its next reboot from the panel or API, which also creates new SSH host keys and resets the login password and SSH keys to the ones saved here.")
     project: Optional[Annotated[str, Field(strict=True, max_length=200)]] = None
     password: Optional[Annotated[str, Field(strict=True, max_length=300)]] = None
     ssh_pub_key: Optional[Annotated[str, Field(strict=True, max_length=3000)]] = Field(default=None, description="Public key to apply for SSH login. Applying a non-empty key regenerates cloud-init and reboots a running server. Clearing removes the key from future cloud-init data, but does not revoke keys already in the guest.")
-    __properties: ClassVar[List[str]] = ["project", "password", "ssh_pub_key"]
+    __properties: ClassVar[List[str]] = ["hostname", "project", "password", "ssh_pub_key"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +86,7 @@ class ServerDetailRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "hostname": obj.get("hostname"),
             "project": obj.get("project"),
             "password": obj.get("password"),
             "ssh_pub_key": obj.get("ssh_pub_key")

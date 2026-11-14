@@ -130,7 +130,7 @@ class Bucket(BaseModel):
             "billing": ResourceBilling.from_dict(obj["billing"]) if obj.get("billing") is not None else None,
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "full_name": obj.get("full_name"),
+            "full_name": obj.get("full_name") if obj.get("full_name") is not None else '',
             "quota_gb": obj.get("quota_gb"),
             "used_bytes": obj.get("used_bytes"),
             "object_count": obj.get("object_count"),

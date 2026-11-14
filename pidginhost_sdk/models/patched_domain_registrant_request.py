@@ -32,7 +32,7 @@ class PatchedDomainRegistrantRequest(BaseModel):
     """ # noqa: E501
     first_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=100)]] = None
     last_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=100)]] = None
-    company: Optional[Annotated[str, Field(strict=True, max_length=40)]] = None
+    company: Optional[Annotated[str, Field(strict=True, max_length=128)]] = None
     address: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=128)]] = None
     city: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=100)]] = None
     region: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=100)]] = None

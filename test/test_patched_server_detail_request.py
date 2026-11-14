@@ -36,6 +36,7 @@ class TestPatchedServerDetailRequest(unittest.TestCase):
         model = PatchedServerDetailRequest()
         if include_optional:
             return PatchedServerDetailRequest(
+                hostname = '0',
                 project = '',
                 password = '',
                 ssh_pub_key = ''

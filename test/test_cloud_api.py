@@ -255,6 +255,276 @@ class TestCloudApi(unittest.TestCase):
         """
         pass
 
+    def test_cloud_gateways_create(self) -> None:
+        """Test case for cloud_gateways_create
+
+        """
+        pass
+
+    def test_cloud_gateways_destroy(self) -> None:
+        """Test case for cloud_gateways_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_firewall_rules_create(self) -> None:
+        """Test case for cloud_gateways_firewall_rules_create
+
+        """
+        pass
+
+    def test_cloud_gateways_firewall_rules_destroy(self) -> None:
+        """Test case for cloud_gateways_firewall_rules_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_firewall_rules_list(self) -> None:
+        """Test case for cloud_gateways_firewall_rules_list
+
+        """
+        pass
+
+    def test_cloud_gateways_firewall_rules_move_create(self) -> None:
+        """Test case for cloud_gateways_firewall_rules_move_create
+
+        """
+        pass
+
+    def test_cloud_gateways_firewall_rules_partial_update(self) -> None:
+        """Test case for cloud_gateways_firewall_rules_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_firewall_rules_retrieve(self) -> None:
+        """Test case for cloud_gateways_firewall_rules_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_list(self) -> None:
+        """Test case for cloud_gateways_list
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_create(self) -> None:
+        """Test case for cloud_gateways_listeners_create
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_destroy(self) -> None:
+        """Test case for cloud_gateways_listeners_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_list(self) -> None:
+        """Test case for cloud_gateways_listeners_list
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_partial_update(self) -> None:
+        """Test case for cloud_gateways_listeners_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_retrieve(self) -> None:
+        """Test case for cloud_gateways_listeners_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_routes_create(self) -> None:
+        """Test case for cloud_gateways_listeners_routes_create
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_routes_destroy(self) -> None:
+        """Test case for cloud_gateways_listeners_routes_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_routes_list(self) -> None:
+        """Test case for cloud_gateways_listeners_routes_list
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_routes_partial_update(self) -> None:
+        """Test case for cloud_gateways_listeners_routes_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_listeners_routes_retrieve(self) -> None:
+        """Test case for cloud_gateways_listeners_routes_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_networks_create(self) -> None:
+        """Test case for cloud_gateways_networks_create
+
+        """
+        pass
+
+    def test_cloud_gateways_networks_destroy(self) -> None:
+        """Test case for cloud_gateways_networks_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_networks_list(self) -> None:
+        """Test case for cloud_gateways_networks_list
+
+        """
+        pass
+
+    def test_cloud_gateways_networks_partial_update(self) -> None:
+        """Test case for cloud_gateways_networks_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_networks_retrieve(self) -> None:
+        """Test case for cloud_gateways_networks_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_operations_list(self) -> None:
+        """Test case for cloud_gateways_operations_list
+
+        """
+        pass
+
+    def test_cloud_gateways_operations_retrieve(self) -> None:
+        """Test case for cloud_gateways_operations_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_partial_update(self) -> None:
+        """Test case for cloud_gateways_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_backends_create(self) -> None:
+        """Test case for cloud_gateways_pools_backends_create
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_backends_destroy(self) -> None:
+        """Test case for cloud_gateways_pools_backends_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_backends_list(self) -> None:
+        """Test case for cloud_gateways_pools_backends_list
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_backends_partial_update(self) -> None:
+        """Test case for cloud_gateways_pools_backends_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_backends_retrieve(self) -> None:
+        """Test case for cloud_gateways_pools_backends_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_create(self) -> None:
+        """Test case for cloud_gateways_pools_create
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_destroy(self) -> None:
+        """Test case for cloud_gateways_pools_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_list(self) -> None:
+        """Test case for cloud_gateways_pools_list
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_partial_update(self) -> None:
+        """Test case for cloud_gateways_pools_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_pools_retrieve(self) -> None:
+        """Test case for cloud_gateways_pools_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_port_forwards_create(self) -> None:
+        """Test case for cloud_gateways_port_forwards_create
+
+        """
+        pass
+
+    def test_cloud_gateways_port_forwards_destroy(self) -> None:
+        """Test case for cloud_gateways_port_forwards_destroy
+
+        """
+        pass
+
+    def test_cloud_gateways_port_forwards_list(self) -> None:
+        """Test case for cloud_gateways_port_forwards_list
+
+        """
+        pass
+
+    def test_cloud_gateways_port_forwards_partial_update(self) -> None:
+        """Test case for cloud_gateways_port_forwards_partial_update
+
+        """
+        pass
+
+    def test_cloud_gateways_port_forwards_retrieve(self) -> None:
+        """Test case for cloud_gateways_port_forwards_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_reenroll_create(self) -> None:
+        """Test case for cloud_gateways_reenroll_create
+
+        """
+        pass
+
+    def test_cloud_gateways_retrieve(self) -> None:
+        """Test case for cloud_gateways_retrieve
+
+        """
+        pass
+
+    def test_cloud_gateways_status_retrieve(self) -> None:
+        """Test case for cloud_gateways_status_retrieve
+
+        """
+        pass
+
     def test_cloud_generations_list(self) -> None:
         """Test case for cloud_generations_list
 
@@ -370,6 +640,12 @@ class TestCloudApi(unittest.TestCase):
         """
         pass
 
+    def test_cloud_private_networks_apply_route_create(self) -> None:
+        """Test case for cloud_private_networks_apply_route_create
+
+        """
+        pass
+
     def test_cloud_private_networks_create(self) -> None:
         """Test case for cloud_private_networks_create
 
@@ -402,6 +678,12 @@ class TestCloudApi(unittest.TestCase):
 
     def test_cloud_private_networks_retrieve(self) -> None:
         """Test case for cloud_private_networks_retrieve
+
+        """
+        pass
+
+    def test_cloud_private_networks_route_status_retrieve(self) -> None:
+        """Test case for cloud_private_networks_route_status_retrieve
 
         """
         pass

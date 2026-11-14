@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.16.0"
+__version__ = "0.17.0"
 
 # Define package exports
 __all__ = [
@@ -53,6 +53,7 @@ __all__ = [
     "AddressRequest",
     "ApiCredential",
     "ApiCredentialCreated",
+    "ApplyRouteRequest",
     "AttachIPv4Request",
     "AttachIPv4Response",
     "AttachIPv6Request",
@@ -183,6 +184,61 @@ __all__ = [
     "FundsBalanceResponse",
     "FundsLog",
     "FwPolicyOutEnum",
+    "Gateway",
+    "GatewayApplyError",
+    "GatewayBackend",
+    "GatewayBackendHealthEnum",
+    "GatewayBackendPool",
+    "GatewayBackendPoolPolicyEnum",
+    "GatewayBackendPoolWriteRequest",
+    "GatewayBackendWriteRequest",
+    "GatewayConflict",
+    "GatewayConflictExtra",
+    "GatewayConntrack",
+    "GatewayCreateRequest",
+    "GatewayDeleteConflict",
+    "GatewayDeleteConflictExtra",
+    "GatewayDeletePreview",
+    "GatewayEgressProbe",
+    "GatewayFirewallDestination",
+    "GatewayFirewallDestinationRequest",
+    "GatewayFirewallMoveRequest",
+    "GatewayFirewallProtocolEnum",
+    "GatewayFirewallRule",
+    "GatewayFirewallRuleWriteRequest",
+    "GatewayFirewallSource",
+    "GatewayFirewallSourceRequest",
+    "GatewayForward",
+    "GatewayForwardProtocolEnum",
+    "GatewayForwardTarget",
+    "GatewayForwardTargetRequest",
+    "GatewayForwardWriteRequest",
+    "GatewayHealthCheck",
+    "GatewayHealthCheckTypeEnum",
+    "GatewayHealthCheckWriteRequest",
+    "GatewayInterface",
+    "GatewayLBListener",
+    "GatewayLBListenerModeEnum",
+    "GatewayLBListenerWriteRequest",
+    "GatewayNetwork",
+    "GatewayNetworkCreateRequest",
+    "GatewayNetworkRoleEnum",
+    "GatewayNetworkStateEnum",
+    "GatewayOperation",
+    "GatewayOperationKindEnum",
+    "GatewayOperationStatusEnum",
+    "GatewayPortRange",
+    "GatewayPortRangeRequest",
+    "GatewayPreview",
+    "GatewayPreviewNetwork",
+    "GatewayPreviewServer",
+    "GatewayReenrollConflict",
+    "GatewayReenrollRequest",
+    "GatewayRoute",
+    "GatewayRouteOutcome",
+    "GatewayRouteWriteRequest",
+    "GatewayStateEnum",
+    "GatewayStatus",
     "HTTPRoute",
     "HTTPRouteRequest",
     "HardwareGeneration",
@@ -211,6 +267,14 @@ __all__ = [
     "LBFirewallRuleActionEnum",
     "LBFirewallRuleDirectionEnum",
     "LBFirewallRuleRequest",
+    "LBReimageAvailabilityEnum",
+    "LBReimageOperation",
+    "LBReimageOperationStateEnum",
+    "LBReimageRefused",
+    "LBReimageRequest",
+    "LBReimageStart",
+    "LBReimageStarted",
+    "LBReimageStatus",
     "LBUpgradeDispatchResponse",
     "LBUpgradePlanResponse",
     "LBUpgradeRequest",
@@ -246,6 +310,15 @@ __all__ = [
     "PaginatedFloatingIPv4List",
     "PaginatedFloatingIPv6List",
     "PaginatedFundsLogList",
+    "PaginatedGatewayBackendList",
+    "PaginatedGatewayBackendPoolList",
+    "PaginatedGatewayFirewallRuleList",
+    "PaginatedGatewayForwardList",
+    "PaginatedGatewayLBListenerList",
+    "PaginatedGatewayList",
+    "PaginatedGatewayNetworkList",
+    "PaginatedGatewayOperationList",
+    "PaginatedGatewayRouteList",
     "PaginatedHTTPRouteList",
     "PaginatedHostingServiceList",
     "PaginatedInboundRouteList",
@@ -280,6 +353,14 @@ __all__ = [
     "PatchedDomainRequest",
     "PatchedFirewallRuleRequest",
     "PatchedFirewallRulesSetRequest",
+    "PatchedGatewayBackendPoolWriteRequest",
+    "PatchedGatewayBackendWriteRequest",
+    "PatchedGatewayFirewallRuleWriteRequest",
+    "PatchedGatewayForwardWriteRequest",
+    "PatchedGatewayLBListenerWriteRequest",
+    "PatchedGatewayNetworkUpdateRequest",
+    "PatchedGatewayRouteWriteRequest",
+    "PatchedGatewayUpdateRequest",
     "PatchedHTTPRouteRequest",
     "PatchedInboundRouteCreateRequest",
     "PatchedK8sPortForwardRequest",
@@ -317,6 +398,7 @@ __all__ = [
     "PublicInterfaceRequest",
     "RDNSUpdateResponse",
     "ReasonEnum",
+    "RefusalEnum",
     "ReinstallRequest",
     "ReinstallResponse",
     "RemoveServerResponse",
@@ -336,6 +418,9 @@ __all__ = [
     "RetryProvision",
     "ReverseDNS",
     "ReverseDNSRequest",
+    "RouteConfigEnum",
+    "RoutePowerEnum",
+    "RouteStatus",
     "SSHKey",
     "SSHKeyRequest",
     "SSHKeyUpdateRequest",
@@ -357,6 +442,7 @@ __all__ = [
     "ServerProductUpgradeRequest",
     "ServerPublicInterface",
     "ServerPublicNetwork",
+    "ServerRoute",
     "ServerTrafficResponse",
     "ServerUpgradeResponse",
     "ServerUsageResponse",
@@ -451,6 +537,7 @@ from pidginhost_sdk.models.address import Address as Address
 from pidginhost_sdk.models.address_request import AddressRequest as AddressRequest
 from pidginhost_sdk.models.api_credential import ApiCredential as ApiCredential
 from pidginhost_sdk.models.api_credential_created import ApiCredentialCreated as ApiCredentialCreated
+from pidginhost_sdk.models.apply_route_request import ApplyRouteRequest as ApplyRouteRequest
 from pidginhost_sdk.models.attach_ipv4_request import AttachIPv4Request as AttachIPv4Request
 from pidginhost_sdk.models.attach_ipv4_response import AttachIPv4Response as AttachIPv4Response
 from pidginhost_sdk.models.attach_ipv6_request import AttachIPv6Request as AttachIPv6Request
@@ -581,6 +668,61 @@ from pidginhost_sdk.models.free_dns_domain import FreeDNSDomain as FreeDNSDomain
 from pidginhost_sdk.models.funds_balance_response import FundsBalanceResponse as FundsBalanceResponse
 from pidginhost_sdk.models.funds_log import FundsLog as FundsLog
 from pidginhost_sdk.models.fw_policy_out_enum import FwPolicyOutEnum as FwPolicyOutEnum
+from pidginhost_sdk.models.gateway import Gateway as Gateway
+from pidginhost_sdk.models.gateway_apply_error import GatewayApplyError as GatewayApplyError
+from pidginhost_sdk.models.gateway_backend import GatewayBackend as GatewayBackend
+from pidginhost_sdk.models.gateway_backend_health_enum import GatewayBackendHealthEnum as GatewayBackendHealthEnum
+from pidginhost_sdk.models.gateway_backend_pool import GatewayBackendPool as GatewayBackendPool
+from pidginhost_sdk.models.gateway_backend_pool_policy_enum import GatewayBackendPoolPolicyEnum as GatewayBackendPoolPolicyEnum
+from pidginhost_sdk.models.gateway_backend_pool_write_request import GatewayBackendPoolWriteRequest as GatewayBackendPoolWriteRequest
+from pidginhost_sdk.models.gateway_backend_write_request import GatewayBackendWriteRequest as GatewayBackendWriteRequest
+from pidginhost_sdk.models.gateway_conflict import GatewayConflict as GatewayConflict
+from pidginhost_sdk.models.gateway_conflict_extra import GatewayConflictExtra as GatewayConflictExtra
+from pidginhost_sdk.models.gateway_conntrack import GatewayConntrack as GatewayConntrack
+from pidginhost_sdk.models.gateway_create_request import GatewayCreateRequest as GatewayCreateRequest
+from pidginhost_sdk.models.gateway_delete_conflict import GatewayDeleteConflict as GatewayDeleteConflict
+from pidginhost_sdk.models.gateway_delete_conflict_extra import GatewayDeleteConflictExtra as GatewayDeleteConflictExtra
+from pidginhost_sdk.models.gateway_delete_preview import GatewayDeletePreview as GatewayDeletePreview
+from pidginhost_sdk.models.gateway_egress_probe import GatewayEgressProbe as GatewayEgressProbe
+from pidginhost_sdk.models.gateway_firewall_destination import GatewayFirewallDestination as GatewayFirewallDestination
+from pidginhost_sdk.models.gateway_firewall_destination_request import GatewayFirewallDestinationRequest as GatewayFirewallDestinationRequest
+from pidginhost_sdk.models.gateway_firewall_move_request import GatewayFirewallMoveRequest as GatewayFirewallMoveRequest
+from pidginhost_sdk.models.gateway_firewall_protocol_enum import GatewayFirewallProtocolEnum as GatewayFirewallProtocolEnum
+from pidginhost_sdk.models.gateway_firewall_rule import GatewayFirewallRule as GatewayFirewallRule
+from pidginhost_sdk.models.gateway_firewall_rule_write_request import GatewayFirewallRuleWriteRequest as GatewayFirewallRuleWriteRequest
+from pidginhost_sdk.models.gateway_firewall_source import GatewayFirewallSource as GatewayFirewallSource
+from pidginhost_sdk.models.gateway_firewall_source_request import GatewayFirewallSourceRequest as GatewayFirewallSourceRequest
+from pidginhost_sdk.models.gateway_forward import GatewayForward as GatewayForward
+from pidginhost_sdk.models.gateway_forward_protocol_enum import GatewayForwardProtocolEnum as GatewayForwardProtocolEnum
+from pidginhost_sdk.models.gateway_forward_target import GatewayForwardTarget as GatewayForwardTarget
+from pidginhost_sdk.models.gateway_forward_target_request import GatewayForwardTargetRequest as GatewayForwardTargetRequest
+from pidginhost_sdk.models.gateway_forward_write_request import GatewayForwardWriteRequest as GatewayForwardWriteRequest
+from pidginhost_sdk.models.gateway_health_check import GatewayHealthCheck as GatewayHealthCheck
+from pidginhost_sdk.models.gateway_health_check_type_enum import GatewayHealthCheckTypeEnum as GatewayHealthCheckTypeEnum
+from pidginhost_sdk.models.gateway_health_check_write_request import GatewayHealthCheckWriteRequest as GatewayHealthCheckWriteRequest
+from pidginhost_sdk.models.gateway_interface import GatewayInterface as GatewayInterface
+from pidginhost_sdk.models.gateway_lb_listener import GatewayLBListener as GatewayLBListener
+from pidginhost_sdk.models.gateway_lb_listener_mode_enum import GatewayLBListenerModeEnum as GatewayLBListenerModeEnum
+from pidginhost_sdk.models.gateway_lb_listener_write_request import GatewayLBListenerWriteRequest as GatewayLBListenerWriteRequest
+from pidginhost_sdk.models.gateway_network import GatewayNetwork as GatewayNetwork
+from pidginhost_sdk.models.gateway_network_create_request import GatewayNetworkCreateRequest as GatewayNetworkCreateRequest
+from pidginhost_sdk.models.gateway_network_role_enum import GatewayNetworkRoleEnum as GatewayNetworkRoleEnum
+from pidginhost_sdk.models.gateway_network_state_enum import GatewayNetworkStateEnum as GatewayNetworkStateEnum
+from pidginhost_sdk.models.gateway_operation import GatewayOperation as GatewayOperation
+from pidginhost_sdk.models.gateway_operation_kind_enum import GatewayOperationKindEnum as GatewayOperationKindEnum
+from pidginhost_sdk.models.gateway_operation_status_enum import GatewayOperationStatusEnum as GatewayOperationStatusEnum
+from pidginhost_sdk.models.gateway_port_range import GatewayPortRange as GatewayPortRange
+from pidginhost_sdk.models.gateway_port_range_request import GatewayPortRangeRequest as GatewayPortRangeRequest
+from pidginhost_sdk.models.gateway_preview import GatewayPreview as GatewayPreview
+from pidginhost_sdk.models.gateway_preview_network import GatewayPreviewNetwork as GatewayPreviewNetwork
+from pidginhost_sdk.models.gateway_preview_server import GatewayPreviewServer as GatewayPreviewServer
+from pidginhost_sdk.models.gateway_reenroll_conflict import GatewayReenrollConflict as GatewayReenrollConflict
+from pidginhost_sdk.models.gateway_reenroll_request import GatewayReenrollRequest as GatewayReenrollRequest
+from pidginhost_sdk.models.gateway_route import GatewayRoute as GatewayRoute
+from pidginhost_sdk.models.gateway_route_outcome import GatewayRouteOutcome as GatewayRouteOutcome
+from pidginhost_sdk.models.gateway_route_write_request import GatewayRouteWriteRequest as GatewayRouteWriteRequest
+from pidginhost_sdk.models.gateway_state_enum import GatewayStateEnum as GatewayStateEnum
+from pidginhost_sdk.models.gateway_status import GatewayStatus as GatewayStatus
 from pidginhost_sdk.models.http_route import HTTPRoute as HTTPRoute
 from pidginhost_sdk.models.http_route_request import HTTPRouteRequest as HTTPRouteRequest
 from pidginhost_sdk.models.hardware_generation import HardwareGeneration as HardwareGeneration
@@ -609,6 +751,14 @@ from pidginhost_sdk.models.lb_firewall_rule import LBFirewallRule as LBFirewallR
 from pidginhost_sdk.models.lb_firewall_rule_action_enum import LBFirewallRuleActionEnum as LBFirewallRuleActionEnum
 from pidginhost_sdk.models.lb_firewall_rule_direction_enum import LBFirewallRuleDirectionEnum as LBFirewallRuleDirectionEnum
 from pidginhost_sdk.models.lb_firewall_rule_request import LBFirewallRuleRequest as LBFirewallRuleRequest
+from pidginhost_sdk.models.lb_reimage_availability_enum import LBReimageAvailabilityEnum as LBReimageAvailabilityEnum
+from pidginhost_sdk.models.lb_reimage_operation import LBReimageOperation as LBReimageOperation
+from pidginhost_sdk.models.lb_reimage_operation_state_enum import LBReimageOperationStateEnum as LBReimageOperationStateEnum
+from pidginhost_sdk.models.lb_reimage_refused import LBReimageRefused as LBReimageRefused
+from pidginhost_sdk.models.lb_reimage_request import LBReimageRequest as LBReimageRequest
+from pidginhost_sdk.models.lb_reimage_start import LBReimageStart as LBReimageStart
+from pidginhost_sdk.models.lb_reimage_started import LBReimageStarted as LBReimageStarted
+from pidginhost_sdk.models.lb_reimage_status import LBReimageStatus as LBReimageStatus
 from pidginhost_sdk.models.lb_upgrade_dispatch_response import LBUpgradeDispatchResponse as LBUpgradeDispatchResponse
 from pidginhost_sdk.models.lb_upgrade_plan_response import LBUpgradePlanResponse as LBUpgradePlanResponse
 from pidginhost_sdk.models.lb_upgrade_request import LBUpgradeRequest as LBUpgradeRequest
@@ -644,6 +794,15 @@ from pidginhost_sdk.models.paginated_floating_ip_authorization_list import Pagin
 from pidginhost_sdk.models.paginated_floating_ipv4_list import PaginatedFloatingIPv4List as PaginatedFloatingIPv4List
 from pidginhost_sdk.models.paginated_floating_ipv6_list import PaginatedFloatingIPv6List as PaginatedFloatingIPv6List
 from pidginhost_sdk.models.paginated_funds_log_list import PaginatedFundsLogList as PaginatedFundsLogList
+from pidginhost_sdk.models.paginated_gateway_backend_list import PaginatedGatewayBackendList as PaginatedGatewayBackendList
+from pidginhost_sdk.models.paginated_gateway_backend_pool_list import PaginatedGatewayBackendPoolList as PaginatedGatewayBackendPoolList
+from pidginhost_sdk.models.paginated_gateway_firewall_rule_list import PaginatedGatewayFirewallRuleList as PaginatedGatewayFirewallRuleList
+from pidginhost_sdk.models.paginated_gateway_forward_list import PaginatedGatewayForwardList as PaginatedGatewayForwardList
+from pidginhost_sdk.models.paginated_gateway_lb_listener_list import PaginatedGatewayLBListenerList as PaginatedGatewayLBListenerList
+from pidginhost_sdk.models.paginated_gateway_list import PaginatedGatewayList as PaginatedGatewayList
+from pidginhost_sdk.models.paginated_gateway_network_list import PaginatedGatewayNetworkList as PaginatedGatewayNetworkList
+from pidginhost_sdk.models.paginated_gateway_operation_list import PaginatedGatewayOperationList as PaginatedGatewayOperationList
+from pidginhost_sdk.models.paginated_gateway_route_list import PaginatedGatewayRouteList as PaginatedGatewayRouteList
 from pidginhost_sdk.models.paginated_http_route_list import PaginatedHTTPRouteList as PaginatedHTTPRouteList
 from pidginhost_sdk.models.paginated_hosting_service_list import PaginatedHostingServiceList as PaginatedHostingServiceList
 from pidginhost_sdk.models.paginated_inbound_route_list import PaginatedInboundRouteList as PaginatedInboundRouteList
@@ -678,6 +837,14 @@ from pidginhost_sdk.models.patched_domain_registrant_request import PatchedDomai
 from pidginhost_sdk.models.patched_domain_request import PatchedDomainRequest as PatchedDomainRequest
 from pidginhost_sdk.models.patched_firewall_rule_request import PatchedFirewallRuleRequest as PatchedFirewallRuleRequest
 from pidginhost_sdk.models.patched_firewall_rules_set_request import PatchedFirewallRulesSetRequest as PatchedFirewallRulesSetRequest
+from pidginhost_sdk.models.patched_gateway_backend_pool_write_request import PatchedGatewayBackendPoolWriteRequest as PatchedGatewayBackendPoolWriteRequest
+from pidginhost_sdk.models.patched_gateway_backend_write_request import PatchedGatewayBackendWriteRequest as PatchedGatewayBackendWriteRequest
+from pidginhost_sdk.models.patched_gateway_firewall_rule_write_request import PatchedGatewayFirewallRuleWriteRequest as PatchedGatewayFirewallRuleWriteRequest
+from pidginhost_sdk.models.patched_gateway_forward_write_request import PatchedGatewayForwardWriteRequest as PatchedGatewayForwardWriteRequest
+from pidginhost_sdk.models.patched_gateway_lb_listener_write_request import PatchedGatewayLBListenerWriteRequest as PatchedGatewayLBListenerWriteRequest
+from pidginhost_sdk.models.patched_gateway_network_update_request import PatchedGatewayNetworkUpdateRequest as PatchedGatewayNetworkUpdateRequest
+from pidginhost_sdk.models.patched_gateway_route_write_request import PatchedGatewayRouteWriteRequest as PatchedGatewayRouteWriteRequest
+from pidginhost_sdk.models.patched_gateway_update_request import PatchedGatewayUpdateRequest as PatchedGatewayUpdateRequest
 from pidginhost_sdk.models.patched_http_route_request import PatchedHTTPRouteRequest as PatchedHTTPRouteRequest
 from pidginhost_sdk.models.patched_inbound_route_create_request import PatchedInboundRouteCreateRequest as PatchedInboundRouteCreateRequest
 from pidginhost_sdk.models.patched_k8s_port_forward_request import PatchedK8sPortForwardRequest as PatchedK8sPortForwardRequest
@@ -715,6 +882,7 @@ from pidginhost_sdk.models.public_interface import PublicInterface as PublicInte
 from pidginhost_sdk.models.public_interface_request import PublicInterfaceRequest as PublicInterfaceRequest
 from pidginhost_sdk.models.rdns_update_response import RDNSUpdateResponse as RDNSUpdateResponse
 from pidginhost_sdk.models.reason_enum import ReasonEnum as ReasonEnum
+from pidginhost_sdk.models.refusal_enum import RefusalEnum as RefusalEnum
 from pidginhost_sdk.models.reinstall_request import ReinstallRequest as ReinstallRequest
 from pidginhost_sdk.models.reinstall_response import ReinstallResponse as ReinstallResponse
 from pidginhost_sdk.models.remove_server_response import RemoveServerResponse as RemoveServerResponse
@@ -734,6 +902,9 @@ from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum as Res
 from pidginhost_sdk.models.retry_provision import RetryProvision as RetryProvision
 from pidginhost_sdk.models.reverse_dns import ReverseDNS as ReverseDNS
 from pidginhost_sdk.models.reverse_dns_request import ReverseDNSRequest as ReverseDNSRequest
+from pidginhost_sdk.models.route_config_enum import RouteConfigEnum as RouteConfigEnum
+from pidginhost_sdk.models.route_power_enum import RoutePowerEnum as RoutePowerEnum
+from pidginhost_sdk.models.route_status import RouteStatus as RouteStatus
 from pidginhost_sdk.models.ssh_key import SSHKey as SSHKey
 from pidginhost_sdk.models.ssh_key_request import SSHKeyRequest as SSHKeyRequest
 from pidginhost_sdk.models.ssh_key_update_request import SSHKeyUpdateRequest as SSHKeyUpdateRequest
@@ -755,6 +926,7 @@ from pidginhost_sdk.models.server_product import ServerProduct as ServerProduct
 from pidginhost_sdk.models.server_product_upgrade_request import ServerProductUpgradeRequest as ServerProductUpgradeRequest
 from pidginhost_sdk.models.server_public_interface import ServerPublicInterface as ServerPublicInterface
 from pidginhost_sdk.models.server_public_network import ServerPublicNetwork as ServerPublicNetwork
+from pidginhost_sdk.models.server_route import ServerRoute as ServerRoute
 from pidginhost_sdk.models.server_traffic_response import ServerTrafficResponse as ServerTrafficResponse
 from pidginhost_sdk.models.server_upgrade_response import ServerUpgradeResponse as ServerUpgradeResponse
 from pidginhost_sdk.models.server_usage_response import ServerUsageResponse as ServerUsageResponse

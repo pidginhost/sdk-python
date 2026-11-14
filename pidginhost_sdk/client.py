@@ -17,6 +17,7 @@ from pidginhost_sdk.api.billing_api import BillingApi
 from pidginhost_sdk.api.cloud_api import CloudApi
 from pidginhost_sdk.api.dedicated_api import DedicatedApi
 from pidginhost_sdk.api.domain_api import DomainApi
+from pidginhost_sdk.api.email_api import EmailApi
 from pidginhost_sdk.api.freedns_api import FreednsApi
 from pidginhost_sdk.api.hosting_api import HostingApi
 from pidginhost_sdk.api.kubernetes_api import KubernetesApi
@@ -47,6 +48,7 @@ class PidginHost:
         self.cloud = CloudApi(self._api_client)
         self.dedicated = DedicatedApi(self._api_client)
         self.domain = DomainApi(self._api_client)
+        self.email = EmailApi(self._api_client)
         self.freedns = FreednsApi(self._api_client)
         self.hosting = HostingApi(self._api_client)
         self.kubernetes = KubernetesApi(self._api_client)

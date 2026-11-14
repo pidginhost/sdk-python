@@ -21,16 +21,14 @@ from typing_extensions import Self
 
 class KubeVersionEnum(str, Enum):
     """
-    * `1.33.13` - 1.33.13 * `1.34.10` - 1.34.10 * `1.35.7` - 1.35.7 * `1.36.3` - 1.36.3
+    * `1.35.10` - 1.35.10 * `1.36.6` - 1.36.6
     """
 
     """
     allowed enum values
     """
-    ENUM_1_DOT_33_DOT_13 = '1.33.13'
-    ENUM_1_DOT_34_DOT_10 = '1.34.10'
-    ENUM_1_DOT_35_DOT_7 = '1.35.7'
-    ENUM_1_DOT_36_DOT_3 = '1.36.3'
+    ENUM_1_DOT_35_DOT_10 = '1.35.10'
+    ENUM_1_DOT_36_DOT_6 = '1.36.6'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

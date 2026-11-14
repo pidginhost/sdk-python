@@ -42,6 +42,51 @@ Method | HTTP request | Description
 [**cloud_floating_ipv6_rdns_retrieve**](CloudApi.md#cloud_floating_ipv6_rdns_retrieve) | **GET** /api/cloud/floating-ipv6/{id}/rdns/ | 
 [**cloud_floating_ipv6_retrieve**](CloudApi.md#cloud_floating_ipv6_retrieve) | **GET** /api/cloud/floating-ipv6/{id}/ | 
 [**cloud_floating_ipv6_unauthorize_create**](CloudApi.md#cloud_floating_ipv6_unauthorize_create) | **POST** /api/cloud/floating-ipv6/{id}/unauthorize/ | 
+[**cloud_gateways_create**](CloudApi.md#cloud_gateways_create) | **POST** /api/cloud/gateways/ | 
+[**cloud_gateways_destroy**](CloudApi.md#cloud_gateways_destroy) | **DELETE** /api/cloud/gateways/{id}/ | 
+[**cloud_gateways_firewall_rules_create**](CloudApi.md#cloud_gateways_firewall_rules_create) | **POST** /api/cloud/gateways/{gateway_id}/firewall-rules/ | 
+[**cloud_gateways_firewall_rules_destroy**](CloudApi.md#cloud_gateways_firewall_rules_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/ | 
+[**cloud_gateways_firewall_rules_list**](CloudApi.md#cloud_gateways_firewall_rules_list) | **GET** /api/cloud/gateways/{gateway_id}/firewall-rules/ | 
+[**cloud_gateways_firewall_rules_move_create**](CloudApi.md#cloud_gateways_firewall_rules_move_create) | **POST** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/move/ | 
+[**cloud_gateways_firewall_rules_partial_update**](CloudApi.md#cloud_gateways_firewall_rules_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/ | 
+[**cloud_gateways_firewall_rules_retrieve**](CloudApi.md#cloud_gateways_firewall_rules_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/firewall-rules/{id}/ | 
+[**cloud_gateways_list**](CloudApi.md#cloud_gateways_list) | **GET** /api/cloud/gateways/ | 
+[**cloud_gateways_listeners_create**](CloudApi.md#cloud_gateways_listeners_create) | **POST** /api/cloud/gateways/{gateway_id}/listeners/ | 
+[**cloud_gateways_listeners_destroy**](CloudApi.md#cloud_gateways_listeners_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/listeners/{id}/ | 
+[**cloud_gateways_listeners_list**](CloudApi.md#cloud_gateways_listeners_list) | **GET** /api/cloud/gateways/{gateway_id}/listeners/ | 
+[**cloud_gateways_listeners_partial_update**](CloudApi.md#cloud_gateways_listeners_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/listeners/{id}/ | 
+[**cloud_gateways_listeners_retrieve**](CloudApi.md#cloud_gateways_listeners_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/listeners/{id}/ | 
+[**cloud_gateways_listeners_routes_create**](CloudApi.md#cloud_gateways_listeners_routes_create) | **POST** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/ | 
+[**cloud_gateways_listeners_routes_destroy**](CloudApi.md#cloud_gateways_listeners_routes_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/ | 
+[**cloud_gateways_listeners_routes_list**](CloudApi.md#cloud_gateways_listeners_routes_list) | **GET** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/ | 
+[**cloud_gateways_listeners_routes_partial_update**](CloudApi.md#cloud_gateways_listeners_routes_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/ | 
+[**cloud_gateways_listeners_routes_retrieve**](CloudApi.md#cloud_gateways_listeners_routes_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/listeners/{listener_id}/routes/{id}/ | 
+[**cloud_gateways_networks_create**](CloudApi.md#cloud_gateways_networks_create) | **POST** /api/cloud/gateways/{gateway_id}/networks/ | 
+[**cloud_gateways_networks_destroy**](CloudApi.md#cloud_gateways_networks_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/networks/{network_id}/ | 
+[**cloud_gateways_networks_list**](CloudApi.md#cloud_gateways_networks_list) | **GET** /api/cloud/gateways/{gateway_id}/networks/ | 
+[**cloud_gateways_networks_partial_update**](CloudApi.md#cloud_gateways_networks_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/networks/{network_id}/ | 
+[**cloud_gateways_networks_retrieve**](CloudApi.md#cloud_gateways_networks_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/networks/{network_id}/ | 
+[**cloud_gateways_operations_list**](CloudApi.md#cloud_gateways_operations_list) | **GET** /api/cloud/gateways/{gateway_id}/operations/ | 
+[**cloud_gateways_operations_retrieve**](CloudApi.md#cloud_gateways_operations_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/operations/{id}/ | 
+[**cloud_gateways_partial_update**](CloudApi.md#cloud_gateways_partial_update) | **PATCH** /api/cloud/gateways/{id}/ | 
+[**cloud_gateways_pools_backends_create**](CloudApi.md#cloud_gateways_pools_backends_create) | **POST** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/ | 
+[**cloud_gateways_pools_backends_destroy**](CloudApi.md#cloud_gateways_pools_backends_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/ | 
+[**cloud_gateways_pools_backends_list**](CloudApi.md#cloud_gateways_pools_backends_list) | **GET** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/ | 
+[**cloud_gateways_pools_backends_partial_update**](CloudApi.md#cloud_gateways_pools_backends_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/ | 
+[**cloud_gateways_pools_backends_retrieve**](CloudApi.md#cloud_gateways_pools_backends_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/pools/{pool_id}/backends/{id}/ | 
+[**cloud_gateways_pools_create**](CloudApi.md#cloud_gateways_pools_create) | **POST** /api/cloud/gateways/{gateway_id}/pools/ | 
+[**cloud_gateways_pools_destroy**](CloudApi.md#cloud_gateways_pools_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/pools/{id}/ | 
+[**cloud_gateways_pools_list**](CloudApi.md#cloud_gateways_pools_list) | **GET** /api/cloud/gateways/{gateway_id}/pools/ | 
+[**cloud_gateways_pools_partial_update**](CloudApi.md#cloud_gateways_pools_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/pools/{id}/ | 
+[**cloud_gateways_pools_retrieve**](CloudApi.md#cloud_gateways_pools_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/pools/{id}/ | 
+[**cloud_gateways_port_forwards_create**](CloudApi.md#cloud_gateways_port_forwards_create) | **POST** /api/cloud/gateways/{gateway_id}/port-forwards/ | 
+[**cloud_gateways_port_forwards_destroy**](CloudApi.md#cloud_gateways_port_forwards_destroy) | **DELETE** /api/cloud/gateways/{gateway_id}/port-forwards/{id}/ | 
+[**cloud_gateways_port_forwards_list**](CloudApi.md#cloud_gateways_port_forwards_list) | **GET** /api/cloud/gateways/{gateway_id}/port-forwards/ | 
+[**cloud_gateways_port_forwards_partial_update**](CloudApi.md#cloud_gateways_port_forwards_partial_update) | **PATCH** /api/cloud/gateways/{gateway_id}/port-forwards/{id}/ | 
+[**cloud_gateways_port_forwards_retrieve**](CloudApi.md#cloud_gateways_port_forwards_retrieve) | **GET** /api/cloud/gateways/{gateway_id}/port-forwards/{id}/ | 
+[**cloud_gateways_reenroll_create**](CloudApi.md#cloud_gateways_reenroll_create) | **POST** /api/cloud/gateways/{id}/reenroll/ | 
+[**cloud_gateways_retrieve**](CloudApi.md#cloud_gateways_retrieve) | **GET** /api/cloud/gateways/{id}/ | 
+[**cloud_gateways_status_retrieve**](CloudApi.md#cloud_gateways_status_retrieve) | **GET** /api/cloud/gateways/{id}/status/ | 
 [**cloud_generations_list**](CloudApi.md#cloud_generations_list) | **GET** /api/cloud/generations/ | List hardware generations
 [**cloud_generations_retrieve**](CloudApi.md#cloud_generations_retrieve) | **GET** /api/cloud/generations/{slug}/ | 
 [**cloud_images_list**](CloudApi.md#cloud_images_list) | **GET** /api/cloud/images/ | 
@@ -61,12 +106,14 @@ Method | HTTP request | Description
 [**cloud_ipv6_rdns_retrieve**](CloudApi.md#cloud_ipv6_rdns_retrieve) | **GET** /api/cloud/ipv6/{id}/rdns/ | 
 [**cloud_ipv6_retrieve**](CloudApi.md#cloud_ipv6_retrieve) | **GET** /api/cloud/ipv6/{id}/ | 
 [**cloud_private_networks_add_server_create**](CloudApi.md#cloud_private_networks_add_server_create) | **POST** /api/cloud/private-networks/{id}/add-server/ | 
+[**cloud_private_networks_apply_route_create**](CloudApi.md#cloud_private_networks_apply_route_create) | **POST** /api/cloud/private-networks/{id}/apply-route/ | 
 [**cloud_private_networks_create**](CloudApi.md#cloud_private_networks_create) | **POST** /api/cloud/private-networks/ | 
 [**cloud_private_networks_destroy**](CloudApi.md#cloud_private_networks_destroy) | **DELETE** /api/cloud/private-networks/{id}/ | 
 [**cloud_private_networks_list**](CloudApi.md#cloud_private_networks_list) | **GET** /api/cloud/private-networks/ | 
 [**cloud_private_networks_partial_update**](CloudApi.md#cloud_private_networks_partial_update) | **PATCH** /api/cloud/private-networks/{id}/ | 
 [**cloud_private_networks_remove_server_create**](CloudApi.md#cloud_private_networks_remove_server_create) | **POST** /api/cloud/private-networks/{id}/remove-server/ | 
 [**cloud_private_networks_retrieve**](CloudApi.md#cloud_private_networks_retrieve) | **GET** /api/cloud/private-networks/{id}/ | 
+[**cloud_private_networks_route_status_retrieve**](CloudApi.md#cloud_private_networks_route_status_retrieve) | **GET** /api/cloud/private-networks/{id}/route-status/ | 
 [**cloud_private_networks_update**](CloudApi.md#cloud_private_networks_update) | **PUT** /api/cloud/private-networks/{id}/ | 
 [**cloud_server_packages_by_generation_retrieve**](CloudApi.md#cloud_server_packages_by_generation_retrieve) | **GET** /api/cloud/server-packages/by-generation/ | 
 [**cloud_server_packages_list**](CloudApi.md#cloud_server_packages_list) | **GET** /api/cloud/server-packages/ | 
@@ -3418,6 +3465,3939 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **cloud_gateways_create**
+> Gateway cloud_gateways_create(gateway_create_request)
+
+Reserve a gateway and queue its provisioning (spec 11.1); its state shows the progress.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway import Gateway
+from pidginhost_sdk.models.gateway_create_request import GatewayCreateRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_create_request = pidginhost_sdk.GatewayCreateRequest() # GatewayCreateRequest | 
+
+    try:
+        api_response = api_instance.cloud_gateways_create(gateway_create_request)
+        print("The response of CloudApi->cloud_gateways_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_create_request** | [**GatewayCreateRequest**](GatewayCreateRequest.md)|  | 
+
+### Return type
+
+[**Gateway**](Gateway.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_destroy**
+> GatewayOperation cloud_gateways_destroy(id, networks=networks, revision=revision, servers=servers)
+
+Delete the gateway (spec 11.5): its VM is destroyed, then its networks and IPv4 are released.
+Without the preview's revision, networks and servers, 409 with a fresh preview.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 'id_example' # str | 
+    networks = [56] # List[int] | The preview's network ids. (optional)
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+    servers = [56] # List[int] | The preview's server ids. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_destroy(id, networks=networks, revision=revision, servers=servers)
+        print("The response of CloudApi->cloud_gateways_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **networks** | [**List[int]**](int.md)| The preview&#39;s network ids. | [optional] 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+ **servers** | [**List[int]**](int.md)| The preview&#39;s server ids. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_firewall_rules_create**
+> GatewayFirewallRule cloud_gateways_firewall_rules_create(gateway_id, gateway_firewall_rule_write_request)
+
+Add a rule after the last one (spec 5.7); it is pending until the agent applies its revision.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_firewall_rule import GatewayFirewallRule
+from pidginhost_sdk.models.gateway_firewall_rule_write_request import GatewayFirewallRuleWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    gateway_firewall_rule_write_request = pidginhost_sdk.GatewayFirewallRuleWriteRequest() # GatewayFirewallRuleWriteRequest | 
+
+    try:
+        api_response = api_instance.cloud_gateways_firewall_rules_create(gateway_id, gateway_firewall_rule_write_request)
+        print("The response of CloudApi->cloud_gateways_firewall_rules_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_firewall_rules_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **gateway_firewall_rule_write_request** | [**GatewayFirewallRuleWriteRequest**](GatewayFirewallRuleWriteRequest.md)|  | 
+
+### Return type
+
+[**GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_firewall_rules_destroy**
+> GatewayOperation cloud_gateways_firewall_rules_destroy(gateway_id, id, revision=revision)
+
+Delete a rule (spec 5.11): 202 with the record the agent's acknowledgement completes. Without
+the preview's revision, 409 with a fresh one.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_firewall_rules_destroy(gateway_id, id, revision=revision)
+        print("The response of CloudApi->cloud_gateways_firewall_rules_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_firewall_rules_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_firewall_rules_list**
+> PaginatedGatewayFirewallRuleList cloud_gateways_firewall_rules_list(gateway_id, page=page)
+
+A gateway's firewall rules, in evaluation order
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_firewall_rule_list import PaginatedGatewayFirewallRuleList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_firewall_rules_list(gateway_id, page=page)
+        print("The response of CloudApi->cloud_gateways_firewall_rules_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_firewall_rules_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayFirewallRuleList**](PaginatedGatewayFirewallRuleList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_firewall_rules_move_create**
+> GatewayFirewallRule cloud_gateways_firewall_rules_move_create(gateway_id, id, gateway_firewall_move_request, revision=revision)
+
+Move a rule to a position, the others keeping their order. Without the preview's revision,
+409 with a fresh one.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_firewall_move_request import GatewayFirewallMoveRequest
+from pidginhost_sdk.models.gateway_firewall_rule import GatewayFirewallRule
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    gateway_firewall_move_request = pidginhost_sdk.GatewayFirewallMoveRequest() # GatewayFirewallMoveRequest | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_firewall_rules_move_create(gateway_id, id, gateway_firewall_move_request, revision=revision)
+        print("The response of CloudApi->cloud_gateways_firewall_rules_move_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_firewall_rules_move_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **gateway_firewall_move_request** | [**GatewayFirewallMoveRequest**](GatewayFirewallMoveRequest.md)|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+
+### Return type
+
+[**GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_firewall_rules_partial_update**
+> GatewayFirewallRule cloud_gateways_firewall_rules_partial_update(gateway_id, id, patched_gateway_firewall_rule_write_request=patched_gateway_firewall_rule_write_request)
+
+Change a rule's fields; a source or destination is replaced whole. Its position stays.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_firewall_rule import GatewayFirewallRule
+from pidginhost_sdk.models.patched_gateway_firewall_rule_write_request import PatchedGatewayFirewallRuleWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    patched_gateway_firewall_rule_write_request = pidginhost_sdk.PatchedGatewayFirewallRuleWriteRequest() # PatchedGatewayFirewallRuleWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_firewall_rules_partial_update(gateway_id, id, patched_gateway_firewall_rule_write_request=patched_gateway_firewall_rule_write_request)
+        print("The response of CloudApi->cloud_gateways_firewall_rules_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_firewall_rules_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **patched_gateway_firewall_rule_write_request** | [**PatchedGatewayFirewallRuleWriteRequest**](PatchedGatewayFirewallRuleWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_firewall_rules_retrieve**
+> GatewayFirewallRule cloud_gateways_firewall_rules_retrieve(gateway_id, id)
+
+A gateway's firewall rules, in evaluation order
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_firewall_rule import GatewayFirewallRule
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_gateways_firewall_rules_retrieve(gateway_id, id)
+        print("The response of CloudApi->cloud_gateways_firewall_rules_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_firewall_rules_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+
+### Return type
+
+[**GatewayFirewallRule**](GatewayFirewallRule.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_list**
+> PaginatedGatewayList cloud_gateways_list(page=page)
+
+Manage gateways
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_list import PaginatedGatewayList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_list(page=page)
+        print("The response of CloudApi->cloud_gateways_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayList**](PaginatedGatewayList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_create**
+> GatewayLBListener cloud_gateways_listeners_create(gateway_id, gateway_lb_listener_write_request=gateway_lb_listener_write_request)
+
+Add a listener (spec 6.8): tcp and udp name a pool, http takes routes. Pending until applied.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_lb_listener import GatewayLBListener
+from pidginhost_sdk.models.gateway_lb_listener_write_request import GatewayLBListenerWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    gateway_lb_listener_write_request = pidginhost_sdk.GatewayLBListenerWriteRequest() # GatewayLBListenerWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_create(gateway_id, gateway_lb_listener_write_request=gateway_lb_listener_write_request)
+        print("The response of CloudApi->cloud_gateways_listeners_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **gateway_lb_listener_write_request** | [**GatewayLBListenerWriteRequest**](GatewayLBListenerWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayLBListener**](GatewayLBListener.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_destroy**
+> GatewayOperation cloud_gateways_listeners_destroy(gateway_id, id, revision=revision)
+
+Delete a listener and its routes (spec 5.11): 202 with the record the agent's acknowledgement
+completes. Without the preview's revision, 409 with a fresh one.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_destroy(gateway_id, id, revision=revision)
+        print("The response of CloudApi->cloud_gateways_listeners_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_list**
+> PaginatedGatewayLBListenerList cloud_gateways_listeners_list(gateway_id, page=page)
+
+A gateway's load balancer listeners
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_lb_listener_list import PaginatedGatewayLBListenerList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_list(gateway_id, page=page)
+        print("The response of CloudApi->cloud_gateways_listeners_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayLBListenerList**](PaginatedGatewayLBListenerList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_partial_update**
+> GatewayLBListener cloud_gateways_listeners_partial_update(gateway_id, id, patched_gateway_lb_listener_write_request=patched_gateway_lb_listener_write_request)
+
+Change a listener's pool, sources, comment or enabled flag; protocol, port and mode are fixed.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_lb_listener import GatewayLBListener
+from pidginhost_sdk.models.patched_gateway_lb_listener_write_request import PatchedGatewayLBListenerWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    patched_gateway_lb_listener_write_request = pidginhost_sdk.PatchedGatewayLBListenerWriteRequest() # PatchedGatewayLBListenerWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_partial_update(gateway_id, id, patched_gateway_lb_listener_write_request=patched_gateway_lb_listener_write_request)
+        print("The response of CloudApi->cloud_gateways_listeners_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **patched_gateway_lb_listener_write_request** | [**PatchedGatewayLBListenerWriteRequest**](PatchedGatewayLBListenerWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayLBListener**](GatewayLBListener.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_retrieve**
+> GatewayLBListener cloud_gateways_listeners_retrieve(gateway_id, id)
+
+A gateway's load balancer listeners
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_lb_listener import GatewayLBListener
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_retrieve(gateway_id, id)
+        print("The response of CloudApi->cloud_gateways_listeners_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+
+### Return type
+
+[**GatewayLBListener**](GatewayLBListener.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_routes_create**
+> GatewayRoute cloud_gateways_listeners_routes_create(gateway_id, listener_id, gateway_route_write_request=gateway_route_write_request)
+
+Add a route (spec 5.6): hostnames and a path prefix to a pool. Pending until applied.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_route import GatewayRoute
+from pidginhost_sdk.models.gateway_route_write_request import GatewayRouteWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    listener_id = 56 # int | 
+    gateway_route_write_request = pidginhost_sdk.GatewayRouteWriteRequest() # GatewayRouteWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_routes_create(gateway_id, listener_id, gateway_route_write_request=gateway_route_write_request)
+        print("The response of CloudApi->cloud_gateways_listeners_routes_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_routes_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **listener_id** | **int**|  | 
+ **gateway_route_write_request** | [**GatewayRouteWriteRequest**](GatewayRouteWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayRoute**](GatewayRoute.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_routes_destroy**
+> GatewayOperation cloud_gateways_listeners_routes_destroy(gateway_id, id, listener_id, revision=revision)
+
+Delete a route (spec 5.11): 202 with the record the agent's acknowledgement completes. Without
+the preview's revision, 409 with a fresh one.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    listener_id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_routes_destroy(gateway_id, id, listener_id, revision=revision)
+        print("The response of CloudApi->cloud_gateways_listeners_routes_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_routes_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **listener_id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_routes_list**
+> PaginatedGatewayRouteList cloud_gateways_listeners_routes_list(gateway_id, listener_id, page=page)
+
+An http listener's routes
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_route_list import PaginatedGatewayRouteList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    listener_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_routes_list(gateway_id, listener_id, page=page)
+        print("The response of CloudApi->cloud_gateways_listeners_routes_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_routes_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **listener_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayRouteList**](PaginatedGatewayRouteList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_routes_partial_update**
+> GatewayRoute cloud_gateways_listeners_routes_partial_update(gateway_id, id, listener_id, patched_gateway_route_write_request=patched_gateway_route_write_request)
+
+Change a route; hostnames are replaced whole.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_route import GatewayRoute
+from pidginhost_sdk.models.patched_gateway_route_write_request import PatchedGatewayRouteWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    listener_id = 56 # int | 
+    patched_gateway_route_write_request = pidginhost_sdk.PatchedGatewayRouteWriteRequest() # PatchedGatewayRouteWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_routes_partial_update(gateway_id, id, listener_id, patched_gateway_route_write_request=patched_gateway_route_write_request)
+        print("The response of CloudApi->cloud_gateways_listeners_routes_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_routes_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **listener_id** | **int**|  | 
+ **patched_gateway_route_write_request** | [**PatchedGatewayRouteWriteRequest**](PatchedGatewayRouteWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayRoute**](GatewayRoute.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_listeners_routes_retrieve**
+> GatewayRoute cloud_gateways_listeners_routes_retrieve(gateway_id, id, listener_id)
+
+An http listener's routes
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_route import GatewayRoute
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    listener_id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_gateways_listeners_routes_retrieve(gateway_id, id, listener_id)
+        print("The response of CloudApi->cloud_gateways_listeners_routes_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_listeners_routes_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **listener_id** | **int**|  | 
+
+### Return type
+
+[**GatewayRoute**](GatewayRoute.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_networks_create**
+> GatewayOperation cloud_gateways_networks_create(gateway_id, gateway_network_create_request)
+
+Attach a network (spec 11.3): the operation reserves it and hotplugs the gateway's NIC.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_network_create_request import GatewayNetworkCreateRequest
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    gateway_network_create_request = pidginhost_sdk.GatewayNetworkCreateRequest() # GatewayNetworkCreateRequest | 
+
+    try:
+        api_response = api_instance.cloud_gateways_networks_create(gateway_id, gateway_network_create_request)
+        print("The response of CloudApi->cloud_gateways_networks_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_networks_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **gateway_network_create_request** | [**GatewayNetworkCreateRequest**](GatewayNetworkCreateRequest.md)|  | 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_networks_destroy**
+> GatewayOperation cloud_gateways_networks_destroy(gateway_id, network_id, revision=revision, servers=servers)
+
+Detach a network (spec 11.3). Without the preview's revision and servers, 409 with a fresh preview.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    network_id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+    servers = [56] # List[int] | The preview's server ids. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_networks_destroy(gateway_id, network_id, revision=revision, servers=servers)
+        print("The response of CloudApi->cloud_gateways_networks_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_networks_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **network_id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+ **servers** | [**List[int]**](int.md)| The preview&#39;s server ids. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_networks_list**
+> PaginatedGatewayNetworkList cloud_gateways_networks_list(gateway_id, page=page)
+
+A gateway's private networks, by network id
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_network_list import PaginatedGatewayNetworkList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_networks_list(gateway_id, page=page)
+        print("The response of CloudApi->cloud_gateways_networks_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_networks_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayNetworkList**](PaginatedGatewayNetworkList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_networks_partial_update**
+> GatewayNetwork cloud_gateways_networks_partial_update(gateway_id, network_id, revision=revision, servers=servers, patched_gateway_network_update_request=patched_gateway_network_update_request)
+
+Switch a router network's SNAT (spec 6.4). Turning it off without the preview's revision and
+servers answers 409 with a fresh preview; the change is pending until the agent applies it.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_network import GatewayNetwork
+from pidginhost_sdk.models.patched_gateway_network_update_request import PatchedGatewayNetworkUpdateRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    network_id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+    servers = [56] # List[int] | The preview's server ids. (optional)
+    patched_gateway_network_update_request = pidginhost_sdk.PatchedGatewayNetworkUpdateRequest() # PatchedGatewayNetworkUpdateRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_networks_partial_update(gateway_id, network_id, revision=revision, servers=servers, patched_gateway_network_update_request=patched_gateway_network_update_request)
+        print("The response of CloudApi->cloud_gateways_networks_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_networks_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **network_id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+ **servers** | [**List[int]**](int.md)| The preview&#39;s server ids. | [optional] 
+ **patched_gateway_network_update_request** | [**PatchedGatewayNetworkUpdateRequest**](PatchedGatewayNetworkUpdateRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayNetwork**](GatewayNetwork.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_networks_retrieve**
+> GatewayNetwork cloud_gateways_networks_retrieve(gateway_id, network_id)
+
+A gateway's private networks, by network id
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_network import GatewayNetwork
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    network_id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_gateways_networks_retrieve(gateway_id, network_id)
+        print("The response of CloudApi->cloud_gateways_networks_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_networks_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **network_id** | **int**|  | 
+
+### Return type
+
+[**GatewayNetwork**](GatewayNetwork.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_operations_list**
+> PaginatedGatewayOperationList cloud_gateways_operations_list(gateway_id, page=page)
+
+A gateway's operations, newest first
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_operation_list import PaginatedGatewayOperationList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_operations_list(gateway_id, page=page)
+        print("The response of CloudApi->cloud_gateways_operations_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_operations_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayOperationList**](PaginatedGatewayOperationList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_operations_retrieve**
+> GatewayOperation cloud_gateways_operations_retrieve(gateway_id, id)
+
+A gateway's operations, newest first
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.cloud_gateways_operations_retrieve(gateway_id, id)
+        print("The response of CloudApi->cloud_gateways_operations_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_operations_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_partial_update**
+> Gateway cloud_gateways_partial_update(id, patched_gateway_update_request=patched_gateway_update_request)
+
+Rename the gateway or change its maintenance window. The name is not compiled, so no revision
+follows; a new window reaches the agent in a new revision (spec 11.4).
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway import Gateway
+from pidginhost_sdk.models.patched_gateway_update_request import PatchedGatewayUpdateRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 'id_example' # str | 
+    patched_gateway_update_request = pidginhost_sdk.PatchedGatewayUpdateRequest() # PatchedGatewayUpdateRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_partial_update(id, patched_gateway_update_request=patched_gateway_update_request)
+        print("The response of CloudApi->cloud_gateways_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **patched_gateway_update_request** | [**PatchedGatewayUpdateRequest**](PatchedGatewayUpdateRequest.md)|  | [optional] 
+
+### Return type
+
+[**Gateway**](Gateway.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_backends_create**
+> GatewayBackend cloud_gateways_pools_backends_create(gateway_id, pool_id, gateway_backend_write_request=gateway_backend_write_request)
+
+Add a server to the pool (spec 5.5); it is pending until the agent applies its revision.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_backend import GatewayBackend
+from pidginhost_sdk.models.gateway_backend_write_request import GatewayBackendWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    pool_id = 56 # int | 
+    gateway_backend_write_request = pidginhost_sdk.GatewayBackendWriteRequest() # GatewayBackendWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_backends_create(gateway_id, pool_id, gateway_backend_write_request=gateway_backend_write_request)
+        print("The response of CloudApi->cloud_gateways_pools_backends_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_backends_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **pool_id** | **int**|  | 
+ **gateway_backend_write_request** | [**GatewayBackendWriteRequest**](GatewayBackendWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayBackend**](GatewayBackend.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_backends_destroy**
+> GatewayOperation cloud_gateways_pools_backends_destroy(gateway_id, id, pool_id, revision=revision)
+
+Remove a server (spec 5.11): 202 with the record the agent's acknowledgement completes. Without
+the preview's revision, 409 with a fresh one.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    pool_id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_backends_destroy(gateway_id, id, pool_id, revision=revision)
+        print("The response of CloudApi->cloud_gateways_pools_backends_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_backends_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **pool_id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_backends_list**
+> PaginatedGatewayBackendList cloud_gateways_pools_backends_list(gateway_id, pool_id, page=page)
+
+A backend pool's servers
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_backend_list import PaginatedGatewayBackendList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    pool_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_backends_list(gateway_id, pool_id, page=page)
+        print("The response of CloudApi->cloud_gateways_pools_backends_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_backends_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **pool_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayBackendList**](PaginatedGatewayBackendList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_backends_partial_update**
+> GatewayBackend cloud_gateways_pools_backends_partial_update(gateway_id, id, pool_id, patched_gateway_backend_write_request=patched_gateway_backend_write_request)
+
+Change a server. The last enabled server of a pool in use cannot be disabled.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_backend import GatewayBackend
+from pidginhost_sdk.models.patched_gateway_backend_write_request import PatchedGatewayBackendWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    pool_id = 56 # int | 
+    patched_gateway_backend_write_request = pidginhost_sdk.PatchedGatewayBackendWriteRequest() # PatchedGatewayBackendWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_backends_partial_update(gateway_id, id, pool_id, patched_gateway_backend_write_request=patched_gateway_backend_write_request)
+        print("The response of CloudApi->cloud_gateways_pools_backends_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_backends_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **pool_id** | **int**|  | 
+ **patched_gateway_backend_write_request** | [**PatchedGatewayBackendWriteRequest**](PatchedGatewayBackendWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayBackend**](GatewayBackend.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_backends_retrieve**
+> GatewayBackend cloud_gateways_pools_backends_retrieve(gateway_id, id, pool_id)
+
+A backend pool's servers
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_backend import GatewayBackend
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    pool_id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_backends_retrieve(gateway_id, id, pool_id)
+        print("The response of CloudApi->cloud_gateways_pools_backends_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_backends_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **pool_id** | **int**|  | 
+
+### Return type
+
+[**GatewayBackend**](GatewayBackend.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_create**
+> GatewayBackendPool cloud_gateways_pools_create(gateway_id, gateway_backend_pool_write_request=gateway_backend_pool_write_request)
+
+Add a backend pool (spec 5.5); it is pending until the agent applies its revision.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_backend_pool import GatewayBackendPool
+from pidginhost_sdk.models.gateway_backend_pool_write_request import GatewayBackendPoolWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    gateway_backend_pool_write_request = pidginhost_sdk.GatewayBackendPoolWriteRequest() # GatewayBackendPoolWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_create(gateway_id, gateway_backend_pool_write_request=gateway_backend_pool_write_request)
+        print("The response of CloudApi->cloud_gateways_pools_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **gateway_backend_pool_write_request** | [**GatewayBackendPoolWriteRequest**](GatewayBackendPoolWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayBackendPool**](GatewayBackendPool.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_destroy**
+> GatewayOperation cloud_gateways_pools_destroy(gateway_id, id, revision=revision)
+
+Delete an unused pool and its servers (spec 5.11): 202 with the record the agent's acknowledgement
+completes. Without the preview's revision, 409 with a fresh one.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_destroy(gateway_id, id, revision=revision)
+        print("The response of CloudApi->cloud_gateways_pools_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_list**
+> PaginatedGatewayBackendPoolList cloud_gateways_pools_list(gateway_id, page=page)
+
+A gateway's backend pools
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_backend_pool_list import PaginatedGatewayBackendPoolList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_list(gateway_id, page=page)
+        print("The response of CloudApi->cloud_gateways_pools_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayBackendPoolList**](PaginatedGatewayBackendPoolList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_partial_update**
+> GatewayBackendPool cloud_gateways_pools_partial_update(gateway_id, id, patched_gateway_backend_pool_write_request=patched_gateway_backend_pool_write_request)
+
+Change a pool; health_check takes the fields to change. Every listener and route on it must still fit.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_backend_pool import GatewayBackendPool
+from pidginhost_sdk.models.patched_gateway_backend_pool_write_request import PatchedGatewayBackendPoolWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    patched_gateway_backend_pool_write_request = pidginhost_sdk.PatchedGatewayBackendPoolWriteRequest() # PatchedGatewayBackendPoolWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_partial_update(gateway_id, id, patched_gateway_backend_pool_write_request=patched_gateway_backend_pool_write_request)
+        print("The response of CloudApi->cloud_gateways_pools_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **patched_gateway_backend_pool_write_request** | [**PatchedGatewayBackendPoolWriteRequest**](PatchedGatewayBackendPoolWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayBackendPool**](GatewayBackendPool.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_pools_retrieve**
+> GatewayBackendPool cloud_gateways_pools_retrieve(gateway_id, id)
+
+A gateway's backend pools
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_backend_pool import GatewayBackendPool
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_gateways_pools_retrieve(gateway_id, id)
+        print("The response of CloudApi->cloud_gateways_pools_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_pools_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+
+### Return type
+
+[**GatewayBackendPool**](GatewayBackendPool.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_port_forwards_create**
+> GatewayForward cloud_gateways_port_forwards_create(gateway_id, gateway_forward_write_request)
+
+Add a port forward (spec 6.7); it is pending until the agent applies its revision.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_forward import GatewayForward
+from pidginhost_sdk.models.gateway_forward_write_request import GatewayForwardWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    gateway_forward_write_request = pidginhost_sdk.GatewayForwardWriteRequest() # GatewayForwardWriteRequest | 
+
+    try:
+        api_response = api_instance.cloud_gateways_port_forwards_create(gateway_id, gateway_forward_write_request)
+        print("The response of CloudApi->cloud_gateways_port_forwards_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_port_forwards_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **gateway_forward_write_request** | [**GatewayForwardWriteRequest**](GatewayForwardWriteRequest.md)|  | 
+
+### Return type
+
+[**GatewayForward**](GatewayForward.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_port_forwards_destroy**
+> GatewayOperation cloud_gateways_port_forwards_destroy(gateway_id, id, revision=revision)
+
+Delete a forward (spec 5.11): 202 with the record the agent's acknowledgement completes. Without
+the preview's revision, 409 with a fresh one.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    revision = 56 # int | The gateway's desired revision from the preview; without it, a preview. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_port_forwards_destroy(gateway_id, id, revision=revision)
+        print("The response of CloudApi->cloud_gateways_port_forwards_destroy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_port_forwards_destroy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **revision** | **int**| The gateway&#39;s desired revision from the preview; without it, a preview. | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_port_forwards_list**
+> PaginatedGatewayForwardList cloud_gateways_port_forwards_list(gateway_id, page=page)
+
+A gateway's port forwards
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.paginated_gateway_forward_list import PaginatedGatewayForwardList
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_port_forwards_list(gateway_id, page=page)
+        print("The response of CloudApi->cloud_gateways_port_forwards_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_port_forwards_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**PaginatedGatewayForwardList**](PaginatedGatewayForwardList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_port_forwards_partial_update**
+> GatewayForward cloud_gateways_port_forwards_partial_update(gateway_id, id, patched_gateway_forward_write_request=patched_gateway_forward_write_request)
+
+Change a forward's fields; public_ports and target are each replaced whole.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_forward import GatewayForward
+from pidginhost_sdk.models.patched_gateway_forward_write_request import PatchedGatewayForwardWriteRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+    patched_gateway_forward_write_request = pidginhost_sdk.PatchedGatewayForwardWriteRequest() # PatchedGatewayForwardWriteRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_port_forwards_partial_update(gateway_id, id, patched_gateway_forward_write_request=patched_gateway_forward_write_request)
+        print("The response of CloudApi->cloud_gateways_port_forwards_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_port_forwards_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+ **patched_gateway_forward_write_request** | [**PatchedGatewayForwardWriteRequest**](PatchedGatewayForwardWriteRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayForward**](GatewayForward.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_port_forwards_retrieve**
+> GatewayForward cloud_gateways_port_forwards_retrieve(gateway_id, id)
+
+A gateway's port forwards
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_forward import GatewayForward
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    gateway_id = 56 # int | 
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_gateways_port_forwards_retrieve(gateway_id, id)
+        print("The response of CloudApi->cloud_gateways_port_forwards_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_port_forwards_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gateway_id** | **int**|  | 
+ **id** | **int**|  | 
+
+### Return type
+
+[**GatewayForward**](GatewayForward.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_reenroll_create**
+> GatewayOperation cloud_gateways_reenroll_create(id, gateway_reenroll_request=gateway_reenroll_request)
+
+Re-enroll the gateway (spec 8.1 step 6): its agent token is revoked and it restarts to enroll again.
+Without the preview's revision, networks and servers, 409 with a fresh preview.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.models.gateway_reenroll_request import GatewayReenrollRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 'id_example' # str | 
+    gateway_reenroll_request = pidginhost_sdk.GatewayReenrollRequest() # GatewayReenrollRequest |  (optional)
+
+    try:
+        api_response = api_instance.cloud_gateways_reenroll_create(id, gateway_reenroll_request=gateway_reenroll_request)
+        print("The response of CloudApi->cloud_gateways_reenroll_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_reenroll_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **gateway_reenroll_request** | [**GatewayReenrollRequest**](GatewayReenrollRequest.md)|  | [optional] 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_retrieve**
+> Gateway cloud_gateways_retrieve(id)
+
+Manage gateways
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway import Gateway
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.cloud_gateways_retrieve(id)
+        print("The response of CloudApi->cloud_gateways_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**Gateway**](Gateway.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_gateways_status_retrieve**
+> GatewayStatus cloud_gateways_status_retrieve(id)
+
+The gateway's state and the customer part of its agent's last report (spec 9.5).
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.gateway_status import GatewayStatus
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.cloud_gateways_status_retrieve(id)
+        print("The response of CloudApi->cloud_gateways_status_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_gateways_status_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**GatewayStatus**](GatewayStatus.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **cloud_generations_list**
 > List[HardwareGeneration] cloud_generations_list()
 
@@ -5073,6 +9053,93 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **cloud_private_networks_apply_route_create**
+> GatewayOperation cloud_private_networks_apply_route_create(id, apply_route_request)
+
+Re-render the named servers' routes and reboot them (spec 6.3); naming a server acknowledges its reboot.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.apply_route_request import ApplyRouteRequest
+from pidginhost_sdk.models.gateway_operation import GatewayOperation
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 56 # int | 
+    apply_route_request = pidginhost_sdk.ApplyRouteRequest() # ApplyRouteRequest | 
+
+    try:
+        api_response = api_instance.cloud_private_networks_apply_route_create(id, apply_route_request)
+        print("The response of CloudApi->cloud_private_networks_apply_route_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_private_networks_apply_route_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **apply_route_request** | [**ApplyRouteRequest**](ApplyRouteRequest.md)|  | 
+
+### Return type
+
+[**GatewayOperation**](GatewayOperation.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** |  |  * Location - The cluster&#39;s encryption status resource, to poll for the outcome. <br>  |
+**409** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **cloud_private_networks_create**
 > PrivateNetwork cloud_private_networks_create(private_network_request)
 
@@ -5557,6 +9624,89 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PrivateNetwork**](PrivateNetwork.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_private_networks_route_status_retrieve**
+> RouteStatus cloud_private_networks_route_status_retrieve(id)
+
+Each server's default route against the spec 6.2 rule, read from Proxmox, and the network's route applies.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.route_status import RouteStatus
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.cloud_private_networks_route_status_retrieve(id)
+        print("The response of CloudApi->cloud_private_networks_route_status_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_private_networks_route_status_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**RouteStatus**](RouteStatus.md)
 
 ### Authorization
 

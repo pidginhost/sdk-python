@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pidginhost_sdk.models.source_enum import SourceEnum
 from typing import Optional, Set
@@ -32,7 +32,7 @@ class ActivateFreeDNSRequest(BaseModel):
     """ # noqa: E501
     domain: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Domain name or primary key of the domain to activate.")
     source: SourceEnum = Field(description="'internal' for domains purchased on PidginHost, 'external' for user-added domains.  * `internal` - Internal * `external` - External")
-    ip: Annotated[str, Field(min_length=1, strict=True)] = Field(description="IPv4 address to use as the default A record for the zone.")
+    ip: Optional[Annotated[str, Field(min_length=1, strict=True)]] = Field(default=None, description="IPv4 address for the zone's default records. Leave it out to start with an empty zone.")
     __properties: ClassVar[List[str]] = ["domain", "source", "ip"]
 
     model_config = ConfigDict(
@@ -74,6 +74,11 @@ class ActivateFreeDNSRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if ip (nullable) is None
+        # and model_fields_set contains the field
+        if self.ip is None and "ip" in self.model_fields_set:
+            _dict['ip'] = None
+
         return _dict
 
     @classmethod

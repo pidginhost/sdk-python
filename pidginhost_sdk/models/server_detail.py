@@ -36,7 +36,7 @@ class ServerDetail(BaseModel):
     """ # noqa: E501
     billing: Optional[ResourceBilling]
     id: StrictInt
-    hostname: StrictStr
+    hostname: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Renaming also moves reverse DNS still on the old name. The server takes the new name at its next reboot from the panel or API, which also creates new SSH host keys and resets the login password and SSH keys to the ones saved here.")
     project: Optional[Annotated[str, Field(strict=True, max_length=200)]] = None
     image: StrictStr
     package: StrictStr
@@ -109,12 +109,10 @@ class ServerDetail(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "billing",
             "id",
-            "hostname",
             "image",
             "package",
             "cpus",

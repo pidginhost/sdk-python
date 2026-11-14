@@ -36,6 +36,7 @@ class TestServerDetailRequest(unittest.TestCase):
         model = ServerDetailRequest()
         if include_optional:
             return ServerDetailRequest(
+                hostname = '0',
                 project = '',
                 password = '',
                 ssh_pub_key = ''

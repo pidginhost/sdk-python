@@ -32,7 +32,7 @@ class DomainRegistrantRequest(BaseModel):
     """ # noqa: E501
     first_name: Annotated[str, Field(min_length=1, strict=True, max_length=100)]
     last_name: Annotated[str, Field(min_length=1, strict=True, max_length=100)]
-    company: Optional[Annotated[str, Field(strict=True, max_length=40)]] = None
+    company: Optional[Annotated[str, Field(strict=True, max_length=128)]] = None
     address: Annotated[str, Field(min_length=1, strict=True, max_length=128)]
     city: Annotated[str, Field(min_length=1, strict=True, max_length=100)]
     region: Annotated[str, Field(min_length=1, strict=True, max_length=100)]

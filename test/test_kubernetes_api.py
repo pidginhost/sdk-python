@@ -177,6 +177,18 @@ class TestKubernetesApi(unittest.TestCase):
         """
         pass
 
+    def test_kubernetes_clusters_lb_reimage_create(self) -> None:
+        """Test case for kubernetes_clusters_lb_reimage_create
+
+        """
+        pass
+
+    def test_kubernetes_clusters_lb_reimage_retrieve(self) -> None:
+        """Test case for kubernetes_clusters_lb_reimage_retrieve
+
+        """
+        pass
+
     def test_kubernetes_clusters_list(self) -> None:
         """Test case for kubernetes_clusters_list
 

@@ -40,7 +40,7 @@ class TestClusterAddRequest(unittest.TestCase):
                 name = '0',
                 resource_pool_package = '0',
                 resource_pool_size = 56,
-                kube_version = '1.33.13',
+                kube_version = '1.35.10',
                 features = [
                     'cert-manager'
                     ],

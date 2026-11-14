@@ -33,7 +33,7 @@ class DomainRegistrant(BaseModel):
     id: StrictInt
     first_name: Annotated[str, Field(strict=True, max_length=100)]
     last_name: Annotated[str, Field(strict=True, max_length=100)]
-    company: Optional[Annotated[str, Field(strict=True, max_length=40)]] = None
+    company: Optional[Annotated[str, Field(strict=True, max_length=128)]] = None
     address: Annotated[str, Field(strict=True, max_length=128)]
     city: Annotated[str, Field(strict=True, max_length=100)]
     region: Annotated[str, Field(strict=True, max_length=100)]

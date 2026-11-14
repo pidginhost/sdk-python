@@ -44,7 +44,6 @@ class TestActivateFreeDNSRequest(unittest.TestCase):
             return ActivateFreeDNSRequest(
                 domain = '0',
                 source = 'internal',
-                ip = '0',
         )
         """
 
