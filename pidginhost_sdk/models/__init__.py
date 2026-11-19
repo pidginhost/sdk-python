@@ -103,6 +103,7 @@ from pidginhost_sdk.models.department import Department
 from pidginhost_sdk.models.deposit import Deposit
 from pidginhost_sdk.models.deposit_create_request import DepositCreateRequest
 from pidginhost_sdk.models.deposit_status_enum import DepositStatusEnum
+from pidginhost_sdk.models.destroy_protection import DestroyProtection
 from pidginhost_sdk.models.destroy_protection_request import DestroyProtectionRequest
 from pidginhost_sdk.models.destroy_protection_response import DestroyProtectionResponse
 from pidginhost_sdk.models.detach_ipv4_response import DetachIPv4Response
@@ -356,6 +357,7 @@ from pidginhost_sdk.models.power_action_action_enum import PowerActionActionEnum
 from pidginhost_sdk.models.power_action_request import PowerActionRequest
 from pidginhost_sdk.models.power_action_response import PowerActionResponse
 from pidginhost_sdk.models.power_management import PowerManagement
+from pidginhost_sdk.models.power_management_host_unavailable import PowerManagementHostUnavailable
 from pidginhost_sdk.models.power_management_request import PowerManagementRequest
 from pidginhost_sdk.models.power_management_request_action_enum import PowerManagementRequestActionEnum
 from pidginhost_sdk.models.private_network import PrivateNetwork
@@ -410,6 +412,8 @@ from pidginhost_sdk.models.server_add_response import ServerAddResponse
 from pidginhost_sdk.models.server_detach_ipv4_response import ServerDetachIPv4Response
 from pidginhost_sdk.models.server_detail import ServerDetail
 from pidginhost_sdk.models.server_detail_request import ServerDetailRequest
+from pidginhost_sdk.models.server_monitoring import ServerMonitoring
+from pidginhost_sdk.models.server_monitoring_request import ServerMonitoringRequest
 from pidginhost_sdk.models.server_networks import ServerNetworks
 from pidginhost_sdk.models.server_private_interface import ServerPrivateInterface
 from pidginhost_sdk.models.server_product import ServerProduct

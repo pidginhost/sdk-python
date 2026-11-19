@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **uptime_text** | **str** |  | 
 **cpu** | **Dict[str, object]** |  | 
 **memory** | **Dict[str, object]** |  | 
+**message** | **str** | Why the status is unavailable, when it is. | [optional] 
 
 ## Example
 

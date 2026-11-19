@@ -51,6 +51,12 @@ class TestCloudApi(unittest.TestCase):
         """
         pass
 
+    def test_cloud_buckets_destroy_protection_create(self) -> None:
+        """Test case for cloud_buckets_destroy_protection_create
+
+        """
+        pass
+
     def test_cloud_buckets_list(self) -> None:
         """Test case for cloud_buckets_list
 
@@ -780,6 +786,18 @@ class TestCloudApi(unittest.TestCase):
 
     def test_cloud_servers_modify_package_create(self) -> None:
         """Test case for cloud_servers_modify_package_create
+
+        """
+        pass
+
+    def test_cloud_servers_monitoring_retrieve(self) -> None:
+        """Test case for cloud_servers_monitoring_retrieve
+
+        """
+        pass
+
+    def test_cloud_servers_monitoring_update(self) -> None:
+        """Test case for cloud_servers_monitoring_update
 
         """
         pass

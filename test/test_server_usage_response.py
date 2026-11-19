@@ -44,7 +44,8 @@ class TestServerUsageResponse(unittest.TestCase):
                     },
                 memory = {
                     'key' : null
-                    }
+                    },
+                message = ''
             )
         else:
             return ServerUsageResponse(

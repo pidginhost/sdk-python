@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**cloud_buckets_credentials_reveal_create**](CloudApi.md#cloud_buckets_credentials_reveal_create) | **POST** /api/cloud/buckets/{id}/credentials/reveal/ | 
 [**cloud_buckets_credentials_rotate_create**](CloudApi.md#cloud_buckets_credentials_rotate_create) | **POST** /api/cloud/buckets/{id}/credentials/rotate/ | 
 [**cloud_buckets_destroy**](CloudApi.md#cloud_buckets_destroy) | **DELETE** /api/cloud/buckets/{id}/ | 
+[**cloud_buckets_destroy_protection_create**](CloudApi.md#cloud_buckets_destroy_protection_create) | **POST** /api/cloud/buckets/{id}/destroy-protection/ | 
 [**cloud_buckets_list**](CloudApi.md#cloud_buckets_list) | **GET** /api/cloud/buckets/ | 
 [**cloud_buckets_resize_create**](CloudApi.md#cloud_buckets_resize_create) | **POST** /api/cloud/buckets/{id}/resize/ | 
 [**cloud_buckets_retrieve**](CloudApi.md#cloud_buckets_retrieve) | **GET** /api/cloud/buckets/{id}/ | 
@@ -130,6 +131,8 @@ Method | HTTP request | Description
 [**cloud_servers_detach_ipv6_create**](CloudApi.md#cloud_servers_detach_ipv6_create) | **POST** /api/cloud/servers/{id}/detach-ipv6/ | 
 [**cloud_servers_list**](CloudApi.md#cloud_servers_list) | **GET** /api/cloud/servers/ | 
 [**cloud_servers_modify_package_create**](CloudApi.md#cloud_servers_modify_package_create) | **POST** /api/cloud/servers/{id}/modify-package/ | 
+[**cloud_servers_monitoring_retrieve**](CloudApi.md#cloud_servers_monitoring_retrieve) | **GET** /api/cloud/servers/{id}/monitoring/ | 
+[**cloud_servers_monitoring_update**](CloudApi.md#cloud_servers_monitoring_update) | **PUT** /api/cloud/servers/{id}/monitoring/ | 
 [**cloud_servers_partial_update**](CloudApi.md#cloud_servers_partial_update) | **PATCH** /api/cloud/servers/{id}/ | 
 [**cloud_servers_power_management_create**](CloudApi.md#cloud_servers_power_management_create) | **POST** /api/cloud/servers/{id}/power-management/ | 
 [**cloud_servers_power_management_retrieve**](CloudApi.md#cloud_servers_power_management_retrieve) | **GET** /api/cloud/servers/{id}/power-management/ | 
@@ -494,6 +497,92 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_buckets_destroy_protection_create**
+> DestroyProtection cloud_buckets_destroy_protection_create(id, destroy_protection_request)
+
+Enable or disable destroy protection.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.destroy_protection import DestroyProtection
+from pidginhost_sdk.models.destroy_protection_request import DestroyProtectionRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 56 # int | A unique integer value identifying this S3 bucket.
+    destroy_protection_request = pidginhost_sdk.DestroyProtectionRequest() # DestroyProtectionRequest | 
+
+    try:
+        api_response = api_instance.cloud_buckets_destroy_protection_create(id, destroy_protection_request)
+        print("The response of CloudApi->cloud_buckets_destroy_protection_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_buckets_destroy_protection_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this S3 bucket. | 
+ **destroy_protection_request** | [**DestroyProtectionRequest**](DestroyProtectionRequest.md)|  | 
+
+### Return type
+
+[**DestroyProtection**](DestroyProtection.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11066,6 +11155,175 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **cloud_servers_monitoring_retrieve**
+> ServerMonitoring cloud_servers_monitoring_retrieve(id)
+
+Show whether monitoring alerts are on for this server.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.server_monitoring import ServerMonitoring
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 56 # int | A unique integer value identifying this virtual machine.
+
+    try:
+        api_response = api_instance.cloud_servers_monitoring_retrieve(id)
+        print("The response of CloudApi->cloud_servers_monitoring_retrieve:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_servers_monitoring_retrieve: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this virtual machine. | 
+
+### Return type
+
+[**ServerMonitoring**](ServerMonitoring.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **cloud_servers_monitoring_update**
+> ServerMonitoring cloud_servers_monitoring_update(id, server_monitoring_request)
+
+Turn monitoring alerts on or off. Only an active server can change it.
+
+### Example
+
+* Api Key Authentication (tokenAuth):
+* Api Key Authentication (cookieAuth):
+
+```python
+import pidginhost_sdk
+from pidginhost_sdk.models.server_monitoring import ServerMonitoring
+from pidginhost_sdk.models.server_monitoring_request import ServerMonitoringRequest
+from pidginhost_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://www.pidginhost.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pidginhost_sdk.Configuration(
+    host = "https://www.pidginhost.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pidginhost_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pidginhost_sdk.CloudApi(api_client)
+    id = 56 # int | A unique integer value identifying this virtual machine.
+    server_monitoring_request = pidginhost_sdk.ServerMonitoringRequest() # ServerMonitoringRequest | 
+
+    try:
+        api_response = api_instance.cloud_servers_monitoring_update(id, server_monitoring_request)
+        print("The response of CloudApi->cloud_servers_monitoring_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CloudApi->cloud_servers_monitoring_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this virtual machine. | 
+ **server_monitoring_request** | [**ServerMonitoringRequest**](ServerMonitoringRequest.md)|  | 
+
+### Return type
+
+[**ServerMonitoring**](ServerMonitoring.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **cloud_servers_partial_update**
 > ServerDetail cloud_servers_partial_update(id, patched_server_detail_request=patched_server_detail_request)
 
@@ -11155,7 +11413,7 @@ Name | Type | Description  | Notes
 # **cloud_servers_power_management_create**
 > PowerManagement cloud_servers_power_management_create(id, power_management_request)
 
-Server power management
+Queue a power action and return the state observed before queueing. If the state cannot be read, the action is refused with HTTP 503.
 
 ### Example
 
@@ -11235,13 +11493,14 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+**503** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloud_servers_power_management_retrieve**
 > PowerManagement cloud_servers_power_management_retrieve(id)
 
-Server power management
+Read the server's power state and the reason if it is unavailable.
 
 ### Example
 

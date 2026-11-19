@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **used_bytes** | **int** |  | [readonly] 
 **object_count** | **int** |  | [readonly] 
 **public_read** | **bool** |  | [readonly] 
+**destroy_protection** | **bool** | Prevents the bucket from being deleted until disabled. | [readonly] 
 **status** | [**ResourceStatusEnum**](ResourceStatusEnum.md) |  | [readonly] 
 **endpoint** | **str** |  | [readonly] 
 **region** | **str** |  | [readonly] 

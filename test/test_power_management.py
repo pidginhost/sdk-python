@@ -36,7 +36,8 @@ class TestPowerManagement(unittest.TestCase):
         model = PowerManagement()
         if include_optional:
             return PowerManagement(
-                status = ''
+                status = '',
+                message = ''
             )
         else:
             return PowerManagement(

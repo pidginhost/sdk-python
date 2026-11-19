@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -29,7 +29,8 @@ class PowerManagement(BaseModel):
     PowerManagement
     """ # noqa: E501
     status: StrictStr
-    __properties: ClassVar[List[str]] = ["status"]
+    message: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["status", "message"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -82,7 +83,8 @@ class PowerManagement(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status")
+            "status": obj.get("status"),
+            "message": obj.get("message")
         })
         return _obj
 

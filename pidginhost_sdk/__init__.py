@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.17.1"
+__version__ = "0.18.0"
 
 # Define package exports
 __all__ = [
@@ -129,6 +129,7 @@ __all__ = [
     "Deposit",
     "DepositCreateRequest",
     "DepositStatusEnum",
+    "DestroyProtection",
     "DestroyProtectionRequest",
     "DestroyProtectionResponse",
     "DetachIPv4Response",
@@ -382,6 +383,7 @@ __all__ = [
     "PowerActionRequest",
     "PowerActionResponse",
     "PowerManagement",
+    "PowerManagementHostUnavailable",
     "PowerManagementRequest",
     "PowerManagementRequestActionEnum",
     "PrivateNetwork",
@@ -436,6 +438,8 @@ __all__ = [
     "ServerDetachIPv4Response",
     "ServerDetail",
     "ServerDetailRequest",
+    "ServerMonitoring",
+    "ServerMonitoringRequest",
     "ServerNetworks",
     "ServerPrivateInterface",
     "ServerProduct",
@@ -613,6 +617,7 @@ from pidginhost_sdk.models.department import Department as Department
 from pidginhost_sdk.models.deposit import Deposit as Deposit
 from pidginhost_sdk.models.deposit_create_request import DepositCreateRequest as DepositCreateRequest
 from pidginhost_sdk.models.deposit_status_enum import DepositStatusEnum as DepositStatusEnum
+from pidginhost_sdk.models.destroy_protection import DestroyProtection as DestroyProtection
 from pidginhost_sdk.models.destroy_protection_request import DestroyProtectionRequest as DestroyProtectionRequest
 from pidginhost_sdk.models.destroy_protection_response import DestroyProtectionResponse as DestroyProtectionResponse
 from pidginhost_sdk.models.detach_ipv4_response import DetachIPv4Response as DetachIPv4Response
@@ -866,6 +871,7 @@ from pidginhost_sdk.models.power_action_action_enum import PowerActionActionEnum
 from pidginhost_sdk.models.power_action_request import PowerActionRequest as PowerActionRequest
 from pidginhost_sdk.models.power_action_response import PowerActionResponse as PowerActionResponse
 from pidginhost_sdk.models.power_management import PowerManagement as PowerManagement
+from pidginhost_sdk.models.power_management_host_unavailable import PowerManagementHostUnavailable as PowerManagementHostUnavailable
 from pidginhost_sdk.models.power_management_request import PowerManagementRequest as PowerManagementRequest
 from pidginhost_sdk.models.power_management_request_action_enum import PowerManagementRequestActionEnum as PowerManagementRequestActionEnum
 from pidginhost_sdk.models.private_network import PrivateNetwork as PrivateNetwork
@@ -920,6 +926,8 @@ from pidginhost_sdk.models.server_add_response import ServerAddResponse as Serve
 from pidginhost_sdk.models.server_detach_ipv4_response import ServerDetachIPv4Response as ServerDetachIPv4Response
 from pidginhost_sdk.models.server_detail import ServerDetail as ServerDetail
 from pidginhost_sdk.models.server_detail_request import ServerDetailRequest as ServerDetailRequest
+from pidginhost_sdk.models.server_monitoring import ServerMonitoring as ServerMonitoring
+from pidginhost_sdk.models.server_monitoring_request import ServerMonitoringRequest as ServerMonitoringRequest
 from pidginhost_sdk.models.server_networks import ServerNetworks as ServerNetworks
 from pidginhost_sdk.models.server_private_interface import ServerPrivateInterface as ServerPrivateInterface
 from pidginhost_sdk.models.server_product import ServerProduct as ServerProduct

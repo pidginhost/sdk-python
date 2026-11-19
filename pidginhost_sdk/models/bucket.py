@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from pidginhost_sdk.models.resource_billing import ResourceBilling
 from pidginhost_sdk.models.resource_status_enum import ResourceStatusEnum
@@ -38,11 +38,12 @@ class Bucket(BaseModel):
     used_bytes: StrictInt
     object_count: StrictInt
     public_read: StrictBool
+    destroy_protection: StrictBool = Field(description="Prevents the bucket from being deleted until disabled.")
     status: ResourceStatusEnum
     endpoint: StrictStr
     region: StrictStr
     created: StrictStr
-    __properties: ClassVar[List[str]] = ["billing", "id", "name", "full_name", "quota_gb", "used_bytes", "object_count", "public_read", "status", "endpoint", "region", "created"]
+    __properties: ClassVar[List[str]] = ["billing", "id", "name", "full_name", "quota_gb", "used_bytes", "object_count", "public_read", "destroy_protection", "status", "endpoint", "region", "created"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,6 +87,7 @@ class Bucket(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "billing",
@@ -96,6 +98,7 @@ class Bucket(BaseModel):
             "used_bytes",
             "object_count",
             "public_read",
+            "destroy_protection",
             "status",
             "endpoint",
             "region",
@@ -135,6 +138,7 @@ class Bucket(BaseModel):
             "used_bytes": obj.get("used_bytes"),
             "object_count": obj.get("object_count"),
             "public_read": obj.get("public_read"),
+            "destroy_protection": obj.get("destroy_protection"),
             "status": obj.get("status"),
             "endpoint": obj.get("endpoint"),
             "region": obj.get("region"),

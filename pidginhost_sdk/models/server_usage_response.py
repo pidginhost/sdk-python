@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -33,7 +33,8 @@ class ServerUsageResponse(BaseModel):
     uptime_text: StrictStr
     cpu: Dict[str, Any]
     memory: Dict[str, Any]
-    __properties: ClassVar[List[str]] = ["status", "uptime", "uptime_text", "cpu", "memory"]
+    message: Optional[StrictStr] = Field(default=None, description="Why the status is unavailable, when it is.")
+    __properties: ClassVar[List[str]] = ["status", "uptime", "uptime_text", "cpu", "memory", "message"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,7 +91,8 @@ class ServerUsageResponse(BaseModel):
             "uptime": obj.get("uptime"),
             "uptime_text": obj.get("uptime_text"),
             "cpu": obj.get("cpu"),
-            "memory": obj.get("memory")
+            "memory": obj.get("memory"),
+            "message": obj.get("message")
         })
         return _obj
 
